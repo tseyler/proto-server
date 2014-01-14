@@ -1,7 +1,7 @@
 
 
-#ifndef __CMD_PARSER_HPP__
-#define __CMD_PARSER_HPP__
+#ifndef CMD_PARSER_HPP__
+#define CMD_PARSER_HPP__
 
 #include <iostream>
 #include <string.h>

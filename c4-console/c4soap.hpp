@@ -1,6 +1,6 @@
 
-#ifndef __C4SOAP_HPP__
-#define __C4SOAP_HPP__
+#ifndef C4SOAP_HPP__
+#define C4SOAP_HPP__
 
 #include <string.h>
 #include <sstream>

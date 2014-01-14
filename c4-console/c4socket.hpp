@@ -1,7 +1,7 @@
 
 
-#ifndef __C4SOCKET_HPP__
-#define __C4SOCKET_HPP__
+#ifndef C4SOCKET_HPP__
+#define C4SOCKET_HPP__
 
 #include <iostream>
 #include <string.h>

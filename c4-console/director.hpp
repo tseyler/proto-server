@@ -1,5 +1,5 @@
-#ifndef __DIRECTOR_HPP__
-#define __DIRECTOR_HPP__
+#ifndef DIRECTOR_HPP__
+#define DIRECTOR_HPP__
 
 #include <string.h>
 #include <sstream>
