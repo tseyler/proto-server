@@ -52,18 +52,18 @@ get_args(char* argv[])
     return &argv[1];
 }
 
-char* 
-get_host(char** args)
-{
-    return args[0];
-}
+//char* 
+//get_host(char** args)
+//{
+//    return args[0];
+//}
 
-char* 
-getCmd(char** args, 
-		int argsCnt)
-{
-    return argsCnt > 1 ? args[1] : NULL; // NULL means no cmd specified
-}
+//char* 
+//getCmd(char** args, 
+//		int argsCnt)
+//{
+//    return argsCnt > 1 ? args[1] : NULL; // NULL means no cmd specified
+//}
 
 int 
 main(int argc, 
