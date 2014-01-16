@@ -1,0 +1,38 @@
+/*
+<boilerplate>
+
+
+
+</boilerplate>
+*/
+
+#ifndef HTTP_REQUEST_PARSER_HPP_
+#define HTTP_REQUEST_PARSER_HPP_
+
+#include <net_protocol.hpp>
+#include <http/http_parse_routines.hpp>
+#include <http/http_request_message.hpp>
+
+namespace proto_http
+{
+    class http_request_parser : public net_proto::net_protocol<http_request_message,
+							       http_parse_result>
+    {
+    public:
+
+	// this parses a well-formed message.  Returns zero if successful
+	virtual http_parse_result protocol_parse(const net_data& formed, 
+						 http_request_message& parsed);
+	// this forms a well-formed message.  Returns zero if successful 
+	virtual http_parse_result protocol_form(const http_request_message& parsed, 
+						net_data& formed);
+
+    protected:
+
+	virtual http_parse_result validate_http_request(const lines_t& lines,
+							http_request_message& parsed);
+    };
+
+}
+
+#endif
