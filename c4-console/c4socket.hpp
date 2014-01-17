@@ -9,6 +9,8 @@
 
 using boost::asio::ip::tcp;
 
+#define BUFFER_SIZE 4096
+
 namespace c4socket
 {
 
