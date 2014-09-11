@@ -23,6 +23,9 @@ public:
 
 	std::string to_authenticate(int& seq);
 	std::string to_c4soap(int& seq);
+	
+	// setters
+	void set_command(std::string& cmd, director::params_array& params_)
 
 private:
 

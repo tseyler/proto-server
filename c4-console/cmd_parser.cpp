@@ -48,3 +48,11 @@ cmd_parser::to_c4soap(int& seq)
 
 	return soap;
 }
+
+void 
+cmd_parser::set_command(std::string& cmd, director::params_array& params)
+{
+	
+}
+
+}
