@@ -19,22 +19,8 @@
 namespace po = boost::program_options;
 using boost::asio::ip::tcp;
 
-static const std::string ver = "1.0.1";
-
-void
-print_banner(void)
-{
-	std::cout << "c4-console - Version: " << ver << std::endl;
-	std::cout << "© Terry Seyler 2013.  All rights reserved." << std::endl;
-	std::cout << "------------" << std::endl;
-}
-
-void 
-print_usage(void)
-{
-    std::cout << "Usage:" << std::endl;
-    std::cout << "$ c4-console <host> <command> [id] [param1] [param2] ..." << std::endl;
-}
+static const std::string ver = "1.0.2";
+static const std::string bld_date_time = "9/11/14; 4:00 PM";
 
 void 
 print(const std::string& out)
@@ -56,22 +42,73 @@ print_error(const std::string& err)
 	print_ln(out);
 }
 
-char**
-get_args(char* argv[])
+void
+print_banner(void)
 {
-    return &argv[1];
+	print_ln("c4-console - A comand line tool to send C4SOAP commands to a Control4 controller.");
+	print_ln("Version: " + ver);
+	print_ln("Built: " + bld_date_time);
+	print_ln("(c) Terry Seyler 2014.  All rights reserved.");
+	print_ln("------------");
+}
+
+void 
+print_usage(void)
+{
+    std::cout << "Usage:" << std::endl;
+    std::cout << "$ c4-console <host> <command> [id] [param1] [param2] ..." << std::endl;
+}
+
+char**
+get_args(char* argv[], int first_arg)
+{
+    return &argv[first_arg];
 }
 
 int 
 main(int argc, 
 	char *argv[])
 {
-	print_banner();
+	bool silent(false);
+	int first_arg(1);
+
+	po::options_description desc("Options");
+	desc.add_options()
+		("help,h", "Prints the help message")
+		("silent,s", "Suppresses the copyright banner");
+
+	po::variables_map vm;
+	try
+	{
+		po::store(po::parse_command_line(argc--, argv, desc), vm);
+
+
+		if (vm.count("silent"))
+		{
+			silent = true;
+			argc--;
+			first_arg++;
+		}
+
+		if (!silent) 
+			print_banner();
+
+		if (vm.count("help"))
+		{
+			print_usage();
+			return 0;
+		}
+	}
+	catch (po::error& e)
+	{
+
+
+	}
 	
     if (argc > 1)
     {
-		char** args = get_args(argv);
-		cmd_parser parser(args, --argc);
+		char** args = get_args(argv, first_arg);
+		cmd_parser parser(args, argc);
 		std::string host = parser.host();
 		std::string cmd = parser.cmd();
 
