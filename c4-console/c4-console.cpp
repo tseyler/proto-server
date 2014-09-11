@@ -19,6 +19,16 @@
 namespace po = boost::program_options;
 using boost::asio::ip::tcp;
 
+static const std::string ver = "1.0.1";
+
+void
+print_banner(void)
+{
+	std::cout << "c4-console - Version: " << ver << std::endl;
+	std::cout << "© Terry Seyler 2013.  All rights reserved." << std::endl;
+	std::cout << "------------" << std::endl;
+}
+
 void 
 print_usage(void)
 {
@@ -56,6 +66,8 @@ int
 main(int argc, 
 	char *argv[])
 {
+	print_banner();
+	
     if (argc > 1)
     {
 		char** args = get_args(argv);
