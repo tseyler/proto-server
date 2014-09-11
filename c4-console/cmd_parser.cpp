@@ -52,7 +52,6 @@ cmd_parser::to_c4soap(int& seq)
 void 
 cmd_parser::set_command(std::string& cmd, director::params_array& params)
 {
-	
-}
-
+	cmd_ = cmd;
+	params_ = params; // a copy
 }

@@ -25,7 +25,7 @@ public:
 	std::string to_c4soap(int& seq);
 	
 	// setters
-	void set_command(std::string& cmd, director::params_array& params_)
+	void set_command(std::string& cmd, director::params_array& params_);
 
 private:
 
