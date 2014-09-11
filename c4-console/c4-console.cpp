@@ -45,7 +45,7 @@ print_error(const std::string& err)
 void
 print_banner(void)
 {
-	print_ln("c4-console - A comand line tool to send C4SOAP commands to a Control4 controller.");
+	print_ln("c4-console - A command line tool to send C4SOAP commands to a Control4 controller.");
 	print_ln("Version: " + ver);
 	print_ln("Built: " + bld_date_time);
 	print_ln("(c) Terry Seyler 2014.  All rights reserved.");
