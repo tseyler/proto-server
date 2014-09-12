@@ -19,8 +19,8 @@
 namespace po = boost::program_options;
 using boost::asio::ip::tcp;
 
-static const std::string ver = "1.0.3";
-static const std::string bld_date_time = "9/12/14; 8:45 AM";
+static const std::string ver = "1.0.4";
+static const std::string bld_date_time = "9/12/14; 11:10 AM";
 
 void 
 print(const std::string& out)
@@ -57,13 +57,6 @@ print_usage(void)
 {
     std::cout << "Usage:" << std::endl;
     std::cout << "$ c4-console <host> <command> [id] [param1] [param2] ..." << std::endl;
-}
-
-bool 
-process_cmd(bool is_shell, cmd_parser& parser)
-{
-
-	return is_shell;
 }
 
 char**
@@ -149,7 +142,6 @@ main(int argc,
 			return e.value();
 		}
 
-
 		// authenticate
 		int seq(1);
 		std::string msg = parser.to_authenticate(seq);
@@ -157,15 +149,19 @@ main(int argc,
 		std::string reply = c4socket::read_msg(s);
 		print_ln(reply);
 
-		msg = parser.to_c4soap(seq);
-		if (parser.parsed())
+		do
 		{
-			c4socket::write_msg(s, msg);
-			reply = c4socket::read_msg(s);
-			print_ln(reply);
+			msg = parser.to_c4soap(seq);
+			if (parser.parsed())
+			{
+				c4socket::write_msg(s, msg);
+				reply = c4socket::read_msg(s);
+				print_ln(reply);
+			}
+			else
+				print_ln("Unknown or malformed command: " + cmd);
 		}
-		else
-			print_ln("Unknown or malformed command: " + cmd);
+		while (is_shell);
 	}
 	else
 		print_usage();
