@@ -7,6 +7,7 @@ CPPFLAGS  +=	-g \
 		$(INC_DIRS)
 
 LIB_LINK   +=   -lboost_system \
+		-lboost_program_options \
 		-lpthread
 
 # targets below

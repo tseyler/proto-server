@@ -19,8 +19,8 @@
 namespace po = boost::program_options;
 using boost::asio::ip::tcp;
 
-static const std::string ver = "1.0.2";
-static const std::string bld_date_time = "9/11/14; 4:00 PM";
+static const std::string ver = "1.0.3";
+static const std::string bld_date_time = "9/12/14; 8:45 AM";
 
 void 
 print(const std::string& out)
