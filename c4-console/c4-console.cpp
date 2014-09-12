@@ -59,6 +59,13 @@ print_usage(void)
     std::cout << "$ c4-console <host> <command> [id] [param1] [param2] ..." << std::endl;
 }
 
+bool 
+process_cmd(bool is_shell, cmd_parser& parser)
+{
+
+	return is_shell;
+}
+
 char**
 get_args(char* argv[], int first_arg)
 {
@@ -70,6 +77,7 @@ main(int argc,
 	char *argv[])
 {
 	bool silent(false);
+	bool is_shell(false);
 	int first_arg(1);
 
 	po::options_description desc("Options");

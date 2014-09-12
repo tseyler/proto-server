@@ -85,7 +85,6 @@
     <ClInclude Include="c4socket.hpp" />
     <ClInclude Include="c4soap.hpp" />
     <ClInclude Include="cmd_parser.hpp" />
-    <ClInclude Include="cmd_shell.hpp" />
     <ClInclude Include="director.hpp" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -94,7 +93,6 @@
     <ClCompile Include="c4soap.cpp" />
     <ClCompile Include="c4socket.cpp" />
     <ClCompile Include="cmd_parser.cpp" />
-    <ClCompile Include="cmd_shell.cpp" />
     <ClCompile Include="director.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
