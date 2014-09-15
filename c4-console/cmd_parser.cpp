@@ -1,6 +1,7 @@
 
 
 #include "cmd_parser.hpp"
+#include <list>
 
 cmd_parser::cmd_parser(char** args, int cnt) : host_("127.0.0.1"),
 												cmd_("GetVersionInfo"),
@@ -17,6 +18,21 @@ cmd_parser::cmd_parser(char** args, int cnt) : host_("127.0.0.1"),
 	while (SAFE_INDEX( idx, cnt ))
 		params_.push_back(std::string(args[idx++]));
 
+	initialize_command_map();
+}
+
+cmd_parser::cmd_parser(const std::string& raw_string) : host_("127.0.0.1"),
+														cmd_("GetVersionInfo"),
+														parsed_(false)
+{
+	parse(raw_string);
+
+	initialize_command_map();
+}
+
+void 
+cmd_parser::initialize_command_map(void)
+{
 	// insert into the map
 	director_command_map["AuthenticatePassword"] = director::authenticate_password;
 	director_command_map["GetVersionInfo"] = director::get_version_info;
@@ -24,7 +40,6 @@ cmd_parser::cmd_parser(char** args, int cnt) : host_("127.0.0.1"),
 	director_command_map["GetDevicesByC4i"] = director::get_devices_by_c4i;
 	director_command_map["SendToDevice"] = director::send_to_device;
 	director_command_map["GetDirectorInfo"] = director::get_director_info;
-
 }
 
 std::string 
@@ -47,6 +62,37 @@ cmd_parser::to_c4soap(int& seq)
 		parsed_ = false;
 
 	return soap;
+}
+
+
+bool 
+cmd_parser::parse(const std::string& raw_string)
+{
+	bool is_parsed(false);
+
+    std::list<std::string> tokens;
+    std::istringstream iss(raw_string);
+    std::string token;    
+    while (std::getline(iss, token, ' ')) 
+        tokens.push_back(token);
+    
+	if (tokens.size())
+	{
+		std::string cmd = tokens.front();
+		tokens.pop_front();
+
+		director::params_array params;
+		while (tokens.size())
+		{
+			params.push_back(tokens.front());
+			tokens.pop_front();
+		}
+
+		set_command(cmd, params);
+		is_parsed = !IS_EXIT( cmd );
+	}
+
+	return is_parsed;
 }
 
 void 

@@ -6,16 +6,21 @@
 #include <iostream>
 #include <string.h>
 #include <map>
+#include <boost/algorithm/string.hpp>
 
 #include "director.hpp"
 
 #define SAFE_INDEX( idx, cnt )	(idx < cnt)
+
+#define IS_EXIT( cmd ) (boost::iequals(cmd, "quit") || boost::iequals(cmd, "exit"))
 
 class cmd_parser
 {
 public:
 
 	cmd_parser(char** args, int cnt);
+	cmd_parser(const std::string& raw_string);
+
 
 	std::string host(void) { return host_; }
 	std::string cmd(void) { return cmd_; }
@@ -23,7 +28,13 @@ public:
 
 	std::string to_authenticate(int& seq);
 	std::string to_c4soap(int& seq);
-	
+
+	bool parse(const std::string& raw_string);
+
+private:
+
+	void initialize_command_map(void);
+
 	// setters
 	void set_command(std::string& cmd, director::params_array& params_);
 

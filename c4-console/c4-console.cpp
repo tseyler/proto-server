@@ -19,8 +19,8 @@
 namespace po = boost::program_options;
 using boost::asio::ip::tcp;
 
-static const std::string ver = "1.0.4";
-static const std::string bld_date_time = "9/12/14; 11:10 AM";
+static const std::string ver = "1.0.5";
+static const std::string bld_date_time = "9/15/14; 4:05 PM";
 
 void 
 print(const std::string& out)
@@ -59,6 +59,20 @@ print_usage(void)
     std::cout << "$ c4-console <host> <command> [id] [param1] [param2] ..." << std::endl;
 }
 
+bool
+print_shell(cmd_parser& parser, bool in_shell)
+{
+	if (in_shell)
+	{
+		char shell[256];
+		std::cout << std::endl << ">> ";
+		std::cin.getline(shell, 256);
+		in_shell = parser.parse(std::string(shell));
+	}
+
+	return in_shell;
+}
+
 char**
 get_args(char* argv[], int first_arg)
 {
@@ -76,7 +90,8 @@ main(int argc,
 	po::options_description desc("Options");
 	desc.add_options()
 		("help,h", "Prints the help message")
-		("silent,s", "Suppresses the copyright banner");
+		("silent,s", "Suppresses the copyright banner")
+		("interactive,i", "Executes as an interactive shell");
 
 	po::variables_map vm;
 	try
@@ -93,6 +108,13 @@ main(int argc,
 
 		if (!silent) 
 			print_banner();
+
+		if (vm.count("interactive"))
+		{
+			is_shell = true;
+			argc--;
+			first_arg++;
+		}
 
 		if (vm.count("help"))
 		{
@@ -152,6 +174,7 @@ main(int argc,
 		do
 		{
 			msg = parser.to_c4soap(seq);
+			cmd = parser.cmd();
 			if (parser.parsed())
 			{
 				c4socket::write_msg(s, msg);
@@ -160,6 +183,7 @@ main(int argc,
 			}
 			else
 				print_ln("Unknown or malformed command: " + cmd);
+			is_shell = print_shell(parser, is_shell);
 		}
 		while (is_shell);
 	}
