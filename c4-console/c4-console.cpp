@@ -76,9 +76,9 @@ print_shell(cmd_parser& parser, bool in_shell)
 void
 print_verbose(const std::string& msg)
 {
-	print_ln("Out >>");
+	print_ln("<<--Out-->>");
 	print_ln(msg);
-	print_ln("End Out >>");
+	print_ln("<<--End Out-->>");
 }
 
 
@@ -102,7 +102,7 @@ main(int argc,
 		("help,h", "Prints the help message")
 		("silent,s", "Suppresses the copyright banner")
 		("interactive,i", "Executes as an interactive shell")
-		("verbose, v", "Prints outgoing messages as well as incoming responses");
+		("verbose,v", "Prints outgoing messages as well as incoming responses");
 
 	po::variables_map vm;
 	try
