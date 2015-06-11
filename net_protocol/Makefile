@@ -11,6 +11,8 @@ UNITTEST_LINK += -lboost_regex
 
 # redefine SRC_DIR
 SRC_DIR   =	$(ABS_WORK_DIR)/src
+INC_DIRS  += -I$(BOOST_INC)
+LIB_DIRS  += $(BOOST_LIB) 
 LIB_LINK  += 	-lboost_regex
 ARFLAGS   +=	-cru
 
