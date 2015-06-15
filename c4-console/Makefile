@@ -5,9 +5,9 @@ include ../make/definitions.mk
 CPPFLAGS  +=	-g \
 		-Wall \
 		$(INC_DIRS)
-
-LIB_LINK   +=   -lboost_system \
-		-lpthread
+INC_DIRS  += -I$(BOOST_INC)
+LIB_DIRS  += -L$(BOOST_LIB)
+LIB_LINK  += -lboost_system -lboost_program_options -lpthread
 
 # targets below
 

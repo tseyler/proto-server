@@ -45,8 +45,8 @@ UNITTEST_LINK		=	-lUnitTest++
 UNITTEST_COMPILE	=	$(GPP) $(UNITTEST_CPPFLAGS) -c $<
 UNITTEST_EXE		=	$(GPP) $^ $(UNITTEST_LIB_DIRS) $(UNITTEST_LINK) -o $@
 
-BOOST_INC = /usr/local/opt/boost/include
-BOOST_LIB = /usr/local/opt/boost/lib
+BOOST_INC = /usr/local/include
+BOOST_LIB = /usr/local/lib
 
 # declare PHONY
 .PHONY : clean

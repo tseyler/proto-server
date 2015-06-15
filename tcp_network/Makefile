@@ -8,6 +8,8 @@ CPPFLAGS  +=	-g \
 
 # redefine SRC_DIR
 SRC_DIR   =	$(ABS_WORK_DIR)/src
+INC_DIRS  += -I$(BOOST_INC)
+LIB_DIRS  += -L$(BOOST_LIB)
 ARFLAGS   +=	-cru
 
 # targets below
