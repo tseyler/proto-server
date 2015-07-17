@@ -1,9 +1,5 @@
 /*
-<boilerplate>
-
-
-
-</boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 #include <iostream>
@@ -12,8 +8,7 @@
 #include <http/http_response_message.hpp>
 
 
-proto_http::http_response_message::http_response_message() : http_message(),
-							     status_code_(400)
+proto_http::http_response_message::http_response_message() : http_message(), status_code_(400)
 {
     headers_.add_http_headers("response", http_header_fields());
     headers_.add_http_headers("general", http_header_fields());

@@ -1,9 +1,5 @@
 /*
-  <boilerplate>
-
-
-
-  </boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 
@@ -37,7 +33,7 @@ net_proto::search_pattern(const std::string& str,
     for (; itr != end; ++itr)
 	count++;
 
-    return (count);
+    return count;
 }
 
 bool 
@@ -54,8 +50,8 @@ net_proto::search_pattern(const std::string& str,
 
     for (; itr != end; ++itr)
     {
-	matches.push_back(std::string(itr->first, itr->second));
-	found = true;
+		matches.push_back(std::string(itr->first, itr->second));
+		found = true;
     }
 
     return found;
@@ -82,8 +78,8 @@ net_proto::match_pattern(const std::string& str,
    bool matched = boost::regex_match(str, match, exp);
    if (matched)
    {
-       for (size_t i = 0; i < match.size(); i++)
-	   matches.push_back(match[i]);
+		for (size_t i = 0; i < match.size(); i++)
+	   		matches.push_back(match[i]);
    }
 
    return matched;
@@ -122,7 +118,7 @@ net_proto::split(const std::string& str, matches_t& matches)
 {
     boost::tokenizer<> tok(str);
     for (boost::tokenizer<>::iterator it = tok.begin(); it != tok.end(); ++it)
-	matches.push_back(*it);
+		matches.push_back(*it);
 }
 
 void 
@@ -132,5 +128,5 @@ net_proto::split(const std::string& str, const std::string& sep, matches_t& matc
     boost::char_separator<char> s(sep.c_str());
     tokenizer tok(str, s);
     for (tokenizer::iterator it = tok.begin(); it != tok.end(); ++it)
-	matches.push_back(*it);
+		matches.push_back(*it);
 }

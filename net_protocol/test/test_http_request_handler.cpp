@@ -1,3 +1,6 @@
+/*
+	Copyright 2015 Terry Seyler.  All rights reserved.
+*/
 
 #include <string.h>
 #include <string>

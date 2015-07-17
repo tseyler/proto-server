@@ -1,9 +1,5 @@
 /*
-<boilerplate>
-
-
-
-</boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 #ifndef HTTP_PARSE_ROUTINES_HPP_

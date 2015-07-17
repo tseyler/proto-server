@@ -1,9 +1,5 @@
 /*
-<boilerplate>
-
-
-
-</boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 #ifndef ECHO_SERVER_HPP_
@@ -25,16 +21,15 @@ namespace echo
     {
     public:
 
-	echo_server(boost::asio::io_service& io_service, short port);
-
-	virtual void pipe(const net_data& req_data, // the request data
-			  net_data& res_data);  // the response data
+		echo_server(boost::asio::io_service& io_service, short port);
+		virtual ~echo_server() {}
+		virtual void pipe(const net_data& req_data, // the request data
+			  				net_data& res_data);  // the response data
 
     protected:
 
-	virtual void start_accept(void);
-	virtual void handle_accept(echo_session* session,
-				   const boost::system::error_code& error);
+		virtual void start_accept(void);
+		virtual void handle_accept(echo_session* session, const boost::system::error_code& error);
     };
 
 }

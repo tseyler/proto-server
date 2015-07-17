@@ -1,3 +1,4 @@
+# Copyright 2015 Terry Seyler.  All rights reserved.
 # makefile for net_protocol
 
 include ../make/definitions.mk
