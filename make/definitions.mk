@@ -8,6 +8,7 @@ ifneq "$(findstring $(firstword $(MAKEFILE_LIST)), Makefile)" ""
 else
     WORK_DIR := $(subst /Makefile,,$(subst $(HOME_DIR)/,,$(firstword $(MAKEFILE_LIST))))
 endif
+# 	Copyright 2015 Terry Seyler.  All rights reserved.
 
 ABS_WORK_DIR := $(HOME_DIR)/$(WORK_DIR)
 
