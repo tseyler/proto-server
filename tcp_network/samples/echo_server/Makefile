@@ -24,6 +24,7 @@ LIB_LINK   += 	-ltcp_net \
 		-lpthread
 
 # targets below
+all : echo-server
 
 echo-server : $(OBJ_FILES)
 	$(BUILD_EXE)
