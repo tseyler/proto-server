@@ -18,6 +18,8 @@ LIB_LINK  += 	-lboost_regex
 ARFLAGS   +=	-cru
 
 # targets below
+all : libnet_protocol.a
+
 libnet_protocol.a : $(OBJ_FILES) 
 	$(BUILD_AR)
 

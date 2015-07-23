@@ -13,6 +13,7 @@ LIB_DIRS  += -L$(BOOST_LIB)
 ARFLAGS   +=	-cru
 
 # targets below
+all : libtcp_net.a
 
 libtcp_net.a : $(OBJ_FILES)
 	$(BUILD_AR)
