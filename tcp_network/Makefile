@@ -12,11 +12,13 @@ INC_DIRS  += -I$(BOOST_INC)
 LIB_DIRS  += -L$(BOOST_LIB)
 ARFLAGS   +=	-cru
 
+# variables to build source in samples dir
 SAMPLES_DIR = $(ABS_WORK_DIR)/samples
 ECHO_SERVER_DIR = $(SAMPLES_DIR)/echo_server
+ECHO_CLIENT_DIR = $(SAMPLES_DIR)/echo_client
 
 # targets below
-all : libtcp_net.a echo_server
+all : libtcp_net.a echo_server echo_client
 
 libtcp_net.a : $(OBJ_FILES)
 	$(BUILD_AR)
@@ -27,6 +29,10 @@ libtcp_net.a : $(OBJ_FILES)
 echo_server:
 	cd $(ECHO_SERVER_DIR) && $(MAKE) all
 	
+echo_client:
+	cd $(ECHO_CLIENT_DIR) && $(MAKE) all
+	
 clean :
 	rm -f *.o libtcp_net.a
 	cd $(ECHO_SERVER_DIR) && $(MAKE) clean
+	cd $(ECHO_CLIENT_DIR) && $(MAKE) clean

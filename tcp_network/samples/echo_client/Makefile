@@ -12,6 +12,7 @@ LIB_DIRS  += -L$(BOOST_LIB)
 LIB_LINK  += -lboost_system -lboost_program_options -lpthread
 
 # targets below
+all: echo-client
 
 echo-client : $(OBJ_FILES)
 	$(BUILD_EXE)
