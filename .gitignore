@@ -1,2 +1,14 @@
 # .gitignore for cpp-projects
+
 *.o
+*.a
+.cproject
+.project
+.metadata
+
+# executables
+
+c4-console
+echo-client
+echo-server
+http-server
