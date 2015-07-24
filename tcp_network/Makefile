@@ -16,9 +16,11 @@ ARFLAGS   +=	-cru
 SAMPLES_DIR = $(ABS_WORK_DIR)/samples
 ECHO_SERVER_DIR = $(SAMPLES_DIR)/echo_server
 ECHO_CLIENT_DIR = $(SAMPLES_DIR)/echo_client
+HTTP_SERVER_DIR = $(SAMPLES_DIR)/http_server
+CTRL4_SERVER_DIR = $(SAMPLES_DIR)/control4_server
 
 # targets below
-all : libtcp_net.a echo_server echo_client
+all : libtcp_net.a echo_server echo_client http_server
 
 libtcp_net.a : $(OBJ_FILES)
 	$(BUILD_AR)
@@ -26,13 +28,21 @@ libtcp_net.a : $(OBJ_FILES)
 %.o : $(SRC_DIR)/%.cpp
 	$(COMPILE_CPP)
 
-echo_server:
+echo_server :
 	cd $(ECHO_SERVER_DIR) && $(MAKE) all
 	
-echo_client:
+echo_client :
 	cd $(ECHO_CLIENT_DIR) && $(MAKE) all
+
+http_server :
+	cd $(HTTP_SERVER_DIR) && $(MAKE) all
+	
+control4_server :
+	cd $(CTRL4_SERVER_DIR) && $(MAKE) all
 	
 clean :
 	rm -f *.o libtcp_net.a
 	cd $(ECHO_SERVER_DIR) && $(MAKE) clean
 	cd $(ECHO_CLIENT_DIR) && $(MAKE) clean
+	cd $(HTTP_SERVER_DIR) && $(MAKE) clean
+	cd $(CTRL4_SERVER_DIR) && $(MAKE) clean
