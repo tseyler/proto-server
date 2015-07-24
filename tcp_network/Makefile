@@ -31,18 +31,29 @@ libtcp_net.a : $(OBJ_FILES)
 echo_server :
 	cd $(ECHO_SERVER_DIR) && $(MAKE) all
 	
+clean_echo_server :
+	cd $(ECHO_SERVER_DIR) && $(MAKE) clean
+	
 echo_client :
 	cd $(ECHO_CLIENT_DIR) && $(MAKE) all
-
+	
+clean_echo_client :
+	cd $(ECHO_CLIENT_DIR) && $(MAKE) clean
+	
 http_server :
 	cd $(HTTP_SERVER_DIR) && $(MAKE) all
+	
+clean_http_server : 
+	cd $(HTTP_SERVER_DIR) && $(MAKE) clean
 	
 control4_server :
 	cd $(CTRL4_SERVER_DIR) && $(MAKE) all
 	
+clean_control4_server :
+	cd $(CTRL4_SERVER_DIR) && $(MAKE) clean
+	
+clean_all : clean clean_echo_server clean_echo_client clean_http_server clean_control4_server 
+
 clean :
 	rm -f *.o libtcp_net.a
-	cd $(ECHO_SERVER_DIR) && $(MAKE) clean
-	cd $(ECHO_CLIENT_DIR) && $(MAKE) clean
-	cd $(HTTP_SERVER_DIR) && $(MAKE) clean
-	cd $(CTRL4_SERVER_DIR) && $(MAKE) clean
+
