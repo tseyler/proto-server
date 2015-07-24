@@ -20,7 +20,7 @@ HTTP_SERVER_DIR = $(SAMPLES_DIR)/http_server
 CTRL4_SERVER_DIR = $(SAMPLES_DIR)/control4_server
 
 # targets below
-all : libtcp_net.a echo_server echo_client http_server
+all : libtcp_net.a echo_server echo_client http_server control4_server
 
 libtcp_net.a : $(OBJ_FILES)
 	$(BUILD_AR)

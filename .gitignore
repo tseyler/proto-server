@@ -12,3 +12,4 @@ c4-console
 echo-client
 echo-server
 http-server
+control4-server
