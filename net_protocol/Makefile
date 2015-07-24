@@ -1,3 +1,4 @@
+# Copyright 2015 Terry Seyler.  All rights reserved.
 # makefile for net_protocol
 
 include ../make/definitions.mk
@@ -11,10 +12,14 @@ UNITTEST_LINK += -lboost_regex
 
 # redefine SRC_DIR
 SRC_DIR   =	$(ABS_WORK_DIR)/src
+INC_DIRS  += -I$(BOOST_INC)
+LIB_DIRS  += -L$(BOOST_LIB) 
 LIB_LINK  += 	-lboost_regex
 ARFLAGS   +=	-cru
 
 # targets below
+all : libnet_protocol.a
+
 libnet_protocol.a : $(OBJ_FILES) 
 	$(BUILD_AR)
 

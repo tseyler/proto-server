@@ -8,6 +8,7 @@ ifneq "$(findstring $(firstword $(MAKEFILE_LIST)), Makefile)" ""
 else
     WORK_DIR := $(subst /Makefile,,$(subst $(HOME_DIR)/,,$(firstword $(MAKEFILE_LIST))))
 endif
+# 	Copyright 2015 Terry Seyler.  All rights reserved.
 
 ABS_WORK_DIR := $(HOME_DIR)/$(WORK_DIR)
 
@@ -44,6 +45,9 @@ UNITTEST_LIB_DIRS	=	-L$(UNITTEST_DIR)
 UNITTEST_LINK		=	-lUnitTest++
 UNITTEST_COMPILE	=	$(GPP) $(UNITTEST_CPPFLAGS) -c $<
 UNITTEST_EXE		=	$(GPP) $^ $(UNITTEST_LIB_DIRS) $(UNITTEST_LINK) -o $@
+
+BOOST_INC = /usr/local/include
+BOOST_LIB = /usr/local/lib
 
 # declare PHONY
 .PHONY : clean

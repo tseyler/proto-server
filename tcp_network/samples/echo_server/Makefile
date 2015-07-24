@@ -1,3 +1,5 @@
+# 	Copyright 2015 Terry Seyler.  All rights reserved.
+
 # makefile for echo-server
 
 include ../../../make/definitions.mk
@@ -7,9 +9,11 @@ CPPFLAGS  +=	-g \
 		$(INC_DIRS)
 
 INC_DIRS  +=	-I$(HOME_DIR)/tcp_network/include \
+		-I$(BOOST_INC) \
 		-I$(HOME_DIR)/net_protocol/include
 
 LIB_DIRS  +=	-L$(HOME_DIR)/tcp_network \
+		-L$(BOOST_LIB) \
 		-L$(HOME_DIR)/net_protocol
 
 LIB_LINK   += 	-ltcp_net \
@@ -20,6 +24,7 @@ LIB_LINK   += 	-ltcp_net \
 		-lpthread
 
 # targets below
+all : echo-server
 
 echo-server : $(OBJ_FILES)
 	$(BUILD_EXE)

@@ -7,10 +7,12 @@ CPPFLAGS  +=	-g \
 		$(INC_DIRS)
 
 INC_DIRS  +=	-I$(HOME_DIR)/tcp_network/include \
-		-I$(HOME_DIR)/net_protocol/include
-
+		-I$(HOME_DIR)/net_protocol/include \
+		-I$(BOOST_INC)
+		
 LIB_DIRS  +=	-L$(HOME_DIR)/tcp_network \
-		-L$(HOME_DIR)/net_protocol
+		-L$(HOME_DIR)/net_protocol \
+		-L$(BOOST_LIB)
 
 LIB_LINK   += 	-ltcp_net \
 		-lnet_protocol \
@@ -20,6 +22,7 @@ LIB_LINK   += 	-ltcp_net \
 		-lpthread
 
 # targets below
+all: http-server
 
 http-server : $(OBJ_FILES)
 	$(BUILD_EXE)

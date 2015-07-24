@@ -1,9 +1,5 @@
 /*
-<boilerplate>
-
-
-
-</boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 #ifndef HTTP_REQUEST_HANDLER_HPP_

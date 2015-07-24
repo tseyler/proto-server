@@ -1,9 +1,5 @@
 /*
-<boilerplate>
-
-
-
-</boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 #include <iostream>
@@ -42,8 +38,8 @@ int main(int argc, char *argv[])
 	("help,h", "produce help message")
 	("version,v", "returns the version")
 	("port,p", po::value<short>(&port)->default_value(9669), 
-	 "TCP port that the server is listening on")
-        ;
+	 "TCP port that the server is listening on");
+	
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
 
@@ -61,7 +57,6 @@ int main(int argc, char *argv[])
 	port = vm["port"].as<short>();
 
     printStartup(port);
-    // instantiate a roku http server
 
     boost::asio::io_service io_service;
     echo::echo_server server(io_service, port);

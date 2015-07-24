@@ -1,9 +1,5 @@
 /*
-<boilerplate>
-
-
-
-</boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 #ifndef TCP_SERVER_HPP_
@@ -15,25 +11,21 @@ using boost::asio::ip::tcp;
 
 namespace tcp_net
 {
-
     class tcp_server
     {
     public:
 	
-	tcp_server(boost::asio::io_service& io_service, short port);
-	virtual void run(void);
+		tcp_server(boost::asio::io_service& io_service, short port);
+		virtual ~tcp_server() {}
+		virtual void run(void);
 
     protected:
 
-	virtual void start_accept(void) = 0;
-/*	void handle_accept(roku_http_session* session,
-	const boost::system::error_code& error); */
+		virtual void start_accept(void) = 0;
 
-	boost::asio::io_service& io_service_; 
-	tcp::acceptor acceptor_;
-
+		boost::asio::io_service& io_service_; 
+		tcp::acceptor acceptor_;
     };
-
 }
 
 #endif
