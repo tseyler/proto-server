@@ -2,12 +2,9 @@
 
 *.o
 *.a
-.cproject
-.project
 .metadata
 
 # executables
-
 c4-console
 echo-client
 echo-server

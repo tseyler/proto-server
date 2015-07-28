@@ -19,8 +19,8 @@
 namespace po = boost::program_options;
 using boost::asio::ip::tcp;
 
-static const std::string ver = "1.0.6";
-static const std::string bld_date_time = "10/14/14; 11:30 AM";
+static const std::string ver = "1.0.7";
+static const std::string bld_date_time = "7/27/15; 9:30 PM";
 
 void 
 print(const std::string& out)
@@ -48,7 +48,7 @@ print_banner(void)
 	print_ln("c4-console - A command line tool to send C4SOAP commands to a Control4 controller.");
 	print_ln("Version: " + ver);
 	print_ln("Built: " + bld_date_time);
-	print_ln("(c) Terry Seyler 2014.  All rights reserved.");
+	print_ln("Copyright 2015 Terry Seyler.  All rights reserved.");
 	print_ln("------------");
 }
 
@@ -89,8 +89,7 @@ get_args(char* argv[], int first_arg)
 }
 
 int 
-main(int argc, 
-	char *argv[])
+main(int argc, char *argv[])
 {
 	bool silent(false);
 	bool is_shell(false);
@@ -147,7 +146,7 @@ main(int argc,
 
 	}
 	
-    if (argc > 1)
+    if (argc > 0)
     {
 		char** args = get_args(argv, first_arg);
 		cmd_parser parser(args, argc);
