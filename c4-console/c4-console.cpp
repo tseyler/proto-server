@@ -19,8 +19,8 @@
 namespace po = boost::program_options;
 using boost::asio::ip::tcp;
 
-static const std::string ver = "1.0.2";
-static const std::string bld_date_time = "9/11/14; 4:00 PM";
+static const std::string ver = "1.0.6";
+static const std::string bld_date_time = "10/14/14; 11:30 AM";
 
 void 
 print(const std::string& out)
@@ -59,12 +59,28 @@ print_usage(void)
     std::cout << "$ c4-console <host> <command> [id] [param1] [param2] ..." << std::endl;
 }
 
-bool 
-process_cmd(bool is_shell, cmd_parser& parser)
+bool
+print_shell(cmd_parser& parser, bool in_shell)
 {
+	if (in_shell)
+	{
+		char shell[256];
+		std::cout << std::endl << ">> ";
+		std::cin.getline(shell, 256);
+		in_shell = parser.parse(std::string(shell));
+	}
 
-	return is_shell;
+	return in_shell;
 }
+
+void
+print_verbose(const std::string& msg)
+{
+	print_ln("<<--Out-->>");
+	print_ln(msg);
+	print_ln("<<--End Out-->>");
+}
+
 
 char**
 get_args(char* argv[], int first_arg)
@@ -78,12 +94,15 @@ main(int argc,
 {
 	bool silent(false);
 	bool is_shell(false);
+	bool is_verbose(false);
 	int first_arg(1);
 
 	po::options_description desc("Options");
 	desc.add_options()
 		("help,h", "Prints the help message")
-		("silent,s", "Suppresses the copyright banner");
+		("silent,s", "Suppresses the copyright banner")
+		("interactive,i", "Executes as an interactive shell")
+		("verbose,v", "Prints outgoing messages as well as incoming responses");
 
 	po::variables_map vm;
 	try
@@ -101,11 +120,26 @@ main(int argc,
 		if (!silent) 
 			print_banner();
 
+		if (vm.count("interactive"))
+		{
+			is_shell = true;
+			argc--;
+			first_arg++;
+		}
+		
+		if (vm.count("verbose"))
+		{
+			is_verbose = true;
+			argc--;
+			first_arg++;
+		}
+
 		if (vm.count("help"))
 		{
 			print_usage();
 			return 0;
 		}
+	
 	}
 	catch (po::error& e)
 	{
@@ -149,7 +183,6 @@ main(int argc,
 			return e.value();
 		}
 
-
 		// authenticate
 		int seq(1);
 		std::string msg = parser.to_authenticate(seq);
@@ -157,15 +190,23 @@ main(int argc,
 		std::string reply = c4socket::read_msg(s);
 		print_ln(reply);
 
-		msg = parser.to_c4soap(seq);
-		if (parser.parsed())
+		do
 		{
-			c4socket::write_msg(s, msg);
-			reply = c4socket::read_msg(s);
-			print_ln(reply);
+			msg = parser.to_c4soap(seq);
+			cmd = parser.cmd();
+			if (parser.parsed())
+			{
+				if (is_verbose)
+					print_verbose(msg);
+				c4socket::write_msg(s, msg);
+				reply = c4socket::read_msg(s);
+				print_ln(reply);
+			}
+			else
+				print_ln("Unknown or malformed command: " + cmd);
+			is_shell = print_shell(parser, is_shell);
 		}
-		else
-			print_ln("Unknown or malformed command: " + cmd);
+		while (is_shell);
 	}
 	else
 		print_usage();
