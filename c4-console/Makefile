@@ -1,10 +1,14 @@
+# Copyright 2015 Terry Seyler.  All rights reserved.
 # makefile for c4-console
 
 include ../make/definitions.mk
 
-CPPFLAGS  +=	-g \
-		-Wall \
-		$(INC_DIRS)
+ifeq ($(debug),$(ONE_VAL))
+	CPPFLAGS  += -g -Wall $(INC_DIRS)
+else
+	CPPFLAGS  += -Wall $(INC_DIRS)
+endif
+
 INC_DIRS  += -I$(BOOST_INC)
 LIB_DIRS  += -L$(BOOST_LIB)
 LIB_LINK  += -lboost_system -lboost_program_options -lpthread

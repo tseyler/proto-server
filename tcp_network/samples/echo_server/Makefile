@@ -4,9 +4,11 @@
 
 include ../../../make/definitions.mk
 
-CPPFLAGS  +=	-g \
-		-Wall \
-		$(INC_DIRS)
+ifeq ($(debug),$(ONE_VAL))
+	CPPFLAGS  += -g -Wall $(INC_DIRS)
+else
+	CPPFLAGS  += -Wall $(INC_DIRS)
+endif
 
 INC_DIRS  +=	-I$(HOME_DIR)/tcp_network/include \
 		-I$(BOOST_INC) \

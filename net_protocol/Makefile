@@ -3,9 +3,11 @@
 
 include ../make/definitions.mk
 
-CPPFLAGS  +=	-g \
-		-Wall \
-		$(INC_DIRS)
+ifeq ($(debug),$(ONE_VAL))
+	CPPFLAGS  += -g -Wall $(INC_DIRS)
+else
+	CPPFLAGS  += -Wall $(INC_DIRS)
+endif
 
 UNITTEST_INC_DIRS += $(INC_DIRS)
 UNITTEST_LINK += -lboost_regex

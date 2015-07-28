@@ -2,9 +2,6 @@
 
 include ../make/definitions.mk
 
-CPPFLAGS  +=	-g \
-		-Wall \
-		$(INC_DIRS)
 
 # redefine SRC_DIR
 SRC_DIR   =	$(ABS_WORK_DIR)/src
@@ -18,6 +15,13 @@ ECHO_SERVER_DIR = $(SAMPLES_DIR)/echo_server
 ECHO_CLIENT_DIR = $(SAMPLES_DIR)/echo_client
 HTTP_SERVER_DIR = $(SAMPLES_DIR)/http_server
 CTRL4_SERVER_DIR = $(SAMPLES_DIR)/control4_server
+
+
+ifeq ($(debug),$(ONE_VAL))
+	CPPFLAGS  += -g -Wall $(INC_DIRS)
+else
+	CPPFLAGS  += -Wall $(INC_DIRS)
+endif
 
 # targets below
 help :
@@ -37,7 +41,7 @@ help :
 
 	
 all : libtcp_net echo_server echo_client http_server control4_server
-
+	
 libtcp_net : libtcp_net.a
 
 echo_server :
