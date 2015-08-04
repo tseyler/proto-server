@@ -48,13 +48,9 @@ control4::control4_server::handle_accept(control4_session* session,
 				 const boost::system::error_code& error)
 {
     if (!error)
-    {
-	session->start();
-    }
+    	session->start();
     else
-    {
-	delete session;
-    }
+    	delete session;
 
     start_accept();
 }

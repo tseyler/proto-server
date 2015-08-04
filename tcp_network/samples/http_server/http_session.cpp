@@ -1,9 +1,5 @@
 /*
-<boilerplate>
-
-
-
-</boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 #include <boost/bind.hpp>
@@ -41,22 +37,21 @@ http_impl::http_session::write(const char* data, size_t data_size)
 }
 
 void 
-http_impl::http_session::handle_read(const boost::system::error_code& error,
-				size_t bytes_transferred)
+http_impl::http_session::handle_read(const boost::system::error_code& error, size_t bytes_transferred)
 {
     if (!error)
     {
-	// handle a read here
-	if (pipe_)
-	{
-	    net_data req_data(data_, bytes_transferred);
-	    net_data res_data;
-	    pipe_->pipe(req_data, res_data); // all of the magic takes place inside the pipe
-	    write(res_data.data(), res_data.data_size());
-	}
+		// handle a read here
+		if (pipe_)
+		{
+			net_data req_data(data_, bytes_transferred);
+			net_data res_data;
+			pipe_->pipe(req_data, res_data); // all of the magic takes place inside the pipe
+			write(res_data.data(), res_data.data_size());
+		}
     }
     else
-	delete this;
+    	delete this;
 }
 
 void 
@@ -64,11 +59,11 @@ http_impl::http_session::handle_write(const boost::system::error_code& error)
 {
     if (!error)
     {
-	// handle a post write here
-	read(); // just go back to reading
+		// handle a post write here
+		read(); // just go back to reading
     }
     else
-	delete this;
+    	delete this;
 }
 
 

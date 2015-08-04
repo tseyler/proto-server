@@ -24,8 +24,7 @@ http_impl::http_server::http_server(boost::asio::io_service& io_service,
 }
 
 void 
-http_impl::http_server::pipe(const net_data& req_data,
-			     net_data& res_data)
+http_impl::http_server::pipe(const net_data& req_data, net_data& res_data)
 {
     http_request_parser parser;
     http_request_message request_message;
@@ -43,22 +42,19 @@ http_impl::http_server::start_accept(void)
     http_session* new_session = new http_session(io_service_, this);
     acceptor_.async_accept(dynamic_cast<tcp_net::tcp_session*>(new_session)->socket(), 
 			   boost::bind(&http_server::handle_accept,
-				       this,
-				       new_session,
-				       boost::asio::placeholders::error));
+				       this, new_session, boost::asio::placeholders::error));
 }
 
 void 
-http_impl::http_server::handle_accept(http_session* session,
-				      const boost::system::error_code& error)
+http_impl::http_server::handle_accept(http_session* session, const boost::system::error_code& error)
 {
     if (!error)
     {
-	session->start();
+    	session->start();
     }
     else
     {
-	delete session;
+    	delete session;
     }
 
     start_accept();

@@ -1,9 +1,5 @@
 /*
-<boilerplate>
-
-
-
-</boilerplate>
+	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
 #include <iostream>
@@ -42,23 +38,23 @@ int main(int argc, char *argv[])
 	("help,h", "produce help message")
 	("version,v", "returns the version")
 	("port,p", po::value<short>(&port)->default_value(8888), 
-	 "TCP port that the server is listening on")
-        ;
+	 "TCP port that the server is listening on");
+
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
 
     if (vm.count("help"))
     {
-	printHelp(desc);
-	return 1;
+		printHelp(desc);
+		return 1;
     }
     if (vm.count("version"))
     {
-	printVersion();
-	return 1;
+		printVersion();
+		return 1;
     }
     if (vm.count("port"))
-	port = vm["port"].as<short>();
+    	port = vm["port"].as<short>();
 
     printStartup(port);
     // instantiate a http server
