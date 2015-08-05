@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.2)
 project(net_protocol)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "/Users/taseyler/projects/cpp-projects/net_protocol/Debug")
+set(MAKE_DIR ../make)
+include(${MAKE_DIR}/definitions.cmake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
@@ -22,7 +23,7 @@ set(SOURCE_FILES
 
 set(INCLUDE_DIRS
     include
-    /usr/local/include
+    ${BOOST_INCLUDE_DIR}
 )
 
 include_directories(${INCLUDE_DIRS})
