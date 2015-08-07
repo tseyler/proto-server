@@ -20,10 +20,8 @@ LIB_DIRS  +=	-L$(HOME_DIR)/tcp_network \
 
 LIB_LINK   += 	-ltcp_net \
 		-lnet_protocol \
-		-lboost_regex \
 		-lboost_program_options \
-		-lboost_system \
-		-lpthread
+		-lboost_system
 
 # targets below
 all : echo-server

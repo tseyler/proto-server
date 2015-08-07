@@ -3,11 +3,10 @@
 */
 
 #include <iostream>
-#include <string>
 #include <boost/program_options.hpp>
 #include "echo_server.hpp"
 
-const static std::string ver = "0.0.1";
+const static std::string ver = "0.0.2";
 
 // boost
 namespace po = boost::program_options;
@@ -45,16 +44,16 @@ int main(int argc, char *argv[])
 
     if (vm.count("help"))
     {
-	printHelp(desc);
-	return 1;
+        printHelp(desc);
+        return 1;
     }
     if (vm.count("version"))
     {
-	printVersion();
-	return 1;
+        printVersion();
+        return 1;
     }
     if (vm.count("port"))
-	port = vm["port"].as<short>();
+	    port = vm["port"].as<short>();
 
     printStartup(port);
 
