@@ -15,5 +15,6 @@ set(BOOST_LIB_DIR /usr/local/lib)
 
 set(TCP_NET_INC_DIR ${CPP_PROJ_DIR}/tcp_network/include)
 set(NET_PROT_INC_DIR ${CPP_PROJ_DIR}/net_protocol/include)
+set(PROTO_SERVER_DIR ${CPP_PROJ_DIR}/proto_server)
 
 # link library path

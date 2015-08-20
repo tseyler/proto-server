@@ -4,7 +4,7 @@ project(tcp_network)
 set(MAKE_DIR ../make)
 include(${MAKE_DIR}/definitions.cmake)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
 
 set(SOURCE_FILES
     src/tcp_server.cpp)
