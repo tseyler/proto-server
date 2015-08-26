@@ -24,8 +24,9 @@ namespace proto_net
         virtual ~proto_io_object() {}
 
         // getters
-
-
+        io_service& ps_io_service(void) const;
+        basic_endpoint<InternetProtocol>& ps_endpoint(void) const;
+        basic_socket_acceptor<InternetProtocol>& ps_acceptor(void) const;
 
     protected:
 
