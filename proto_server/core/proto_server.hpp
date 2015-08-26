@@ -5,19 +5,26 @@
 #ifndef PROTO_SERVER_HPP__
 #define PROTO_SERVER_HPP__
 
+# include <boost/shared_ptr.hpp>
 #include <boost/asio.hpp>
 
 #include <core/proto_constants.h>
+#include <core/proto_io_object.hpp>
 
+using namespace boost;
 using namespace boost::asio;
 using namespace boost::asio::ip;
 
 namespace proto_net
 {
+
+
     template <typename InternetProtocol>
     class proto_server
     {
     public:
+
+        typedef shared_ptr<proto_io_object<InternetProtocol> > Proto_IO_Object;
 
         proto_server();
         proto_server(int protocol_family, unsigned short port_num);
@@ -30,21 +37,19 @@ namespace proto_net
 
         proto_server& operator =(const proto_server& ps);
 
-        // pure virtual
-        virtual InternetProtocol ps_internet_protocol(void) const = 0;
+        // pure virtuals
+        virtual void ps_initialize(void) = 0;
 
         // getters
+
         int ps_af_protocol_family(void) const;
         unsigned short ps_port_number(void) const;
-        basic_endpoint<InternetProtocol> ps_endpoint(void) const;
 
     protected:
 
+        Proto_IO_Object io_object_;
         int af_protocol_family_;
         unsigned short port_num_;
-        basic_endpoint<InternetProtocol> endpoint_;
-        io_service io_service_;
-
     };
 }
 

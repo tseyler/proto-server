@@ -50,9 +50,9 @@ namespace proto_net
         return port_num_;
     }
 
-    template <typename InternetProtocol>
-    basic_endpoint<InternetProtocol> proto_server<InternetProtocol>::ps_endpoint(void) const
-    {
-        return endpoint_;
-    }
+//    template <typename InternetProtocol>
+//    basic_endpoint<InternetProtocol> proto_server<InternetProtocol>::ps_endpoint(void) const
+//    {
+//        return endpoint_;
+//    }
 }

@@ -3,6 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/proto_io_object.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/proto_io_object.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_server.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_server.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_tcp_server.cpp" isTestSource="false" />

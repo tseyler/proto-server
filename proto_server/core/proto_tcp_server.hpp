@@ -15,6 +15,10 @@ namespace proto_net
     {
     public:
 
+        static tcp ps_internet_protocol(int af_protocol_family);
+
+        typedef shared_ptr<proto_io_object<tcp> > Proto_TCP_IO_Object;
+
         proto_tcp_server();
         proto_tcp_server(int protocol_family, unsigned short port_num);
         // copy constructor
@@ -26,8 +30,8 @@ namespace proto_net
 
         proto_tcp_server& operator =(const proto_tcp_server& ps);
 
-        // pure virtual
-        virtual tcp ps_internet_protocol(void) const;
+        // pure virtuals
+        virtual void ps_initialize(void);
 
     protected:
 
