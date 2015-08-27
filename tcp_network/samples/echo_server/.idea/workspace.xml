@@ -13,10 +13,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2872ebc-9d98-4609-95d7-75f5bf48cbce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../proto_server/core/proto_io_object.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../proto_server/core/proto_io_object.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../proto_server/CMakeLists.txt" afterPath="$PROJECT_DIR$/../../../proto_server/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../proto_server/.idea/proto_serve.iml" afterPath="$PROJECT_DIR$/../../../proto_server/.idea/proto_serve.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../proto_server/core/proto_server.cpp" afterPath="$PROJECT_DIR$/../../../proto_server/core/proto_server.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../proto_server/core/proto_server.hpp" afterPath="$PROJECT_DIR$/../../../proto_server/core/proto_server.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../proto_server/core/proto_tcp_server.cpp" afterPath="$PROJECT_DIR$/../../../proto_server/core/proto_tcp_server.cpp" />
@@ -24,7 +20,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../proto_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../proto_server/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../http_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../http_server/.idea/workspace.xml" />
     </list>
     <ignored path="echo_server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,8 +65,8 @@
       <file leaf-file-name="echo_server.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/echo_server.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17045455">
-              <caret line="9" column="91" selection-start-line="9" selection-start-column="91" selection-end-line="9" selection-end-column="91" />
+            <state vertical-scroll-proportion="0.1923077">
+              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -156,7 +151,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="827" />
+    <option name="height" value="825" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -274,7 +269,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="827" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="825" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -597,8 +592,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/echo_server.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17045455">
-          <caret line="9" column="91" selection-start-line="9" selection-start-column="91" selection-end-line="9" selection-end-column="91" />
+        <state vertical-scroll-proportion="0.1923077">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
           <folding />
         </state>
       </provider>

@@ -39,6 +39,12 @@ namespace proto_net
     }
 
     template <typename InternetProtocol>
+    typename proto_server<InternetProtocol>::Proto_IO_Object& proto_server<InternetProtocol>::ps_io_object(void) const
+    {
+        return io_object_;
+    }
+
+    template <typename InternetProtocol>
     int proto_server<InternetProtocol>::ps_af_protocol_family(void) const
     {
         return af_protocol_family_;
@@ -49,10 +55,4 @@ namespace proto_net
     {
         return port_num_;
     }
-
-//    template <typename InternetProtocol>
-//    basic_endpoint<InternetProtocol> proto_server<InternetProtocol>::ps_endpoint(void) const
-//    {
-//        return endpoint_;
-//    }
 }

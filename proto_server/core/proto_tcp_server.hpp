@@ -32,8 +32,14 @@ namespace proto_net
 
         // pure virtuals
         virtual void ps_initialize(void);
+        virtual void ps_run(void);
 
     protected:
+
+        virtual void ps_start_accept(void);
+
+        //virtual void handle_accept(http_session* session,
+                                  // const boost::system::error_code& error);
 
     };
 }

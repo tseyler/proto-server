@@ -14,9 +14,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b1c29f4-4d22-4d08-bfc2-80694c043130" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/proto_io_object.cpp" afterPath="$PROJECT_DIR$/core/proto_io_object.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/proto_io_object.hpp" afterPath="$PROJECT_DIR$/core/proto_io_object.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/proto_server.cpp" afterPath="$PROJECT_DIR$/core/proto_server.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/proto_server.hpp" afterPath="$PROJECT_DIR$/core/proto_server.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/proto_tcp_server.cpp" afterPath="$PROJECT_DIR$/core/proto_tcp_server.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/proto_tcp_server.hpp" afterPath="$PROJECT_DIR$/core/proto_tcp_server.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tcp_network/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../tcp_network/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../tcp_network/samples/echo_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../tcp_network/samples/echo_server/.idea/workspace.xml" />
     </list>
     <ignored path="proto_serve.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/core/proto_server.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="66" />
+              <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
               <folding>
                 <element signature="e#105#132#0" expanded="true" />
                 <element signature="e#310#337#0" expanded="true" />
@@ -59,17 +63,18 @@
                 <element signature="e#820#847#0" expanded="true" />
                 <element signature="e#1094#1121#0" expanded="true" />
                 <element signature="e#1277#1304#0" expanded="true" />
-                <element signature="e#1441#1468#0" expanded="true" />
+                <element signature="e#1477#1504#0" expanded="true" />
+                <element signature="e#1641#1668#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proto_tcp_server.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="proto_tcp_server.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/proto_tcp_server.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="107" selection-start-line="54" selection-start-column="107" selection-end-line="54" selection-end-column="107" />
+            <state vertical-scroll-proportion="0.8666667">
+              <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -99,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/core/proto_tcp_server.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -109,10 +114,10 @@
         <entry file="file://$PROJECT_DIR$/core/proto_server.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="30" />
+              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="42" />
               <folding>
                 <element signature="e#101#133#0" expanded="true" />
-                <element signature="e#355#382#0" expanded="true" />
+                <element signature="e#354#381#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,10 +136,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proto_io_object.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="proto_io_object.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/proto_io_object.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.84444445">
+            <state vertical-scroll-proportion="0.0">
               <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
               <folding>
                 <element signature="e#108#135#0" expanded="true" />
@@ -171,13 +176,13 @@
         <option value="$PROJECT_DIR$/../proto_serve/core/proto_server.cpp" />
         <option value="$PROJECT_DIR$/../proto_serve/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/core/proto_constants.h" />
-        <option value="$PROJECT_DIR$/core/proto_server.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/core/proto_io_object.hpp" />
+        <option value="$PROJECT_DIR$/core/proto_io_object.cpp" />
+        <option value="$PROJECT_DIR$/core/proto_server.cpp" />
         <option value="$PROJECT_DIR$/core/proto_server.hpp" />
         <option value="$PROJECT_DIR$/core/proto_tcp_server.hpp" />
         <option value="$PROJECT_DIR$/core/proto_tcp_server.cpp" />
-        <option value="$PROJECT_DIR$/core/proto_io_object.hpp" />
-        <option value="$PROJECT_DIR$/core/proto_io_object.cpp" />
       </list>
     </option>
   </component>
@@ -311,7 +316,13 @@
       <option name="project" value="LOCAL" />
       <updated>1440598781114</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added getters for proto_io_object.">
+      <created>1440599297624</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1440599297624</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -354,7 +365,8 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="Added copy constructor, clone and assignment operator." />
     <MESSAGE value="Added in proto_io_object to deal with boost specific io object implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added in proto_io_object to deal with boost specific io object implementation." />
+    <MESSAGE value="Added getters for proto_io_object." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added getters for proto_io_object." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -382,7 +394,8 @@
             <element signature="e#820#847#0" expanded="true" />
             <element signature="e#1094#1121#0" expanded="true" />
             <element signature="e#1277#1304#0" expanded="true" />
-            <element signature="e#1441#1468#0" expanded="true" />
+            <element signature="e#1477#1504#0" expanded="true" />
+            <element signature="e#1641#1668#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -425,7 +438,7 @@
           <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="79" />
           <folding>
             <element signature="e#101#133#0" expanded="true" />
-            <element signature="e#355#382#0" expanded="true" />
+            <element signature="e#354#381#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -482,7 +495,8 @@
             <element signature="e#820#847#0" expanded="true" />
             <element signature="e#1094#1121#0" expanded="true" />
             <element signature="e#1277#1304#0" expanded="true" />
-            <element signature="e#1441#1468#0" expanded="true" />
+            <element signature="e#1477#1504#0" expanded="true" />
+            <element signature="e#1641#1668#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -493,7 +507,7 @@
           <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
           <folding>
             <element signature="e#101#133#0" expanded="true" />
-            <element signature="e#355#382#0" expanded="true" />
+            <element signature="e#354#381#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -538,49 +552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/proto_server.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="66" />
-          <folding>
-            <element signature="e#105#132#0" expanded="true" />
-            <element signature="e#310#337#0" expanded="true" />
-            <element signature="e#674#701#0" expanded="true" />
-            <element signature="e#820#847#0" expanded="true" />
-            <element signature="e#1094#1121#0" expanded="true" />
-            <element signature="e#1277#1304#0" expanded="true" />
-            <element signature="e#1441#1468#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/proto_server.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="30" />
-          <folding>
-            <element signature="e#101#133#0" expanded="true" />
-            <element signature="e#355#382#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/proto_tcp_server.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/proto_tcp_server.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="107" selection-start-line="54" selection-start-column="107" selection-end-line="54" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/proto_io_object.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -594,7 +565,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/proto_io_object.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84444445">
+        <state vertical-scroll-proportion="0.0">
           <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
           <folding>
             <element signature="e#108#135#0" expanded="true" />
@@ -603,6 +574,50 @@
             <element signature="e#889#916#0" expanded="true" />
             <element signature="e#1065#1092#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/proto_server.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="42" />
+          <folding>
+            <element signature="e#101#133#0" expanded="true" />
+            <element signature="e#354#381#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/proto_server.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="40" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+          <folding>
+            <element signature="e#105#132#0" expanded="true" />
+            <element signature="e#310#337#0" expanded="true" />
+            <element signature="e#674#701#0" expanded="true" />
+            <element signature="e#820#847#0" expanded="true" />
+            <element signature="e#1094#1121#0" expanded="true" />
+            <element signature="e#1277#1304#0" expanded="true" />
+            <element signature="e#1477#1504#0" expanded="true" />
+            <element signature="e#1641#1668#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/proto_tcp_server.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/proto_tcp_server.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8666667">
+          <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -18,7 +18,6 @@ using namespace boost::asio::ip;
 namespace proto_net
 {
 
-
     template <typename InternetProtocol>
     class proto_server
     {
@@ -39,11 +38,16 @@ namespace proto_net
 
         // pure virtuals
         virtual void ps_initialize(void) = 0;
+        virtual void ps_run(void) = 0;
 
         // getters
-
+        Proto_IO_Object& ps_io_object(void) const;
         int ps_af_protocol_family(void) const;
         unsigned short ps_port_number(void) const;
+
+    protected:
+
+        virtual void ps_start_accept(void) = 0;
 
     protected:
 

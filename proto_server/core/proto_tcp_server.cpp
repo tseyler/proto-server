@@ -38,7 +38,6 @@ namespace proto_net
     proto_tcp_server& proto_tcp_server::clone(const proto_tcp_server& ps)
     {
         proto_server::clone(dynamic_cast<const proto_server&>(ps));
-        //endpoint_ = ps_endpoint();
 
         return *this;
     }
@@ -50,9 +49,17 @@ namespace proto_net
 
     void proto_tcp_server::ps_initialize(void)
     {
-       // endpoint_ = basic_endpoint<tcp>(ps_internet_protocol(), port_num_);
-       // acceptor_ = basic_socket_acceptor<tcp>(io_service_, endpoint_, port_num_);
         io_object_  = Proto_TCP_IO_Object(new proto_io_object<tcp>(ps_internet_protocol(af_protocol_family_), port_num_));
+    }
+
+    void proto_tcp_server::ps_run(void)
+    {
+        io_object_->ps_io_service().run();
+    }
+
+    void proto_tcp_server::ps_start_accept(void)
+    {
+
     }
 
 
