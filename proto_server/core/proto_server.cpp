@@ -24,7 +24,8 @@ namespace proto_net
     }
 
     template <typename InternetProtocol>
-    proto_server<InternetProtocol>& proto_server<InternetProtocol>::clone(const proto_server& ps)
+    proto_server<InternetProtocol>&
+    proto_server<InternetProtocol>::clone(const proto_server& ps)
     {
         af_protocol_family_ = ps.ps_af_protocol_family();
         port_num_ = ps.ps_port_number();
@@ -33,25 +34,29 @@ namespace proto_net
     }
 
     template <typename InternetProtocol>
-    proto_server<InternetProtocol>& proto_server<InternetProtocol>::operator =(const proto_server& ps)
+    proto_server<InternetProtocol>&
+    proto_server<InternetProtocol>::operator =(const proto_server& ps)
     {
         return clone(ps);
     }
 
     template <typename InternetProtocol>
-    typename proto_server<InternetProtocol>::Proto_IO_Object& proto_server<InternetProtocol>::ps_io_object(void) const
+    typename proto_server<InternetProtocol>::Proto_IO_Object&
+    proto_server<InternetProtocol>::ps_io_object(void) const
     {
         return io_object_;
     }
 
     template <typename InternetProtocol>
-    int proto_server<InternetProtocol>::ps_af_protocol_family(void) const
+    int
+    proto_server<InternetProtocol>::ps_af_protocol_family(void) const
     {
         return af_protocol_family_;
     }
 
     template <typename InternetProtocol>
-    unsigned short proto_server<InternetProtocol>::ps_port_number(void) const
+    unsigned short
+    proto_server<InternetProtocol>::ps_port_number(void) const
     {
         return port_num_;
     }

@@ -5,10 +5,14 @@
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_io_object.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_io_object.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/proto_net_data.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/proto_net_data.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_server.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_server.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_tcp_server.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_tcp_server.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/proto_tcp_session.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/proto_tcp_session.hpp" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -175,7 +179,6 @@
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/6.1.0/include" />
-          <root url="file://$MODULE_DIR$/../tcp_network/include" />
           <root url="file:///usr/local/include" />
         </CLASSES>
         <SOURCES>
@@ -339,7 +342,6 @@
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/include" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/6.1.0/include" />
-          <root url="file://$MODULE_DIR$/../tcp_network/include" />
           <root url="file:///usr/local/include" />
         </SOURCES>
       </library>

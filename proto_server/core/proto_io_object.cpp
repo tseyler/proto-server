@@ -22,19 +22,22 @@ namespace proto_net {
     }
 
     template<typename InternetProtocol>
-    io_service& proto_io_object<InternetProtocol>::ps_io_service(void) const
+    io_service&
+    proto_io_object<InternetProtocol>::ps_io_service(void) const
     {
         return io_service_;
     }
 
     template<typename InternetProtocol>
-    basic_endpoint<InternetProtocol>& proto_io_object<InternetProtocol>::ps_endpoint(void) const
+    basic_endpoint<InternetProtocol>&
+    proto_io_object<InternetProtocol>::ps_endpoint(void) const
     {
         return endpoint_;
     }
 
     template<typename InternetProtocol>
-    basic_socket_acceptor<InternetProtocol>& proto_io_object<InternetProtocol>::ps_acceptor(void) const
+    basic_socket_acceptor<InternetProtocol>&
+    proto_io_object<InternetProtocol>::ps_acceptor(void) const
     {
         return acceptor_;
     }
