@@ -39,7 +39,7 @@ void
 print_error(const std::string& err)
 {
 	std::string out = "ERROR: " + err;
-	print_ln(out);
+	std::cerr << out << std::endl;
 }
 
 void
@@ -142,8 +142,9 @@ main(int argc, char *argv[])
 	}
 	catch (po::error& e)
 	{
-
-
+		print_error(e.what()); 
+		std::cerr << desc << std::endl; 
+		return 1;
 	}
 	
     if (argc > 0)
