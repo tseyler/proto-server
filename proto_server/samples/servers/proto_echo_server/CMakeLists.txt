@@ -1,33 +1,25 @@
 cmake_minimum_required(VERSION 3.3)
-project(c4_console)
+project(proto_echo_server)
 
 # cpp-projects dir
 set(CPP_PROJ_DIR $ENV{HOME}/projects/cpp-projects)
 
-# make dir
 set(MAKE_DIR ${CPP_PROJ_DIR}/make)
-
 include(${MAKE_DIR}/definitions.cmake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
 
-set(SOURCE_FILES
-    c4-console.cpp
-    c4soap.cpp
-    c4socket.cpp
-    cmd_parser.cpp
-    director.cpp
-    director.hpp)
+set(SOURCE_FILES main.cpp server/echo_server.cpp)
 
 set(INCLUDE_DIRS
-        include
         ${BOOST_INC_DIR}
+        ${PROTO_SERVER_DIR}
 )
 
 include_directories(${INCLUDE_DIRS})
-link_directories(${BOOST_LIB_DIR})
+link_directories(${BIN_DIR} ${BOOST_LIB_DIR})
 
-add_executable(c4-console ${SOURCE_FILES})
+add_executable(proto-echo-server ${SOURCE_FILES})
 
 # linking
-target_link_libraries(c4-console boost_program_options boost_system)
+target_link_libraries(proto-echo-server boost_system proto_server)

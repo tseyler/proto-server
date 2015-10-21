@@ -1,45 +1,28 @@
-
+//
+// Created by Terry Seyler on 8/21/15.
+//
 
 #include <core/proto_io_object.hpp>
 
 using namespace boost::asio::ip;
 
-namespace proto_net {
-
-    template<typename InternetProtocol>
-    proto_io_object<InternetProtocol>::proto_io_object() : endpoint_(tcp::v4(), 80),
-                                                           acceptor_(io_service_, endpoint_, 80)
+namespace proto_net
+{
+    proto_io_object::proto_io_object(unsigned short port_num /*= 80*/) : port_num_(port_num)
     {
 
     }
 
-    template<typename InternetProtocol>
-    proto_io_object<InternetProtocol>::proto_io_object(InternetProtocol internet_proto,
-                                                       unsigned short port_num) : endpoint_(internet_proto, port_num),
-                                                                                  acceptor_(io_service_, endpoint_, port_num)
-    {
-
-    }
-
-    template<typename InternetProtocol>
     io_service&
-    proto_io_object<InternetProtocol>::ps_io_service(void) const
+    proto_io_object::ps_io_service(void)
     {
         return io_service_;
     }
 
-    template<typename InternetProtocol>
-    basic_endpoint<InternetProtocol>&
-    proto_io_object<InternetProtocol>::ps_endpoint(void) const
+    unsigned short
+    proto_io_object::ps_io_port_num(void) const
     {
-        return endpoint_;
-    }
-
-    template<typename InternetProtocol>
-    basic_socket_acceptor<InternetProtocol>&
-    proto_io_object<InternetProtocol>::ps_acceptor(void) const
-    {
-        return acceptor_;
+        return port_num_;
     }
 
 }

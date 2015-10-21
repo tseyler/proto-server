@@ -14,25 +14,25 @@ using namespace boost::asio::ip;
 
 namespace proto_net
 {
-    template <typename InternetProtocol>
+
+    typedef basic_endpoint<tcp> Proto_TCP_IO_Endpoint;
+    typedef basic_socket_acceptor<tcp> Proto_Socket_TCP_Acceptor;
+
     class proto_io_object
     {
     public:
 
-        proto_io_object();
-        proto_io_object(InternetProtocol internet_proto, unsigned short port_num);
+        proto_io_object(unsigned short port_num = 80);
         virtual ~proto_io_object() {}
 
         // getters
-        io_service& ps_io_service(void) const;
-        basic_endpoint<InternetProtocol>& ps_endpoint(void) const;
-        basic_socket_acceptor<InternetProtocol>& ps_acceptor(void) const;
+        io_service& ps_io_service(void);
+        unsigned short ps_io_port_num(void) const;
 
     protected:
 
         io_service io_service_;
-        basic_endpoint<InternetProtocol> endpoint_;
-        basic_socket_acceptor<InternetProtocol> acceptor_;
+        unsigned short port_num_;
     };
 
 }
