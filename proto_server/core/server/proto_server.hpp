@@ -27,21 +27,13 @@ namespace proto_net
 
             proto_server() { }
             // copy constructor
-            //proto_server(const proto_server& ps);
 
             virtual ~proto_server() {}
-
-           // proto_server& clone(const proto_server& ps);
-
-          //  proto_server& operator =(const proto_server& ps);
 
             // pure virtuals
             virtual void ps_initialize(void) = 0;
             virtual void ps_run(void) = 0;
-            virtual void ps_pipe(const proto_net_data& req_data, proto_net_data& res_data) = 0;
-
-            // getters
-           // unsigned short ps_port_number(void) const;
+            virtual void ps_io(const proto_net_data& req_data, proto_net_data& res_data) = 0;
 
         protected:
 

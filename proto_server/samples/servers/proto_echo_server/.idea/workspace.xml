@@ -13,35 +13,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fa868fc-7f98-40bb-9b95-7030af58c2ec" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/CMakeLists.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/echo_server.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/proto_echo_server.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../core/proto_io_tcp_object.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../core/proto_io_tcp_object.hpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../core/server/proto_server.cpp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../core/proto_server.cpp" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../../core/proto_net_data.cpp" afterPath="$PROJECT_DIR$/../../../core/data/proto_net_data.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../../core/proto_net_data.hpp" afterPath="$PROJECT_DIR$/../../../core/data/proto_net_data.hpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../../core/proto_server.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_server.hpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../../core/proto_tcp_server.cpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../../core/proto_tcp_server.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.hpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../../core/proto_tcp_session.cpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_session.cpp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../../../core/proto_tcp_session.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_session.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../c4_console/CMakeLists.txt" afterPath="$PROJECT_DIR$/../../../../c4_console/CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../CMakeLists.txt" afterPath="$PROJECT_DIR$/../../../CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/../../../.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/proto_io_object.cpp" afterPath="$PROJECT_DIR$/../../../core/proto_io_object.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/proto_io_object.hpp" afterPath="$PROJECT_DIR$/../../../core/proto_io_object.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../.idea/proto_serve.iml" afterPath="$PROJECT_DIR$/../../../.idea/proto_serve.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../c4_console/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../../c4_console/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_server.cpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_server.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_server.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_server.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.cpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../tcp_network/samples/http_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../../tcp_network/samples/http_server/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="proto_echo_server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,7 +54,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1445436655000" expanded="true" signature="683:687" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -238,10 +217,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1707" y="85" width="1556" height="1005" extended-state="0" />
-    <editor active="true" />
+    <frame x="1707" y="85" width="1556" height="1005" extended-state="1" />
+    <editor active="false" />
     <layout>
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2912088" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2912088" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -292,7 +271,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="3" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="3" />
-          <folding />
+          <folding>
+            <marker date="1445436655000" expanded="true" signature="683:687" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -324,7 +305,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="3" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="3" />
-          <folding />
+          <folding>
+            <marker date="1445436655000" expanded="true" signature="683:687" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -428,7 +411,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1445436655000" expanded="true" signature="683:687" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

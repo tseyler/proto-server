@@ -42,7 +42,7 @@ namespace proto_net
         void
         proto_tcp_server::ps_initialize(void)
         {
-            //  io_object_  = Proto_TCP_IO_Object(new proto_io_object<tcp>(ps_internet_protocol(af_protocol_family_), port_num_));
+            io_object_  = //Proto_TCP_IO_Object(new proto_io_object<tcp>(ps_internet_protocol(af_protocol_family_), port_num_));
         }
 
         void

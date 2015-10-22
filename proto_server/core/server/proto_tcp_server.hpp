@@ -5,9 +5,11 @@
 #ifndef PROTO_TCP_SERVER_HPP__
 #define PROTO_TCP_SERVER_HPP__
 
+#include <core/proto_io_tcp_object.hpp>
 #include <core/server/proto_server.hpp>
 
 using namespace boost::asio::ip;
+using namespace proto_net;
 using namespace proto_net::data;
 
 namespace proto_net
@@ -40,6 +42,8 @@ namespace proto_net
 
             //virtual void handle_accept(http_session* session,
             // const boost::system::error_code& error);
+
+            proto_io_tcp_object io_tcp_object_;
 
         };
     }

@@ -45,19 +45,6 @@ namespace proto_net
 //    {
 //        return io_object_;
 //    }
-
-
-//        int
-//        proto_server::ps_af_protocol_family(void) const
-//        {
-//            return af_protocol_family_;
-//        }
-
-//        unsigned short
-//        proto_server::ps_port_number(void) const
-//        {
-//            return port_num_;
-//        }
     }
 
 }
