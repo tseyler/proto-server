@@ -10,31 +10,34 @@
 using namespace proto_net;
 using namespace proto_net::server;
 
-class echo_server : public proto_tcp_server
+namespace echo
 {
-public:
+    class echo_server : public proto_tcp_server
+    {
+    public:
 
-    echo_server(unsigned short port_num = 9669);
+        echo_server(unsigned short port_num = 9669);
 
-    // copy constructor
-    echo_server(const echo_server& es);
+        // copy constructor
+        echo_server(const echo_server& es);
 
-    virtual ~echo_server();
+        virtual ~echo_server();
 
-    echo_server& clone(const echo_server& ps);
+        echo_server& clone(const echo_server& es);
 
-    echo_server& operator =(const echo_server& ps);
+        echo_server& operator =(const echo_server& es);
 
-    // pure virtuals
-    virtual void ps_initialize(void);
-    virtual void ps_run(void);
-    virtual void ps_io(const proto_net_data& req_data, proto_net_data& res_data);
+        // pure virtuals
+        //virtual void ps_initialize(void);
+        virtual void ps_run(void);
+        virtual void ps_pipe(const proto_net_data& req_data, proto_net_data& res_data);
 
-protected:
+    protected:
 
-  //  virtual void ps_start_accept(void);
+        virtual void ps_start_accept(void);
 
-};
+    };
+}
 
 #endif
 

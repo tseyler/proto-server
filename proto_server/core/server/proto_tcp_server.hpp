@@ -7,6 +7,7 @@
 
 #include <core/proto_io_tcp_object.hpp>
 #include <core/server/proto_server.hpp>
+#include <core/server/proto_tcp_session.hpp>
 
 using namespace boost::asio::ip;
 using namespace proto_net;
@@ -21,27 +22,20 @@ namespace proto_net
         public:
 
             proto_tcp_server(unsigned short port_num = 80);
+            virtual ~proto_tcp_server() {}
 
             // copy constructor
             proto_tcp_server(const proto_tcp_server& ps);
-
-            virtual ~proto_tcp_server() {}
-
             proto_tcp_server& clone(const proto_tcp_server& ps);
-
             proto_tcp_server& operator =(const proto_tcp_server& ps);
 
             // pure virtuals
-            virtual void ps_initialize(void);
             virtual void ps_run(void);
-            virtual void ps_io(const proto_net_data& req_data, proto_net_data& res_data) = 0;
+            virtual void ps_start_accept(proto_net_io& ps_io);
 
         protected:
 
-            virtual void ps_start_accept(void);
-
-            //virtual void handle_accept(http_session* session,
-            // const boost::system::error_code& error);
+            virtual void handle_accept(proto_tcp_session* session, const boost::system::error_code& error);
 
             proto_io_tcp_object io_tcp_object_;
 

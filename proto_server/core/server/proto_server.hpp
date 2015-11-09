@@ -10,6 +10,7 @@
 
 #include <core/proto_constants.h>
 #include <core/proto_io_object.hpp>
+#include <core/data/proto_net_io.hpp>
 #include <core/data/proto_net_data.hpp>
 
 using namespace boost;
@@ -31,19 +32,8 @@ namespace proto_net
             virtual ~proto_server() {}
 
             // pure virtuals
-            virtual void ps_initialize(void) = 0;
             virtual void ps_run(void) = 0;
-            virtual void ps_io(const proto_net_data& req_data, proto_net_data& res_data) = 0;
-
-        protected:
-
-            virtual void ps_start_accept(void) = 0;
-
-        protected:
-
-            //Proto_IO_Object io_object_;
-           // unsigned short port_num_;
-           // int af_protocol_family_;
+            virtual void ps_start_accept(proto_net_io& ps_io) = 0;
         };
     }
 }

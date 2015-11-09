@@ -18,6 +18,7 @@ set(SOURCE_FILES
         ${CORE_DIR}/proto_io_tcp_object.cpp
         ${SERVER_DIR}/proto_server.cpp
         ${SERVER_DIR}/proto_tcp_server.cpp
+        ${SERVER_DIR}/proto_session.cpp
         ${SERVER_DIR}/proto_tcp_session.cpp)
 
 set(INCLUDE_DIRS

@@ -8,7 +8,7 @@ using namespace boost::asio::ip;
 
 namespace proto_net
 {
-    proto_io_object::proto_io_object(unsigned short port_num /*= 80*/) : port_num_(port_num)
+    proto_io_object::proto_io_object(unsigned short port_num /*= 80*/) : io_service_(), port_num_(port_num)
     {
 
     }
