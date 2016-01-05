@@ -9,7 +9,6 @@
 #include <boost/asio.hpp>
 
 #include <core/proto_constants.h>
-#include <core/proto_io_object.hpp>
 #include <core/data/proto_net_io.hpp>
 #include <core/data/proto_net_data.hpp>
 
@@ -20,6 +19,8 @@ using namespace proto_net::data;
 
 namespace proto_net
 {
+    typedef io_service proto_net_service;
+
     namespace server
     {
         class proto_server
@@ -33,7 +34,7 @@ namespace proto_net
 
             // pure virtuals
             virtual void ps_run(void) = 0;
-            virtual void ps_start_accept(proto_net_io& ps_io) = 0;
+            virtual void ps_start_accept(proto_net_io& ps_io, size_t buffer_size) = 0;
         };
     }
 }

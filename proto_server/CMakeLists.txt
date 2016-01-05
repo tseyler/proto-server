@@ -14,8 +14,6 @@ set(DATA_DIR ${CORE_DIR}/data)
 set(SERVER_DIR ${CORE_DIR}/server)
 set(SOURCE_FILES
         ${DATA_DIR}/proto_net_data.cpp
-        ${CORE_DIR}/proto_io_object.cpp
-        ${CORE_DIR}/proto_io_tcp_object.cpp
         ${SERVER_DIR}/proto_server.cpp
         ${SERVER_DIR}/proto_tcp_server.cpp
         ${SERVER_DIR}/proto_session.cpp

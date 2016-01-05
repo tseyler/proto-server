@@ -32,8 +32,9 @@ namespace proto_net
         protected:
 
             proto_net_io& ps_io_;
-            char* buffer_;
             size_t buffer_size_;
+            char* buffer_;
+
         };
     }
 }

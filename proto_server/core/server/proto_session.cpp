@@ -11,9 +11,11 @@ namespace proto_net
     namespace server
     {
         proto_session::proto_session(proto_net_io& ps_io, size_t buffer_size /* = 4096*/) : ps_io_(ps_io),
-                                                                                            buffer_size_(buffer_size)
+                                                                                            buffer_size_(buffer_size),
+                                                                                            buffer_(NULL)
         {
-            buffer_ = new char[buffer_size_];
+
+            buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
 
         proto_session::~proto_session()

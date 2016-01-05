@@ -8,10 +8,9 @@ namespace proto_net
 {
     namespace server
     {
-        proto_tcp_session::proto_tcp_session(proto_net_io& ps_io, unsigned short port_num /*= 80*/,
-                                             size_t buffer_size /*= 4096*/) :  proto_session(ps_io, buffer_size),
-                                                                               tcp_io_object_(port_num),
-                                                                               socket_(tcp_io_object_.ps_io_service())
+        proto_tcp_session::proto_tcp_session(proto_net_service& io_service, proto_net_io& ps_io, size_t buffer_size /*= 4096*/)
+                :  proto_session(ps_io, buffer_size),
+                   socket_(io_service)
         {
 
         }
@@ -41,10 +40,13 @@ namespace proto_net
         void
         proto_tcp_session::write(const char* data, size_t data_size)
         {
-            boost::asio::async_write(socket_,
-                                     boost::asio::buffer(data, data_size),
-                                     boost::bind(&proto_tcp_session::handle_write, this,
-                                                 boost::asio::placeholders::error));
+            if (data && data_size)
+                boost::asio::async_write(socket_,
+                                         boost::asio::buffer(data, data_size),
+                                         boost::bind(&proto_tcp_session::handle_write, this,
+                                                     boost::asio::placeholders::error));
+            else
+                read(); // just go back to reading
         }
 
         void
@@ -56,7 +58,7 @@ namespace proto_net
                 proto_net_data req_data(buffer_, bytes_transferred);
                 proto_net_data res_data;
                 ps_io_.ps_io(req_data, res_data); // all of the magic takes place inside the ps_io_ object
-                write(res_data.data(), res_data.data_size());
+                write(res_data.data(), res_data.data_size()); // set response data ptr or size to zero for a non-write
             }
             else
                 delete this; // for now
