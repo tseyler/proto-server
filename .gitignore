@@ -4,6 +4,11 @@
 *.a
 .metadata
 
+# we dont need encodings.xml
+encodings.xml
+# we dont need the bin directory
+bin
+
 # executables
 c4-console
 echo-client
