@@ -9,31 +9,35 @@ namespace proto_net
     namespace server
     {
 
-        proto_tcp_server::proto_tcp_server(proto_net_service& io_service, unsigned short port_num /* = 80*/) : proto_server(),
-                                                                                io_service_(io_service),
-                                                                                acceptor_(io_service, tcp::endpoint(tcp::v4(), port_num))
+        proto_tcp_server::proto_tcp_server(proto_net_service& io_service, unsigned short port_num /* = 80*/)
+                : proto_server(),
+                  port_num_(port_num),
+                  io_service_(io_service),
+                  acceptor_(io_service, tcp::endpoint(tcp::v4(), port_num))
         {
 
         }
 
-/*        proto_tcp_server::proto_tcp_server(const proto_tcp_server& ps)
+        proto_tcp_server::proto_tcp_server(proto_tcp_server& ps)
+                : proto_server(),
+                  port_num_(ps.ps_port()),
+                  io_service_(ps.ps_service()),
+                  acceptor_(ps.ps_service(), tcp::endpoint(tcp::v4(), ps.ps_port()))
         {
-            clone(ps);
-        }*/
 
-/*        proto_tcp_server&
-        proto_tcp_server::clone(const proto_tcp_server& ps)
+        }
+
+        unsigned short
+        proto_tcp_server::ps_port(void) const
         {
-            //proto_server::clone(dynamic_cast<const proto_server&>(ps));
+            return port_num_;
+        }
 
-            return *this;
-        }*/
-
-/*        proto_tcp_server&
-        proto_tcp_server::operator =(const proto_tcp_server& ps)
+        proto_net_service&
+        proto_tcp_server::ps_service(void)
         {
-            return clone(ps);
-        }*/
+            return io_service_;
+        }
 
         void
         proto_tcp_server::ps_run(void)
