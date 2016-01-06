@@ -18,6 +18,9 @@ namespace proto_net
 
     // returns a reference from the shared ptr
     proto_net_service& proto_net_service_ref(proto_net_service_ptr ptr);
+
+    // this is a tcp acceptor type
+    typedef boost::asio::ip::tcp::acceptor proto_net_tcp_acceptor;
 }
 
 

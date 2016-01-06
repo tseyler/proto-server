@@ -37,9 +37,8 @@ namespace proto_net
 
             virtual void handle_accept(proto_tcp_session* session, const boost::system::error_code& error);
 
-            proto_net_service_ptr ps_service_;
             unsigned short port_num_;
-		    tcp::acceptor acceptor_;
+            proto_net_tcp_acceptor acceptor_;
         };
     }
 
