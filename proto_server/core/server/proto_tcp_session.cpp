@@ -8,9 +8,9 @@ namespace proto_net
 {
     namespace server
     {
-        proto_tcp_session::proto_tcp_session(proto_net_service& io_service, proto_net_io& ps_io, size_t buffer_size /*= 4096*/)
-                :  proto_session(ps_io, buffer_size),
-                   socket_(io_service)
+        proto_tcp_session::proto_tcp_session(proto_net_service_ptr ps_service, proto_net_io& ps_io,
+                                             size_t buffer_size /*= 4096*/) :  proto_session(ps_io, buffer_size),
+                                                                               socket_(proto_net_service_ref(ps_service))
         {
 
         }

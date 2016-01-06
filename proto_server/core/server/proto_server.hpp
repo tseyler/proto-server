@@ -5,22 +5,20 @@
 #ifndef PROTO_SERVER_HPP__
 #define PROTO_SERVER_HPP__
 
-# include <boost/shared_ptr.hpp>
-#include <boost/asio.hpp>
+//#include <boost/shared_ptr.hpp>
+//#include <boost/asio.hpp>
 
-#include <core/proto_constants.h>
+#include <core/proto_net_types.hpp>
 #include <core/data/proto_net_io.hpp>
-#include <core/data/proto_net_data.hpp>
+//#include <core/data/proto_net_data.hpp>
 
-using namespace boost;
+/*using namespace boost;
 using namespace boost::asio;
-using namespace boost::asio::ip;
+using namespace boost::asio::ip;*/
 using namespace proto_net::data;
 
 namespace proto_net
 {
-    typedef io_service proto_net_service;
-
     namespace server
     {
         class proto_server

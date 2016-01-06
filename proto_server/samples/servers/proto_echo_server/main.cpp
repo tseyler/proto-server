@@ -12,8 +12,7 @@ using namespace proto_net::server;
 int
 main(int argc, char *argv[])
 {
-    proto_net_service ps_service;
-    proto_tcp_server server(ps_service, 9669);
+    proto_tcp_server server(9669);
     proto_echo_io echo_io;
     server.ps_start_accept(echo_io, 4096);
     server.ps_run();
