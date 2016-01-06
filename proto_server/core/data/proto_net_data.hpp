@@ -2,8 +2,8 @@
 	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
-#ifndef PROTO_NET_DATA_HPP_
-#define PROTO_NET_DATA_HPP_
+#ifndef PROTO_NET_DATA_HPP__
+#define PROTO_NET_DATA_HPP__
 
 
 #include <string>

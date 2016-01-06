@@ -9,20 +9,20 @@ namespace proto_net
     namespace server
     {
 
-        proto_tcp_server::proto_tcp_server(proto_net_service& io_service, unsigned short port_num /* = 80*/)
+        proto_tcp_server::proto_tcp_server(unsigned short port_num /* = 80*/)
                 : proto_server(),
+                  ps_service_(new proto_net_service),
                   port_num_(port_num),
-                  io_service_(io_service),
-                  acceptor_(io_service, tcp::endpoint(tcp::v4(), port_num))
+                  acceptor_(proto_net_service_ref(ps_service_), tcp::endpoint(tcp::v4(), port_num))
         {
 
         }
 
         proto_tcp_server::proto_tcp_server(proto_tcp_server& ps)
                 : proto_server(),
+                  ps_service_(new proto_net_service),
                   port_num_(ps.ps_port()),
-                  io_service_(ps.ps_service()),
-                  acceptor_(ps.ps_service(), tcp::endpoint(tcp::v4(), ps.ps_port()))
+                  acceptor_(proto_net_service_ref(ps_service_), tcp::endpoint(tcp::v4(), ps.ps_port()))
         {
 
         }
@@ -33,25 +33,19 @@ namespace proto_net
             return port_num_;
         }
 
-        proto_net_service&
-        proto_tcp_server::ps_service(void)
-        {
-            return io_service_;
-        }
-
         void
         proto_tcp_server::ps_run(void)
         {
-             io_service_.run();
+            ps_service_->run();
         }
 
         void
         proto_tcp_server::ps_start_accept(proto_net_io& ps_io, size_t buffer_size)
         {
-
-            proto_tcp_session* new_session = new proto_tcp_session(io_service_, ps_io, buffer_size);
+            proto_tcp_session* new_session = new proto_tcp_session(ps_service_, ps_io, buffer_size);
             acceptor_.async_accept(new_session->ps_socket(),
-                                   boost::bind(&proto_tcp_server::handle_accept, this, new_session, boost::asio::placeholders::error));
+                                   boost::bind(&proto_tcp_server::handle_accept, this, new_session,
+                                               boost::asio::placeholders::error));
         }
 
         void

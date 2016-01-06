@@ -5,6 +5,7 @@
 #ifndef PROTO_TCP_SERVER_HPP__
 #define PROTO_TCP_SERVER_HPP__
 
+#include <boost/shared_ptr.hpp>
 #include <core/server/proto_server.hpp>
 #include <core/server/proto_tcp_session.hpp>
 
@@ -20,7 +21,7 @@ namespace proto_net
         {
         public:
 
-            proto_tcp_server(proto_net_service& io_service, unsigned short port_num = 80);
+            proto_tcp_server(unsigned short port_num = 80);
             virtual ~proto_tcp_server() {}
 
             // copy constructor
@@ -31,14 +32,13 @@ namespace proto_net
             virtual void ps_start_accept(proto_net_io& ps_io, size_t buffer_size);
 
             unsigned short ps_port(void) const;
-            proto_net_service& ps_service(void);
 
         protected:
 
             virtual void handle_accept(proto_tcp_session* session, const boost::system::error_code& error);
 
+            proto_net_service_ptr ps_service_;
             unsigned short port_num_;
-            proto_net_service& io_service_;
 		    tcp::acceptor acceptor_;
         };
     }

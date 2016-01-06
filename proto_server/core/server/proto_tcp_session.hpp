@@ -5,8 +5,9 @@
 #ifndef PROTO_TCP_SESSION_HPP__
 #define PROTO_TCP_SESSION_HPP__
 
+#include <core/proto_net_types.hpp>
 #include <core/server/proto_session.hpp>
-#include "proto_server.hpp"
+//#include "proto_server.hpp"
 
 using namespace boost::asio::ip;
 using namespace proto_net::data;
@@ -19,7 +20,7 @@ namespace proto_net
         {
         public:
 
-            proto_tcp_session(proto_net_service& io_service, proto_net_io& ps_io, size_t buffer_size = 4096);
+            proto_tcp_session(proto_net_service_ptr ps_service, proto_net_io& ps_io, size_t buffer_size = 4096);
             virtual ~proto_tcp_session();
 
             virtual void start(void);
