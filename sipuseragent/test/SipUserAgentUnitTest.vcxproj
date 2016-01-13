@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3B30E4EC-A975-44B0-90B1-4D636FF6F529}</ProjectGuid>
+    <RootNamespace>platformxUnitTest</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.60315.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\$(Configuration)\Director\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\$(Configuration)\Director\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CustomBuildStep>
+      <Message />
+      <Command />
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;..\..\SipProxy;..;..\Include;..\..;$(C4_3RD_LIB_PATH)/pthreads/include;$(C4_3RD_LIB_PATH)\unittest-cpp-1.4\UnitTest++\src;$(C4_3RD_LIB_PATH)\openssl-1.0.2d\win32-vs2012\static\$(Configuration)\include;$(C4_3RD_LIB_PATH)\boost-1_56_0;$(C4_3RD_LIB_PATH)\log4cplus-1.1.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;UNIT_TEST;PRIVATE=public;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Ws2_32.lib;Iphlpapi.lib;UnitTest++_debug.lib;libeay32.lib;ssleay32.lib;Rpcrt4.lib;log4cplusD.lib;pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(C4_3RD_LIB_PATH)\unittest-cpp-1.4\UnitTest++\lib-win32-vs2012;$(C4_3RD_LIB_PATH)\openssl-1.0.2d\win32-vs2012\static\$(Configuration)\lib;$(C4_3RD_LIB_PATH)\boost-1_56_0\lib;$(C4_3RD_LIB_PATH)\pthreads\lib;$(C4_3RD_LIB_PATH)\log4cplus-1.1.1\msvc11\Win32\bin.Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CustomBuildStep>
+      <Message />
+      <Command />
+    </CustomBuildStep>
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;..;..\Include;..\..;$(C4_3RD_LIB_PATH)\unittest-cpp-1.4\UnitTest++\src;$(C4_3RD_LIB_PATH)\openssl-1.0.2d\win32-vs2012\static\$(Configuration)\include;$(C4_3RD_LIB_PATH)\boost-1_56_0;$(C4_3RD_LIB_PATH)\log4cplus-1.1.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;UNIT_TEST;PRIVATE=public;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Ws2_32.lib;Iphlpapi.lib;UnitTest++_release.lib;libeay32.lib;ssleay32.lib;Rpcrt4.lib;log4cplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(C4_3RD_LIB_PATH)\unittest-cpp-1.4\UnitTest++\lib-win32-vs2012;$(C4_3RD_LIB_PATH)\openssl-1.0.2d\win32-vs2012\static\$(Configuration)\lib;$(C4_3RD_LIB_PATH)\boost-1_56_0\lib;$(C4_3RD_LIB_PATH)\log4cplus-1.1.1\msvc11\Win32\bin.Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\test\SetupTeardown.cpp" />
+    <ClCompile Include="..\..\test\UnitTest.cpp" />
+    <ClCompile Include="..\..\test\unitTestMain.cpp" />
+    <ClCompile Include="..\InviteHandler.cpp" />
+    <ClCompile Include="..\MessageHandler.cpp" />
+    <ClCompile Include="..\OutOfDialogHandler.cpp" />
+    <ClCompile Include="..\PublicationHandler.cpp" />
+    <ClCompile Include="..\RegistrationHandler.cpp" />
+    <ClCompile Include="..\SessionDialog.cpp" />
+    <ClCompile Include="..\SessionSdp.cpp" />
+    <ClCompile Include="..\SubscriptionHandler.cpp" />
+    <ClCompile Include="..\UserAgent.cpp" />
+    <ClCompile Include="..\userAgentHelper.cpp" />
+    <ClCompile Include="Test_Collection.cpp" />
+    <ClCompile Include="Test_InviteHandler.cpp" />
+    <ClCompile Include="Test_OutOfDialogHandler.cpp" />
+    <ClCompile Include="Test_RegistrationHandler.cpp" />
+    <ClCompile Include="Test_SessionSdp.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\c4shared\c4shared.vcxproj">
+      <Project>{5b96a514-4fb7-4ab0-a128-ead664759afd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\platformx\platformx.vcxproj">
+      <Project>{7a3f9dd2-1f92-4e40-9932-b2b5dc2fea3f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SipProxy\contrib\ares\ares_11_0.vcxproj">
+      <Project>{ce7cf5e0-cad1-49d6-95d1-143ded7b226e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SipProxy\repro\reprolib_11_0.vcxproj">
+      <Project>{31b0654f-e08e-405f-909f-80f86cb14b9e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SipProxy\resip\dum\dum_11_0.vcxproj">
+      <Project>{31b0654f-e08e-405f-909f-80f86cb14b9d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SipProxy\resip\stack\resiprocate_11_0.vcxproj">
+      <Project>{2a8be839-6466-4001-b224-8f1c3168d04a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SipProxy\rutil\rutil_11_0.vcxproj">
+      <Project>{3d0e5ceb-93dc-4fdb-918b-d08fa369e106}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

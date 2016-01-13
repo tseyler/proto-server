@@ -1,0 +1,27 @@
+# Makefile for LibUserAgent.
+
+include ../make/make.mk
+
+includes     += $(this_inc)/include		\
+		$(use_platformx_inc)		\
+		$(resiprocate_inc)
+
+libraries    += $(resiprocate_lib)		\
+		$(use_platformx_lib)		\
+		$(use_c4shared_lib)
+
+ifneq "$(PLATFORM)" "android_ndk"
+libraries    += -lrt		
+endif
+
+# Disable _GLIBCXX_DEBUG fro RemoteAccessProxy because it results in a link error in
+# RemoteAccessProxy.
+debug_flags := $(subst -D_GLIBCXX_DEBUG,,$(debug_flags))
+
+$(eval $(call library-rules, libuseragent, $(wildcard *.cpp)))
+
+# UserAgent Unit Tests
+UserAgentUnitTest_libraries += $(amop_lib)
+$(eval $(call test-rules, UserAgentUnitTest, libuseragent))
+
+# vi: set tabstop=8 softtabstop=8:
