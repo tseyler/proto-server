@@ -7,10 +7,7 @@ include(${MAKE_DIR}/definitions.cmake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations -std=c++11")
 
-set(SOURCE_FILES
-  src/main.cpp
-  src/useragent_signaling.cpp
-  )
+set(SOURCE_FILES ${GLOB_SRC_FILES})
 
 set(INCLUDE_DIRS
   include
@@ -21,13 +18,9 @@ set(INCLUDE_DIRS
 
 include_directories(${INCLUDE_DIRS})
 
-
 link_directories(${LIB_DIR} ${BOOST_LIB_DIR} ${RESIP_LIB_DIR})
-#get_directory_property(OUT_VAR LINK_DIRECTORIES)
-#message(STATUS "DIR: ${OUT_VAR}")
 
 add_executable(sipclient ${SOURCE_FILES})
-
 
 # linking
 target_link_libraries(sipclient sipuseragent boost_system dum resip rutil)
