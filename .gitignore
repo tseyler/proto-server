@@ -8,6 +8,12 @@
 encodings.xml
 # we dont need the bin directory
 bin
+# we dont need the lib directory
+lib
+# we dont need these cmake directory and files
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
 
 # executables
 c4-console
