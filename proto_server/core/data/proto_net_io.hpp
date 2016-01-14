@@ -2,8 +2,8 @@
 // Created by Terry Seyler on 10/25/15.
 //
 
-#ifndef PROTO_SERVER_PROTO_NET_IO_HPP_
-#define PROTO_SERVER_PROTO_NET_IO_HPP_
+#ifndef PROTO_NET_IO_HPP__
+#define PROTO_NET_IO_HPP__
 
 #include <core/data/proto_net_data.hpp>
 
@@ -19,4 +19,4 @@ namespace proto_net
         };
     }
 }
-#endif //PROTO_SERVER_PROTO_NET_IO_HPP_
+#endif //PROTO_NET_IO_HPP__
