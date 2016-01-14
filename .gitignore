@@ -1,5 +1,7 @@
 # .gitignore for cpp-projects
 
+#emacs temp files
+*~
 *.o
 *.a
 .metadata
