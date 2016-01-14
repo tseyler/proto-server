@@ -21,14 +21,13 @@ set(INCLUDE_DIRS
 
 include_directories(${INCLUDE_DIRS})
 
-set(RESIP_DUM_LIB_DIR ${RESIP_DIR}/resip/dum/.libs)
 
-link_directories(${LIB_DIR} ${BOOST_LIB_DIR} ${RESIP_DUM_LIB_DIR})
-get_directory_property(OUT_VAR LINK_DIRECTORIES)
-message(STATUS "DIR: ${OUT_VAR}")
+link_directories(${LIB_DIR} ${BOOST_LIB_DIR} ${RESIP_LIB_DIR})
+#get_directory_property(OUT_VAR LINK_DIRECTORIES)
+#message(STATUS "DIR: ${OUT_VAR}")
 
 add_executable(sipclient ${SOURCE_FILES})
 
 
 # linking
-target_link_libraries(sipclient sipuseragent dum)
+target_link_libraries(sipclient sipuseragent boost_system dum resip rutil)
