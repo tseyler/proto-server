@@ -23,4 +23,4 @@ link_directories(${LIB_DIR} ${BOOST_LIB_DIR} ${RESIP_LIB_DIR})
 add_executable(sipclient ${SOURCE_FILES})
 
 # linking
-target_link_libraries(sipclient sipuseragent boost_system dum resip rutil)
+target_link_libraries(sipclient sipuseragent boost_system boost_thread dum resip rutil)

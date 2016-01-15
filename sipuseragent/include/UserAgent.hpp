@@ -10,8 +10,6 @@
 #define USERAGENT_HPP_
 
 
-//#include <pthread.h>
-
 #include <boost/thread.hpp>
 
 #include "sip/resip_dum.h"
@@ -19,9 +17,6 @@
 #include "sip/resip_stack.h"
 #include "sip/resip_stack_ssl.h"
 #include "sip/rutil.h"
-
-// #include <platformx/TypesX.h>
-// #include <c4shared/IRunnable.hpp>
 
 #include "RegistrationHandler.hpp"
 #include "OutOfDialogHandler.hpp"
@@ -82,17 +77,10 @@ namespace SipUserAgent
 	void sendInstantMessage(const std::string& remoteURI, const std::string& message);
 	void shutdown(void);
 
-	// 	// IRunnable
-	// 	virtual c4::RunnableState	Start(void);
-	// 	virtual c4::RunnableState	Stop(void);
-	// 	virtual bool				IsRunning(void) const;
-
 	// replacement for IRunnable
 	virtual void start(void);
 	virtual void stop(void);
 	virtual bool is_running(void) const;
-
-	
 
     protected:
 

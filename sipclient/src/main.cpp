@@ -10,9 +10,9 @@
 // #include <boost/tokenizer.hpp>
 // #include <boost/foreach.hpp>
 
-//#include "useragent_signaling.hpp"
+#include "useragent_signaling.hpp"
 
-//using namespace useragent_console_app;
+using namespace sipclient_console_app;
 
 // typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
 /*
@@ -70,7 +70,7 @@ void console_func(useragent_signaling* uas)
 int 
 main(int argc, char* argv[])
 {
-//	useragent_signaling uas("10.0.0.28");
+	useragent_signaling uas("192.168.1.6");
 
 	//restart_useragent(int port, bool bDisableUDP, const char* passwd)
 	// init
