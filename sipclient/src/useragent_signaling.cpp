@@ -3,7 +3,7 @@
 #include "useragent_signaling.hpp"
 
 using namespace resip;
-// using namespace C4UserAgent;
+using namespace SipUserAgent;
 
 namespace sipclient_console_app
 {
@@ -36,32 +36,32 @@ namespace sipclient_console_app
 				  int status_code, 
 				  const std::string& call_id)
     {
-// 	switch (reg_result) 
-// 	{
-// 		case regSuccess:
+ 	switch (reg_result) 
+ 	{
+	case regSuccess:
 
-// 			std::cout << "useragent_signaling::OnResult: reg_result = regSuccess" << std::endl;
-// 			break;
-// 		case regRemoved:
+	    std::cout << "useragent_signaling::OnResult: reg_result = regSuccess" << std::endl;
+	    break;
+	case regRemoved:
 
-// 			std::cout << "useragent_signaling::OnResult: reg_result = regRemoved" << std::endl;
-// 			break;
-// 		case regFailure:
+	    std::cout << "useragent_signaling::OnResult: reg_result = regRemoved" << std::endl;
+	    break;
+	case regFailure:
 
-// 			std::cout << "useragent_signaling::OnResult: reg_result = regFailure" << std::endl;
-// 			break;
-// 		case regRetry:
+	    std::cout << "useragent_signaling::OnResult: reg_result = regFailure" << std::endl;
+	    break;
+	case regRetry:
 
-// 			std::cout << "useragent_signaling::OnResult: reg_result = regRetry" << std::endl;
-// 			break;
-// 		case regInit:
+	    std::cout << "useragent_signaling::OnResult: reg_result = regRetry" << std::endl;
+	    break;
+	case regInit:
 
-// 			std::cout << "useragent_signaling::OnResult: reg_result = regInit" << std::endl;
-// 			break;
-// 		default:
+	    std::cout << "useragent_signaling::OnResult: reg_result = regInit" << std::endl;
+	    break;
+	default:
 
-// 			break;
-// 	}
+	    break;
+ 	}
     }
 
     void 
@@ -71,153 +71,153 @@ namespace sipclient_console_app
 				  int status_code, 
 				  const std::string& call_id)
     {
-// 	std::cout << "useragent_signaling::OnResult: invite_response = " << invite_response << "; Method String = " << method_string << std::endl;
+	std::cout << "useragent_signaling::OnResult: invite_response = " << invite_response << "; Method String = " << method_string << std::endl;
 
-// 	switch (invite_result) 
-// 	{
-// 		case inviteClientSuccess:
+ 	switch (invite_result) 
+ 	{
+	case inviteClientSuccess:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteClientSuccess" << std::endl;
-// 			break;
-// 		// Was called (invited) by another device.
-// 		case inviteServerSuccess:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteClientSuccess" << std::endl;
+	    break;
+	    // Was called (invited) by another device.
+	case inviteServerSuccess:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteServerSuccess" << std::endl;
-// 			break;
-// 		case inviteFailure: 
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteServerSuccess" << std::endl;
+	    break;
+	case inviteFailure: 
 		
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteFailure" << std::endl;
-// 			break;
-// 		case inviteAnswer: 
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteFailure" << std::endl;
+	    break;
+	case inviteAnswer: 
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteAnswer" << std::endl;
-// 			break;
-// 		case inviteConnected: 
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteAnswer" << std::endl;
+	    break;
+	case inviteConnected: 
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteConnected" << std::endl;
-// 			break;
-// 		case inviteTerminated:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteConnected" << std::endl;
+	    break;
+	case inviteTerminated:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteTerminated" << std::endl;
-// 			break;
-// 		case inviteOffer:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteTerminated" << std::endl;
+	    break;
+	case inviteOffer:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteOffer" << std::endl;
-// 			break;
-// 		case inviteOfferRequired:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteOffer" << std::endl;
+	    break;
+	case inviteOfferRequired:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteOfferRequired" << std::endl;
-// 			break;
-// 		case inviteEarlyMedia:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteOfferRequired" << std::endl;
+	    break;
+	case inviteEarlyMedia:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteEarlyMedia" << std::endl;
-// 			break;
-// 		case inviteProvisional:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteEarlyMedia" << std::endl;
+	    break;
+	case inviteProvisional:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteProvisional" << std::endl;
-// 			break;
-// 		case inviteMessageSuccess:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteProvisional" << std::endl;
+	    break;
+	case inviteMessageSuccess:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteMessageSuccess" << std::endl;
-// 			break;
-// 		case inviteMessageFailure:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteMessageSuccess" << std::endl;
+	    break;
+	case inviteMessageFailure:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteMessageFailure" << std::endl;
-// 			break;
-// 		case inviteMessageReceived:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteMessageFailure" << std::endl;
+	    break;
+	case inviteMessageReceived:
 
-// 			std::cout << "useragent_signaling::OnResult: invite_result = inviteMessageReceived" << std::endl;
-// 			break;
-// 		default:
+	    std::cout << "useragent_signaling::OnResult: invite_result = inviteMessageReceived" << std::endl;
+	    break;
+	default:
 
-// 			break;
-// 	}
+	    break;
+ 	}
     }
 
     void 
     useragent_signaling::OnSessionChanged(SessionStatus ss, SessionDialog* dialog)
     {
-// 	if (!dialog)
-// 		return;
-// 	// ServerInviteSession
-// 	resip::InviteSession* invite_session = dialog->getInviteSession();
 
-// 	if (invite_session)
-// 	{
-// 		switch (ss) 
-// 		{
-// 			case sNewSession: 
+	if (!dialog)
 
-// 				call_id_ = dialog->getCallId();
-// 				std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sNewSession; Call ID = " << dialog->getCallId() << std::endl;
-// 				break;
-// 			case sAnswer: 
+	    return;
+ 	//ServerInviteSession
+ 	resip::InviteSession* invite_session = dialog->getInviteSession();
 
-// 				std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sAnswer" << std::endl;
-// 				break;
-// 			case sOffer: 
-// 				{
-// 					resip::ServerInviteSession* server_invite_session = dynamic_cast<resip::ServerInviteSession*>(invite_session);
+ 	if (invite_session)
+ 	{
+	    switch (ss) 
+	    {
+	    case sNewSession: 
 
-// 					if (server_invite_session)
-// 					{
-// 						SessionSdp session_sdp = local_sdp_;
+		call_id_ = dialog->getCallId();
+		std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sNewSession; Call ID = " << dialog->getCallId() << std::endl;
+		break;
+	    case sAnswer: 
 
-// 						SessionSdp* remote_sdp = dialog->getRemoteSdp();
-// 						SessionSdp::SdpConnection connection = remote_sdp->getConnection();
-// 						//bool multicast = connection.is_multicast_address();
-// 						//bool forking = is_forking();
-// 						//int provisional_code = 180;
-// 						//if (forking && multicast)
-// 						//{
-// 						//	session_sdp.setSdpConnection(connection.getAddress(), 1);
-// 						//	provisional_code = 183; // provisional progress
-// 						//}
+		std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sAnswer" << std::endl;
+		break;
+	    case sOffer: 
+	    {
+		resip::ServerInviteSession* server_invite_session = dynamic_cast<resip::ServerInviteSession*>(invite_session);
 
-// 						invite_session->provideAnswer(session_sdp.toSdpContents());
-// 						//server_invite_session->provisional(provisional_code); // restore after 2.7.2
-// // experimental
-// 							//resip::SipMessage msg = invite_handler_->getMessage();
-// 						//	const resip::HeaderFieldValueList* hfv_list = msg.getRawHeader(Headers::To);
-// 						//	resip::HeaderFieldValueList::const_iterator it = hfv_list->begin();
-// 						//	while (it != hfv_list->end())
-// 						//	{
-// 						//		resip::HeaderFieldValue* hfv = *it;
+		if (server_invite_session)
+		{
+		    SessionSdp session_sdp = local_sdp_;
+		    SessionSdp* remote_sdp = dialog->getRemoteSdp();
+		    SessionSdp::SdpConnection connection = remote_sdp->getConnection();
+		    //bool multicast = connection.is_multicast_address();
+		    //bool forking = is_forking();
+		    //int provisional_code = 180;
+		    //if (forking && multicast)
+		    //{
+		    //	session_sdp.setSdpConnection(connection.getAddress(), 1);
+		    //	provisional_code = 183; // provisional progress
+		    //}
 
-// 						//	}
-// 							//SessionSdp* remote_sdp = dialog->getRemoteSdp();
-// 							//std::string session_name = remote_sdp->getSessionName();
-// 							//std::string remote_user = dialog->getRemoteUser();
-// 							//std::cout << "useragent_signaling::OnSessionChanged: Remote User = " << remote_user << "; Session Name = " << session_name << std::endl;
+		    invite_session->provideAnswer(session_sdp.toSdpContents());
+		    //server_invite_session->provisional(provisional_code); // restore after 2.7.2
+// experimental
+		    //resip::SipMessage msg = invite_handler_->getMessage();
+		    //	const resip::HeaderFieldValueList* hfv_list = msg.getRawHeader(Headers::To);
+		    //	resip::HeaderFieldValueList::const_iterator it = hfv_list->begin();
+		    //	while (it != hfv_list->end())
+		    //	{
+		    //		resip::HeaderFieldValue* hfv = *it;
 
-// 						//std::string sdp_remote = dialog->getRemoteSdp()->toString();
-// 						//std::cout << "useragent_signaling::OnSessionChanged: Remote SDP = " << sdp_remote << std::endl;
-// 						//SdpContents sdp_contents;
-// 						//setup_local_SDP(sdp_contents);
-// 						//dialog->setSessionSdp(new SessionSdp(&sdp_contents));
-// // experimental
-						
-// 					}
-// 				}
-// 				std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sOffer; Call ID = " << dialog->getCallId() << std::endl;
-// 				break;
-// 			case sEarlyMedia: 
+		    //	}
+		    //SessionSdp* remote_sdp = dialog->getRemoteSdp();
+		    //std::string session_name = remote_sdp->getSessionName();
+		    //std::string remote_user = dialog->getRemoteUser();
+		    //std::cout << "useragent_signaling::OnSessionChanged: Remote User = " << remote_user << "; Session Name = " << session_name << std::endl;
 
-// 				std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sEarlyMedia" << std::endl;
-// 				break;
-// 			case sTerminated:
+		    //std::string sdp_remote = dialog->getRemoteSdp()->toString();
+		    //std::cout << "useragent_signaling::OnSessionChanged: Remote SDP = " << sdp_remote << std::endl;
+		    //SdpContents sdp_contents;
+		    //setup_local_SDP(sdp_contents);
+		    //dialog->setSessionSdp(new SessionSdp(&sdp_contents));
+// experimental						
+		}
+	    }
+	    std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sOffer; Call ID = " << dialog->getCallId() << std::endl;
+	    break;
+	    case sEarlyMedia: 
 
-// 				std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sTerminated" << std::endl;
-// 				break;
-// 			case sOfferRequired: 
+		std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sEarlyMedia" << std::endl;
+		break;
+	    case sTerminated:
 
-// 				std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sOfferRequired; Call ID = " << dialog->getCallId() << std::endl;
-// 				break;
-// 			default:
+		std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sTerminated" << std::endl;
+		break;
+	    case sOfferRequired: 
 
-// 				break;
-// 		}
-// 	}
+		std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sOfferRequired; Call ID = " << dialog->getCallId() << std::endl;
+		break;
+	    default:
+
+		break;
+	    }
+ 	}
     }
 
     void 
@@ -356,9 +356,6 @@ namespace sipclient_console_app
 void
 useragent_signaling::setup_local_SDP(void)
 {
-    /*
-    HeaderFieldValue* hfv;
-    Data* txt;
 
     std::string connection_str = "c=IN IP4 " + local_address_ + "\r\n";
 
@@ -394,17 +391,14 @@ useragent_signaling::setup_local_SDP(void)
 
     std::string tmpDataStr = dataStr + videoStr + audioStr;
 
-    txt = new Data(tmpDataStr);
-    hfv = new HeaderFieldValue(txt->data(), (unsigned int) txt->size());
-    Mime type("application", "sdp");
+    Data* txt = new Data(tmpDataStr);
+    const HeaderFieldValue hfv(txt->data(), (unsigned int) txt->size());
+    const Mime type("application", "sdp");
     SdpContents sdp_contents(hfv, type);
-    //sdp_contents = locSdp;
 
     local_sdp_ = SessionSdp(&sdp_contents);
 
     delete txt;
-    delete hfv;
-    */
 }
 // /*
 // v=0

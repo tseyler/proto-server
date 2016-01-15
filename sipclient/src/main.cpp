@@ -70,18 +70,11 @@ void console_func(useragent_signaling* uas)
 int 
 main(int argc, char* argv[])
 {
-	useragent_signaling uas("192.168.1.6");
+    useragent_signaling uas("192.168.1.14");
 
-	//restart_useragent(int port, bool bDisableUDP, const char* passwd)
-	// init
-	//uas.init();
-	// set the profile
-	//uas.set_profile_aor("UA_Console_App", "UA_Console_App", "10.0.0.14");
-	// start the UA loop
-	//uas.start_useragent();
-//	std::string profile_aor = useragent_signaling::set_profile_aor("UA_Console_App", "UA_Console_App", "10.0.0.14");
+    std::string profile_aor = useragent_signaling::set_profile_aor("sipclient_app", "sipclient_app", "192.168.1.6");
 
-//	uas.restart_useragent(0, false, profile_aor, "t0talc0ntr0l4!");
+    uas.restart_useragent(0, false, profile_aor, "t0talc0ntr0l4!");
 
 //	boost::thread console_thd(console_func, &uas);
 
