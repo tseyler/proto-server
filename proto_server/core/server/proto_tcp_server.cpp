@@ -11,14 +11,14 @@ namespace proto_net
 
         proto_tcp_server::proto_tcp_server(unsigned short port_num /* = 80*/)
                 : port_num_(port_num),
-                  acceptor_(proto_net_service_ref(ps_service_), tcp::endpoint(tcp::v4(), port_num))
+                  acceptor_(proto_net_service_ref(ps_service_), proto_net_tcp_endpoint(tcp::v4(), port_num))
         {
 
         }
 
         proto_tcp_server::proto_tcp_server(proto_tcp_server& ps)
                 : port_num_(ps.ps_port()),
-                  acceptor_(proto_net_service_ref(ps_service_), tcp::endpoint(tcp::v4(), ps.ps_port()))
+                  acceptor_(proto_net_service_ref(ps_service_), proto_net_tcp_endpoint(tcp::v4(), ps.ps_port()))
         {
 
         }

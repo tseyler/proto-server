@@ -76,7 +76,7 @@ namespace proto_net
                 delete this;
         }
 
-        tcp::socket&
+        proto_net_tcp_socket&
         proto_tcp_session::ps_socket(void)
         {
             return socket_;
