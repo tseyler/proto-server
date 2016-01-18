@@ -56,6 +56,7 @@ void console_func(useragent_signaling* uas)
 	std::string console_input;
 	while (alive)
 	{
+		std::cout << "sipclient>> ";
 		std::getline(std::cin, console_input);
 		//std::cout << console_input << std::endl;
 		if (boost::iequals(console_input, "exit"))
