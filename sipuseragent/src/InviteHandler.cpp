@@ -84,7 +84,7 @@ SipUserAgent::InviteHandler::onNewSession(ServerInviteSessionHandle h, InviteSes
 	{
 		// Store the sip message in the class var.
 		sipMessage = msg;
-		h->provisional(180);		// 180 is a ringing provisional response -- remove after 2.7.2
+		//h->provisional(180);		// 180 is a ringing provisional response -- remove after 2.7.2
 		std::string callId = SessionDialog::getCallId(h.get());
 		addSessionDialog(h.get());
 		setResult(inviteServerSuccess);

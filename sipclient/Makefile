@@ -115,6 +115,259 @@ sipclient/fast:
 	$(MAKE) -f CMakeFiles/sipclient.dir/build.make CMakeFiles/sipclient.dir/build
 .PHONY : sipclient/fast
 
+#=============================================================================
+# Target rules for targets named sipuseragent
+
+# Build rule for target.
+sipuseragent: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sipuseragent
+.PHONY : sipuseragent
+
+# fast build rule for target.
+sipuseragent/fast:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/build
+.PHONY : sipuseragent/fast
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.o: home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.i: home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.s: home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.o: home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.i: home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.s: home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.o: home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.i: home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.s: home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.o: home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.i: home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.s: home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.o: home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.i: home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.s: home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.o: home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.i: home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.s: home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.o: home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.i: home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.s: home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.o: home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.i: home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.s: home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.o: home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.i: home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.s: home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.cpp.s
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.o: home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.o
+
+# target to build an object file
+home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.o:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.o
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.o
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.i: home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.i
+
+# target to preprocess a source file
+home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.i:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.i
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.i
+
+home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.s: home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.s
+
+# target to generate assembly for a file
+home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.s:
+	$(MAKE) -f CMakeFiles/sipuseragent.dir/build.make CMakeFiles/sipuseragent.dir/home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.s
+.PHONY : home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -172,6 +425,37 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... sipclient"
+	@echo "... sipuseragent"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/InviteHandler.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/MessageHandler.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/OutOfDialogHandler.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/PublicationHandler.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/RegistrationHandler.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SessionDialog.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SessionSdp.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/SubscriptionHandler.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/UserAgent.s"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.o"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.i"
+	@echo "... home/tseyler/projects/cpp-projects/sipuseragent/src/userAgentHelper.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
