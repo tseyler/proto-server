@@ -3,11 +3,15 @@
 *.o
 *.a
 .metadata
+.project
+.cproject
+*~
 
 # we dont need encodings.xml
 encodings.xml
 # we dont need the bin directory
 bin
+lib
 
 # executables
 c4-console
