@@ -4,18 +4,18 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
-// #include <boost/thread.hpp>
-// #include <boost/date_time.hpp>
-// #include <boost/algorithm/string.hpp>
-// #include <boost/tokenizer.hpp>
-// #include <boost/foreach.hpp>
+#include <boost/thread.hpp>
+
+#include <boost/algorithm/string.hpp>
+#include <boost/tokenizer.hpp>
+
 
 #include "useragent_signaling.hpp"
 
 using namespace sipclient_console_app;
 
-// typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
-/*
+ typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
+
 void parse_console_line(useragent_signaling* uas, const std::string& console_input)
 {
 	boost::char_separator<char> sep(" \t\r\n");
@@ -41,13 +41,13 @@ void parse_console_line(useragent_signaling* uas, const std::string& console_inp
 		std::string remote_uri = params[0];
 		uas->execute_invite_useragent(remote_uri);
 	}
-	if (boost::iequals(cmd, "transport"))
-	{
-		std::string transport_type = params[0];
-		bool is_tcp = bool(boost::iequals(transport_type, "tcp"));
-		std::string profile_aor = useragent_signaling::set_profile_aor("UA_Console_App", "UA_Console_App", "10.0.0.14");
-		uas->restart_useragent(0, is_tcp, profile_aor, "t0talc0ntr0l4!");
-	}
+//	if (boost::iequals(cmd, "transport"))
+//	{
+//		std::string transport_type = params[0];
+//		bool is_tcp = bool(boost::iequals(transport_type, "tcp"));
+//		std::string profile_aor = useragent_signaling::set_profile_aor("UA_Console_App", "UA_Console_App", "10.0.0.14");
+//		uas->restart_useragent(0, is_tcp, profile_aor, "t0talc0ntr0l4!");
+//	}
 }
 
 void console_func(useragent_signaling* uas)
@@ -66,7 +66,7 @@ void console_func(useragent_signaling* uas)
 
 	std::cout << "Exiting..." << std::endl;
 }
-*/
+
 int 
 main(int argc, char* argv[])
 {
@@ -76,11 +76,11 @@ main(int argc, char* argv[])
 
     uas.restart_useragent(0, false, profile_aor, "t0talc0ntr0l4!");
 
-//	boost::thread console_thd(console_func, &uas);
+    boost::thread console_thd(console_func, &uas);
 
-//	console_thd.join();
+    console_thd.join();
 	// stop the UA loop
-//	uas.stop_useragent();
+    uas.stop_useragent();
 
     std::cout << "Done";
 
