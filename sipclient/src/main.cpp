@@ -34,6 +34,8 @@ void parse_console_line(useragent_signaling* uas, const std::string& console_inp
 	std::string call_id = uas->get_call_id();
 	if (boost::iequals(cmd, "answer"))
 		uas->execute_offer_useragent(call_id);
+	if (boost::iequals(cmd, "reject"))
+		uas->execute_offer_useragent(call_id, false, 486); // busy here
 	if (boost::iequals(cmd, "bye"))
 		uas->execute_bye_useragent(call_id);
 	if (boost::iequals(cmd, "invite"))
