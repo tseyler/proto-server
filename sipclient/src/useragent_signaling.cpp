@@ -168,13 +168,14 @@ namespace sipclient_console_app
 					SessionSdp::SdpConnection connection = remote_sdp->getConnection();
 					bool multicast = (connection.getTtl());//connection.is_multicast_address();
 					bool forking = is_forking();
-					//int provisional_code = 180;
+					int provisional_code(180);
 					//if (forking && multicast)
 					//{
 					//	session_sdp.setSdpConnection(connection.getAddress(), 1);
 					//	provisional_code = 183; // provisional progress
 					//}
 
+					server_invite_session->provisional(provisional_code); // putting this before provideAnswer
 					invite_session->provideAnswer(session_sdp.toSdpContents());
 					//server_invite_session->provisional(provisional_code); // restore after 2.7.2
 		// experimental
