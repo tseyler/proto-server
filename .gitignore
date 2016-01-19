@@ -5,6 +5,10 @@
 *.o
 *.a
 .metadata
+.project
+.cproject
+.settings
+*~
 
 # we dont need encodings.xml
 encodings.xml
@@ -16,6 +20,8 @@ lib
 CMakeFiles
 CMakeCache.txt
 cmake_install.cmake
+# Eclipse likes to add this
+RemoteTempFiles
 
 # executables
 c4-console
