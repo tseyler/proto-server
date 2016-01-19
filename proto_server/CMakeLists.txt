@@ -12,13 +12,15 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
 set(CORE_DIR ${PROTO_SERVER_DIR}/core)
 set(DATA_DIR ${CORE_DIR}/data)
 set(SERVER_DIR ${CORE_DIR}/server)
+set(CLIENT_DIR ${CORE_DIR}/client)
 set(SOURCE_FILES
+        ${CORE_DIR}/proto_net_types.cpp
         ${DATA_DIR}/proto_net_data.cpp
         ${SERVER_DIR}/proto_server.cpp
         ${SERVER_DIR}/proto_tcp_server.cpp
         ${SERVER_DIR}/proto_session.cpp
         ${SERVER_DIR}/proto_tcp_session.cpp
-        ${CORE_DIR}/proto_net_types.cpp)
+        ${CLIENT_DIR}/proto_client.cpp)
 
 set(INCLUDE_DIRS
         ${PROTO_SERVER_DIR}

@@ -1,13 +1,27 @@
 # .gitignore for cpp-projects
 
+#emacs temp files
+*~
 *.o
 *.a
 .metadata
+.project
+.cproject
+.settings
+*~
 
 # we dont need encodings.xml
 encodings.xml
 # we dont need the bin directory
 bin
+# we dont need the lib directory
+lib
+# we dont need these cmake directory and files
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+# Eclipse likes to add this
+RemoteTempFiles
 
 # executables
 c4-console
