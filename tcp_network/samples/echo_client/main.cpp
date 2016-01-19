@@ -105,7 +105,7 @@ main(int argc, char* argv[])
     //if (argc > 1)
     //{
 		char** args = get_args(argv, first_arg);
-		std::string echo_server = "127.0.0.1"; // std::string(args[0]);
+		std::string echo_server = "192.168.1.28"; // std::string(args[0]);
 		std::string echo_string = "Hello World!"; // std::string(args[1]);
 		
 		boost::system::error_code ec;
