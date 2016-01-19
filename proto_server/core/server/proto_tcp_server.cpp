@@ -45,7 +45,7 @@ namespace proto_net
         }
 
         void
-        proto_tcp_server::handle_accept(proto_tcp_session* session, const boost::system::error_code& error)
+        proto_tcp_server::handle_accept(proto_tcp_session* session, const proto_net_error_code& error)
         {
             if (session)
             {
