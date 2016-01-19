@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **
 *                                                                           *
 * SessionDialog.cpp                                                    	    *
-* Author: Terry Seyler							    *
+* Author: Terry Seyler							                            *
 *                                                                           *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 
@@ -18,10 +18,18 @@ SipUserAgent::SessionDialog::getCallId(resip::InviteSession* inviteSession)
 	return SipUserAgent::makeString(inviteSession->getCallId());
 }
 
+unsigned long SipUserAgent::SessionDialog::session_id_counter_ = 0;
+unsigned long
+SipUserAgent::SessionDialog::gen_session_id(void)
+{
+	return ++session_id_counter_;
+}
+
 SipUserAgent::SessionDialog::SessionDialog(resip::InviteSession* inviteSession) : 	inviteSession_(inviteSession),
 																					sessionSdp_(NULL),
 																					remoteSdp_(NULL),
-																					callId_("")
+																					callId_(""),
+																					session_id_(gen_session_id())
 {
 	callId_ = getCallId(inviteSession);
 }
@@ -133,3 +141,10 @@ SipUserAgent::SessionDialog::getRemoteHost(void) const
 {
 	return (inviteSession_) ? SipUserAgent::makeHost(inviteSession_->peerAddr().uri()) : "";
 }
+
+unsigned long
+SipUserAgent::SessionDialog::get_session_id(void) const
+{
+	return session_id_;
+}
+

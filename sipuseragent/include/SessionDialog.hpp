@@ -34,6 +34,8 @@ namespace SipUserAgent
 
 		static std::string			getCallId(resip::InviteSession* inviteSession);
 
+		static unsigned long		gen_session_id(void);
+
 		SessionDialog(resip::InviteSession* inviteSession);
 		virtual ~SessionDialog()
 		{}
@@ -54,6 +56,7 @@ namespace SipUserAgent
 		std::string					getRemoteUser(void) const;
 		std::string					getLocalHost(void) const;
 		std::string					getRemoteHost(void) const;
+		unsigned long				get_session_id(void) const;
 
 		/**	Method returns the remoteAor.
 		 * 	@return remoteAor as NameAddr. */
@@ -69,6 +72,11 @@ namespace SipUserAgent
 	    std::auto_ptr<SessionSdp>			sessionSdp_;
 	    std::auto_ptr<SessionSdp>			remoteSdp_;
 		std::string							callId_;
+		unsigned long						session_id_;
+
+	private:
+
+		static unsigned long				session_id_counter_;
 	};
 
 }
