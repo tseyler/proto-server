@@ -8,6 +8,8 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/asio.hpp>
 
+#define THROW_BOOST_ERROR( e ) if (e.value() > 0) throw e
+
 namespace proto_net
 {
     // this is our service type
@@ -15,9 +17,6 @@ namespace proto_net
 
     // this the service type as a shared pointer
     typedef boost::shared_ptr<proto_net_service> proto_net_service_ptr;
-
-    // returns a reference from the shared ptr
-    proto_net_service& proto_net_service_ref(proto_net_service_ptr ptr);
 
     // this is a tcp socket
     typedef boost::asio::ip::tcp::socket proto_net_tcp_socket;
@@ -35,7 +34,26 @@ namespace proto_net
     typedef boost::asio::ip::tcp::resolver::query proto_net_tcp_query;
 
     // this is a resolver::iterator type
-    typedef boost::asio::ip::tcp::resolver::iterator prot_net_tcp_iterator;
+    typedef boost::asio::ip::tcp::resolver::iterator proto_net_tcp_iterator;
+
+    typedef boost::system::error_code proto_net_error_code;
+
+
+    // returns a reference from the shared ptr
+    proto_net_service& proto_net_service_ref(proto_net_service_ptr ptr);
+
+    // returns an iterator or throws a boost error
+    proto_net_tcp_iterator ps_tcp_resolve(proto_net_tcp_resolver& resolver,
+                                           proto_net_tcp_query& query) throw(proto_net_error_code);
+
+    // performs a tcp connection given a socket and an iterator
+    void ps_tcp_connect(proto_net_tcp_socket& socket,
+                        proto_net_tcp_iterator& iterator) throw(proto_net_error_code);
+
+    // this get an iterator that can be used to get the local IP(s)
+    proto_net_tcp_iterator ps_tcp_local_ip(proto_net_tcp_resolver& resolver) throw(proto_net_error_code);
+
+
 }
 
 
