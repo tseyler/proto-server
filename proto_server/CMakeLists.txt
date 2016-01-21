@@ -21,7 +21,8 @@ set(SOURCE_FILES
         ${SERVER_DIR}/proto_session.cpp
         ${SERVER_DIR}/proto_tcp_session.cpp
         ${CLIENT_DIR}/proto_client.cpp
-        ${CLIENT_DIR}/proto_tcp_client.cpp)
+        ${CLIENT_DIR}/proto_tcp_client.cpp
+        )
 
 set(INCLUDE_DIRS
         ${PROTO_SERVER_DIR}
@@ -33,4 +34,4 @@ include_directories(${INCLUDE_DIRS})
 add_library(proto_server ${SOURCE_FILES})
 
 # linking
-target_link_libraries(proto_server boost_system)
+#target_link_libraries(proto_server boost_system)

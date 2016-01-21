@@ -4,18 +4,18 @@
 #include <ostream>
 #include <istream>
 #include <boost/lexical_cast.hpp>
-#include "proto_tcp_client.hpp"
+#include <core/client/proto_tcp_client.hpp>
 
 
 namespace proto_net
 {
     namespace client
     {
-
-        proto_tcp_client::proto_tcp_client(const std::string& address, unsigned short port_num /* = 80*/)
-                : address_(address),  port_num_(port_num), socket_(proto_net_service_ref(ps_service_))
+        proto_tcp_client::proto_tcp_client(const std::string& address,
+                                           unsigned short port_num /* = 80*/, size_t buff_size /*= 4096 */)
+                : address_(address),  port_num_(port_num), socket_(proto_net_service_ref(ps_service_)),
+                  buff_size_(buff_size)
         {
-
         }
 
         void
@@ -30,25 +30,31 @@ namespace proto_net
         }
 
         void
-        proto_tcp_client::ps_write_string(const std::string& buff)
+        proto_tcp_client::ps_write_msg(const std::string& msg)
         {
-            boost::asio::streambuf request;
-            std::ostream request_stream(&request);
-            request_stream << buff;
+            if (buff_size_ > msg.length())
+            {
+                char buf[buff_size_];
+                memset(buf, 0, buff_size_);
+                memcpy(buf, msg.c_str(), msg.length());
 
-            boost::asio::write(socket_, request);
+                boost::asio::write(socket_, boost::asio::buffer(buf, strlen(buf) + 1));
+            }
         }
 
         std::string
-        proto_tcp_client::ps_read_string(const char* read_delim)
+        proto_tcp_client::ps_read_msg(void)
         {
-            boost::asio::streambuf response;
-            boost::asio::read_until(socket_, response, read_delim);
-            std::istream response_stream(&response);
-            std::string read_response;
-            response_stream >> read_response;
+            char buf[buff_size_];
+            memset(buf, 0, buff_size_);
+            boost::asio::streambuf b;
+            if (boost::asio::read_until(socket_, b, '\0'))
+            {
+                std::istream is(&b);
+                is.get(buf, buff_size_, '\0');
+            }
 
-            return read_response;
+            return std::string(buf);
         }
 
         proto_net_tcp_socket&

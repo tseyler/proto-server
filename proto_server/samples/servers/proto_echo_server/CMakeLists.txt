@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.3)
+cmake_minimum_required(VERSION 3.0)
 project(proto_echo_server)
 
 # cpp-projects dir
@@ -17,7 +17,7 @@ set(INCLUDE_DIRS
 )
 
 include_directories(${INCLUDE_DIRS})
-link_directories(${BIN_DIR} ${BOOST_LIB_DIR})
+link_directories(${LIB_DIR} ${BOOST_LIB_DIR})
 
 add_executable(proto-echo-server ${SOURCE_FILES})
 

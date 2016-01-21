@@ -2,7 +2,6 @@
 // Created by tseyler on 1/4/16.
 //
 
-//#include <iostream>
 #include "proto_echo_io.hpp"
 
 void
