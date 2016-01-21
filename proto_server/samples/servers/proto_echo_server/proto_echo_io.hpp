@@ -2,8 +2,8 @@
 // Created by tseyler on 1/4/16.
 //
 
-#ifndef PROTO_ECHO_SERVER_PROTO_ECHO_IO_HPP__
-#define PROTO_ECHO_SERVER_PROTO_ECHO_IO_HPP__
+#ifndef PROTO_ECHO_SERVER_PROTO_ECHO_IO_HPP_
+#define PROTO_ECHO_SERVER_PROTO_ECHO_IO_HPP_
 
 #include <core/data/proto_net_io.hpp>
 
@@ -17,4 +17,4 @@ public:
 };
 
 
-#endif //PROTO_ECHO_SERVER_PROTO_ECHO_IO_HPP__
+#endif //PROTO_ECHO_SERVER_PROTO_ECHO_IO_HPP_

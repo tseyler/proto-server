@@ -2,13 +2,13 @@
 // Created by tseyler on 1/6/16.
 //
 
-#ifndef PROTO_CLIENT_HPP__
-#define PROTO_CLIENT_HPP__
+#ifndef PROTO_CLIENT_HPP_
+#define PROTO_CLIENT_HPP_
 
 #include <core/proto_net_types.hpp>
-#include <core/data/proto_net_io.hpp>
+//#include <core/data/proto_net_io.hpp>
 
-using namespace proto_net::data;
+//using namespace proto_net::data;
 
 namespace proto_net
 {
@@ -31,4 +31,4 @@ namespace proto_net
 }
 
 
-#endif //PROTO_CLIENT_HPP__
+#endif //PROTO_CLIENT_HPP_

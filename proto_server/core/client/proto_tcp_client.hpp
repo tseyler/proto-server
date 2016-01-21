@@ -15,17 +15,16 @@ namespace proto_net
         {
         public:
 
-            proto_tcp_client(const std::string& address, unsigned short port_num = 80);
-            virtual ~proto_tcp_client() {}
+            proto_tcp_client(const std::string& address, unsigned short port_num = 80, size_t buff_size = 4096);
 
             // connect to a tcp server
             void ps_connect(void) throw(proto_net_error_code);
 
             // write a string
-            void ps_write_string(const std::string& buff);
+            void ps_write_msg(const std::string& msg);
 
             // read a string
-            std::string ps_read_string(const char* read_delim);
+            std::string ps_read_msg(void);
 
             // getter
             proto_net_tcp_socket& ps_socket(void);
@@ -35,6 +34,7 @@ namespace proto_net
             std::string address_;
             unsigned short port_num_;
             proto_net_tcp_socket socket_;
+            size_t buff_size_;
         };
     }
 }

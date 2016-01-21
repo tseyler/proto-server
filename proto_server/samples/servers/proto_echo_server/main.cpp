@@ -1,12 +1,9 @@
-#include <iostream>
 
-#include <core/server/proto_server.hpp>
+
+#include <iostream>
 #include <core/server/proto_tcp_server.hpp>
 #include "proto_echo_io.hpp"
 
-
-using namespace std;
-using namespace proto_net;
 using namespace proto_net::server;
 
 int
