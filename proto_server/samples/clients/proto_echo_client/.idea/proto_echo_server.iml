@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../../core/client/proto_client.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/client/proto_client.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../core/client/proto_tcp_client.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/client/proto_tcp_client.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../core/data/proto_net_data.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/data/proto_net_data.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../core/proto_net_types.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/proto_net_types.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../core/server/proto_server.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/server/proto_server.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../core/server/proto_session.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/server/proto_session.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../core/server/proto_tcp_server.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/server/proto_tcp_server.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../core/server/proto_tcp_session.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/server/proto_tcp_session.cpp" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
@@ -24,6 +48,14 @@
         </SOURCES>
         <excluded>
           <root url="file://$MODULE_DIR$" />
+          <root url="file://$MODULE_DIR$/../../../core/proto_net_types.cpp" />
+          <root url="file://$MODULE_DIR$/../../../core/client/proto_tcp_client.cpp" />
+          <root url="file://$MODULE_DIR$/../../../core/client/proto_client.cpp" />
+          <root url="file://$MODULE_DIR$/../../../core/server/proto_server.cpp" />
+          <root url="file://$MODULE_DIR$/../../../core/server/proto_tcp_server.cpp" />
+          <root url="file://$MODULE_DIR$/../../../core/server/proto_tcp_session.cpp" />
+          <root url="file://$MODULE_DIR$/../../../core/server/proto_session.cpp" />
+          <root url="file://$MODULE_DIR$/../../../core/data/proto_net_data.cpp" />
         </excluded>
       </library>
     </orderEntry>
