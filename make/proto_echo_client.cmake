@@ -4,7 +4,7 @@ set(CPP_PROJ_DIR $ENV{HOME}/projects/cpp-projects)
 # make dir
 set(MAKE_DIR ${CPP_PROJ_DIR}/make)
 
-include(${MAKE_DIR}/definitions.cmake)
+include(${MAKE_DIR}/proto_server.cmake)
 
 set(PROJ_DIR ${PROTO_SERVER_SAMPLES_CLIENTS_DIR}/proto_echo_client)
 
