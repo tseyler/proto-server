@@ -13,15 +13,7 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fa868fc-7f98-40bb-9b95-7030af58c2ec" name="Default" comment="Removed clone and assignment operator overload.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../make/proto_echo_client.cmake" afterPath="$PROJECT_DIR$/../../../../make/proto_echo_client.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../../make/proto_echo_server.cmake" afterPath="$PROJECT_DIR$/../../../../make/proto_echo_server.cmake" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../CMakeLists.txt" afterPath="$PROJECT_DIR$/../../../CMakeLists.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../clients/proto_echo_client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../clients/proto_echo_client/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/proto_echo_server.iml" afterPath="$PROJECT_DIR$/.idea/proto_echo_server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5fa868fc-7f98-40bb-9b95-7030af58c2ec" name="Default" comment="Removed clone and assignment operator overload." />
     <ignored path="proto_echo_server.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
