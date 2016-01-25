@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <core/server/proto_tcp_server.hpp>
-#include "proto_echo_io.hpp"
+#include "proto_echo_pipeline.hpp"
 
 using namespace proto_net::server;
 

@@ -14,22 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b1c29f4-4d22-4d08-bfc2-80694c043130" name="Default" comment="Adding data object and tcp session object.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/data/proto_net_pipeline.hpp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/data/proto_net_io.hpp" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/include/proto_echo_io.hpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/include/proto_echo_pipeline.hpp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/proto_echo_io.cpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/proto_echo_pipeline.cpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/data/proto_net_data.hpp" afterPath="$PROJECT_DIR$/core/data/proto_net_data.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_server.hpp" afterPath="$PROJECT_DIR$/core/server/proto_server.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_session.cpp" afterPath="$PROJECT_DIR$/core/server/proto_session.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_session.hpp" afterPath="$PROJECT_DIR$/core/server/proto_session.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_tcp_server.cpp" afterPath="$PROJECT_DIR$/core/server/proto_tcp_server.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_tcp_server.hpp" afterPath="$PROJECT_DIR$/core/server/proto_tcp_server.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_tcp_session.cpp" afterPath="$PROJECT_DIR$/core/server/proto_tcp_session.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_tcp_session.hpp" afterPath="$PROJECT_DIR$/core/server/proto_tcp_session.hpp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/include/proto_echo_io.hpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/include/proto_echo_io.hpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/main.cpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/proto_echo_io.cpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/proto_echo_io.cpp" />
     </list>
     <ignored path="proto_serve.iws" />
     <ignored path=".idea/workspace.xml" />
