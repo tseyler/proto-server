@@ -7,7 +7,7 @@
 
 
 #include <core/proto_net_types.hpp>
-#include <core/data/proto_net_io.hpp>
+#include <core/data/proto_net_pipeline.hpp>
 
 using namespace proto_net::data;
 
@@ -25,7 +25,7 @@ namespace proto_net
 
             // pure virtuals
             virtual void ps_run(void) = 0;
-            virtual void ps_start_accept(proto_net_io& ps_io, size_t buffer_size) = 0;
+            virtual void ps_start_accept(proto_net_pipeline& ps_pipeline, size_t buffer_size) = 0;
 
         protected:
 

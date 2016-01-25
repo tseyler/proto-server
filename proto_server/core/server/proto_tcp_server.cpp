@@ -36,7 +36,7 @@ namespace proto_net
         }
 
         void
-        proto_tcp_server::ps_start_accept(proto_net_io& ps_io, size_t buffer_size)
+        proto_tcp_server::ps_start_accept(proto_net_pipeline& ps_io, size_t buffer_size)
         {
             proto_tcp_session* new_session = new proto_tcp_session(ps_service_, ps_io, buffer_size);
             acceptor_.async_accept(new_session->ps_socket(),
@@ -49,14 +49,14 @@ namespace proto_net
         {
             if (session)
             {
-                proto_net_io& io = session->ps_io(); // get the session before it gets destroyed below
+                proto_net_pipeline& pipeline = session->ps_pipeline(); // get the session before it gets destroyed below
                 size_t buffer_size = session->ps_buffer_size();
                 if (!error)
                     session->start();
                 else
                     delete session;
 
-                ps_start_accept(io, buffer_size);
+                ps_start_accept(pipeline, buffer_size);
             }
             else {} // we will drop out because there is no session and no io
         }

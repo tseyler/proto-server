@@ -29,7 +29,7 @@ namespace proto_net
 
             // pure virtuals
             virtual void ps_run(void);
-            virtual void ps_start_accept(proto_net_io& ps_io, size_t buffer_size);
+            virtual void ps_start_accept(proto_net_pipeline& ps_io, size_t buffer_size);
 
             unsigned short ps_port(void) const;
 

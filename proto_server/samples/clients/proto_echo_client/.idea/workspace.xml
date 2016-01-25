@@ -14,7 +14,24 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fa868fc-7f98-40bb-9b95-7030af58c2ec" name="Default" comment="Removed clone and assignment operator overload." />
+    <list default="true" id="5fa868fc-7f98-40bb-9b95-7030af58c2ec" name="Default" comment="Removed clone and assignment operator overload.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../../core/data/proto_net_pipeline.hpp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../../../core/data/proto_net_io.hpp" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/data/proto_net_data.hpp" afterPath="$PROJECT_DIR$/../../../core/data/proto_net_data.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_server.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_server.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_session.cpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_session.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_session.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_session.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.cpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_server.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_tcp_session.cpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_session.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../core/server/proto_tcp_session.hpp" afterPath="$PROJECT_DIR$/../../../core/server/proto_tcp_session.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../servers/proto_echo_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../servers/proto_echo_server/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../servers/proto_echo_server/include/proto_echo_io.hpp" afterPath="$PROJECT_DIR$/../../servers/proto_echo_server/include/proto_echo_io.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../servers/proto_echo_server/src/main.cpp" afterPath="$PROJECT_DIR$/../../servers/proto_echo_server/src/main.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../servers/proto_echo_server/src/proto_echo_io.cpp" afterPath="$PROJECT_DIR$/../../servers/proto_echo_server/src/proto_echo_io.cpp" />
+    </list>
     <ignored path="proto_echo_server.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -230,7 +247,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="93" y="30" width="1556" height="985" extended-state="0" />
+    <frame x="93" y="30" width="1556" height="985" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25160876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -430,7 +447,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../core/data/proto_net_io.hpp">
+    <entry file="file://$PROJECT_DIR$/../../../core/data/proto_net_pipeline.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="17" selection-end-column="115" />

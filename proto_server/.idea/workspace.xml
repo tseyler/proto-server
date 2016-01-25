@@ -13,7 +13,24 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b1c29f4-4d22-4d08-bfc2-80694c043130" name="Default" comment="Adding data object and tcp session object." />
+    <list default="true" id="4b1c29f4-4d22-4d08-bfc2-80694c043130" name="Default" comment="Adding data object and tcp session object.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/data/proto_net_pipeline.hpp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/data/proto_net_io.hpp" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/data/proto_net_data.hpp" afterPath="$PROJECT_DIR$/core/data/proto_net_data.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_server.hpp" afterPath="$PROJECT_DIR$/core/server/proto_server.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_session.cpp" afterPath="$PROJECT_DIR$/core/server/proto_session.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_session.hpp" afterPath="$PROJECT_DIR$/core/server/proto_session.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_tcp_server.cpp" afterPath="$PROJECT_DIR$/core/server/proto_tcp_server.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_tcp_server.hpp" afterPath="$PROJECT_DIR$/core/server/proto_tcp_server.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_tcp_session.cpp" afterPath="$PROJECT_DIR$/core/server/proto_tcp_session.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/server/proto_tcp_session.hpp" afterPath="$PROJECT_DIR$/core/server/proto_tcp_session.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/include/proto_echo_io.hpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/include/proto_echo_io.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/main.cpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/main.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/proto_echo_io.cpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/proto_echo_io.cpp" />
+    </list>
     <ignored path="proto_serve.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,21 +50,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="proto_client.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/client/proto_client.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proto_tcp_server.hpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="proto_tcp_server.hpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_server.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="93" selection-start-line="37" selection-start-column="93" selection-end-line="37" selection-end-column="93" />
+            <state vertical-scroll-proportion="0.8506098">
+              <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
               <folding>
                 <element signature="e#109#140#0" expanded="true" />
               </folding>
@@ -55,43 +62,41 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <file leaf-file-name="proto_tcp_session.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_session.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19207317">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proto_tcp_client.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/client/proto_tcp_client.cpp">
+      <file leaf-file-name="proto_net_pipeline.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/data/proto_net_pipeline.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-              <folding>
-                <element signature="e#40#58#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proto_tcp_client.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/client/proto_tcp_client.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proto_client.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/client/proto_client.hpp">
+      <file leaf-file-name="proto_server.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/server/proto_server.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+              <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proto_server.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/server/proto_server.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="72" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -101,20 +106,48 @@
         <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_server.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="94" selection-start-line="47" selection-start-column="94" selection-end-line="47" selection-end-column="94" />
+              <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proto_net_types.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/proto_net_types.hpp">
+      <file leaf-file-name="proto_net_data.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="58" />
-              <folding>
-                <element signature="e#99#130#0" expanded="true" />
-              </folding>
+              <caret line="80" column="53" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proto_tcp_session.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_session.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="95" selection-start-line="21" selection-start-column="95" selection-end-line="21" selection-end-column="95" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proto_session.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/server/proto_session.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proto_session.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/server/proto_session.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -144,22 +177,13 @@
         <option value="$PROJECT_DIR$/core/proto_tcp_server.cpp" />
         <option value="$PROJECT_DIR$/core/proto_io_tcp_object.hpp" />
         <option value="$PROJECT_DIR$/core/server/proto_session_pipe.hpp" />
-        <option value="$PROJECT_DIR$/core/server/proto_session.hpp" />
-        <option value="$PROJECT_DIR$/core/server/proto_session.cpp" />
         <option value="$PROJECT_DIR$/core/proto_io_object.cpp" />
         <option value="$PROJECT_DIR$/core/proto_io_object.hpp" />
         <option value="$PROJECT_DIR$/core/proto_io_tcp_object.cpp" />
-        <option value="$PROJECT_DIR$/core/data/proto_net_data.hpp" />
-        <option value="$PROJECT_DIR$/core/server/proto_server.hpp" />
         <option value="$PROJECT_DIR$/core/server/proto_server.cpp" />
         <option value="$PROJECT_DIR$/core/client/proto_client.cpp" />
-        <option value="$PROJECT_DIR$/core/data/proto_net_io.hpp" />
-        <option value="$PROJECT_DIR$/core/server/proto_tcp_session.hpp" />
-        <option value="$PROJECT_DIR$/core/server/proto_tcp_session.cpp" />
         <option value="$PROJECT_DIR$/core/proto_net_types.hpp" />
         <option value="$PROJECT_DIR$/core/proto_net_types.cpp" />
-        <option value="$PROJECT_DIR$/core/server/proto_tcp_server.hpp" />
-        <option value="$PROJECT_DIR$/core/server/proto_tcp_server.cpp" />
         <option value="$PROJECT_DIR$/core/client/proto_client.hpp" />
         <option value="$PROJECT_DIR$/core/client/proto_tcp_client_d.cpp" />
         <option value="$PROJECT_DIR$/core/client/proto_tcp_client_d.hpp" />
@@ -167,6 +191,16 @@
         <option value="$PROJECT_DIR$/core/client/proto_tcp_client.hpp" />
         <option value="$PROJECT_DIR$/core/client/proto_tcp_client.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/core/server/proto_tcp_server.hpp" />
+        <option value="$PROJECT_DIR$/core/server/proto_tcp_session.hpp" />
+        <option value="$PROJECT_DIR$/core/server/proto_session.cpp" />
+        <option value="$PROJECT_DIR$/core/server/proto_server.hpp" />
+        <option value="$PROJECT_DIR$/core/server/proto_tcp_session.cpp" />
+        <option value="$PROJECT_DIR$/core/server/proto_tcp_server.cpp" />
+        <option value="$PROJECT_DIR$/core/data/proto_net_data.hpp" />
+        <option value="$PROJECT_DIR$/core/data/proto_net_io.hpp" />
+        <option value="$PROJECT_DIR$/core/data/proto_net_pipeline.hpp" />
+        <option value="$PROJECT_DIR$/core/server/proto_session.hpp" />
       </list>
     </option>
   </component>
@@ -253,6 +287,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proto_server" />
+              <option name="myItemType" value="com.jetbrains.cidr.projectView.CidrFilesViewHelper$MyProjectTreeStructure$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="proto_server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -376,7 +428,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="111" y="0" width="1556" height="985" extended-state="1" />
+    <frame x="111" y="0" width="1556" height="985" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18983269" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -680,24 +732,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/server/proto_session.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="42" column="9" selection-start-line="42" selection-start-column="9" selection-end-line="42" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/include/boost/asio/ip/tcp.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="85" column="22" selection-start-line="85" selection-start-column="10" selection-end-line="85" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/server/proto_session.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="37" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -708,66 +746,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/server/proto_server.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43425813">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/proto_net_io.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5762195">
-          <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.027439024">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/server/proto_server.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1097561">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_session.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="32" />
-          <folding>
-            <element signature="e#109#144#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_session.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="82" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/proto_net_types.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_server.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="93" selection-start-line="37" selection-start-column="93" selection-end-line="37" selection-end-column="93" />
-          <folding>
-            <element signature="e#109#140#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -778,14 +760,6 @@
           <folding>
             <element signature="e#99#130#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_server.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="94" selection-start-line="47" selection-start-column="94" selection-end-line="47" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -818,16 +792,98 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
           <folding>
-            <element signature="e#40#58#0" expanded="true" />
+            <element signature="e#40#58#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19207317">
+        <state vertical-scroll-proportion="0.0">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/server/proto_server.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_session.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="95" selection-start-line="21" selection-start-column="95" selection-end-line="21" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/server/proto_session.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/server/proto_server.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="72" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_session.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_server.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="53" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/proto_net_pipeline.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/server/proto_session.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_server.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8506098">
+          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+          <folding>
+            <element signature="e#109#140#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

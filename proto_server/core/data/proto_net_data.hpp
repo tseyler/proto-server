@@ -2,8 +2,8 @@
 	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
-#ifndef PROTO_NET_DATA_HPP__
-#define PROTO_NET_DATA_HPP__
+#ifndef PROTO_NET_DATA_HPP_
+#define PROTO_NET_DATA_HPP_
 
 
 #include <string>
@@ -75,6 +75,10 @@ namespace proto_net
             size_t data_size_;
             proto_net_data_type data_type_;
         };
+
+        typedef proto_net_data proto_net_in_data;
+        typedef proto_net_data proto_net_out_data;
+        typedef proto_net_data proto_net_in_out_data;
     }
 
 }

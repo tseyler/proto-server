@@ -10,8 +10,8 @@ int
 main(int argc, char *argv[])
 {
     proto_tcp_server server(9669);
-    proto_echo_io echo_io;
-    server.ps_start_accept(echo_io, 4096);
+    proto_echo_pipeline echo_pipeline;
+    server.ps_start_accept(echo_pipeline, 4096);
     server.ps_run();
 
     return 0;
