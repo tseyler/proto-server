@@ -15,16 +15,18 @@ set(CORE_DIR ${PROTO_SERVER_DIR}/core)
 set(DATA_DIR ${CORE_DIR}/data)
 set(SERVER_DIR ${CORE_DIR}/server)
 set(CLIENT_DIR ${CORE_DIR}/client)
+
+file(GLOB CORE_SRC_FILES ${CORE_DIR}/*.cpp)
+file(GLOB DATA_SRC_FILES ${DATA_DIR}/*.cpp)
+file(GLOB SERVER_SRC_FILES ${SERVER_DIR}/*.cpp)
+file(GLOB CLIENT_SRC_FILES ${CLIENT_DIR}/*.cpp)
+
 set(SOURCE_FILES
-        ${CORE_DIR}/proto_net_types.cpp
-        ${DATA_DIR}/proto_net_data.cpp
-        ${SERVER_DIR}/proto_server.cpp
-        ${SERVER_DIR}/proto_tcp_server.cpp
-        ${SERVER_DIR}/proto_session.cpp
-        ${SERVER_DIR}/proto_tcp_session.cpp
-        ${CLIENT_DIR}/proto_client.cpp
-        ${CLIENT_DIR}/proto_tcp_client.cpp
-        )
+  ${CORE_SRC_FILES}
+  ${DATA_SRC_FILES}
+  ${SERVER_SRC_FILES}
+  ${CLIENT_SRC_FILES}
+  )
 
 set(INCLUDE_DIRS
         ${PROTO_SERVER_DIR}
