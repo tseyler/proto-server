@@ -13,7 +13,20 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b1c29f4-4d22-4d08-bfc2-80694c043130" name="Default" comment="Adding data object and tcp session object." />
+    <list default="true" id="4b1c29f4-4d22-4d08-bfc2-80694c043130" name="Default" comment="Adding data object and tcp session object.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/data/proto_net_data.cpp" afterPath="$PROJECT_DIR$/core/data/proto_net_data.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/data/proto_net_data.hpp" afterPath="$PROJECT_DIR$/core/data/proto_net_data.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/data/proto_net_pipe.cpp" afterPath="$PROJECT_DIR$/core/data/proto_net_pipe.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/data/proto_net_pipe.hpp" afterPath="$PROJECT_DIR$/core/data/proto_net_pipe.hpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/misc.xml" afterPath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/proto_echo_server.iml" afterPath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/proto_echo_server.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/samples/clients/proto_echo_client/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/.idea/proto_echo_server.iml" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/.idea/proto_echo_server.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/.idea/workspace.xml" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/main.cpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/main.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/proto_echo_pipeline.cpp" afterPath="$PROJECT_DIR$/samples/servers/proto_echo_server/src/proto_echo_pipeline.cpp" />
+    </list>
     <ignored path="proto_serve.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,16 +78,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proto_server.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/server/proto_server.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="72" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="proto_tcp_server.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_server.cpp">
           <provider selected="true" editor-type-id="text-editor">
@@ -88,9 +91,11 @@
       <file leaf-file-name="proto_net_pipe.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/data/proto_net_pipe.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6993865">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-              <folding />
+            <state vertical-scroll-proportion="0.6960193">
+              <caret line="82" column="57" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
+              <folding>
+                <element signature="e#41#59#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,8 +104,10 @@
         <entry file="file://$PROJECT_DIR$/core/data/proto_net_pipe.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-              <folding />
+              <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="75" />
+              <folding>
+                <element signature="e#98#117#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,8 +126,22 @@
         <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="53" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
-              <folding />
+              <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="52" />
+              <folding>
+                <element signature="e#117#134#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="proto_net_data.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="213" selection-end-column="22" />
+              <folding>
+                <element signature="e#59#78#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -156,7 +177,6 @@
         <option value="$PROJECT_DIR$/core/proto_server.hpp" />
         <option value="$PROJECT_DIR$/core/proto_tcp_server.hpp" />
         <option value="$PROJECT_DIR$/core/proto_server.cpp" />
-        <option value="$PROJECT_DIR$/core/data/proto_net_data.cpp" />
         <option value="$PROJECT_DIR$/core/proto_tcp_server.cpp" />
         <option value="$PROJECT_DIR$/core/proto_io_tcp_object.hpp" />
         <option value="$PROJECT_DIR$/core/server/proto_session_pipe.hpp" />
@@ -180,12 +200,13 @@
         <option value="$PROJECT_DIR$/core/server/proto_server.hpp" />
         <option value="$PROJECT_DIR$/core/server/proto_tcp_session.cpp" />
         <option value="$PROJECT_DIR$/core/server/proto_tcp_server.cpp" />
-        <option value="$PROJECT_DIR$/core/data/proto_net_data.hpp" />
         <option value="$PROJECT_DIR$/core/data/proto_net_io.hpp" />
         <option value="$PROJECT_DIR$/core/data/proto_net_pipeline.hpp" />
         <option value="$PROJECT_DIR$/core/server/proto_session.hpp" />
-        <option value="$PROJECT_DIR$/core/data/proto_net_pipe.cpp" />
+        <option value="$PROJECT_DIR$/core/data/proto_net_data.hpp" />
+        <option value="$PROJECT_DIR$/core/data/proto_net_data.cpp" />
         <option value="$PROJECT_DIR$/core/data/proto_net_pipe.hpp" />
+        <option value="$PROJECT_DIR$/core/data/proto_net_pipe.cpp" />
       </list>
     </option>
   </component>
@@ -196,7 +217,8 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="74" />
+    <option name="x" value="62" />
+    <option name="y" value="33" />
     <option name="width" value="1556" />
     <option name="height" value="985" />
   </component>
@@ -320,7 +342,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../make/proto_server.cmake" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/samples/clients/proto_echo_client" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -413,28 +435,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="74" y="0" width="1556" height="985" extended-state="0" />
-    <editor active="false" />
+    <frame x="62" y="33" width="1556" height="985" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18983269" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18983269" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39719626" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271028" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39719626" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="LuaJ" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827103" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -459,7 +481,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -577,7 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,13 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="191" column="5" selection-start-line="191" selection-start-column="5" selection-end-line="191" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/include/boost/asio/ip/tcp.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -747,9 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="31" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="31" />
-          <folding>
-            <element signature="e#40#58#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -765,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="95" selection-start-line="21" selection-start-column="95" selection-end-line="21" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,26 +828,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="80" column="53" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/server/proto_tcp_server.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/proto_net_pipe.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -851,11 +844,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="52" />
+          <folding>
+            <element signature="e#117#134#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/proto_net_pipe.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="7" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="75" />
+          <folding>
+            <element signature="e#98#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/proto_net_data.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="213" selection-end-column="22" />
+          <folding>
+            <element signature="e#59#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/data/proto_net_pipe.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6993865">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-          <folding />
+        <state vertical-scroll-proportion="0.6960193">
+          <caret line="82" column="57" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
+          <folding>
+            <element signature="e#41#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
