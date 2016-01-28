@@ -1,6 +1,5 @@
 
 
-#include <iostream>
 #include <core/server/proto_tcp_server.hpp>
 #include "proto_echo_pipeline.hpp"
 

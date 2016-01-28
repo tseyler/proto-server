@@ -13,6 +13,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
 file(GLOB SOURCE_FILES ${PROJ_DIR}/src/*.cpp)
 
 set(INCLUDE_DIRS
+  ${PROJ_DIR}/include
   ${BOOST_INC_DIR}
   ${PROTO_SERVER_DIR}
 )
