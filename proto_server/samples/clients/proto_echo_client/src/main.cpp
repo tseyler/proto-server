@@ -1,7 +1,7 @@
 
 
 #include <iostream>
-#include <core/client/proto_tcp_client.hpp>
+#include "proto_echo_pipeline.hpp"
 
 using namespace proto_net;
 using namespace proto_net::client;
@@ -21,9 +21,14 @@ main(int argc, char *argv[])
         return 1;
     }
 
-    client.ps_write_msg("Hello World!");
-    std::string response = client.ps_read_msg();
-    std::cout << response << std::endl;
+    proto_echo_pipeline pipeline(client);
+    proto_net_in_data in_data("Hello World!");
+    proto_net_out_data out_data;
+    pipeline.ps_pipeline(in_data, out_data);
+
+   // client.ps_write_msg("Hello World!");
+    //std::string response = client.ps_read_msg();
+    //std::cout << response << std::endl;
 
     return 0;
 }

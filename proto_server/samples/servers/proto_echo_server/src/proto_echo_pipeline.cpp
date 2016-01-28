@@ -9,9 +9,12 @@
 void
 proto_echo_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
 {
-    //res_data = req_data; // here is how we echo
     proto_net_pipe pipe(req_data);
-    std::cout << "Echo Server Pipeline: Data in = " << req_data << std::endl;
+    proto_net_data data_in = req_data;
+    data_in.data_type(data_text);
+    std::cout << "Echo Server Pipeline: Data in = " << data_in << std::endl;
     res_data = pipe.ps_pipe_out();
-    std::cout << "Echo Server Pipeline: Data out = " << res_data << std::endl;
+    proto_net_data data_out = res_data;
+    data_out.data_type(data_text);
+    std::cout << "Echo Server Pipeline: Data out = " << data_out << std::endl;
 }
