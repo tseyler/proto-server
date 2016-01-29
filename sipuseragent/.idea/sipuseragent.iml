@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/SubscriptionHandler.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/UserAgent.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/RegistrationHandler.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/SessionDialog.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/userAgentHelper.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/PublicationHandler.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/SessionSdp.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/OutOfDialogHandler.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/MessageHandler.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/InviteHandler.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file:///usr/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include" />
+          <root url="file:///usr/local/include" />
+          <root url="file://$USER_HOME$/resiprocate-1.10.1" />
+          <root url="file://$MODULE_DIR$/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///usr/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include" />
+          <root url="file:///usr/local/include" />
+          <root url="file://$USER_HOME$/resiprocate-1.10.1" />
+          <root url="file://$MODULE_DIR$/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
