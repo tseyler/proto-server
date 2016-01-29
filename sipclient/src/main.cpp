@@ -73,15 +73,15 @@ void console_func(useragent_signaling* uas)
 int 
 main(int argc, char* argv[])
 {
-    useragent_signaling uas("192.168.1.14");
+    useragent_signaling uas("192.168.1.28");
 
-    std::string profile_aor = useragent_signaling::set_profile_aor("sipclient_app", "sipclient_app", "192.168.1.6");
+    std::string profile_aor = useragent_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
 
-    uas.restart_useragent(0, false, profile_aor, "t0talc0ntr0l4!");
+    uas.restart_useragent(0, false, profile_aor, "sipclient");
 
-    boost::thread console_thd(console_func, &uas);
+    //boost::thread console_thd(console_func, &uas);
 
-    console_thd.join();
+    //console_thd.join();
 	// stop the UA loop
     uas.stop_useragent();
 

@@ -4,7 +4,7 @@ set(CPP_PROJ_DIR $ENV{HOME}/projects/cpp-projects)
 # make dir
 set(MAKE_DIR ${CPP_PROJ_DIR}/make)
 
-include(${MAKE_DIR}/sipuseragent.cmake)
+#include(${MAKE_DIR}/sipuseragent.cmake)
 
 set(PROJ_DIR ${CPP_PROJ_DIR}/sipclient)
 
@@ -25,7 +25,7 @@ link_directories(${LIB_DIR} ${BOOST_LIB_DIR} ${RESIP_LIB_DIR})
 
 add_executable(sipclient ${SOURCE_FILES})
 
-add_dependencies(sipclient sipuseragent)
+#add_dependencies(sipclient sipuseragent)
 
 # linking
 target_link_libraries(sipclient sipuseragent boost_system boost_thread dum resip rutil)
