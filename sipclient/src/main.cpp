@@ -79,9 +79,9 @@ main(int argc, char* argv[])
 
     uas.restart_useragent(0, false, profile_aor, "sipclient");
 
-    //boost::thread console_thd(console_func, &uas);
+    boost::thread console_thd(console_func, &uas);
 
-    //console_thd.join();
+    console_thd.join();
 	// stop the UA loop
     uas.stop_useragent();
 
