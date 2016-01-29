@@ -10,9 +10,10 @@ namespace proto_net
 {
     namespace server
     {
-        proto_session::proto_session(proto_net_io& ps_io, size_t buffer_size /* = 4096*/) : ps_io_(ps_io),
-                                                                                            buffer_size_(buffer_size),
-                                                                                            buffer_(NULL)
+        proto_session::proto_session(proto_net_pipeline& ps_pipeline, size_t buffer_size /* = 4096*/) :
+                ps_pipeline_(ps_pipeline),
+                buffer_size_(buffer_size),
+                buffer_(NULL)
         {
 
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
@@ -36,10 +37,10 @@ namespace proto_net
             return buffer_size_;
         }
 
-        proto_net_io&
-        proto_session::ps_io(void)
+        proto_net_pipeline&
+        proto_session::ps_pipeline(void)
         {
-            return ps_io_;
+            return ps_pipeline_;
         }
 
     }

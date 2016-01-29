@@ -18,7 +18,14 @@ set(BOOST_LIB_DIR /usr/local/lib)
 
 set(TCP_NET_INC_DIR ${CPP_PROJ_DIR}/tcp_network/include)
 set(NET_PROT_INC_DIR ${CPP_PROJ_DIR}/net_protocol/include)
+
+# proto server
 set(PROTO_SERVER_DIR ${CPP_PROJ_DIR}/proto_server)
+set(PROTO_SERVER_SAMPLES_DIR ${PROTO_SERVER_DIR}/samples)
+set(PROTO_SERVER_SAMPLES_SERVERS_DIR ${PROTO_SERVER_SAMPLES_DIR}/servers)
+set(PROTO_SERVER_SAMPLES_CLIENTS_DIR ${PROTO_SERVER_SAMPLES_DIR}/clients)
+
+# sip
 set(SIPUSERAGENT_INC_DIR ${CPP_PROJ_DIR}/sipuseragent/include)
 
 # resiprocate version

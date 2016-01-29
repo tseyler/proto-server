@@ -8,8 +8,8 @@ namespace proto_net
 {
     namespace server
     {
-        proto_tcp_session::proto_tcp_session(proto_net_service_ptr ps_service, proto_net_io& ps_io,
-                                             size_t buffer_size /*= 4096*/) :  proto_session(ps_io, buffer_size),
+        proto_tcp_session::proto_tcp_session(proto_net_service_ptr ps_service, proto_net_pipeline& ps_pipeline,
+                                             size_t buffer_size /*= 4096*/) :  proto_session(ps_pipeline, buffer_size),
                                                                                socket_(proto_net_service_ref(ps_service))
         {
 
@@ -57,7 +57,7 @@ namespace proto_net
               // handle a read here
                 proto_net_data req_data(buffer_, bytes_transferred);
                 proto_net_data res_data;
-                ps_io_.ps_io(req_data, res_data); // all of the magic takes place inside the ps_io_ object
+                ps_pipeline_.ps_pipeline(req_data, res_data); // all of the magic takes place inside the ps_io_ object
                 write(res_data.data(), res_data.data_size()); // set response data ptr or size to zero for a non-write
             }
             else
@@ -76,7 +76,7 @@ namespace proto_net
                 delete this;
         }
 
-        tcp::socket&
+        proto_net_tcp_socket&
         proto_tcp_session::ps_socket(void)
         {
             return socket_;

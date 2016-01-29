@@ -2,10 +2,10 @@
 // Created by Terry Seyler on 10/27/15.
 //
 
-#ifndef PROTO_SESSION_HPP__
-#define PROTO_SESSION_HPP__
+#ifndef PROTO_SESSION_HPP_
+#define PROTO_SESSION_HPP_
 
-#include <core/data/proto_net_io.hpp>
+#include <core/data/proto_net_pipeline.hpp>
 
 using namespace proto_net::data;
 
@@ -17,7 +17,7 @@ namespace proto_net
         {
         public:
 
-            proto_session(proto_net_io& ps_io, size_t buffer_size = 4096);
+            proto_session(proto_net_pipeline& ps_pipeline, size_t buffer_size = 4096);
             virtual ~proto_session();
 
             virtual void start(void) = 0;
@@ -27,11 +27,11 @@ namespace proto_net
             // getters
             const char* ps_buffer(void) const;
             size_t ps_buffer_size(void) const;
-            proto_net_io& ps_io(void);
+            proto_net_pipeline& ps_pipeline(void);
 
         protected:
 
-            proto_net_io& ps_io_;
+            proto_net_pipeline& ps_pipeline_;
             size_t buffer_size_;
             char* buffer_;
 
@@ -39,4 +39,4 @@ namespace proto_net
     }
 }
 
-#endif //PROTO_SESSION_HPP__
+#endif //PROTO_SESSION_HPP_

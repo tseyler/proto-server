@@ -2,12 +2,11 @@
 // Created by Terry Seyler on 8/30/15.
 //
 
-#ifndef PROTO_TCP_SESSION_HPP__
-#define PROTO_TCP_SESSION_HPP__
+#ifndef PROTO_TCP_SESSION_HPP_
+#define PROTO_TCP_SESSION_HPP_
 
 #include <core/proto_net_types.hpp>
 #include <core/server/proto_session.hpp>
-//#include "proto_server.hpp"
 
 using namespace boost::asio::ip;
 using namespace proto_net::data;
@@ -20,7 +19,7 @@ namespace proto_net
         {
         public:
 
-            proto_tcp_session(proto_net_service_ptr ps_service, proto_net_io& ps_io, size_t buffer_size = 4096);
+            proto_tcp_session(proto_net_service_ptr ps_service, proto_net_pipeline& ps_pipeline, size_t buffer_size = 4096);
             virtual ~proto_tcp_session();
 
             virtual void start(void);
@@ -31,11 +30,11 @@ namespace proto_net
             virtual void handle_write(const boost::system::error_code& error);
 
             // getter
-            tcp::socket& ps_socket(void);
+            proto_net_tcp_socket& ps_socket(void);
 
         protected:
 
-            tcp::socket socket_;
+            proto_net_tcp_socket socket_;
         };
     }
 

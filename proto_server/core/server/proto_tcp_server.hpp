@@ -29,13 +29,13 @@ namespace proto_net
 
             // pure virtuals
             virtual void ps_run(void);
-            virtual void ps_start_accept(proto_net_io& ps_io, size_t buffer_size);
+            virtual void ps_start_accept(proto_net_pipeline& ps_io, size_t buffer_size);
 
             unsigned short ps_port(void) const;
 
         protected:
 
-            virtual void handle_accept(proto_tcp_session* session, const boost::system::error_code& error);
+            virtual void handle_accept(proto_tcp_session* session, const proto_net_error_code& error);
 
             unsigned short port_num_;
             proto_net_tcp_acceptor acceptor_;
