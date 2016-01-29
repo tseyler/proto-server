@@ -5,9 +5,6 @@
 *.o
 *.a
 .metadata
-.project
-.cproject
-.settings
 *~
 
 # we dont need encodings.xml

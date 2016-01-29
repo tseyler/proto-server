@@ -10,7 +10,7 @@ set(PROJ_DIR ${CPP_PROJ_DIR}/sipclient)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations -std=c++11")
 
-set(SOURCE_FILES ${GLOB_SRC_FILES})
+file(GLOB SOURCE_FILES ${PROJ_DIR}/src/*.cpp)
 
 set(INCLUDE_DIRS
   ${PROJ_DIR}/include

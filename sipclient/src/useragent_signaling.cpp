@@ -10,7 +10,7 @@ namespace sipclient_console_app
 
     useragent_signaling::useragent_signaling(const std::string& local_address) :
 	local_address_(local_address),
-	user_agent_(new UserAgent("t0talc0ntr0l4!"))
+	user_agent_(new UserAgent("sipclient"))
     {
     	setup_local_SDP();
     }

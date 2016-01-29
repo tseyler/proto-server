@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/useragent_signaling.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/InviteHandler.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/InviteHandler.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/MessageHandler.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/MessageHandler.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/OutOfDialogHandler.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/OutOfDialogHandler.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/PublicationHandler.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/PublicationHandler.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/RegistrationHandler.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/RegistrationHandler.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/SessionDialog.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/SessionDialog.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/SessionSdp.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/SessionSdp.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/SubscriptionHandler.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/SubscriptionHandler.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/UserAgent.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/UserAgent.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../sipuseragent/src/userAgentHelper.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../sipuseragent/src/userAgentHelper.cpp" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file:///usr/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include" />
+          <root url="file:///usr/local/include" />
+          <root url="file://$USER_HOME$/resiprocate-1.10.1" />
+          <root url="file://$MODULE_DIR$/../sipuseragent/include" />
+          <root url="file://$MODULE_DIR$/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///usr/include" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/4.9/include" />
+          <root url="file:///usr/local/include" />
+          <root url="file://$USER_HOME$/resiprocate-1.10.1" />
+          <root url="file://$MODULE_DIR$/../sipuseragent/include" />
+          <root url="file://$MODULE_DIR$/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
