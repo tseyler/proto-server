@@ -255,7 +255,8 @@ SipUserAgent::InviteHandler::onAnswer(InviteSessionHandle h, const SipMessage& m
 		SessionDialog* dialog = getSessionDialog(callId);
 		if (dialog)
 		{
-			dialog->setRemoteSdp(new SessionSdp(const_cast<SdpContents*>(&sdp)));
+			SessionSdpPtr session_sdp(new SessionSdp(const_cast<SdpContents*>(&sdp)));
+			dialog->setRemoteSdp(session_sdp);
 			setResult(inviteAnswer);
 			fireResult(SipUserAgent::makeResponseString(msg), SipUserAgent::makeMethodString(msg), SipUserAgent::makeStatusCode(msg), callId);
 			fireSessionCallbacks(sAnswer, getSessionDialog(callId));
@@ -282,7 +283,8 @@ SipUserAgent::InviteHandler::onOffer(InviteSessionHandle h, const SipMessage& ms
 		SessionDialog* dialog = getSessionDialog(callId);
 		if (dialog)
 		{
-			dialog->setRemoteSdp(new SessionSdp(const_cast<SdpContents*>(&sdp)));
+			SessionSdpPtr session_sdp(new SessionSdp(const_cast<SdpContents*>(&sdp)));
+			dialog->setRemoteSdp(session_sdp);
 			setResult(inviteOffer);
 			fireResult(SipUserAgent::makeString(msg), SipUserAgent::makeMethodString(msg), SipUserAgent::makeStatusCode(msg), callId);
 			fireSessionCallbacks(sOffer, getSessionDialog(callId));

@@ -440,7 +440,7 @@ SipUserAgent::UserAgent::holdResumeRequest(const std::string& callId)
 	SessionDialog* dialog = getSessionDialog(callId);
 	if (dialog)
 	{
-		SessionSdp* sessionSdp = dialog->getSessionSdp();
+		SessionSdpPtr sessionSdp = dialog->getSessionSdp();
 		if (sessionSdp)
 		{
 			// get our current SendRecv
