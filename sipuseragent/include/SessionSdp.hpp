@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **
 *                                                                           *
 * SessionSdp.hpp                                                            *
-* Author: Terry Seyler							    *
+* Author: Terry Seyler							                            *
 *                                                                           *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 
@@ -26,6 +26,8 @@ namespace SipUserAgent
 	typedef std::vector<std::string>			SdpAttributeCollection;
 	typedef SdpAttributeCollection::iterator	SdpAttributeIterator;
 
+	class SessionSdp; // forward
+	typedef std::shared_ptr<SessionSdp>			SessionSdpPtr;
 
 	class SessionSdp
 	{

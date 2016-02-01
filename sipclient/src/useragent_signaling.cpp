@@ -164,7 +164,10 @@ namespace sipclient_console_app
 				if (server_invite_session)
 				{
 					SessionSdp session_sdp = local_sdp_;
-					SessionSdp* remote_sdp = dialog->getRemoteSdp();
+					SessionSdpPtr remote_sdp = dialog->getRemoteSdp();
+					std::string remote_sdp_str = remote_sdp->toString();
+					std::cout << remote_sdp_str << std::endl;
+
 					SessionSdp::SdpConnection connection = remote_sdp->getConnection();
 					bool multicast = (connection.getTtl());//connection.is_multicast_address();
 					bool forking = is_forking();

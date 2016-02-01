@@ -76,23 +76,23 @@ SipUserAgent::SessionDialog::getHoldStatus(void) const
 }
 
 void
-SipUserAgent::SessionDialog::setSessionSdp(SessionSdp* sessionSdp)
+SipUserAgent::SessionDialog::setSessionSdp(SessionSdpPtr sessionSdp)
 {
-	sessionSdp_.reset(sessionSdp);
+	sessionSdp_ = sessionSdp;
 	negotiateMedia();
 }
 
 void
-SipUserAgent::SessionDialog::setRemoteSdp(SessionSdp* remoteSdp)
+SipUserAgent::SessionDialog::setRemoteSdp(SessionSdpPtr remoteSdp)
 {
-	remoteSdp_.reset(remoteSdp);
+	remoteSdp_ = remoteSdp;
 	negotiateMedia();				// negotiate after setting the remote
 }
 
 void
 SipUserAgent::SessionDialog::negotiateMedia(void)
 {
-	if (sessionSdp_.get() && remoteSdp_.get())	// perform the negotiation - need both to negotiate
+	if (sessionSdp_ && remoteSdp_)	// perform the negotiation - need both to negotiate
 	{
 		SdpContents contents = remoteSdp_->toSdpContents();
 		sessionSdp_->negotiateMedia(&contents);

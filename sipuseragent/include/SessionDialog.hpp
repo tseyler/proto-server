@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **
 *                                                                           *
 * SessionDialog.hpp                                                    	    *
-* Author: Terry Seyler							    *
+* Author: Terry Seyler							                            *
 *                                                                           *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 
@@ -41,12 +41,12 @@ namespace SipUserAgent
 		{}
 
 		// setters
-		void 						setSessionSdp(SessionSdp* sessionSdp);
-		void 						setRemoteSdp(SessionSdp* remoteSdp);
+		void 						setSessionSdp(SessionSdpPtr sessionSdp);
+		void 						setRemoteSdp(SessionSdpPtr remoteSdp);
 
 		// getters
-		SessionSdp*					getSessionSdp(void) const { return sessionSdp_.get(); }
-		SessionSdp*					getRemoteSdp(void) const { return remoteSdp_.get(); }
+		SessionSdpPtr				getSessionSdp(void) const { return sessionSdp_; }
+		SessionSdpPtr				getRemoteSdp(void) const { return remoteSdp_; }
 		std::string					getCallId(void) const { return callId_; }
 		resip::InviteSession*		getInviteSession(void) const { return inviteSession_; }
 		OnHold						getHoldStatus(void) const;
@@ -69,8 +69,8 @@ namespace SipUserAgent
 	protected:
 
 		resip::InviteSession*				inviteSession_;
-	    std::auto_ptr<SessionSdp>			sessionSdp_;
-	    std::auto_ptr<SessionSdp>			remoteSdp_;
+		SessionSdpPtr						sessionSdp_;
+		std::shared_ptr<SessionSdp>			remoteSdp_;
 		std::string							callId_;
 		unsigned long						session_id_;
 
