@@ -3,10 +3,10 @@
 
 #include <iostream>
 #include <vector>
+#include <ifaddrs.h>
 #include <boost/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/algorithm/string.hpp>
-#include <boost/tokenizer.hpp>
 #include "useragent_signaling.hpp"
 
 
@@ -75,6 +75,41 @@ void console_func(useragent_signaling* uas)
 	std::cout << "Exiting..." << std::endl;
 }
 
+std::string get_local_address(void)
+{
+	std::string local_address;
+
+	struct ifaddrs* if_struct_ptr(NULL);
+	struct ifaddrs* ifa(NULL);
+	void* tmp_addr(NULL);
+
+	getifaddrs(&if_struct_ptr);
+
+	for (ifa = if_struct_ptr; ifa != NULL; ifa = ifa->ifa_next)
+	{
+		if (!ifa->ifa_addr)
+			continue;
+		char addressBuffer[INET_ADDRSTRLEN];
+		if (ifa->ifa_addr->sa_family == AF_INET)
+		{ // check it is IP4
+			// is a valid IP4 Address
+			tmp_addr = &((struct sockaddr_in *)ifa->ifa_addr)->sin_addr;
+
+			inet_ntop(AF_INET, tmp_addr, addressBuffer, INET_ADDRSTRLEN);
+			//printf("%s IP Address %s\n", ifa->ifa_name, addressBuffer);
+			local_address = addressBuffer;
+		} else if (ifa->ifa_addr->sa_family == AF_INET6)
+		{ // check it is IP6
+			// is a valid IP6 Address
+			tmp_addr = &((struct sockaddr_in6 *)ifa->ifa_addr)->sin6_addr;
+			inet_ntop(AF_INET6, tmp_addr, addressBuffer, INET6_ADDRSTRLEN);
+			//printf("%s IP Address %s\n", ifa->ifa_name, addressBuffer);
+		}
+	}
+
+	return local_address;
+}
+
 int 
 main(int argc, char* argv[])
 {
@@ -89,7 +124,8 @@ main(int argc, char* argv[])
 	std::string username = argv[2];
 	std::string registrar = argv[3];
 	std::string profile_aor = useragent_signaling::set_profile_aor(name, username, registrar);
-    useragent_signaling uas("192.168.1.28", profile_aor);
+	std::string local_address = get_local_address();
+    useragent_signaling uas(local_address, profile_aor);
 
     boost::thread console_thd(console_func, &uas);
 
