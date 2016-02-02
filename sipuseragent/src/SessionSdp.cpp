@@ -199,42 +199,53 @@ SipUserAgent::SessionSdp::getNextTime(SdpTime* sdpTime)
 }
 
 void
-SipUserAgent::SessionSdp::negotiateMedia(const Contents* remoteContents)
+//SipUserAgent::SessionSdp::negotiateMedia(const Contents* remoteContents)
+SipUserAgent::SessionSdp::negotiateMedia(SessionSdpPtr remote_sdp)
 {
-	const SdpContents* remoteSdpContents = dynamic_cast<const SdpContents*>(remoteContents);
-	if (remoteSdpContents)	// we have sdp content to negotiate with
-	{
-		SessionSdp remoteSdp(const_cast<SdpContents*>(remoteSdpContents));
-		SessionSdp::SdpMedia* remoteSdpMedia = remoteSdp.getFrontMedia();
-		SessionSdp::SdpMedia* sessionSdpMedia = getFrontMedia();
-
-		if (remoteSdpMedia && sessionSdpMedia)
+	//const SdpContents* remoteSdpContents = dynamic_cast<const SdpContents*>(remoteContents);
+	//if (remoteSdpContents)	// we have sdp content to negotiate with
+	//{
+		//SessionSdp remoteSdp(const_cast<SdpContents*>(remoteSdpContents));
+		SessionSdp::SdpMedia* remoteSdpMedia = remote_sdp->getFrontMedia();
+		while (remoteSdpMedia)
 		{
-			if (remoteSdpMedia->getMediaType() == sessionSdpMedia->getMediaType())
+			SessionSdp::SdpMedia* sessionSdpMedia = getFrontMedia();
+			while (sessionSdpMedia)
 			{
-				sessionSdpMedia->andFormats(*remoteSdpMedia);
-				// negotiate sendrecv
-				switch (sessionSdpMedia->getSendRecv())
+				if (remoteSdpMedia->getMediaType() == sessionSdpMedia->getMediaType())
 				{
-					case SessionSdp::SdpMedia::srSendRecv:
+					sessionSdpMedia->andFormats(*remoteSdpMedia);
+					// negotiate sendrecv
+					switch (sessionSdpMedia->getSendRecv())
+					{
+						case SessionSdp::SdpMedia::srSendRecv:
 
-						if (remoteSdpMedia->sendRecvAttributeExists(SessionSdp::SdpMedia::srSend))	// remote went to a hold
-							sessionSdpMedia->addSendRecvAttribute(SessionSdp::SdpMedia::srRecv);
-						break;
-					case SessionSdp::SdpMedia::srRecv:
+							if (remoteSdpMedia->sendRecvAttributeExists(SessionSdp::SdpMedia::srSend))	// remote went to a hold
+								sessionSdpMedia->addSendRecvAttribute(SessionSdp::SdpMedia::srRecv);
+							break;
+						case SessionSdp::SdpMedia::srRecv:
 
-						if (remoteSdpMedia->sendRecvAttributeExists(SessionSdp::SdpMedia::srSendRecv))	// remote went off hold
-							sessionSdpMedia->addSendRecvAttribute(SessionSdp::SdpMedia::srSendRecv);
-						break;
-					case SessionSdp::SdpMedia::srNotSpecified:
-					case SessionSdp::SdpMedia::srInactive:
-					case SessionSdp::SdpMedia::srSend:
+							if (remoteSdpMedia->sendRecvAttributeExists(SessionSdp::SdpMedia::srSendRecv))	// remote went off hold
+								sessionSdpMedia->addSendRecvAttribute(SessionSdp::SdpMedia::srSendRecv);
+							break;
+						case SessionSdp::SdpMedia::srNotSpecified:
+						case SessionSdp::SdpMedia::srInactive:
+						case SessionSdp::SdpMedia::srSend:
 
-						break;
+							break;
+					}
 				}
+				sessionSdpMedia = getNextMedia(sessionSdpMedia);
 			}
+			remoteSdpMedia = remote_sdp->getNextMedia(remoteSdpMedia);
 		}
-	}
+
+
+		//if (remoteSdpMedia && sessionSdpMedia)
+		//{
+
+		//}
+	//}
 }
 
 //////////////////////////////// SdpConnection /////////////////////////////////////
