@@ -77,7 +77,9 @@ namespace SipUserAgent
 		void 							setSdpVersion(int version) { sdpVersion_ = version; }
 		void 							setSdpSessionName(const std::string& name) { sessionName_ = name; }
 
-		void							negotiateMedia(const resip::Contents* remoteContents);
+		//void							negotiateMedia(const resip::Contents* remoteContents);
+        void							negotiateMedia(SessionSdpPtr remote_sdp);
+
 
 		class SdpConnection
 		{
