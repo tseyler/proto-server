@@ -66,6 +66,8 @@ namespace sipclient_console_app
 	
 		std::string get_call_id(void) const { return call_id_; }
 
+		bool is_registered(void) const { return registered_; }
+
     private:
 
 		void setup_local_SDP(void);
@@ -79,6 +81,7 @@ namespace sipclient_console_app
 		std::string local_address_;
 		std::string call_id_;
 		SessionSdp local_sdp_;
+		bool registered_;
     };
 
 }

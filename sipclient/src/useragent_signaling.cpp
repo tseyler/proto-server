@@ -10,7 +10,8 @@ namespace sipclient_console_app
 
     useragent_signaling::useragent_signaling(const std::string& local_address) :
 	local_address_(local_address),
-	user_agent_(new UserAgent("sipclient"))
+	user_agent_(new UserAgent("sipclient")),
+	registered_(false)
     {
     	setup_local_SDP();
     }
@@ -40,6 +41,7 @@ namespace sipclient_console_app
 		{
 		case regSuccess:
 
+			registered_ = true;
 			std::cout << "useragent_signaling::OnResult: reg_result = regSuccess" << std::endl;
 			break;
 		case regRemoved:
@@ -161,46 +163,56 @@ namespace sipclient_console_app
 			{
 				resip::ServerInviteSession* server_invite_session = dynamic_cast<resip::ServerInviteSession*>(invite_session);
 
-				if (server_invite_session)
+				if (server_invite_session) // we have an incoming call
 				{
-					SessionSdp session_sdp = local_sdp_;
+					// get the remote's SDP
 					SessionSdpPtr remote_sdp = dialog->getRemoteSdp();
-					std::string remote_sdp_str = remote_sdp->toString();
-					std::cout << remote_sdp_str << std::endl;
+					if (remote_sdp) // we have remote SDP
+					{
+						std::string remote_sdp_str = remote_sdp->toString();
+						std::cout << "Remote SDP:" << std::endl << remote_sdp_str << std::endl;
 
-					SessionSdp::SdpConnection connection = remote_sdp->getConnection();
-					bool multicast = (connection.getTtl());//connection.is_multicast_address();
-					bool forking = is_forking();
-					int provisional_code(180);
-					//if (forking && multicast)
-					//{
-					//	session_sdp.setSdpConnection(connection.getAddress(), 1);
-					//	provisional_code = 183; // provisional progress
-					//}
+						// make a copy of the local SDP
+						SessionSdpPtr session_sdp(new SessionSdp(local_sdp_));
+						// negotiate the media
+						session_sdp->negotiateMedia(remote_sdp);
 
-					server_invite_session->provisional(provisional_code); // putting this before provideAnswer
-					invite_session->provideAnswer(session_sdp.toSdpContents());
-					//server_invite_session->provisional(provisional_code); // restore after 2.7.2
-		// experimental
-					//resip::SipMessage msg = invite_handler_->getMessage();
-					//	const resip::HeaderFieldValueList* hfv_list = msg.getRawHeader(Headers::To);
-					//	resip::HeaderFieldValueList::const_iterator it = hfv_list->begin();
-					//	while (it != hfv_list->end())
-					//	{
-					//		resip::HeaderFieldValue* hfv = *it;
+						std::string local_sdp_str = local_sdp_.toString();
+						std::cout << "Local SDP:" << std::endl << local_sdp_str << std::endl;
+						//SessionSdp::SdpConnection connection = remote_sdp->getConnection();
+						//bool multicast = (connection.getTtl());//connection.is_multicast_address();
+						//bool forking = is_forking();
+						int provisional_code(180);
+						//if (forking && multicast)
+						//{
+						//	session_sdp.setSdpConnection(connection.getAddress(), 1);
+						//	provisional_code = 183; // provisional progress
+						//}
 
-					//	}
-					//SessionSdp* remote_sdp = dialog->getRemoteSdp();
-					//std::string session_name = remote_sdp->getSessionName();
-					//std::string remote_user = dialog->getRemoteUser();
-					//std::cout << "useragent_signaling::OnSessionChanged: Remote User = " << remote_user << "; Session Name = " << session_name << std::endl;
+						server_invite_session->provisional(provisional_code); // putting this before provideAnswer
+						invite_session->provideAnswer(session_sdp->toSdpContents());
+						//server_invite_session->provisional(provisional_code); // restore after 2.7.2
+						// experimental
+						//resip::SipMessage msg = invite_handler_->getMessage();
+						//	const resip::HeaderFieldValueList* hfv_list = msg.getRawHeader(Headers::To);
+						//	resip::HeaderFieldValueList::const_iterator it = hfv_list->begin();
+						//	while (it != hfv_list->end())
+						//	{
+						//		resip::HeaderFieldValue* hfv = *it;
 
-					//std::string sdp_remote = dialog->getRemoteSdp()->toString();
-					//std::cout << "useragent_signaling::OnSessionChanged: Remote SDP = " << sdp_remote << std::endl;
-					//SdpContents sdp_contents;
-					//setup_local_SDP(sdp_contents);
-					//dialog->setSessionSdp(new SessionSdp(&sdp_contents));
-		// experimental
+						//	}
+						//SessionSdp* remote_sdp = dialog->getRemoteSdp();
+						//std::string session_name = remote_sdp->getSessionName();
+						//std::string remote_user = dialog->getRemoteUser();
+						//std::cout << "useragent_signaling::OnSessionChanged: Remote User = " << remote_user << "; Session Name = " << session_name << std::endl;
+
+						//std::string sdp_remote = dialog->getRemoteSdp()->toString();
+						//std::cout << "useragent_signaling::OnSessionChanged: Remote SDP = " << sdp_remote << std::endl;
+						//SdpContents sdp_contents;
+						//setup_local_SDP(sdp_contents);
+						//dialog->setSessionSdp(new SessionSdp(&sdp_contents));
+						// experimental
+					}
 				}
 			}
 			std::cout << "useragent_signaling::OnSessionChanged: SessionStatus = sOffer; Call ID = " << dialog->getCallId() << std::endl;
@@ -360,38 +372,40 @@ namespace sipclient_console_app
 void
 useragent_signaling::setup_local_SDP(void)
 {
-
     std::string connection_str = "c=IN IP4 " + local_address_ + "\r\n";
 
     // Basic sip call SDP info.
     std::string dataStr = "v=0\r\n";
-    dataStr += "o=MxSIP1 0 0 IN IP4 " + local_address_ + "\r\n";
-    dataStr += "s=UA_CONSOLE_APP\r\n";
+    dataStr += "o=Pandalume 0 0 IN IP4 " + local_address_ + "\r\n";
+    dataStr += "s=Pandalume\r\n";
     dataStr += connection_str;
     dataStr += "t=0 0\r\n";
 
-    std::string videoStr = "m=video 37818 RTP/AVP 96 97 98 101\r\n";
-    videoStr += "a=rtpmap:96 H264/90000\r\n";
-    videoStr += "a=rtpmap:97 VP8/90000\r\n";
-    videoStr += "a=rtpmap:98 MP4V-ES/90000\r\n";
-    videoStr += "a=rtpmap:101 telephone-event/90000\r\n";
-    videoStr += "a=fmtp:96 packetization-mode=1;profile-level-id=42801F\r\n";
-    videoStr += "a=fmtp:98 profile-level-id=3\r\n";
-    videoStr += "a=sendrecv\r\n";
+	// Change if audio stream is active or inactive.
+	std::string audioStr = "m=audio 39423 RTP/AVP 96 9 0 8 98 99 101 102\r\n";
+	audioStr += "a=rtpmap:96 opus/48000/2\r\n";
+	audioStr += "a=rtpmap:97 SILK/16000\r\n";
+	audioStr += "a=rtpmap:98 speex/16000\r\n";
+	audioStr += "a=rtpmap:99 speex/8000\r\n";
+	audioStr += "a=rtpmap:101 telephone-event/8000\r\n";
+	audioStr += "a=rtpmap:102 telephone-event/16000\r\n";
+	audioStr += "a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0\r\n";
+	audioStr += "a=fmtp:98 vbr=on\r\n";
+	audioStr += "a=fmtp:99 vbr=on\r\n";
+	audioStr += "a=fmtp:101 0-16\r\n";
+	audioStr += "a=fmtp:102 0-16\r\n";
+	audioStr += "a=sendrecv\r\n";
 
-    // Change if audio stream is active or inactive.
-    std::string audioStr = "m=audio 39423 RTP/AVP 96 9 0 8 97 98 99 101 100 102\r\n";
-    audioStr += "a=rtpmap:96 opus/48000/2\r\n";
-    audioStr += "a=rtpmap:97 SILK/16000\r\n";
-    audioStr += "a=rtpmap:98 speex/16000\r\n";
-    audioStr += "a=rtpmap:99 speex/8000\r\n";
-    audioStr += "a=rtpmap:101 telephone-event/48000\r\n";
-    audioStr += "a=rtpmap:100 telephone-event/8000\r\n";
-    audioStr += "a=rtpmap:102 telephone-event/16000\r\n";
-    audioStr += "a=fmtp:96 useinbandfec=1; stereo=0; sprop-stereo=0\r\n";
-    audioStr += "a=fmtp:98 vbr=on\r\n";
-    audioStr += "a=fmtp:99 vbr=on\r\n";
-    audioStr += "a=sendrecv\r\n";
+    std::string videoStr = "m=video 37818 RTP/AVP 96 97 98 101\r\n";
+	videoStr += "a=rtpmap:96 H264/90000\r\n";
+    videoStr += "a=rtpmap:97 VP8/90000\r\n";
+    //videoStr += "a=rtpmap:98 MP4V-ES/90000\r\n";
+    videoStr += "a=rtpmap:101 telephone-event/90000\r\n";
+    //videoStr += "a=fmtp:96 packetization-mode=1;profile-level-id=42801F\r\n";
+    //videoStr += "a=fmtp:98 profile-level-id=3\r\n";
+	videoStr += "a=fmtp:98 profile-level-id=428016;packetization-mode=0\r\n";
+	videoStr += "a=fmtp:101 0-16\r\n";
+    videoStr += "a=sendrecv\r\n";
 
     std::string tmpDataStr = dataStr + videoStr + audioStr;
 

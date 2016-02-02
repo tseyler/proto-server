@@ -94,8 +94,9 @@ SipUserAgent::SessionDialog::negotiateMedia(void)
 {
 	if (sessionSdp_ && remoteSdp_)	// perform the negotiation - need both to negotiate
 	{
-		SdpContents contents = remoteSdp_->toSdpContents();
-		sessionSdp_->negotiateMedia(&contents);
+		//SdpContents contents = remoteSdp_->toSdpContents();
+		//sessionSdp_->negotiateMedia(&contents);
+		sessionSdp_->negotiateMedia(remoteSdp_);
 	}
 }
 

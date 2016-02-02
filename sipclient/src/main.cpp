@@ -5,7 +5,8 @@
 #include <iostream>
 #include <vector>
 #include <boost/thread.hpp>
-
+#include <boost/thread/thread.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
 
@@ -56,9 +57,12 @@ void console_func(useragent_signaling* uas)
 {
 	bool alive(true);
 	std::string console_input;
+	std::string profile_aor = useragent_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
+	uas->restart_useragent(0, false, profile_aor, "sipclient");
+	boost::this_thread::sleep(boost::posix_time::milliseconds(100));
 	while (alive)
 	{
-		std::cout << "sipclient>> ";
+		std::cout << "sipclient >> ";
 		std::getline(std::cin, console_input);
 		//std::cout << console_input << std::endl;
 		if (boost::iequals(console_input, "exit"))
@@ -74,10 +78,6 @@ int
 main(int argc, char* argv[])
 {
     useragent_signaling uas("192.168.1.28");
-
-    std::string profile_aor = useragent_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
-
-    uas.restart_useragent(0, false, profile_aor, "sipclient");
 
     boost::thread console_thd(console_func, &uas);
 
