@@ -1,21 +1,20 @@
 // main.cpp : Defines the entry point for the console application.
 //
 
-#include <stdio.h>
 #include <iostream>
 #include <vector>
 #include <boost/thread.hpp>
-#include <boost/thread/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/tokenizer.hpp>
-
-
 #include "useragent_signaling.hpp"
+
 
 using namespace sipclient_console_app;
 
- typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
+typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
+
+boost::mutex reg_mutex;
 
 void parse_console_line(useragent_signaling* uas, const std::string& console_input)
 {
@@ -56,10 +55,12 @@ void parse_console_line(useragent_signaling* uas, const std::string& console_inp
 void console_func(useragent_signaling* uas)
 {
 	bool alive(true);
+	boost::mutex::scoped_lock lock(reg_mutex);
 	std::string console_input;
-	std::string profile_aor = useragent_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
-	uas->restart_useragent(0, false, profile_aor, "sipclient");
-	boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+	uas->restart_useragent(0, false,  "sipclient");
+	while (!uas->is_registered())
+		uas->registration_condition().wait(lock);
+
 	while (alive)
 	{
 		std::cout << "sipclient >> ";
@@ -77,7 +78,18 @@ void console_func(useragent_signaling* uas)
 int 
 main(int argc, char* argv[])
 {
-    useragent_signaling uas("192.168.1.28");
+	if (argc != 4)
+	{
+		std::cout << "Usage: sipclient <name> <username> <registrar>" << std::endl;
+		return 1;
+	}
+
+	//std::string profile_aor = useragent_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
+	std::string name = argv[1];
+	std::string username = argv[2];
+	std::string registrar = argv[3];
+	std::string profile_aor = useragent_signaling::set_profile_aor(name, username, registrar);
+    useragent_signaling uas("192.168.1.28", profile_aor);
 
     boost::thread console_thd(console_func, &uas);
 

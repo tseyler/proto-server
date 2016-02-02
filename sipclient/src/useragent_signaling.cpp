@@ -7,11 +7,11 @@ using namespace SipUserAgent;
 
 namespace sipclient_console_app
 {
-
-    useragent_signaling::useragent_signaling(const std::string& local_address) :
+    useragent_signaling::useragent_signaling(const std::string& local_address, const std::string& profile) :
 	local_address_(local_address),
 	user_agent_(new UserAgent("sipclient")),
-	registered_(false)
+	registered_(false),
+	profile_aor_(profile)
     {
     	setup_local_SDP();
     }
@@ -37,11 +37,15 @@ namespace sipclient_console_app
 				  int status_code, 
 				  const std::string& call_id)
     {
+		// notify waiting threads
+		condition_.notify_one();
+
 		switch (reg_result)
 		{
 		case regSuccess:
 
 			registered_ = true;
+
 			std::cout << "useragent_signaling::OnResult: reg_result = regSuccess" << std::endl;
 			break;
 		case regRemoved:
@@ -324,19 +328,18 @@ namespace sipclient_console_app
 
     void 
     useragent_signaling::restart_useragent(int port, bool disable_udp,
-					   const std::string& profile_aor,
 					   const std::string& passwd)
     {
 		// destroyed by reset
 		user_agent_.reset();
 
-		user_agent_ = boost::shared_ptr<UserAgent>(new UserAgent(port, passwd.c_str(), NULL, disable_udp));
+		user_agent_ = std::shared_ptr<UserAgent>(new UserAgent(port, passwd.c_str(), NULL, disable_udp));
 
 		// init
 		init();
 
 		// set the profile
-		user_agent_->setProfileAor(profile_aor);
+		user_agent_->setProfileAor(profile_aor_);
 
 		// start the UA
 		start_useragent();

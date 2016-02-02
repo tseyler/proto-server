@@ -2,7 +2,6 @@
 #ifndef USERAGENT_SIGNALING_HPP_
 #define USERAGENT_SIGNALING_HPP_
 
-#include <boost/shared_ptr.hpp>
 #include "UserAgent.hpp"
 
 //using namespace resip
@@ -20,7 +19,7 @@ namespace sipclient_console_app
     {
     public:
 
-		useragent_signaling(const std::string& local_address);
+		useragent_signaling(const std::string& local_address, const std::string& profile);
 		virtual ~useragent_signaling();
 
 		//This is how we get registration results
@@ -51,9 +50,7 @@ namespace sipclient_console_app
 		// stop the useragent
 		void stop_useragent(void);
 		// restart the useragent
-		void restart_useragent(int port, bool bDisableUDP,
-					   const std::string& profile_aor,
-					   const std::string& passwd);
+		void restart_useragent(int port, bool bDisableUDP, const std::string& passwd);
 
 		// answer/reject call
 		void execute_offer_useragent(const std::string& call_id,
@@ -68,6 +65,8 @@ namespace sipclient_console_app
 
 		bool is_registered(void) const { return registered_; }
 
+		boost::condition_variable& registration_condition(void) { return condition_; }
+
     private:
 
 		void setup_local_SDP(void);
@@ -77,11 +76,13 @@ namespace sipclient_console_app
 
 		resip::SharedPtr<RegistrationHandler> reg_handler_;
 		resip::SharedPtr<InviteHandler> invite_handler_;
-		boost::shared_ptr<UserAgent> user_agent_;
+		std::shared_ptr<UserAgent> user_agent_;
 		std::string local_address_;
 		std::string call_id_;
 		SessionSdp local_sdp_;
 		bool registered_;
+		boost::condition_variable condition_;
+		std::string profile_aor_;
     };
 
 }
