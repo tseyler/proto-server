@@ -392,29 +392,29 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/sipclient.dir/build.make CMakeFiles/sipclient.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/useragent_signaling.o: src/useragent_signaling.cpp.o
-.PHONY : src/useragent_signaling.o
+src/sipclient_signaling.o: src/sipclient_signaling.cpp.o
+.PHONY : src/sipclient_signaling.o
 
 # target to build an object file
-src/useragent_signaling.cpp.o:
-	$(MAKE) -f CMakeFiles/sipclient.dir/build.make CMakeFiles/sipclient.dir/src/useragent_signaling.cpp.o
-.PHONY : src/useragent_signaling.cpp.o
+src/sipclient_signaling.cpp.o:
+	$(MAKE) -f CMakeFiles/sipclient.dir/build.make CMakeFiles/sipclient.dir/src/sipclient_signaling.cpp.o
+.PHONY : src/sipclient_signaling.cpp.o
 
-src/useragent_signaling.i: src/useragent_signaling.cpp.i
-.PHONY : src/useragent_signaling.i
+src/sipclient_signaling.i: src/sipclient_signaling.cpp.i
+.PHONY : src/sipclient_signaling.i
 
 # target to preprocess a source file
-src/useragent_signaling.cpp.i:
-	$(MAKE) -f CMakeFiles/sipclient.dir/build.make CMakeFiles/sipclient.dir/src/useragent_signaling.cpp.i
-.PHONY : src/useragent_signaling.cpp.i
+src/sipclient_signaling.cpp.i:
+	$(MAKE) -f CMakeFiles/sipclient.dir/build.make CMakeFiles/sipclient.dir/src/sipclient_signaling.cpp.i
+.PHONY : src/sipclient_signaling.cpp.i
 
-src/useragent_signaling.s: src/useragent_signaling.cpp.s
-.PHONY : src/useragent_signaling.s
+src/sipclient_signaling.s: src/sipclient_signaling.cpp.s
+.PHONY : src/sipclient_signaling.s
 
 # target to generate assembly for a file
-src/useragent_signaling.cpp.s:
-	$(MAKE) -f CMakeFiles/sipclient.dir/build.make CMakeFiles/sipclient.dir/src/useragent_signaling.cpp.s
-.PHONY : src/useragent_signaling.cpp.s
+src/sipclient_signaling.cpp.s:
+	$(MAKE) -f CMakeFiles/sipclient.dir/build.make CMakeFiles/sipclient.dir/src/sipclient_signaling.cpp.s
+.PHONY : src/sipclient_signaling.cpp.s
 
 # Help Target
 help:
@@ -459,9 +459,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/useragent_signaling.o"
-	@echo "... src/useragent_signaling.i"
-	@echo "... src/useragent_signaling.s"
+	@echo "... src/sipclient_signaling.o"
+	@echo "... src/sipclient_signaling.i"
+	@echo "... src/sipclient_signaling.s"
 .PHONY : help
 
 

@@ -1,26 +1,25 @@
 
-#ifndef USERAGENT_SIGNALING_HPP_
-#define USERAGENT_SIGNALING_HPP_
+#ifndef SIPCLIENT_SIGNALING_HPP_
+#define SIPCLIENT_SIGNALING_HPP_
 
 #include "UserAgent.hpp"
 
-//using namespace resip
 using namespace SipUserAgent;
 
-namespace sipclient_console_app
+namespace sipclient
 {
 
     static const uint32_t SIP_REG_TIME = 600;  //10 minutes
     static const uint32_t SIP_RETRY_TIME = 10; //10 seconds
 
-    class useragent_signaling : public IRegistrationCallback,
+    class sipclient_signaling : public IRegistrationCallback,
     				public IInviteCallback,
 				public ISessionCallback
     {
     public:
 
-		useragent_signaling(const std::string& local_address, const std::string& profile);
-		virtual ~useragent_signaling();
+		sipclient_signaling(const std::string& local_address, const std::string& profile);
+		virtual ~sipclient_signaling();
 
 		//This is how we get registration results
 		virtual void OnResult(RegResult reg_result,
