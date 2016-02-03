@@ -2,52 +2,13 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **
 *                                                                           *
 * UserAgent.cpp                                                             *
-* Author: Terry Seyler						      	    *
+* Author: Terry Seyler						      	                        *
 *                                                                           *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 
 #include <cassert>
 #include <sstream>
-// #include "sip/rutil.h"
-// #include "userAgentHelper.h"
 #include "UserAgent.hpp"
-
-
-using namespace resip;
-
-// void* C4UserAgent::thd(void* obj)
-// {
-// 	C4UserAgent::UserAgent* userAgent = reinterpret_cast<C4UserAgent::UserAgent*>(obj);
-// 	assert(userAgent);
-// 	SharedPtr<DialogUsageManager> dum = userAgent->getDum();
-// 	assert(dum.get());
-// 	SharedPtr<SipStack> stack = userAgent->getStack();
-// 	assert(stack.get());
-
-// #ifndef WIN32
-//     Log::initialize(Log::Syslog, Log::Debug, "intercom");
-// #endif
-
-// 	while (userAgent->IsRunning())
-// 	{
-// 	    FdSet fdset;
-// 	    stack->buildFdSet(fdset);
-// 	    int err = fdset.selectMilliSeconds(100); // select will block for 100 msec
-// 	    if (err == -1)
-// 	    {
-// 			LOG_UA_ERROR( STD_STRING( "C4UserAgent::thd" ),
-// 					STD_STRING( "Select indicated an error has occurred.  Exiting thread" ), STD_STRING( __FILE__ ), __LINE__ );
-// 	    	break;
-// 	    }
-// 	    stack->process(fdset); // the stack will set the fdsets for dum to process
-// 	    while (dum->process()); // now dum processes I/O until it has nothing left to do
-// 	}
-
-// 	pthread_exit(NULL);
-
-// 	return 0;
-// }
-
 
 using namespace resip;
 
@@ -131,46 +92,6 @@ SipUserAgent::UserAgent::~UserAgent()
     stop();
 }
 
-// c4::RunnableState
-// SipUserAgent::UserAgent::Start(void)
-// {
-// 	if (!running_)
-// 	{
-// 		pthread_attr_init(&attr_);
-// 		pthread_attr_setdetachstate(&attr_, PTHREAD_CREATE_JOINABLE);
-// 		running_ = true;
-// 		LOG_UA_INFO( STD_STRING( "UserAgent::Start" ), STD_STRING( "DUM processing thread started") );
-
-// 		pthread_create(&t_, &attr_, SipUserAgent::thd, this);   // we spawned a thread
-// 		return c4::Runnable_Running;
-// 	}
-
-// 	LOG_UA_WARNING( STD_STRING( "UserAgent::Start" ), STD_STRING( "DUM processing thread is already running, no need to start") );
-
-// 	return c4::Runnable_AlreadyRunning;
-// }
-
-// c4::RunnableState
-// SipUserAgent::UserAgent::Stop(void)
-// {
-// 	LOG_UA_INFO( STD_STRING( "UserAgent::Stop" ), STD_STRING( "DUM processing thread stopped") );
-
-// 	if (running_)
-// 	{
-// 		pthread_attr_destroy(&attr_);
-// 		running_ = false;
-// 		pthread_join(t_, NULL);
-// 	}
-
-// 	return c4::Runnable_Stopped;
-// }
-
-// bool
-// SipUserAgent::UserAgent::IsRunning(void) const
-// {
-// 	return running_;
-// }
-
 void
 SipUserAgent::UserAgent::setProfileAor(const std::string& contact)
 {
@@ -196,11 +117,8 @@ SipUserAgent::UserAgent::setProfileAor(NameAddr& nameAddr)
 	profile_->setKeepAliveTimeForDatagram(udpKeepAliveSec_);
 	profile_->setKeepAliveTimeForStream(tcpKeepAliveSec_);
 
-//	Data* xyz = new Data("000FFF12F1C7");
-//	Data& abc = *xyz;
-//
-//	profile_->setInstanceId(abc);  // See RFC5626 section 4.1
-//	profile_->setRegId(0);
+	profile_->setInstanceId(nameAddr.displayName());  // See RFC5626 section 4.1
+	profile_->setRegId(0);
 
 	profile_->clientOutboundEnabled() = true;
 
@@ -609,7 +527,6 @@ SipUserAgent::UserAgent::is_running(void) const
     return running_;
 }
 
-
 void
 SipUserAgent::useragent_thd(UserAgent* ua)
 {
@@ -625,15 +542,7 @@ SipUserAgent::useragent_thd(UserAgent* ua)
 
     while (ua->is_running())
     {
-	FdSet fdset;
-	stack->buildFdSet(fdset);
-	int err = fdset.selectMilliSeconds(100); // select will block for 100 msec
-	if (err == -1)
-	{
-	    LOG_UA_ERROR( STD_STRING( "SipUserAgent::useragent_thd" ), 					STD_STRING( "Select indicated an error has occurred.  Exiting thread" ), STD_STRING( __FILE__ ), __LINE__ );
- 	    	break;
-	}
-	stack->process(fdset); // the stack will set the fdsets for dum to process
-	while (dum->process()); // now dum processes I/O until it has nothing left to do
+		stack->process(100);
+		while (dum->process()); // now dum processes I/O until it has nothing left to do
     }
 }

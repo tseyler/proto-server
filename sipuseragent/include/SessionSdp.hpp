@@ -73,13 +73,13 @@ namespace SipUserAgent
 		SdpTime*						getFrontTime(void);
 		SdpTime*						getNextTime(SdpTime* sdpTime);
 
-		// setters
+        SdpMediaCollection&             getSdpMediaCollection(void) { return sdpMediaCollection_; }
+
+        // setters
 		void 							setSdpVersion(int version) { sdpVersion_ = version; }
 		void 							setSdpSessionName(const std::string& name) { sessionName_ = name; }
 
-		//void							negotiateMedia(const resip::Contents* remoteContents);
         void							negotiateMedia(SessionSdpPtr remote_sdp);
-
 
 		class SdpConnection
 		{

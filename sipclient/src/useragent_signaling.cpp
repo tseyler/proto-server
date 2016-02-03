@@ -5,6 +5,8 @@
 using namespace resip;
 using namespace SipUserAgent;
 
+#define __CLASS__ "useragent_signaling"
+
 namespace sipclient_console_app
 {
     useragent_signaling::useragent_signaling(const std::string& local_address, const std::string& profile) :
@@ -77,7 +79,7 @@ namespace sipclient_console_app
 				  int status_code, 
 				  const std::string& call_id)
     {
-		std::cout << "useragent_signaling::OnResult: invite_response = " << invite_response << "; Method String = " << method_string << std::endl;
+		std::cout << __CLASS__ << "::" << __FUNCTION__ << ":" << __LINE__ << ": invite_response = " << invite_response << "; Method String = " << method_string << "; Status Code = " << status_code << "; Call ID = " << call_id << std::endl;
 
 		switch (invite_result)
 		{
