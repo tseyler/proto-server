@@ -7,16 +7,16 @@
 #include <boost/thread.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/algorithm/string.hpp>
-#include "useragent_signaling.hpp"
+#include "sipclient_signaling.hpp"
 
 
-using namespace sipclient_console_app;
+using namespace sipclient;
 
 typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
 
 boost::mutex reg_mutex;
 
-void parse_console_line(useragent_signaling* uas, const std::string& console_input)
+void parse_console_line(sipclient_signaling* uas, const std::string& console_input)
 {
 	boost::char_separator<char> sep(" \t\r\n");
 	tokenizer tokens(console_input, sep);
@@ -47,12 +47,12 @@ void parse_console_line(useragent_signaling* uas, const std::string& console_inp
 //	{
 //		std::string transport_type = params[0];
 //		bool is_tcp = bool(boost::iequals(transport_type, "tcp"));
-//		std::string profile_aor = useragent_signaling::set_profile_aor("UA_Console_App", "UA_Console_App", "10.0.0.14");
+//		std::string profile_aor = sipclient_signaling::set_profile_aor("UA_Console_App", "UA_Console_App", "10.0.0.14");
 //		uas->restart_useragent(0, is_tcp, profile_aor, "t0talc0ntr0l4!");
 //	}
 }
 
-void console_func(useragent_signaling* uas)
+void console_func(sipclient_signaling* uas)
 {
 	bool alive(true);
 	boost::mutex::scoped_lock lock(reg_mutex);
@@ -119,13 +119,13 @@ main(int argc, char* argv[])
 		return 1;
 	}
 
-	//std::string profile_aor = useragent_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
+	//std::string profile_aor = sipclient_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
 	std::string name = argv[1];
 	std::string username = argv[2];
 	std::string registrar = argv[3];
-	std::string profile_aor = useragent_signaling::set_profile_aor(name, username, registrar);
+	std::string profile_aor = sipclient_signaling::set_profile_aor(name, username, registrar);
 	std::string local_address = get_local_address();
-    useragent_signaling uas(local_address, profile_aor);
+    sipclient_signaling uas(local_address, profile_aor);
 
     boost::thread console_thd(console_func, &uas);
 

@@ -2,7 +2,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **
 *                                                                           *
 * userAgentHelper.cpp                                                       *
-* Author: Terry Seyler							    *
+* Author: Terry Seyler							                            *
 *                                                                           *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * **/
 
