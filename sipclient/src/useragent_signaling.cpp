@@ -399,20 +399,20 @@ useragent_signaling::setup_local_SDP(void)
 	audioStr += "a=fmtp:102 0-16\r\n";
 	audioStr += "a=sendrecv\r\n";
 
-    std::string videoStr = "m=video 37818 RTP/AVP 96 97 98 101\r\n";
+    std::string videoStr = "m=video 37818 RTP/AVP 96 97 98\r\n";
 	videoStr += "a=rtpmap:96 H264/90000\r\n";
     videoStr += "a=rtpmap:97 VP8/90000\r\n";
     //videoStr += "a=rtpmap:98 MP4V-ES/90000\r\n";
-    videoStr += "a=rtpmap:101 telephone-event/90000\r\n";
+   // videoStr += "a=rtpmap:101 telephone-event/90000\r\n";
     //videoStr += "a=fmtp:96 packetization-mode=1;profile-level-id=42801F\r\n";
     //videoStr += "a=fmtp:98 profile-level-id=3\r\n";
 	videoStr += "a=fmtp:98 profile-level-id=428016;packetization-mode=0\r\n";
-	videoStr += "a=fmtp:101 0-16\r\n";
+	//videoStr += "a=fmtp:101 0-16\r\n";
     videoStr += "a=sendrecv\r\n";
 
-    std::string tmpDataStr = dataStr + videoStr + audioStr;
+    std::string tmpDataStr = dataStr + audioStr; //+ videoStr;
 
-    Data* txt = new Data(tmpDataStr);
+	Data* txt = new Data(tmpDataStr);
     const HeaderFieldValue hfv(txt->data(), (unsigned int) txt->size());
     const Mime type("application", "sdp");
     SdpContents sdp_contents(hfv, type);

@@ -9,6 +9,8 @@
 
 # we dont need encodings.xml
 encodings.xml
+# we dont need workspace.xml
+workspace.xml
 # we dont need the bin directory
 bin
 # we dont need the lib directory
