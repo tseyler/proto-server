@@ -36,8 +36,8 @@ SipUserAgent::SessionSdp::SessionSdp(SdpContents* sdp) :	sdpVersion_(-1),
 	{
 		SdpContents::Session::Medium media = *mit;
 		std::string mediaName = SipUserAgent::makeString(media.name());
-		int mediaPort = media.port();
-		int mediaMulticast = media.multicast();
+		int mediaPort = static_cast<int>(media.port());
+		int mediaMulticast = static_cast<int>(media.multicast());
 		std::string mediaProtocol = SipUserAgent::makeString(media.protocol());
 		SdpMedia* sdpMedia = new SdpMedia(mediaName, mediaPort, mediaMulticast, mediaProtocol);
 
