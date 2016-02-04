@@ -72,6 +72,8 @@ namespace sipclient
 
 		void sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
 							   const std::string& log_msg);
+		void sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
+							   const std::stringstream& log_stream);
 
     private:
 

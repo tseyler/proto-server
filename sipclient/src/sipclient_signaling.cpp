@@ -31,6 +31,14 @@ namespace sipclient
 			logger_ptr_->sipclient_log(class_name, function_name, line, log_msg);
 	}
 
+	void
+	sipclient_signaling::sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
+						   const std::stringstream& log_stream)
+	{
+		if (logger_ptr_)
+			logger_ptr_->sipclient_log(class_name, function_name, line, log_stream);
+	}
+
     bool 
     sipclient_signaling::is_forking(void)
     {
@@ -88,7 +96,9 @@ namespace sipclient
 				  int status_code, 
 				  const std::string& call_id)
     {
-		std::cout << __CLASS__ << "::" << __FUNCTION__ << ":" << __LINE__ << ": invite_response = " << invite_response << "; Status Code = " << status_code << "; Call ID = " << call_id << std::endl;
+		std::stringstream log_stream;
+		log_stream << invite_response << "; Call ID = " << call_id;
+		sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
 
 		switch (invite_result)
 		{
@@ -157,6 +167,9 @@ namespace sipclient
 		if (!dialog)
 			return;
 
+		unsigned long  session_id = dialog->get_session_id();
+		std::stringstream log_stream;
+
 		//ServerInviteSession
 		resip::InviteSession* invite_session = dialog->getInviteSession();
 
@@ -168,11 +181,13 @@ namespace sipclient
 
 				call_id_ = dialog->getCallId();
 
-				std::cout << __CLASS__ << "::" << __FUNCTION__ << ":" << __LINE__ << ": SessionStatus = sNewSession; Call ID = " << dialog->getCallId() << std::endl;
+				log_stream <<  "SessionStatus = sNewSession; Call ID = " << call_id_ << "; Session ID = " << session_id;
+				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
 			break;
 			case sAnswer:
 
-				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "SessionStatus = sAnswer");
+				log_stream <<  "SessionStatus = sAnswer Call ID = " << call_id_ << "; Session ID = " << session_id;
+				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
 			break;
 			case sOffer:
 			{
@@ -230,20 +245,24 @@ namespace sipclient
 					}
 				}
 			}
-			std::cout << __CLASS__ << "::" << __FUNCTION__ << ":" << __LINE__ << ": SessionStatus = sOffer; Call ID = " << dialog->getCallId() << std::endl;
-			break;
+				log_stream <<  "SessionStatus = sOffer; Call ID = " << dialog->getCallId() << "; Session ID = " << session_id;
+				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
+				break;
 			case sEarlyMedia:
 
-			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "SessionStatus = sEarlyMedia");
-			break;
+				log_stream <<  "SessionStatus = sEarlyMedia; Call ID = " << dialog->getCallId() << "; Session ID = " << session_id;
+				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
+				break;
 			case sTerminated:
 
-			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "SessionStatus = sTerminated");
+				log_stream <<  "SessionStatus = sTerminated; Call ID = " << dialog->getCallId() << "; Session ID = " << session_id;
+				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
 			break;
 			case sOfferRequired:
 
-			std::cout << __CLASS__ << "::" << __FUNCTION__ << ":" << __LINE__ << ": SessionStatus = sOfferRequired; Call ID = " << dialog->getCallId() << std::endl;
-			break;
+				log_stream <<  "SessionStatus = sOfferRequired; Call ID = " << dialog->getCallId() << "; Session ID = " << session_id;
+				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
+				break;
 			default:
 
 			break;
