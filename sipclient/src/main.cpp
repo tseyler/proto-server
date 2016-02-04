@@ -119,13 +119,15 @@ main(int argc, char* argv[])
 		return 1;
 	}
 
+	sipclient_logger_ptr logger_ptr(new sipclient_logger(std::cout));
+
 	//std::string profile_aor = sipclient_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
 	std::string name = argv[1];
 	std::string username = argv[2];
 	std::string registrar = argv[3];
 	std::string profile_aor = sipclient_signaling::set_profile_aor(name, username, registrar);
 	std::string local_address = get_local_address();
-    sipclient_signaling uas(local_address, profile_aor);
+    sipclient_signaling uas(local_address, profile_aor, logger_ptr);
 
     boost::thread console_thd(console_func, &uas);
 

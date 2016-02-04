@@ -2,6 +2,7 @@
 #ifndef SIPCLIENT_SIGNALING_HPP_
 #define SIPCLIENT_SIGNALING_HPP_
 
+#include "sipclient_logger.hpp"
 #include "UserAgent.hpp"
 
 using namespace SipUserAgent;
@@ -18,7 +19,8 @@ namespace sipclient
     {
     public:
 
-		sipclient_signaling(const std::string& local_address, const std::string& profile);
+		sipclient_signaling(const std::string& local_address, const std::string& profile,
+							sipclient_logger_ptr logger_ptr);
 		virtual ~sipclient_signaling();
 
 		//This is how we get registration results
@@ -66,6 +68,13 @@ namespace sipclient
 
 		boost::condition_variable& registration_condition(void) { return condition_; }
 
+	protected:
+
+		void sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
+							   const std::string& log_msg);
+		void sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
+							   const std::stringstream& log_stream);
+
     private:
 
 		void setup_local_SDP(void);
@@ -82,6 +91,7 @@ namespace sipclient
 		bool registered_;
 		boost::condition_variable condition_;
 		std::string profile_aor_;
+		sipclient_logger_ptr logger_ptr_;
     };
 
 }
