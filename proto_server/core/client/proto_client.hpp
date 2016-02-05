@@ -6,9 +6,9 @@
 #define PROTO_CLIENT_HPP_
 
 #include <core/proto_net_types.hpp>
-//#include <core/data/proto_net_io.hpp>
+#include <core/data/proto_net_pipeline.hpp>
 
-//using namespace proto_net::data;
+using namespace proto_net::data;
 
 namespace proto_net
 {
@@ -22,6 +22,11 @@ namespace proto_net
 
             virtual ~proto_client();
 
+            // pure virtuals
+            virtual void ps_run(void) = 0;
+            virtual void ps_start(void) = 0;
+            virtual void ps_async_read(void) = 0;
+            virtual void ps_async_write(const char *data, size_t data_size) = 0;
 
         protected:
 

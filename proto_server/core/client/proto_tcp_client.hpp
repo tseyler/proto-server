@@ -15,15 +15,26 @@ namespace proto_net
         {
         public:
 
-            proto_tcp_client(const std::string& address, unsigned short port_num = 80, size_t buff_size = 4096);
+            proto_tcp_client(const std::string& address, unsigned short port_num = 80,
+                             proto_net_pipeline& ps_pipeline = proto_net_empty_pipeline::empty_pipeline_inst,
+                             size_t buffer_size = 4096);
+
+            // pure virtuals
+            virtual void ps_run(void);
+            virtual void ps_start(void);
+            virtual void ps_async_read(void);
+            virtual void ps_async_write(const char *data, size_t data_size);
+
+            virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
+            virtual void ps_handle_write(const boost::system::error_code &error);
 
             // connect to a tcp server
             void ps_connect(void) throw(proto_net_error_code);
 
-            // write a string
+            // write a string synchronously
             void ps_write_msg(const std::string& msg);
 
-            // read a string
+            // read a string synchronously
             std::string ps_read_msg(void);
 
             // getter
@@ -34,7 +45,9 @@ namespace proto_net
             std::string address_;
             unsigned short port_num_;
             proto_net_tcp_socket socket_;
-            size_t buff_size_;
+            proto_net_pipeline& ps_pipeline_;
+            size_t buffer_size_;
+            char* buffer_;
         };
     }
 }

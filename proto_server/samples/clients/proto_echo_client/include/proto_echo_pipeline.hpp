@@ -16,14 +16,7 @@ class proto_echo_pipeline : public proto_net_pipeline
 {
 public:
 
-    proto_echo_pipeline(proto_tcp_client& client);
-    virtual ~proto_echo_pipeline() {}
-
     virtual void ps_pipeline(const proto_net_data& req_data, proto_net_data& res_data);  // the response data
-
-private:
-
-    proto_tcp_client& client_;
 };
 
 

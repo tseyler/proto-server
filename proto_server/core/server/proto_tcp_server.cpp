@@ -52,7 +52,7 @@ namespace proto_net
                 proto_net_pipeline& pipeline = session->ps_pipeline(); // get the session before it gets destroyed below
                 size_t buffer_size = session->ps_buffer_size();
                 if (!error)
-                    session->start();
+                    session->ps_start();
                 else
                     delete session;
 
