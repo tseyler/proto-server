@@ -22,12 +22,12 @@ namespace proto_net
             proto_tcp_session(proto_net_service_ptr ps_service, proto_net_pipeline& ps_pipeline, size_t buffer_size = 4096);
             virtual ~proto_tcp_session();
 
-            virtual void start(void);
-            virtual void read(void);
-            virtual void write(const char* data, size_t data_size);
+            virtual void ps_start(void);
+            virtual void ps_async_read(void);
+            virtual void ps_async_write(const char *data, size_t data_size);
 
-            virtual void handle_read(const boost::system::error_code& error, size_t bytes_transferred);
-            virtual void handle_write(const boost::system::error_code& error);
+            virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
+            virtual void ps_handle_write(const boost::system::error_code &error);
 
             // getter
             proto_net_tcp_socket& ps_socket(void);

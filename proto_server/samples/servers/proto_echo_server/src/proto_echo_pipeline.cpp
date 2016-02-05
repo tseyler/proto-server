@@ -7,10 +7,10 @@
 #include <core/data/proto_net_pipe.hpp>
 
 void
-proto_echo_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
+proto_echo_pipeline::ps_pipeline(const proto_net_in_data&source_data, proto_net_out_data& res_data)
 {
-    proto_net_pipe pipe(req_data);
-    proto_net_data data_in = req_data;
+    proto_net_pipe pipe(source_data);
+    proto_net_data data_in = source_data;
     data_in.data_type(data_text);
     std::cout << "Echo Server Pipeline: Data in = " << data_in << std::endl;
     res_data = pipe.ps_pipe_out();
