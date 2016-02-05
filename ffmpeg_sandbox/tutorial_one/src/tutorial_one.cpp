@@ -116,11 +116,7 @@ main(int argc, char* argv[])
 
     avpicture_fill(reinterpret_cast<AVPicture*>(p_frame_RGB), buffer, AV_PIX_FMT_RGB24,
                 p_codec_ctx->width, p_codec_ctx->height);
-
-
     
-    //int frameFinished;
-    AVPacket packet;
     // initialize SWS context for software scaling
     struct SwsContext* sws_ctx = sws_getContext(p_codec_ctx->width,
 						p_codec_ctx->height,
@@ -133,6 +129,34 @@ main(int argc, char* argv[])
 						NULL,
 						NULL
 	);
+
+    int i(0);
+    int frame_finished(0);
+    AVPacket packet;
+    while (av_read_frame(p_format_ctx, &packet) >= 0)
+    {
+	// Is this a packet from the video stream?
+	if (packet.stream_index == video_stream)
+	{
+	    // Decode video frame
+	    avcodec_decode_video2(p_codec_ctx, p_frame, &frame_finished, &packet);
+    
+	    // Did we get a video frame?
+	    if (frame_finished)
+	    {
+		// Convert the image from its native format to RGB
+		sws_scale(sws_ctx, (uint8_t const * const *)p_frame->data, p_frame->linesize, 0,
+			  p_codec_ctx->height, p_frame_RGB->data, p_frame_RGB->linesize);
+      
+		// Save the frame to disk
+		if(++i <= 5)
+		    save_frame(p_frame_RGB, p_codec_ctx->width, p_codec_ctx->height, i);
+	    }
+	}
+    
+	// Free the packet that was allocated by av_read_frame
+	av_free_packet(&packet);
+    }
     
     // free the RGB frame struct
     av_free(p_frame_RGB);

@@ -8,7 +8,7 @@ set(CPP_PROJ_DIR $ENV{HOME}/projects/cpp-projects)
 set(MAKE_DIR ${CPP_PROJ_DIR}/make)
 include(${MAKE_DIR}/definitions.cmake)
 
-set(PROJ_DIR ${CPP_PROJ_DIR}/ffmpeg_sandbox/tutorial_one_screencap)
+set(PROJ_DIR ${CPP_PROJ_DIR}/ffmpeg_sandbox/tutorial_one)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
 

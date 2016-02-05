@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one_screencap
+CMAKE_SOURCE_DIR = /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one_screencap
+CMAKE_BINARY_DIR = /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -73,9 +73,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one_screencap/CMakeFiles /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one_screencap/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one/CMakeFiles /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one_screencap/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tseyler/projects/cpp-projects/ffmpeg_sandbox/tutorial_one/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -115,29 +115,29 @@ tutorial_one/fast:
 	$(MAKE) -f CMakeFiles/tutorial_one.dir/build.make CMakeFiles/tutorial_one.dir/build
 .PHONY : tutorial_one/fast
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+src/tutorial_one.o: src/tutorial_one.cpp.o
+.PHONY : src/tutorial_one.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/tutorial_one.dir/build.make CMakeFiles/tutorial_one.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/tutorial_one.cpp.o:
+	$(MAKE) -f CMakeFiles/tutorial_one.dir/build.make CMakeFiles/tutorial_one.dir/src/tutorial_one.cpp.o
+.PHONY : src/tutorial_one.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/tutorial_one.i: src/tutorial_one.cpp.i
+.PHONY : src/tutorial_one.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/tutorial_one.dir/build.make CMakeFiles/tutorial_one.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/tutorial_one.cpp.i:
+	$(MAKE) -f CMakeFiles/tutorial_one.dir/build.make CMakeFiles/tutorial_one.dir/src/tutorial_one.cpp.i
+.PHONY : src/tutorial_one.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/tutorial_one.s: src/tutorial_one.cpp.s
+.PHONY : src/tutorial_one.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/tutorial_one.dir/build.make CMakeFiles/tutorial_one.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/tutorial_one.cpp.s:
+	$(MAKE) -f CMakeFiles/tutorial_one.dir/build.make CMakeFiles/tutorial_one.dir/src/tutorial_one.cpp.s
+.PHONY : src/tutorial_one.cpp.s
 
 # Help Target
 help:
@@ -148,9 +148,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... tutorial_one"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/tutorial_one.o"
+	@echo "... src/tutorial_one.i"
+	@echo "... src/tutorial_one.s"
 .PHONY : help
 
 
