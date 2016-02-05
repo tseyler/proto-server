@@ -89,23 +89,24 @@ std::string get_local_address(void)
 	{
 		if (!ifa->ifa_addr)
 			continue;
-		char addressBuffer[INET_ADDRSTRLEN];
+		char addressBuffer[32];
+		memset(addressBuffer, 0, 32);
 		if (ifa->ifa_addr->sa_family == AF_INET)
 		{ // check it is IP4
 			// is a valid IP4 Address
 			tmp_addr = &((struct sockaddr_in *)ifa->ifa_addr)->sin_addr;
-
-			inet_ntop(AF_INET, tmp_addr, addressBuffer, INET_ADDRSTRLEN);
-			//printf("%s IP Address %s\n", ifa->ifa_name, addressBuffer);
+			inet_ntop(AF_INET, tmp_addr, addressBuffer, 32);
 			local_address = addressBuffer;
 		} else if (ifa->ifa_addr->sa_family == AF_INET6)
 		{ // check it is IP6
 			// is a valid IP6 Address
 			tmp_addr = &((struct sockaddr_in6 *)ifa->ifa_addr)->sin6_addr;
-			inet_ntop(AF_INET6, tmp_addr, addressBuffer, INET6_ADDRSTRLEN);
-			//printf("%s IP Address %s\n", ifa->ifa_name, addressBuffer);
+			inet_ntop(AF_INET6, tmp_addr, addressBuffer, 32);
+			local_address = addressBuffer;
 		}
 	}
+
+	free(if_struct_ptr);
 
 	return local_address;
 }
