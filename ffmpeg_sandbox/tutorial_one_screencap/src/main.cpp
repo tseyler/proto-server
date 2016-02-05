@@ -7,6 +7,7 @@ extern "C" {
 #endif   
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
+//#include <libswscale/swscale.h>
 #ifdef __cplusplus  
 }
 #endif
@@ -74,12 +75,29 @@ main(int argc, char* argv[])
     if (avcodec_open2(p_codec_ctx, p_codec, NULL) < 0)
 	return -1; // Could not open codec
 
+    // Allocate video frame
+    AVFrame* p_frame = av_frame_alloc();
+    // allocate frame struct for RGB
+    AVFrame* p_frame_RGB = av_frame_alloc();
+
+    // Determine required buffer size and allocate buffer
+    int num_bytes = avpicture_get_size(AV_PIX_FMT_RGB24, p_codec_ctx->width, p_codec_ctx->height);
+
+    // buffer pointer
+    uint8_t* buffer = reinterpret_cast<uint8_t*>(av_malloc(num_bytes * sizeof(uint8_t)));
+    
+    // free the RGB frame struct
+    av_free(p_frame_RGB);
+    // Free the YUV frame
+    av_free(p_frame);
+    
     // Close the codecs
     avcodec_close(p_codec_ctx);
     avcodec_close(p_codec_ctx_orig);
 
     // Close the video file
     avformat_close_input(&p_format_ctx);
+
     
     return 0;
 }

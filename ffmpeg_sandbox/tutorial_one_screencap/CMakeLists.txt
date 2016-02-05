@@ -33,4 +33,4 @@ add_executable(tutorial_one ${SOURCE_FILES})
 
 # linking
 #target_link_libraries(tutorial_one z m avcodec avdevice avfilter avformat avutil swscale)
-target_link_libraries(tutorial_one avcodec avformat)
+target_link_libraries(tutorial_one avcodec avformat avutil)
