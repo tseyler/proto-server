@@ -8,7 +8,7 @@ set(CPP_PROJ_DIR $ENV{HOME}/projects/cpp-projects)
 set(MAKE_DIR ${CPP_PROJ_DIR}/make)
 include(${MAKE_DIR}/definitions.cmake)
 
-set(PROJ_DIR ${CPP_PROJ_DIR}/ffmpeg_sandbox/tutorial_one_screencap)
+set(PROJ_DIR ${CPP_PROJ_DIR}/ffmpeg_sandbox/tutorial_one)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
 
@@ -33,4 +33,4 @@ add_executable(tutorial_one ${SOURCE_FILES})
 
 # linking
 #target_link_libraries(tutorial_one z m avcodec avdevice avfilter avformat avutil swscale)
-target_link_libraries(tutorial_one avcodec avformat avutil)
+target_link_libraries(tutorial_one avcodec avformat avutil swscale)
