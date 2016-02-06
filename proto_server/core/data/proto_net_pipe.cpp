@@ -30,7 +30,7 @@ namespace proto_net
         void
         proto_net_pipe::clone(const proto_net_pipe& pipe)
         {
-            data_in_ = pipe.ps_pipe_in();
+            data_in_ = pipe.ps_pipe_data_in();
         }
 
         proto_net_pipe&
@@ -42,19 +42,19 @@ namespace proto_net
         }
 
         void
-        proto_net_pipe::ps_pipe_in(const proto_net_in_data& data_in)
+        proto_net_pipe::ps_pipe_data_in(const proto_net_in_data &data_in)
         {
             data_in_ = data_in;
         }
 
         proto_net_in_data
-        proto_net_pipe::ps_pipe_in(void) const
+        proto_net_pipe::ps_pipe_data_in(void) const
         {
             return data_in_;
         }
 
         proto_net_out_data
-        proto_net_pipe::ps_pipe_out(void) const
+        proto_net_pipe::ps_pipe_data_out(void) const
         {
             return data_in_;
         }
@@ -62,7 +62,7 @@ namespace proto_net
         std::ostream&
         operator << (std::ostream& out, const proto_net_pipe& pipe)
         {
-            proto_net_out_data data_out = pipe.ps_pipe_out();
+            proto_net_out_data data_out = pipe.ps_pipe_data_out();
             out << data_out;
 
             return out;

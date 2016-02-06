@@ -13,6 +13,9 @@
     <content url="file://$MODULE_DIR$/../../../core/data/proto_net_pipe.cpp">
       <sourceFolder url="file://$MODULE_DIR$/../../../core/data/proto_net_pipe.cpp" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../../../core/data/proto_net_pipeline.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../../../core/data/proto_net_pipeline.cpp" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../../../core/proto_net_types.cpp">
       <sourceFolder url="file://$MODULE_DIR$/../../../core/proto_net_types.cpp" isTestSource="false" />
     </content>
@@ -61,6 +64,7 @@
           <root url="file://$MODULE_DIR$/../../../core/server/proto_tcp_server.cpp" />
           <root url="file://$MODULE_DIR$/../../../core/server/proto_tcp_session.cpp" />
           <root url="file://$MODULE_DIR$/../../../core/server/proto_session.cpp" />
+          <root url="file://$MODULE_DIR$/../../../core/data/proto_net_pipeline.cpp" />
           <root url="file://$MODULE_DIR$/../../../core/data/proto_net_data.cpp" />
           <root url="file://$MODULE_DIR$/../../../core/data/proto_net_pipe.cpp" />
         </excluded>

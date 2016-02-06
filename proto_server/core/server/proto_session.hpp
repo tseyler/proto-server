@@ -17,7 +17,7 @@ namespace proto_net
         {
         public:
 
-            proto_session(proto_net_pipeline& ps_pipeline = proto_net_empty_pipeline::empty_pipeline_inst, size_t buffer_size = 4096);
+            proto_session(proto_net_pipeline& ps_pipeline = empty_pipeline_inst, size_t buffer_size = 4096);
             virtual ~proto_session();
 
             virtual void ps_start(void) = 0;

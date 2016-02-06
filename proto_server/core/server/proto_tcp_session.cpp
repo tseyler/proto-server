@@ -40,10 +40,11 @@ namespace proto_net
         proto_tcp_session::ps_async_write(const char *data, size_t data_size)
         {
             if (data && data_size)
-                boost::asio::async_write(socket_,
-                                         boost::asio::buffer(data, data_size),
+            {
+                boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
                                          boost::bind(&proto_tcp_session::ps_handle_write, this,
                                                      boost::asio::placeholders::error));
+            }
             else
                 ps_async_read(); // just go back to reading
         }

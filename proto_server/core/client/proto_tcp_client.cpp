@@ -14,7 +14,7 @@ namespace proto_net
     {
         proto_tcp_client::proto_tcp_client(const std::string& address,
                                            unsigned short port_num /* = 80*/,
-                                           proto_net_pipeline& ps_pipeline/* = proto_net_empty_pipeline::empty_pipeline_inst*/,
+                                           proto_net_pipeline& ps_pipeline/* = empty_pipeline_inst*/,
                                            size_t buffer_size /*= 4096*/)
                 : address_(address),  port_num_(port_num), socket_(proto_net_service_ref(ps_service_)),
                   ps_pipeline_(ps_pipeline),
