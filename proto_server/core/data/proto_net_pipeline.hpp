@@ -16,20 +16,22 @@ namespace proto_net
         public:
 
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data) = 0;  // the response data
+            virtual void ps_pipe_in(proto_net_in_data& in_data) = 0;
+            virtual void ps_pipe_out(proto_net_out_data& out_data) = 0;
         };
-
 
         // specialization with empty implementation
         class proto_net_empty_pipeline : public proto_net_pipeline
         {
         public:
 
-            static proto_net_empty_pipeline empty_pipeline_inst;
-
             void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data) {} // empty
+            void ps_pipe_in(proto_net_in_data& in_data) {}
+            void ps_pipe_out(proto_net_out_data& out_data) {}
         };
 
 
+        extern proto_net_empty_pipeline empty_pipeline_inst;
     }
 }
 #endif //PROTO_NET_PIPELINE_HPP_

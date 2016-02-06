@@ -25,10 +25,10 @@ namespace proto_net
 
             virtual proto_net_pipe& operator = (const proto_net_pipe& rhs);
 
-            void ps_pipe_in(const proto_net_in_data& data_in);
-            proto_net_in_data ps_pipe_in(void) const;
+            void ps_pipe_data_in(const proto_net_in_data &data_in);
+            proto_net_in_data ps_pipe_data_in(void) const;
 
-            virtual proto_net_out_data ps_pipe_out(void) const;
+            virtual proto_net_out_data ps_pipe_data_out(void) const;
 
             friend std::ostream& operator << (std::ostream& out, const proto_net_pipe& pipe);
             friend std::istream& operator >> (std::istream& in, proto_net_pipe& pipe);

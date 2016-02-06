@@ -11,7 +11,7 @@ int
 main(int argc, char *argv[])
 {
     proto_echo_pipeline pipeline;
-    proto_tcp_client client("127.0.0.1", 9669, pipeline);
+    proto_tcp_client client("127.0.0.1", 9669);
 
     try
     {
