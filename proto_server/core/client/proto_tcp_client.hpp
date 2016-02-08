@@ -18,13 +18,19 @@ namespace proto_net
             proto_tcp_client(const std::string& address, unsigned short port_num = 80,
                              proto_net_pipeline& ps_pipeline = empty_pipeline_inst,
                              size_t buffer_size = 4096);
+            virtual ~proto_tcp_client();
 
             // pure virtuals
             virtual void ps_run(void);
-            virtual void ps_start(void);
+           // virtual void ps_start(void);
+            virtual void ps_async_connect(const proto_net_in_data& write__data);
             virtual void ps_async_read(void);
             virtual void ps_async_write(proto_net_in_data& data_in);
 
+            virtual void ps_handle_resolve(const boost::system::error_code &error,
+                                           boost::asio::ip::tcp::resolver::iterator endpoint_iterator);
+            virtual void ps_handle_connect(const boost::system::error_code &error,
+                                           boost::asio::ip::tcp::resolver::iterator endpoint_iterator);
             virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
             virtual void ps_handle_write(const boost::system::error_code &error);
 
@@ -45,9 +51,11 @@ namespace proto_net
             std::string address_;
             unsigned short port_num_;
             proto_net_tcp_socket socket_;
+            proto_net_tcp_resolver resolver_; //(proto_net_service_ref(ps_service_));
             proto_net_pipeline& ps_pipeline_;
             size_t buffer_size_;
             char* buffer_;
+            proto_net_in_data write_data_;
         };
     }
 }

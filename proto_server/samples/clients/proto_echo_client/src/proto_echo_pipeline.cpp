@@ -10,21 +10,23 @@
 void
 proto_echo_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
 {
-   // std::cout << "Echo Client Pipeline: Data in = " << req_data << std::endl;
-   // client_.ps_write_msg(req_data.to_string());
-    //std::string response = client_.ps_read_msg();
-    //res_data = proto_net_data(response);
-  //  std::cout << "Echo Client Pipeline: Data out = " << res_data << std::endl;
+    // convert
 }
 
 void
 proto_echo_pipeline::ps_pipe_in(proto_net_in_data& in_data)
 {
-    std::cout << "Echo Client Pipeline: Data in = " << in_data << std::endl;
+    if (in_data.data_size())
+        std::cout << "Echo Client Pipeline: Data in = " << in_data << std::endl;
 }
 
 void
 proto_echo_pipeline::ps_pipe_out(proto_net_out_data& out_data)
 {
-    std::cout << "Echo Client Pipeline: Data out = " << out_data << std::endl;
+    if (out_data.data_size())
+    {
+        out_data.data_type(data_text);
+        std::cout << "Echo Client Pipeline: Data out = " << out_data << std::endl;
+    }
+
 }
