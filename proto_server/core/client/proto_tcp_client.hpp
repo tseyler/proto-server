@@ -21,8 +21,6 @@ namespace proto_net
             virtual ~proto_tcp_client();
 
             // pure virtuals
-            virtual void ps_run(void);
-           // virtual void ps_start(void);
             virtual void ps_async_connect(const proto_net_in_data& write__data);
             virtual void ps_async_read(void);
             virtual void ps_async_write(proto_net_in_data& data_in);

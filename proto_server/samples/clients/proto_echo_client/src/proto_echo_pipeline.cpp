@@ -29,4 +29,6 @@ proto_echo_pipeline::ps_pipe_out(proto_net_out_data& out_data)
         std::cout << "Echo Client Pipeline: Data out = " << out_data << std::endl;
     }
 
+    if (ps_proto_service())
+        ps_proto_service()->ps_stop();
 }

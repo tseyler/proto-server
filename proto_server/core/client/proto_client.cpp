@@ -10,12 +10,22 @@ namespace proto_net
     {
         proto_client::proto_client() : ps_service_(new proto_net_service)
         {
-
         }
 
         proto_client::~proto_client()
         {
+        }
 
+        void
+        proto_client::ps_run(void)
+        {
+            ps_service_->run();
+        }
+
+        void
+        proto_client::ps_stop(void)
+        {
+            ps_service_->stop();
         }
     }
 }

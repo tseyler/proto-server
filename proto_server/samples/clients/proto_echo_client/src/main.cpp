@@ -12,9 +12,9 @@ main(int argc, char *argv[])
 {
     proto_echo_pipeline pipeline;
     proto_tcp_client client("127.0.0.1", 9669, pipeline);
+    pipeline.ps_proto_service(&client);
 
     proto_net_in_data echo_data("Hello World!");
-
     client.ps_async_connect(echo_data);
     client.ps_run();
 
