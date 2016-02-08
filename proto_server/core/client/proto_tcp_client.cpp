@@ -45,8 +45,9 @@ namespace proto_net
         }
 
         void
-        proto_tcp_client::ps_async_write(const proto_net_in_data& data_in)
+        proto_tcp_client::ps_async_write(proto_net_in_data& data_in)
         {
+            ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
             char* data = data_in.data();
             size_t data_size = data_in.data_size();
             if (data && data_size)
@@ -67,6 +68,7 @@ namespace proto_net
                 proto_net_data req_data(buffer_, bytes_transferred);
                 proto_net_data res_data;
                 ps_pipeline_.ps_pipeline(req_data, res_data); // all of the magic takes place inside the ps_io_ object
+                ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
                 ps_async_write(res_data); // set response data ptr or size to zero for a non-write
             }
             else
