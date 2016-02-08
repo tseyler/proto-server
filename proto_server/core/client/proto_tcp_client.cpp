@@ -17,10 +17,18 @@ namespace proto_net
                                            proto_net_pipeline& ps_pipeline/* = empty_pipeline_inst*/,
                                            size_t buffer_size /*= 4096*/)
                 : address_(address),  port_num_(port_num), socket_(proto_net_service_ref(ps_service_)),
+                  resolver_(proto_net_service_ref(ps_service_)),
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
-                  buffer_(NULL)
+                  buffer_(NULL),
+                  write_data_()
         {
+            buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
+        }
+
+        proto_tcp_client::~proto_tcp_client()
+        {
+            delete [] buffer_;
         }
 
         void
@@ -29,11 +37,17 @@ namespace proto_net
             ps_service_->run();
         }
 
-       void
-       proto_tcp_client::ps_start(void)
-       {
-           ps_async_read();
-       }
+        void
+        proto_tcp_client::ps_async_connect(const proto_net_in_data& write_data)
+        {
+            write_data_ = write_data;
+
+            std::string port_str = boost::lexical_cast<std::string>(port_num_);
+            proto_net_tcp_query query(address_.c_str(), port_str.c_str());
+            resolver_.async_resolve(query, boost::bind(&proto_tcp_client::ps_handle_resolve, this,
+                                                              boost::asio::placeholders::error,
+                                                              boost::asio::placeholders::iterator));
+        }
 
         void
         proto_tcp_client::ps_async_read(void)
@@ -60,16 +74,56 @@ namespace proto_net
         }
 
         void
-        proto_tcp_client::ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred)
+        proto_tcp_client::ps_handle_resolve(const boost::system::error_code& error,
+                                            boost::asio::ip::tcp::resolver::iterator endpoint_iterator)
+        {
+            if (!error)
+            {
+                // Attempt a connection to the first endpoint in the list. Each endpoint
+                // will be tried until we successfully establish a connection.
+                boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
+                socket_.async_connect(endpoint, boost::bind(&proto_tcp_client::ps_handle_connect, this,
+                                                  boost::asio::placeholders::error, ++endpoint_iterator));
+            }
+            else
+            {
+                std::cout << "Error: " << error.message() << std::endl;
+            }
+        }
+
+        void
+        proto_tcp_client::ps_handle_connect(const boost::system::error_code& error,
+                                            boost::asio::ip::tcp::resolver::iterator endpoint_iterator)
+        {
+            if (!error)
+            {
+                ps_async_write(write_data_);
+            }
+            else if (endpoint_iterator != boost::asio::ip::tcp::resolver::iterator())
+            {
+                // The connection failed. Try the next endpoint in the list.
+                socket_.close();
+                boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
+                socket_.async_connect(endpoint, boost::bind(&proto_tcp_client::ps_handle_connect, this,
+                                                  boost::asio::placeholders::error, ++endpoint_iterator));
+            }
+            else
+            {
+                std::cout << "Error: " << error.message() << std::endl;
+            }
+        }
+
+        void
+        proto_tcp_client::ps_handle_read(const boost::system::error_code& error, size_t bytes_transferred)
         {
             if (!error)
             {
                 // handle a ps_read here
-                proto_net_data req_data(buffer_, bytes_transferred);
-                proto_net_data res_data;
-                ps_pipeline_.ps_pipeline(req_data, res_data); // all of the magic takes place inside the ps_io_ object
+                proto_net_data req_data;
+                proto_net_data res_data(buffer_, bytes_transferred);
+                ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
                 ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
-                ps_async_write(res_data); // set response data ptr or size to zero for a non-write
+                ps_async_write(req_data);
             }
             else
                 delete this; // for now
