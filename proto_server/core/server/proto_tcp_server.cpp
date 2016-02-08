@@ -30,12 +30,6 @@ namespace proto_net
         }
 
         void
-        proto_tcp_server::ps_run(void)
-        {
-            ps_service_->run();
-        }
-
-        void
         proto_tcp_server::ps_start_accept(proto_net_pipeline& ps_io, size_t buffer_size)
         {
             proto_tcp_session* new_session = new proto_tcp_session(ps_service_, ps_io, buffer_size);

@@ -2,9 +2,8 @@
 // Created by Terry Seyler on 8/19/15.
 //
 
-#ifndef PROTO_SERVER_HPP__
-#define PROTO_SERVER_HPP__
-
+#ifndef PROTO_SERVER_HPP_
+#define PROTO_SERVER_HPP_
 
 #include <core/proto_net_types.hpp>
 #include <core/data/proto_net_pipeline.hpp>
@@ -15,7 +14,7 @@ namespace proto_net
 {
     namespace server
     {
-        class proto_server
+        class proto_server : public proto_service
         {
         public:
 
@@ -24,7 +23,8 @@ namespace proto_net
             virtual ~proto_server();
 
             // pure virtuals
-            virtual void ps_run(void) = 0;
+            virtual void ps_run(void);
+            virtual void ps_stop(void);
             virtual void ps_start_accept(proto_net_pipeline& ps_pipeline, size_t buffer_size) = 0;
 
         protected:
@@ -34,5 +34,5 @@ namespace proto_net
     }
 }
 
-#endif //PROTO_SERVER_HPP__
+#endif //PROTO_SERVER_HPP_
 

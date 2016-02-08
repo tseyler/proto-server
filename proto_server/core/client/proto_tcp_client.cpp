@@ -32,12 +32,6 @@ namespace proto_net
         }
 
         void
-        proto_tcp_client::ps_run(void)
-        {
-            ps_service_->run();
-        }
-
-        void
         proto_tcp_client::ps_async_connect(const proto_net_in_data& write_data)
         {
             write_data_ = write_data;
