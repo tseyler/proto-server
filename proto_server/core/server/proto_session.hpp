@@ -22,7 +22,7 @@ namespace proto_net
 
             virtual void ps_start(void) = 0;
             virtual void ps_async_read(void) = 0;
-            virtual void ps_async_write(const char *data, size_t data_size) = 0;
+            virtual void ps_async_write(const proto_net_in_data& data_in) = 0;
 
             // getters
             const char* ps_buffer(void) const;
