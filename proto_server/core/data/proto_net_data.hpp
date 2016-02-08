@@ -26,6 +26,9 @@ namespace proto_net
 
             proto_net_data();
 
+            proto_net_data(size_t data_size,
+                           proto_net_data_type data_type = data_unknown);
+
             proto_net_data(const char *data,
                            size_t data_size,
                            proto_net_data_type data_type = data_unknown);

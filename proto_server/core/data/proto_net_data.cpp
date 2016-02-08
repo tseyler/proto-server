@@ -17,9 +17,18 @@ namespace proto_net
                                            data_type_(data_unknown)
         {}
 
-        proto_net_data::proto_net_data(const char* data, size_t data_size, proto_net_data_type data_type) : data_(0),
-                                                                                                            data_size_(data_size),
-                                                                                                            data_type_(data_type)
+        proto_net_data::proto_net_data(size_t data_size,
+                                       proto_net_data_type data_type /*= data_unknown*/) : data_(0),
+                                                                                           data_size_(data_size),
+                                                                                           data_type_(data_type)
+        {
+            data_allocate();
+        }
+
+        proto_net_data::proto_net_data(const char* data, size_t data_size,
+                                       proto_net_data_type data_type) : data_(0),
+                                                                          data_size_(data_size),
+                                                                          data_type_(data_type)
         {
             data_allocate();
             data_copy(data, data_size);
@@ -178,8 +187,11 @@ namespace proto_net
         proto_net_data::data_allocate(void)
         {
             delete [] data_;
-            data_ = new char[data_size_];
-            memset(data_, 0, data_size_);
+            if (data_size_)
+            {
+                data_ = new char[data_size_];
+                memset(data_, 0, data_size_);
+            }
         }
 
         void
