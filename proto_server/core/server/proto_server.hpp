@@ -31,6 +31,7 @@ namespace proto_net
 
             proto_net_service_ptr ps_service_;
         };
+
     }
 }
 

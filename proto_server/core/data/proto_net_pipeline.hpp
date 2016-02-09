@@ -8,6 +8,7 @@
 #include <core/proto_service.hpp>
 #include <core/data/proto_net_data.hpp>
 
+
 namespace proto_net
 {
     namespace data
@@ -45,8 +46,9 @@ namespace proto_net
             void ps_pipe_out(proto_net_out_data& out_data) {}
         };
 
-
         extern proto_net_empty_pipeline empty_pipeline_inst;
+
+
     }
 }
 #endif //PROTO_NET_PIPELINE_HPP_
