@@ -9,6 +9,7 @@ namespace proto_net
     namespace data
     {
         proto_net_empty_pipeline empty_pipeline_inst {};
+
     }
 }
 
