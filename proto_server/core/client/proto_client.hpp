@@ -39,8 +39,10 @@ namespace proto_net
         {
         public:
 
-            proto_net_server_pipeline(proto_client* ds_client);
+            proto_net_server_pipeline(proto_client* ds_client = NULL);
             virtual ~proto_net_server_pipeline();
+
+            virtual void ps_proto_client(proto_client* ds_client);
 
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
             virtual void ps_pipe_in(proto_net_in_data& in_data);
