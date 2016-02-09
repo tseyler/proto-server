@@ -10,7 +10,7 @@
 void
 sipproxy_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
 {
-    proto_net_pipe pipe(req_data);
+   // proto_net_pipe pipe(req_data);
     proto_net_data data_in = req_data;
     data_in.data_type(data_text);
     std::cout << "SipProxy Pipeline: Data in = " << data_in << std::endl;
