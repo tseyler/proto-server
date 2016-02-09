@@ -45,14 +45,14 @@ set(PROTO_SERVER_SAMPLES_CLIENTS_DIR ${PROTO_SERVER_SAMPLES_DIR}/clients)
 set(SIPUSERAGENT_INC_DIR ${CPP_PROJ_DIR}/sipuseragent/include)
 
 # resiprocate version
-set(RESIP_VERSION 1.10.1)
+#set(RESIP_VERSION 1.10.1)
 # resiprocate path
-set(RESIP_DIR $ENV{HOME}/resiprocate-${RESIP_VERSION})
+#set(RESIP_DIR $ENV{HOME}/resiprocate-${RESIP_VERSION})
 # paths to resip libs
-set(RESIP_DUM_LIB_DIR ${RESIP_DIR}/resip/dum/.libs)
-set(RESIP_STACK_LIB_DIR ${RESIP_DIR}/resip/stack/.libs)
-set(RESIP_RUTIL_LIB_DIR ${RESIP_DIR}/rutil/.libs)
-set(RESIP_LIB_DIR ${RESIP_DUM_LIB_DIR} ${RESIP_STACK_LIB_DIR} ${RESIP_RUTIL_LIB_DIR})
+#set(RESIP_DUM_LIB_DIR ${RESIP_DIR}/resip/dum/.libs)
+#set(RESIP_STACK_LIB_DIR ${RESIP_DIR}/resip/stack/.libs)
+#set(RESIP_RUTIL_LIB_DIR ${RESIP_DIR}/rutil/.libs)
+#set(RESIP_LIB_DIR ${RESIP_DUM_LIB_DIR} ${RESIP_STACK_LIB_DIR} ${RESIP_RUTIL_LIB_DIR})
 
 # paths to ffmpeg
 #set(FFMPEG_ROOT_DIR $ENV{HOME}/ffmpeg_build)

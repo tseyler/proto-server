@@ -16,7 +16,7 @@ set(INCLUDE_DIRS
     ${PROJ_DIR}/include
     ${BOOST_INC_DIR}
     ${OPENSSL_INC_DIR}
-    ${RESIP_DIR}
+#    ${RESIP_DIR}
     )
 
 include_directories(${INCLUDE_DIRS})

@@ -17,12 +17,12 @@ set(INCLUDE_DIRS
   ${SIPUSERAGENT_INC_DIR}
   ${BOOST_INC_DIR}
   ${OPENSSL_INC_DIR}
-  ${RESIP_DIR}
+#  ${RESIP_DIR}
   )
 
 include_directories(${INCLUDE_DIRS})
 
-link_directories(${LIB_DIR} ${BOOST_LIB_DIR} ${OPENSSL_LIB_DIR} ${RESIP_LIB_DIR})
+link_directories(${LIB_DIR} ${BOOST_LIB_DIR} ${OPENSSL_LIB_DIR})
 
 add_executable(sipclient ${SOURCE_FILES})
 
