@@ -28,13 +28,19 @@ namespace proto_net
             ps_service_->stop();
         }
 
-        proto_net_server_pipeline::proto_net_server_pipeline(proto_net::client::proto_client* ds_client) :
+        proto_net_server_pipeline::proto_net_server_pipeline(proto_net::client::proto_client* ds_client /* = NULL*/) :
                 ds_client_(ds_client)
         {
         }
 
         proto_net_server_pipeline::~proto_net_server_pipeline()
         {}
+
+        void
+        proto_net_server_pipeline::ps_proto_client(proto_client* ds_client)
+        {
+            ds_client_ = ds_client;
+        }
 
         void
         proto_net_server_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
