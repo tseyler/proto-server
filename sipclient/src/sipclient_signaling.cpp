@@ -10,12 +10,14 @@ using namespace SipUserAgent;
 namespace sipclient
 {
 	sipclient_signaling::sipclient_signaling(const std::string& local_address, const std::string& profile,
-											 sipclient_logger_ptr logger_ptr) :
+											 sipclient_logger_ptr logger_ptr,
+											 sipclient_notification_ptr notification_ptr) :
 	local_address_(local_address),
 	user_agent_(new UserAgent("sipclient")),
 	registered_(false),
 	profile_aor_(profile),
-	logger_ptr_(logger_ptr)
+	logger_ptr_(logger_ptr),
+	notification_ptr_(notification_ptr)
     {
     	setup_local_SDP();
     }

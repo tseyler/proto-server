@@ -111,6 +111,16 @@ std::string get_local_address(void)
 	return local_address;
 }
 
+class console_notifier : public sipclient_notifier
+{
+public:
+
+	void sipclient_notify(layer_sipclient layer, unsigned short layer_event, const std::string& notify_msg)
+	{
+		std::cout << notify_msg << std::endl;
+	}
+};
+
 int 
 main(int argc, char* argv[])
 {
@@ -120,7 +130,10 @@ main(int argc, char* argv[])
 		return 1;
 	}
 
+
+	console_notifier cn;
 	sipclient_logger_ptr logger_ptr(new sipclient_logger(std::cout));
+	sipclient_notification_ptr notification_ptr(new sipclient_notification(logger_ptr, &cn));
 
 	//std::string profile_aor = sipclient_signaling::set_profile_aor("sipclient_app", "2109", "192.168.1.10");
 	std::string name = argv[1];
@@ -128,7 +141,7 @@ main(int argc, char* argv[])
 	std::string registrar = argv[3];
 	std::string profile_aor = sipclient_signaling::set_profile_aor(name, username, registrar);
 	std::string local_address = get_local_address();
-    sipclient_signaling uas(local_address, profile_aor, logger_ptr);
+    sipclient_signaling uas(local_address, profile_aor, logger_ptr, notification_ptr);
 
     boost::thread console_thd(console_func, &uas);
 
