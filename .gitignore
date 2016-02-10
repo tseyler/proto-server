@@ -20,7 +20,9 @@ CMakeFiles
 CMakeCache.txt
 cmake_install.cmake
 # Eclipse likes to add this
-RemoteTempFiles
+RemoteSystemsTempFiles
+# setting files for CLion
+.settings
 
 # executables
 c4-console
