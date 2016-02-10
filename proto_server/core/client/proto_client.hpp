@@ -15,7 +15,7 @@ namespace proto_net
 {
     namespace client
     {
-        class proto_client  : public proto_service
+        class proto_client : public proto_service
         {
         public:
 

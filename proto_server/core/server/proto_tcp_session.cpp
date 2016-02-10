@@ -9,8 +9,11 @@ namespace proto_net
     namespace server
     {
         proto_tcp_session::proto_tcp_session(proto_net_service_ptr ps_service, proto_net_pipeline& ps_pipeline,
-                                             size_t buffer_size /*= 4096*/) :  proto_session(ps_pipeline, buffer_size),
-                                                                               socket_(proto_net_service_ref(ps_service))
+                                             size_t buffer_size /*= 4096*/,
+                                             proto_net_data_type data_type /*= data_text*/) :
+                proto_session(ps_pipeline, buffer_size),
+                socket_(proto_net_service_ref(ps_service)),
+                data_type_(data_type)
         {
 
         }
@@ -29,10 +32,27 @@ namespace proto_net
         void
         proto_tcp_session::ps_async_read(void)
         {
+
             socket_.async_read_some(boost::asio::buffer(buffer_, buffer_size_),
                                     boost::bind(&proto_tcp_session::ps_handle_read, this,
                                                 boost::asio::placeholders::error,
                                                 boost::asio::placeholders::bytes_transferred));
+
+            /*
+            boost::asio::streambuf b;
+            boost::asio::async_read_until(socket_, b, '\0',
+                                          boost::bind(&client::handle_read_status_line, this,
+                                                      boost::asio::placeholders::error));
+
+            char buf[buffer_size_];
+            memset(buf, 0, buffer_size_);
+            boost::asio::streambuf b;
+            if (boost::asio::read_until(socket_, b, '\0'))
+            {
+                std::istream is(&b);
+                is.get(buf, buffer_size_, '\0');
+            }
+            */
         }
 
 
@@ -40,10 +60,13 @@ namespace proto_net
        // proto_tcp_session::ps_async_write(const char *data, size_t data_size)
         proto_tcp_session::ps_async_write(proto_net_out_data& data_out)
         {
-            char* data = data_out.data();
-            size_t data_size = data_out.data_size();
             // add pre-write pipe out call for the pipeline
             ps_pipeline_.ps_pipe_out(data_out); // (server) any changes to the out data just prior to being sent
+            char* data = data_out.data();
+            size_t data_size = data_out.data_size();
+            proto_net_data_type dt = data_out.data_type();
+            if (dt == data_text)
+                data_size++;    // add a null character for null terminated strings
             if (data && data_size)
             {
                 boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),

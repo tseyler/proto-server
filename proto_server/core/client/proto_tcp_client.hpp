@@ -49,11 +49,12 @@ namespace proto_net
             std::string address_;
             unsigned short port_num_;
             proto_net_tcp_socket socket_;
-            proto_net_tcp_resolver resolver_; //(proto_net_service_ref(ps_service_));
+            proto_net_tcp_resolver resolver_;
             proto_net_pipeline& ps_pipeline_;
             size_t buffer_size_;
             char* buffer_;
             proto_net_in_data write_data_;
+            proto_net_data_type data_type_;
         };
     }
 }

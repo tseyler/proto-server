@@ -19,7 +19,8 @@ namespace proto_net
         {
         public:
 
-            proto_tcp_session(proto_net_service_ptr ps_service, proto_net_pipeline& ps_pipeline, size_t buffer_size = 4096);
+            proto_tcp_session(proto_net_service_ptr ps_service, proto_net_pipeline& ps_pipeline,
+                             size_t buffer_size = 4096, proto_net_data_type data_type = data_text);
             virtual ~proto_tcp_session();
 
             virtual void ps_start(void);
@@ -35,6 +36,7 @@ namespace proto_net
         protected:
 
             proto_net_tcp_socket socket_;
+            proto_net_data_type data_type_;
         };
     }
 
