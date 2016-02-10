@@ -43,6 +43,38 @@ namespace proto_net
             return ps_pipeline_;
         }
 
+        proto_net_client_pipeline::proto_net_client_pipeline(proto_session* us_session /*= NULL */) :
+                us_session_(us_session)
+        {}
+
+        proto_net_client_pipeline::~proto_net_client_pipeline()
+        {}
+
+        void
+        proto_net_client_pipeline::ps_proto_session(proto_session* us_session)
+        {
+
+        }
+
+        void
+        proto_net_client_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
+        {
+
+        }
+
+        void
+        proto_net_client_pipeline::ps_pipe_in(proto_net_in_data& in_data)
+        {
+
+        }
+
+        void
+        proto_net_client_pipeline::ps_pipe_out(proto_net_out_data& out_data)
+        {
+            if (us_session_)
+                us_session_->ps_async_write(out_data);
+        }
+
     }
 }
 

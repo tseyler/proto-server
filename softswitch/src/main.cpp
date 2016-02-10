@@ -4,7 +4,9 @@
 #include <iostream>
 
 #include <core/server/proto_tcp_server.hpp>
+#include <core/client/proto_tcp_client.hpp>
 #include "sipproxy_pipeline.hpp"
+#include "director_pipeline.hpp"
 
 /*
 #include <vector>
@@ -17,6 +19,7 @@
 using namespace proto_net::data;
 using namespace proto_net;
 using namespace proto_net::server;
+using namespace proto_net::client;
 
 
 //typedef boost::tokenizer<boost::char_separator<char> > tokenizer;
@@ -87,10 +90,37 @@ void console_func(sipclient_signaling* uas)
 int 
 main(int argc, char* argv[])
 {
-    proto_tcp_server sp_server(5095);
+    /*
+    proto_tcp_server sp_server(5095);   // port 5095
     sipproxy_pipeline sp_pipeline;
-    sp_server.ps_start_accept(sp_pipeline, 4096);
-    sp_server.ps_run();
+    sp_server.ps_start_accept(sp_pipeline, 4096); // buffer size = 4096
+*/
+    //std::string cmd = "<c4soap name=\"EnableEvents\" seq=\"1\"><param name=\"enable\" type=\"bool\">0</param></c4soap>";
+    //  "password", "string", "root");
+    std::string auth = "<c4soap name=\"AuthenticatePassword\" seq=\"1\" async=\"True\"><param name=\"password\" type=\"string\">root</param></c4soap>";
+   // std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"1\" async=\"True\"></c4soap>";
+    director_pipeline dir_pipeline;
+    proto_tcp_client dir_client("192.168.1.18", 5020, dir_pipeline);
+    dir_pipeline.ps_proto_service(&dir_client);
+
+    proto_net_in_data cmd_data(auth);
+    dir_client.ps_async_connect(cmd_data);
+    dir_client.ps_run();
+/*
+    try
+    {
+        dir_client.ps_connect();
+    }
+    catch (proto_net_error_code error)
+    {
+        std::cerr << error.message() << std::endl;
+        return 1;
+    }
+
+    dir_client.ps_write_msg(auth);
+    std::string res = dir_client.ps_read_msg();
+*/
+    //sp_server.ps_run();
     /*
 	if (argc != 4)
 	{
@@ -114,6 +144,7 @@ main(int argc, char* argv[])
 	// stop the UA loop
     uas.stop_useragent();
     */
+   // std::cout << res << std::endl;
     std::cout << "Done";
     
     return 0;
