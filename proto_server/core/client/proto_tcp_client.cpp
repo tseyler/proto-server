@@ -148,34 +148,6 @@ namespace proto_net
             ps_tcp_connect(socket_, iterator);
         }
 
-        void
-        proto_tcp_client::ps_write_msg(const std::string& msg)
-        {
-            if (buffer_size_ > msg.length())
-            {
-                char buf[buffer_size_];
-                memset(buf, 0, buffer_size_);
-                memcpy(buf, msg.c_str(), msg.length());
-
-                boost::asio::write(socket_, boost::asio::buffer(buf, strlen(buf) + 1));
-            }
-        }
-
-        std::string
-        proto_tcp_client::ps_read_msg(void)
-        {
-            char buf[buffer_size_];
-            memset(buf, 0, buffer_size_);
-            boost::asio::streambuf b;
-            if (boost::asio::read_until(socket_, b, '\0'))
-            {
-                std::istream is(&b);
-                is.get(buf, buffer_size_, '\0');
-            }
-
-            return std::string(buf);
-        }
-
         proto_net_tcp_socket&
         proto_tcp_client::ps_socket(void)
         {

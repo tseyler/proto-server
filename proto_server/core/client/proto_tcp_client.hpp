@@ -35,12 +35,6 @@ namespace proto_net
             // connect to a tcp server
             void ps_connect(void) throw(proto_net_error_code);
 
-            // write a string synchronously
-            void ps_write_msg(const std::string& msg);
-
-            // read a string synchronously
-            std::string ps_read_msg(void);
-
             // getter
             proto_net_tcp_socket& ps_socket(void);
 
