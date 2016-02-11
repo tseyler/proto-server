@@ -9,12 +9,13 @@ namespace proto_net
     namespace client
     {
         proto_client::proto_client() : ps_service_(new proto_net_service)
-        {
-        }
+        {}
+
+        proto_client::proto_client(proto_net_service_ptr ps_service) : ps_service_(ps_service)
+        {}
 
         proto_client::~proto_client()
-        {
-        }
+        {}
 
         void
         proto_client::ps_run(void)
@@ -51,7 +52,7 @@ namespace proto_net
         void
         proto_net_server_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
-//            if (ds_client_)
+ //           if (ds_client_)
 //                ds_client_->ps_async_write(in_data);
         }
 

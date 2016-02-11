@@ -99,8 +99,10 @@ main(int argc, char* argv[])
     //  "password", "string", "root");
     std::string auth = "<c4soap name=\"AuthenticatePassword\" seq=\"1\"><param name=\"password\" type=\"string\">root</param></c4soap>";
    // std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"1\" async=\"True\"></c4soap>";
+
+    proto_net_service_ptr ps_service(new proto_net_service);
     director_pipeline dir_pipeline;
-    proto_tcp_text_client dir_client("192.168.1.12", 5020, dir_pipeline);
+    proto_tcp_text_client dir_client(ps_service, "192.168.1.12", 5020, dir_pipeline);
     dir_pipeline.ps_proto_service(&dir_client);
 
     proto_net_in_data cmd_data(auth);

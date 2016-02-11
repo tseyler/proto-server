@@ -19,6 +19,7 @@ namespace proto_net
         public:
 
             proto_server();
+            proto_server(proto_net_service_ptr ps_service);
 
             virtual ~proto_server();
 

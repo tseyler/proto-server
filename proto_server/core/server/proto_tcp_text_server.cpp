@@ -13,13 +13,16 @@ namespace proto_net
     {
         proto_tcp_text_server::proto_tcp_text_server(unsigned short port_num /* = 80*/)
                 : proto_tcp_server(port_num)
-        {
-        }
+        {}
+
+        proto_tcp_text_server::proto_tcp_text_server(proto_net_service_ptr ps_service,
+                                                     unsigned short port_num /*= 80 */)
+                : proto_tcp_server(ps_service, port_num)
+        {}
 
         proto_tcp_text_server::proto_tcp_text_server(proto_tcp_text_server& ps)
                 : proto_tcp_server(dynamic_cast<proto_tcp_server&>(ps))
-        {
-        }
+        {}
 
         void
         proto_tcp_text_server::ps_start_accept(proto_net_pipeline& ps_io, size_t buffer_size)

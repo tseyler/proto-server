@@ -18,6 +18,10 @@ namespace proto_net
             proto_tcp_client(const std::string& address, unsigned short port_num = 80,
                              proto_net_pipeline& ps_pipeline = empty_pipeline_inst,
                              size_t buffer_size = 4096);
+            proto_tcp_client(proto_net_service_ptr ps_service, const std::string& address,
+                             unsigned short port_num = 80,
+                             proto_net_pipeline& ps_pipeline = empty_pipeline_inst,
+                             size_t buffer_size = 4096);
             virtual ~proto_tcp_client();
 
             // pure virtuals
