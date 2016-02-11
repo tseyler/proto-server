@@ -22,16 +22,12 @@ director_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_
 void
 director_pipeline::ps_pipe_in(proto_net_in_data& in_data)
 {
-    proto_net_client_pipeline::ps_pipe_in(in_data);
+    std::cout << "Director Pipeline: Data in = " << in_data << std::endl;
 }
 
 void
 director_pipeline::ps_pipe_out(proto_net_out_data& out_data)
 {
-    proto_net_client_pipeline::ps_pipe_in(out_data);
-
-    proto_net_data data_out = out_data;
-    data_out.data_type(data_text);
-    std::cout << "Director Pipeline: Data out = " << data_out << std::endl;
+    std::cout << "Director Pipeline: Data out = " << out_data << std::endl;
 }
 

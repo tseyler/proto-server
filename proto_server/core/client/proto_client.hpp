@@ -26,8 +26,8 @@ namespace proto_net
             // pure virtuals
             virtual void ps_run(void);
             virtual void ps_stop(void);
-            virtual void ps_async_read(void) = 0;
-            virtual void ps_async_write(proto_net_in_data& data_in) = 0;
+            //virtual void ps_async_read(void) = 0;
+            //virtual void ps_async_write(proto_net_in_data& data_in) = 0;
 
         protected:
 

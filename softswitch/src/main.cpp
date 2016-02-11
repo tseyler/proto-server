@@ -3,8 +3,8 @@
 
 #include <iostream>
 
-#include <core/server/proto_tcp_server.hpp>
-#include <core/client/proto_tcp_client.hpp>
+#include <core/server/proto_tcp_text_server.hpp>
+#include <core/client/proto_tcp_text_client.hpp>
 #include "sipproxy_pipeline.hpp"
 #include "director_pipeline.hpp"
 
@@ -97,10 +97,10 @@ main(int argc, char* argv[])
 */
     //std::string cmd = "<c4soap name=\"EnableEvents\" seq=\"1\"><param name=\"enable\" type=\"bool\">0</param></c4soap>";
     //  "password", "string", "root");
-    std::string auth = "<c4soap name=\"AuthenticatePassword\" seq=\"1\" async=\"True\"><param name=\"password\" type=\"string\">root</param></c4soap>";
+    std::string auth = "<c4soap name=\"AuthenticatePassword\" seq=\"1\"><param name=\"password\" type=\"string\">root</param></c4soap>";
    // std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"1\" async=\"True\"></c4soap>";
     director_pipeline dir_pipeline;
-    proto_tcp_client dir_client("192.168.1.18", 5020, dir_pipeline);
+    proto_tcp_text_client dir_client("192.168.1.12", 5020, dir_pipeline);
     dir_pipeline.ps_proto_service(&dir_client);
 
     proto_net_in_data cmd_data(auth);
@@ -117,8 +117,8 @@ main(int argc, char* argv[])
         return 1;
     }
 
-    dir_client.ps_write_msg(auth);
-    std::string res = dir_client.ps_read_msg();
+    proto_net_out_data data_out;
+    dir_client.ps_write_read(cmd_data, data_out);
 */
     //sp_server.ps_run();
     /*
