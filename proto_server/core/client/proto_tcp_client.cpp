@@ -56,11 +56,11 @@ namespace proto_net
         proto_tcp_client::ps_async_write(proto_net_in_data& data_in)
         {
             ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
-            proto_net_data_type dt = data_in.data_type();
+           // proto_net_data_type dt = data_in.data_type();
             char* data = data_in.data();
             size_t data_size = data_in.data_size();
-            if (dt == data_text)
-                data_size++;    // add a null character for null terminated strings
+            //if (dt == data_text)
+               // data_size++;    // add a null character for null terminated strings
             if (data && data_size)
                 boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
                                          boost::bind(&proto_tcp_client::ps_handle_write, this,

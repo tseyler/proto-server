@@ -21,7 +21,7 @@ namespace proto_net
         {
         public:
 
-            proto_tcp_server(unsigned short port_num = 80, proto_net_data_type data_type = data_text);
+            proto_tcp_server(unsigned short port_num = 80);
             virtual ~proto_tcp_server() {}
 
             // copy constructor
@@ -38,7 +38,6 @@ namespace proto_net
 
             unsigned short port_num_;
             proto_net_tcp_acceptor acceptor_;
-            proto_net_data_type data_type_;
         };
     }
 
