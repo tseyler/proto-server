@@ -10,7 +10,9 @@ namespace sipclient
 
     enum sipclient_signaling_event
     {
-        signaling_event_sip_call_initiated
+        signaling_event_sip_registration_success,
+        signaling_event_sip_registration_failure,
+        signaling_event_sip_client_call_success,
     };
 }
 #endif //SIPCLIENT_LAYER_EVENT_HPP_
