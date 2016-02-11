@@ -54,7 +54,6 @@ namespace proto_net
             size_t buffer_size_;
             char* buffer_;
             proto_net_in_data write_data_;
-            proto_net_data_type data_type_;
         };
     }
 }

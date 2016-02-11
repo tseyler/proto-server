@@ -9,11 +9,9 @@ namespace proto_net
     namespace server
     {
         proto_tcp_session::proto_tcp_session(proto_net_service_ptr ps_service, proto_net_pipeline& ps_pipeline,
-                                             size_t buffer_size /*= 4096*/,
-                                             proto_net_data_type data_type /*= data_text*/) :
+                                             size_t buffer_size /*= 4096*/) :
                 proto_session(ps_pipeline, buffer_size),
-                socket_(proto_net_service_ref(ps_service)),
-                data_type_(data_type)
+                socket_(proto_net_service_ref(ps_service))
         {
 
         }
@@ -64,9 +62,9 @@ namespace proto_net
             ps_pipeline_.ps_pipe_out(data_out); // (server) any changes to the out data just prior to being sent
             char* data = data_out.data();
             size_t data_size = data_out.data_size();
-            proto_net_data_type dt = data_out.data_type();
-            if (dt == data_text)
-                data_size++;    // add a null character for null terminated strings
+            //proto_net_data_type dt = data_out.data_type();
+            //if (dt == data_text)
+             //   data_size++;    // add a null character for null terminated strings
             if (data && data_size)
             {
                 boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),

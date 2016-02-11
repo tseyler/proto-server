@@ -6,7 +6,7 @@
 #define PROTO_ECHO_PIPELINE_HPP_
 
 #include <core/data/proto_net_pipeline.hpp>
-#include <core/client/proto_tcp_client.hpp>
+#include <core/client/proto_tcp_text_client.hpp>
 
 using namespace proto_net::data;
 using namespace proto_net;

@@ -9,10 +9,9 @@ namespace proto_net
     namespace server
     {
 
-        proto_tcp_server::proto_tcp_server(unsigned short port_num /* = 80*/, proto_net_data_type data_type /*= data_text*/)
+        proto_tcp_server::proto_tcp_server(unsigned short port_num /* = 80*/)
                 : port_num_(port_num),
-                  acceptor_(proto_net_service_ref(ps_service_), proto_net_tcp_endpoint(tcp::v4(), port_num)),
-                  data_type_(data_type)
+                  acceptor_(proto_net_service_ref(ps_service_), proto_net_tcp_endpoint(tcp::v4(), port_num))
         {
 
         }
@@ -33,7 +32,7 @@ namespace proto_net
         void
         proto_tcp_server::ps_start_accept(proto_net_pipeline& ps_io, size_t buffer_size)
         {
-            proto_tcp_session* new_session = new proto_tcp_session(ps_service_, ps_io, buffer_size, data_type_);
+            proto_tcp_session* new_session = new proto_tcp_session(ps_service_, ps_io, buffer_size);
             acceptor_.async_accept(new_session->ps_socket(),
                                    boost::bind(&proto_tcp_server::handle_accept, this, new_session,
                                                boost::asio::placeholders::error));
