@@ -117,7 +117,7 @@ public:
 
 	void sipclient_notify(layer_sipclient layer, unsigned short layer_event, const std::string& notify_msg)
 	{
-		std::cout << notify_msg << std::endl;
+		std::cout << "Event Layer = " << layer <<  "; Event = " << layer_event << "; Event Message = " << notify_msg << std::endl;
 	}
 };
 

@@ -48,7 +48,7 @@ namespace sipclient
 								  int line, const std::string& notify_msg)
 	{
 		if (notification_ptr_)
-			notification_ptr_->sipclient_notify(layer, layer_event, __CLASS__, __FUNCTION__, __LINE__, notify_msg);
+			notification_ptr_->sipclient_notify(layer, layer_event, class_name, function_name, line, notify_msg);
 	}
 
 	void
@@ -57,7 +57,7 @@ namespace sipclient
 								  int line, const std::stringstream& notify_stream)
 	{
 		if (notification_ptr_)
-			notification_ptr_->sipclient_notify(layer, layer_event, __CLASS__, __FUNCTION__, __LINE__, notify_stream);
+			notification_ptr_->sipclient_notify(layer, layer_event, class_name, function_name, line, notify_stream);
 	}
 
     bool 
@@ -87,6 +87,8 @@ namespace sipclient
 
 			registered_ = true;
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "reg_result = regSuccess");
+			sipclient_notify(layer_signaling, signaling_event_sip_registration_success,
+							 __CLASS__, __FUNCTION__, __LINE__, "Registration Success");
 			break;
 		case regRemoved:
 
