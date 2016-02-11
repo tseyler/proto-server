@@ -71,10 +71,16 @@ namespace sipclient
 
 	protected:
 
-		void sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
+		virtual void sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
 							   const std::string& log_msg);
-		void sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
+		virtual void sipclient_log_msg(const std::string& class_name, const std::string& function_name, int line,
 							   const std::stringstream& log_stream);
+		virtual void sipclient_notify(layer_sipclient layer, unsigned short layer_event,
+									  const std::string& class_name, const std::string& function_name,
+									  int line, const std::string& notify_msg);
+		virtual void sipclient_notify(layer_sipclient layer, unsigned short layer_event,
+									  const std::string& class_name, const std::string& function_name,
+									  int line, const std::stringstream& notify_stream);
 
     private:
 

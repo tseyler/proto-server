@@ -1,6 +1,7 @@
 
 
 #include "sipclient_signaling.hpp"
+#include "sipclient_layer_event.hpp"
 
 using namespace resip;
 using namespace SipUserAgent;
@@ -39,6 +40,24 @@ namespace sipclient
 	{
 		if (logger_ptr_)
 			logger_ptr_->sipclient_log(class_name, function_name, line, log_stream);
+	}
+
+	void
+	sipclient_signaling::sipclient_notify(layer_sipclient layer, unsigned short layer_event,
+								  const std::string& class_name, const std::string& function_name,
+								  int line, const std::string& notify_msg)
+	{
+		if (notification_ptr_)
+			notification_ptr_->sipclient_notify(layer, layer_event, __CLASS__, __FUNCTION__, __LINE__, notify_msg);
+	}
+
+	void
+	sipclient_signaling::sipclient_notify(layer_sipclient layer, unsigned short layer_event,
+								  const std::string& class_name, const std::string& function_name,
+								  int line, const std::stringstream& notify_stream)
+	{
+		if (notification_ptr_)
+			notification_ptr_->sipclient_notify(layer, layer_event, __CLASS__, __FUNCTION__, __LINE__, notify_stream);
 	}
 
     bool 

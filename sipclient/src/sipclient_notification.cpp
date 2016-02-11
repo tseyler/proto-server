@@ -21,7 +21,9 @@ namespace sipclient
                                   const std::string& class_name, const std::string& function_name,
                                   int line, const std::string& notify_msg)
     {
-
+        sipclient_notification::sipclient_log_msg(class_name, function_name, line, notify_msg);
+        if (notifier_ptr_)
+            notifier_ptr_->sipclient_notify(layer, layer_event, notify_msg);
     }
 
     void
@@ -29,7 +31,9 @@ namespace sipclient
                                   const std::string& class_name, const std::string& function_name,
                                   int line, const std::stringstream& notify_stream)
     {
-
+        sipclient_log_msg(class_name, function_name, line, notify_stream);
+        if (notifier_ptr_)
+            notifier_ptr_->sipclient_notify(layer, layer_event, notify_stream.str());
     }
 
 
@@ -37,13 +41,15 @@ namespace sipclient
     void sipclient_notification::sipclient_log_msg(const std::string& class_name, const std::string& function_name,
                                                    int line, const std::string& log_msg)
     {
-
+        if (logger_ptr_)
+            logger_ptr_->sipclient_log(class_name, function_name, line, log_msg);
     }
 
     void sipclient_notification::sipclient_log_msg(const std::string& class_name, const std::string& function_name,
                                                    int line, const std::stringstream& log_stream)
     {
-
+        if (logger_ptr_)
+            logger_ptr_->sipclient_log(class_name, function_name, line, log_stream);
     }
 }
 
