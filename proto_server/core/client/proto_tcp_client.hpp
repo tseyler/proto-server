@@ -36,9 +36,6 @@ namespace proto_net
             virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
             virtual void ps_handle_write(const boost::system::error_code &error);
 
-            // connect to a tcp server
-            void ps_connect(void) throw(proto_net_error_code);
-
             // getter
             proto_net_tcp_socket& ps_socket(void);
 
@@ -62,7 +59,7 @@ namespace proto_net
             proto_tcp_server_pipeline(proto_tcp_client* ds_client = NULL);
             virtual ~proto_tcp_server_pipeline();
 
-            virtual void ps_proto_tcp_client(proto_tcp_client* ds_client);
+            virtual void ps_proto_tcp_client(proto_tcp_client* ds_tcp_client);
 
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
             virtual void ps_pipe_in(proto_net_in_data& in_data);

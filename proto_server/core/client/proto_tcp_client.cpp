@@ -157,17 +157,6 @@ namespace proto_net
                 delete this;
         }
 
-        void
-        proto_tcp_client::ps_connect(void) throw(proto_net_error_code)
-        {
-            proto_net_tcp_resolver resolver(proto_net_service_ref(ps_service_));
-            std::string port_str = boost::lexical_cast<std::string>(port_num_);
-            proto_net_tcp_query query(address_.c_str(), port_str.c_str());
-            proto_net_tcp_iterator iterator = ps_tcp_resolve(resolver, query);
-
-            ps_tcp_connect(socket_, iterator);
-        }
-
         proto_net_tcp_socket&
         proto_tcp_client::ps_socket(void)
         {

@@ -94,48 +94,5 @@ namespace proto_net
                 delete this;
         }
 
-        void
-        proto_tcp_text_client::ps_write(proto_net_in_data& data_in)
-        {
-            ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
-            if (data_in.data_type() != data_text)
-                return;
-
-            char* data = data_in.data();
-            size_t data_size = data_in.data_size();
-            if (data && data_size)
-            {
-                data_size++; // increase by 1
-                boost::asio::write(socket_, boost::asio::buffer(data, data_size));
-            }
-        }
-
-        void
-        proto_tcp_text_client::ps_read(proto_net_out_data& data_out)
-        {
-            if (boost::asio::read_until(socket_, stream_buffer_, '\0'))
-            {
-                std::istream is(&stream_buffer_);
-                is.get(buffer_, buffer_size_, '\0');
-                // handle a ps_read here
-                proto_net_data req_data;
-                req_data.data_type(data_text);
-                proto_net_data res_data(buffer_, strlen(buffer_));
-                res_data.data_type(data_text);
-                if (res_data.data_size())
-                {
-                    ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
-                    ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
-                }
-            }
-        }
-
-        void proto_tcp_text_client::ps_write_read(proto_net_in_data& data_in, proto_net_out_data& data_out)
-        {
-            ps_write(data_in);
-            ps_read(data_out);
-        }
-
-
     }
 }
