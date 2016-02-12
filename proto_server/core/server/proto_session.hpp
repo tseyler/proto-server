@@ -37,24 +37,6 @@ namespace proto_net
 
         };
 
-        // specialization of a pipeline used by clients for an upstream session
-        class proto_net_client_pipeline : public proto_net_pipeline
-        {
-        public:
-
-            proto_net_client_pipeline(proto_session* us_session = NULL);
-            virtual ~proto_net_client_pipeline();
-
-            virtual void ps_proto_session(proto_session* us_session);
-
-            virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
-            virtual void ps_pipe_in(proto_net_in_data& in_data);
-            virtual void ps_pipe_out(proto_net_out_data& out_data);
-
-        protected:
-
-            proto_session* us_session_;
-        };
     }
 }
 

@@ -31,25 +31,6 @@ namespace proto_net
 
             proto_net_service_ptr ps_service_;
         };
-
-        // specialization of a pipeline used by servers for a downstream client
-        class proto_net_server_pipeline : public proto_net_pipeline
-        {
-        public:
-
-            proto_net_server_pipeline(proto_client* ds_client = NULL);
-            virtual ~proto_net_server_pipeline();
-
-            virtual void ps_proto_client(proto_client* ds_client);
-
-            virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
-            virtual void ps_pipe_in(proto_net_in_data& in_data);
-            virtual void ps_pipe_out(proto_net_out_data& out_data);
-
-        protected:
-
-            proto_client* ds_client_;
-        };
     }
 }
 

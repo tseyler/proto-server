@@ -37,6 +37,26 @@ namespace proto_net
 
             proto_net_tcp_socket socket_;
         };
+
+
+        // specialization of a pipeline used by clients for an upstream session
+        class proto_tcp_client_pipeline : public proto_net_pipeline
+        {
+        public:
+
+            proto_tcp_client_pipeline(proto_tcp_session* us_session = NULL);
+            virtual ~proto_tcp_client_pipeline ();
+
+            virtual void ps_proto_tcp_session(proto_tcp_session* us_tcp_session);
+
+            virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
+            virtual void ps_pipe_in(proto_net_in_data& in_data);
+            virtual void ps_pipe_out(proto_net_out_data& out_data);
+
+        protected:
+
+            proto_tcp_session* us_tcp_session_;
+        };
     }
 
 }

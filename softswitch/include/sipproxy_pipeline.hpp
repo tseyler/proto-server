@@ -6,16 +6,16 @@
 #define SIPPROXY_PIPELINE_HPP_
 
 
-#include <core/client/proto_client.hpp>
+#include <core/client/proto_tcp_client.hpp>
 
 using namespace proto_net::data;
 using namespace proto_net::client;
 
-class sipproxy_pipeline : public proto_net_server_pipeline // pipeline for a server
+class sipproxy_pipeline : public proto_tcp_server_pipeline // pipeline for a server
 {
 public:
 
-    sipproxy_pipeline(proto_client* ds_client = NULL);
+    sipproxy_pipeline(proto_tcp_client* ds_tcp_client = NULL);
     virtual ~sipproxy_pipeline()
     {}
 

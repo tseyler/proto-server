@@ -75,8 +75,8 @@ namespace proto_net
                 {
                     ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
                     ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
-                    ps_async_write(req_data);  // this is for any response that needs to be written back after a read
                 }
+                ps_async_write(req_data);  // this is for any response that needs to be written back after a read
             }
             else
                 delete this; // for now

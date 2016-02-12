@@ -134,8 +134,11 @@ namespace proto_net
                 // handle a ps_read here
                 proto_net_data req_data;
                 proto_net_data res_data(buffer_, bytes_transferred);
-                ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
-                ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
+                if (res_data.data_size())
+                {
+                    ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
+                    ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
+                }
                 ps_async_write(req_data);
             }
             else
@@ -169,6 +172,38 @@ namespace proto_net
         proto_tcp_client::ps_socket(void)
         {
             return socket_;
+        }
+
+        proto_tcp_server_pipeline::proto_tcp_server_pipeline(proto_tcp_client* ds_tcp_client /* = NULL*/) :
+                ds_tcp_client_(ds_tcp_client)
+        {}
+
+        proto_tcp_server_pipeline::~proto_tcp_server_pipeline()
+        {}
+
+        void
+        proto_tcp_server_pipeline::ps_proto_tcp_client(proto_tcp_client* ds_tcp_client)
+        {
+            ds_tcp_client_ = ds_tcp_client;
+        }
+
+        void
+        proto_tcp_server_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
+        {
+            // empty
+        }
+
+        void
+        proto_tcp_server_pipeline::ps_pipe_in(proto_net_in_data& in_data)
+        {
+            if (ds_tcp_client_)
+                ds_tcp_client_->ps_async_write(in_data);
+        }
+
+        void
+        proto_tcp_server_pipeline::ps_pipe_out(proto_net_out_data& out_data)
+        {
+            // empty
         }
     }
 }
