@@ -90,26 +90,26 @@ void console_func(sipclient_signaling* uas)
 int 
 main(int argc, char* argv[])
 {
-   // proto_net_service_ptr ps_service(new proto_net_service);
+    proto_net_service_ptr ps_service(new proto_net_service);
 
-    proto_tcp_text_server sp_server(/*ps_service,*/ 5095);   // port 5095
+    proto_tcp_text_server sp_server(ps_service, 5095);   // port 5095
     sipproxy_pipeline sp_pipeline;
 
     std::string auth = "<c4soap name=\"AuthenticatePassword\" seq=\"1\"><param name=\"password\" type=\"string\">root</param></c4soap>";
    // std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"1\"></c4soap>";
 
     director_pipeline dir_pipeline;
-    proto_tcp_text_client dir_client(/*ps_service,*/  "192.168.1.18", 5020, dir_pipeline);
+    proto_tcp_text_client dir_client(ps_service, "192.168.1.18", 5020, dir_pipeline);
 
-    //sp_pipeline.ps_proto_tcp_client(&dir_client);
+    sp_pipeline.ps_proto_io(&dir_client);
 
     sp_server.ps_start_accept(sp_pipeline, 4096); // buffer size = 4096
 
-    sp_server.ps_run();
+    //sp_server.ps_run();
 
     //proto_net_in_data cmd_data(auth);
     //dir_client.ps_async_connect(cmd_data);
-   // ps_service->run();
+    ps_service->run();
 
     /*
 	if (argc != 4)

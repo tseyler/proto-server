@@ -9,9 +9,6 @@
 using namespace proto_net::data;
 using namespace proto_net::client;
 
-sipproxy_pipeline::sipproxy_pipeline(proto_tcp_client* ds_tcp_client /*= NULL*/)
-        : proto_tcp_downstream_pipeline(ds_tcp_client)
-{}
 
 void
 sipproxy_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
@@ -35,7 +32,7 @@ sipproxy_pipeline::ps_pipe_in(proto_net_in_data& in_data)
     data_in.data_type(data_text);
     std::cout << "SipProxy Pipeline: Data in = " << data_in << std::endl;
 
-   // proto_net_server_pipeline::ps_pipe_in(in_data);
+    proto_tcp_downstream_pipeline::ps_pipe_in(in_data);
 }
 
 void

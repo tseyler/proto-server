@@ -5,6 +5,7 @@
 #ifndef PROTO_NET_PIPELINE_HPP_
 #define PROTO_NET_PIPELINE_HPP_
 
+#include <core/proto_async_io.hpp>
 #include <core/proto_service.hpp>
 #include <core/data/proto_net_data.hpp>
 
@@ -26,10 +27,16 @@ namespace proto_net
             virtual void ps_pipe_in(proto_net_in_data& in_data) = 0;
             virtual void ps_pipe_out(proto_net_out_data& out_data) = 0;
 
-            // getter
-            proto_service* ps_proto_service(void ) const { return ps_; }
+            // getters
+            proto_service*  ps_proto_service(void ) const { return ps_; }
+            proto_async_io* ps_proto_io(void)const { return io_; }
             //setter
             void ps_proto_service(proto_service* ps) { ps_ = ps;}
+            void ps_proto_io(proto_async_io* io) { io_ = io; }
+
+        protected:
+
+            proto_async_io* io_;
 
         private:
 

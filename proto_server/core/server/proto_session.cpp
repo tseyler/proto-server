@@ -10,8 +10,7 @@ namespace proto_net
 {
     namespace server
     {
-        proto_session::proto_session(proto_net_pipeline& ps_pipeline, size_t buffer_size /* = 4096*/) :
-                ps_pipeline_(ps_pipeline),
+        proto_session::proto_session(size_t buffer_size /* = 4096*/) :
                 buffer_size_(buffer_size),
                 buffer_(NULL)
         {
@@ -35,12 +34,6 @@ namespace proto_net
         proto_session::ps_buffer_size(void) const
         {
             return buffer_size_;
-        }
-
-        proto_net_pipeline&
-        proto_session::ps_pipeline(void)
-        {
-            return ps_pipeline_;
         }
     }
 }

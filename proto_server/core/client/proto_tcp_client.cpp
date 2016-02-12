@@ -157,23 +157,16 @@ namespace proto_net
                 delete this;
         }
 
+        proto_net_pipeline&
+        proto_tcp_client::ps_pipeline(void)
+        {
+            return ps_pipeline_;
+        }
+
         proto_net_tcp_socket&
         proto_tcp_client::ps_socket(void)
         {
             return socket_;
-        }
-
-        proto_tcp_downstream_pipeline::proto_tcp_downstream_pipeline(proto_tcp_client* ds_tcp_client /* = NULL*/) :
-                ds_tcp_client_(ds_tcp_client)
-        {}
-
-        proto_tcp_downstream_pipeline::~proto_tcp_downstream_pipeline()
-        {}
-
-        void
-        proto_tcp_downstream_pipeline::ps_downstream_client(proto_tcp_client *ds_tcp_client)
-        {
-            ds_tcp_client_ = ds_tcp_client;
         }
 
         void
@@ -185,8 +178,9 @@ namespace proto_net
         void
         proto_tcp_downstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
-            if (ds_tcp_client_)
-                ds_tcp_client_->ps_async_write(in_data);
+            if (io_)
+                //ds_io_->ps_async_write(in_data);
+                std::cout << "Performing downstream client write." << std::endl;
         }
 
         void

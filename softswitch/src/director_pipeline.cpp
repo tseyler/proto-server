@@ -9,10 +9,6 @@
 using namespace proto_net::data;
 using namespace proto_net::server;
 
-director_pipeline::director_pipeline(proto_tcp_session* us_tcp_session /*= NULL*/) : proto_tcp_upstream_pipeline(us_tcp_session)
-{
-}
-
 void
 director_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
 {
@@ -28,6 +24,8 @@ director_pipeline::ps_pipe_in(proto_net_in_data& in_data)
 void
 director_pipeline::ps_pipe_out(proto_net_out_data& out_data)
 {
+   // proto_tcp_upstream_pipeline::ps_pipe_out(out_data);
+
     std::cout << "Director Pipeline: Data out = " << out_data << std::endl;
 }
 

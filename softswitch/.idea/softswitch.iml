@@ -4,6 +4,9 @@
     <content url="file://$MODULE_DIR$/../proto_server/core/client/proto_client.cpp">
       <sourceFolder url="file://$MODULE_DIR$/../proto_server/core/client/proto_client.cpp" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../proto_server/core/client/proto_sync_text_client.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../proto_server/core/client/proto_sync_text_client.cpp" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../proto_server/core/client/proto_tcp_client.cpp">
       <sourceFolder url="file://$MODULE_DIR$/../proto_server/core/client/proto_tcp_client.cpp" isTestSource="false" />
     </content>
@@ -70,6 +73,7 @@
           <root url="file://$MODULE_DIR$/../proto_server/core/client/proto_tcp_client.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/client/proto_client.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/client/proto_tcp_text_client.cpp" />
+          <root url="file://$MODULE_DIR$/../proto_server/core/client/proto_sync_text_client.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/server/proto_server.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/server/proto_tcp_session.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/server/proto_session.cpp" />
