@@ -95,33 +95,33 @@ namespace proto_net
             return socket_;
         }
 
-        proto_tcp_client_pipeline::proto_tcp_client_pipeline(proto_tcp_session* us_tcp_session /*= NULL */) :
+        proto_tcp_upstream_pipeline::proto_tcp_upstream_pipeline(proto_tcp_session* us_tcp_session /*= NULL */) :
                 us_tcp_session_(us_tcp_session)
         {}
 
-        proto_tcp_client_pipeline::~proto_tcp_client_pipeline()
+        proto_tcp_upstream_pipeline::~proto_tcp_upstream_pipeline()
         {}
 
         void
-        proto_tcp_client_pipeline::ps_proto_tcp_session(proto_tcp_session* us_tcp_session)
+        proto_tcp_upstream_pipeline::ps_upstream_session(proto_tcp_session *us_tcp_session)
         {
             us_tcp_session_ = us_tcp_session;
         }
 
         void
-        proto_tcp_client_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
+        proto_tcp_upstream_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
         {
             // empty
         }
 
         void
-        proto_tcp_client_pipeline::ps_pipe_in(proto_net_in_data& in_data)
+        proto_tcp_upstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
             // empty
         }
 
         void
-        proto_tcp_client_pipeline::ps_pipe_out(proto_net_out_data& out_data)
+        proto_tcp_upstream_pipeline::ps_pipe_out(proto_net_out_data& out_data)
         {
             if (us_tcp_session_)
                 us_tcp_session_->ps_async_write(out_data); // this sends the data upstream

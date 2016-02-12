@@ -35,9 +35,9 @@ namespace proto_net
         proto_tcp_server::ps_start_accept(proto_net_pipeline& ps_pipeline, size_t buffer_size)
         {
             proto_tcp_session* new_session = new proto_tcp_session(ps_service_, ps_pipeline, buffer_size);
-            proto_tcp_client_pipeline* client_pipeline = dynamic_cast<proto_tcp_client_pipeline*>(&ps_pipeline);
+            proto_tcp_upstream_pipeline* client_pipeline = dynamic_cast<proto_tcp_upstream_pipeline*>(&ps_pipeline);
             if (client_pipeline)
-                client_pipeline->ps_proto_tcp_session(new_session);
+                client_pipeline->ps_upstream_session(new_session);
             acceptor_.async_accept(new_session->ps_socket(),
                                    boost::bind(&proto_tcp_server::handle_accept, this, new_session,
                                                boost::asio::placeholders::error));
