@@ -35,25 +35,23 @@ namespace proto_net
         void
         proto_tcp_text_session::ps_async_write(proto_net_out_data& data_out)
         {
-            // add pre-write pipe out call for the pipeline
-            ps_pipeline_.ps_pipe_out(data_out); // (server) any changes to the out data just prior to being sent
-            if (data_out.data_type() != data_text)
+            if (data_out.data() && data_out.data_size() && data_out.data_type() == data_text) //guard against empty data getting put into the pipe in
             {
-                ps_async_read(); // just go back to reading
-                return;
-            }
-
-            char* data = data_out.data();
-            size_t data_size = data_out.data_size();
-            if (data && data_size)
-            {
-                data_size++; // increase by 1
-                boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
-                                         boost::bind(&proto_tcp_session::ps_handle_write, this,
-                                                     boost::asio::placeholders::error));
+                // add pre-write pipe out call for the pipeline
+                ps_pipeline_.ps_pipe_out(data_out); // (server) any changes to the out data just prior to being sent
+                char *data = data_out.data();
+                size_t data_size = data_out.data_size();
+                if (data && data_size) {
+                    data_size++; // increase by 1
+                    boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
+                                             boost::bind(&proto_tcp_session::ps_handle_write, this,
+                                                         boost::asio::placeholders::error));
+                }
+                else
+                    ps_async_read(); // just go back to reading
             }
             else
-               ps_async_read(); // just go back to reading
+                ps_async_read(); // just go back to reading
         }
 
         void
@@ -72,8 +70,8 @@ namespace proto_net
                 {
                     ps_pipeline_.ps_pipe_in(req_data); // just prior to the pipeline execute the pipe in
                     ps_pipeline_.ps_pipeline(req_data, res_data); // all of the magic takes place inside the ps_pipeline
-                    ps_async_write(res_data); // set response data ptr or size to zero for a non-write
                 }
+                ps_async_write(res_data); // set response data ptr or size to zero for a non-write
             }
             else
                 delete this; // for now

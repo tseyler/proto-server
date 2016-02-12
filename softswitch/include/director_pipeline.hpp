@@ -5,16 +5,16 @@
 #ifndef DIRECTOR_PIPELINE_HPP_
 #define DIRECTOR_PIPELINE_HPP_
 
-#include <core/server/proto_session.hpp>
+#include <core/server/proto_tcp_session.hpp>
 
 using namespace proto_net::data;
 using namespace proto_net::server;
 
-class director_pipeline : public proto_net_client_pipeline // pipeline for a client
+class director_pipeline : public proto_tcp_client_pipeline // pipeline for a client
 {
 public:
 
-    director_pipeline(proto_session* us_session = NULL);
+    director_pipeline(proto_tcp_session* us_tcp_session = NULL);
     virtual ~director_pipeline()
     {}
 

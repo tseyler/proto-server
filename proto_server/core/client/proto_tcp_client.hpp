@@ -18,6 +18,10 @@ namespace proto_net
             proto_tcp_client(const std::string& address, unsigned short port_num = 80,
                              proto_net_pipeline& ps_pipeline = empty_pipeline_inst,
                              size_t buffer_size = 4096);
+            proto_tcp_client(proto_net_service_ptr ps_service, const std::string& address,
+                             unsigned short port_num = 80,
+                             proto_net_pipeline& ps_pipeline = empty_pipeline_inst,
+                             size_t buffer_size = 4096);
             virtual ~proto_tcp_client();
 
             // pure virtuals
@@ -48,6 +52,25 @@ namespace proto_net
             size_t buffer_size_;
             char* buffer_;
             proto_net_in_data write_data_;
+        };
+
+        // specialization of a pipeline used by servers for a downstream client
+        class proto_tcp_server_pipeline : public proto_net_pipeline
+        {
+        public:
+
+            proto_tcp_server_pipeline(proto_tcp_client* ds_client = NULL);
+            virtual ~proto_tcp_server_pipeline();
+
+            virtual void ps_proto_tcp_client(proto_tcp_client* ds_client);
+
+            virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
+            virtual void ps_pipe_in(proto_net_in_data& in_data);
+            virtual void ps_pipe_out(proto_net_out_data& out_data);
+
+        protected:
+
+            proto_tcp_client* ds_tcp_client_;
         };
     }
 }

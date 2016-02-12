@@ -21,6 +21,7 @@ namespace proto_net
         public:
 
             proto_tcp_text_server(unsigned short port_num = 80);
+            proto_tcp_text_server(proto_net_service_ptr ps_service, unsigned short port_num = 80);
             virtual ~proto_tcp_text_server() {}
 
             // copy constructor

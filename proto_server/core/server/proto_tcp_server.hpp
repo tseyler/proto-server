@@ -22,13 +22,14 @@ namespace proto_net
         public:
 
             proto_tcp_server(unsigned short port_num = 80);
+            proto_tcp_server(proto_net_service_ptr ps_service, unsigned short port_num = 80);
             virtual ~proto_tcp_server() {}
 
             // copy constructor
             proto_tcp_server(proto_tcp_server& ps);
 
             // pure virtuals
-            virtual void ps_start_accept(proto_net_pipeline& ps_io, size_t buffer_size);
+            virtual void ps_start_accept(proto_net_pipeline& ps_pipeline, size_t buffer_size);
 
             unsigned short ps_port(void) const;
 

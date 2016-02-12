@@ -12,6 +12,10 @@ namespace proto_net
         {
         }
 
+        proto_server::proto_server(proto_net_service_ptr ps_service) : ps_service_(ps_service)
+        {
+        }
+
         proto_server::~proto_server()
         {
         }
