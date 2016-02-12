@@ -10,16 +10,13 @@ namespace proto_net
     {
         proto_tcp_session::proto_tcp_session(proto_net_service_ptr ps_service, proto_net_pipeline& ps_pipeline,
                                              size_t buffer_size /*= 4096*/) :
-                proto_session(ps_pipeline, buffer_size),
+                proto_session(buffer_size),
+                ps_pipeline_(ps_pipeline),
                 socket_(proto_net_service_ref(ps_service))
-        {
-
-        }
+        {}
 
         proto_tcp_session::~proto_tcp_session()
-        {
-
-        }
+        {}
 
         void
         proto_tcp_session::ps_start(void)
@@ -89,23 +86,17 @@ namespace proto_net
                 delete this;
         }
 
+
+        proto_net_pipeline&
+        proto_tcp_session::ps_pipeline(void)
+        {
+            return ps_pipeline_;
+        }
+
         proto_net_tcp_socket&
         proto_tcp_session::ps_socket(void)
         {
             return socket_;
-        }
-
-        proto_tcp_upstream_pipeline::proto_tcp_upstream_pipeline(proto_tcp_session* us_tcp_session /*= NULL */) :
-                us_tcp_session_(us_tcp_session)
-        {}
-
-        proto_tcp_upstream_pipeline::~proto_tcp_upstream_pipeline()
-        {}
-
-        void
-        proto_tcp_upstream_pipeline::ps_upstream_session(proto_tcp_session *us_tcp_session)
-        {
-            us_tcp_session_ = us_tcp_session;
         }
 
         void
@@ -123,8 +114,8 @@ namespace proto_net
         void
         proto_tcp_upstream_pipeline::ps_pipe_out(proto_net_out_data& out_data)
         {
-            if (us_tcp_session_)
-                us_tcp_session_->ps_async_write(out_data); // this sends the data upstream
+            if (io_)
+                io_->ps_async_write(out_data); // this sends the data upstream
         }
     }
 

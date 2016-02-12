@@ -17,21 +17,15 @@ namespace proto_net
         {
         public:
 
-            proto_session(proto_net_pipeline& ps_pipeline = empty_pipeline_inst, size_t buffer_size = 4096);
+            proto_session(size_t buffer_size = 4096);
             virtual ~proto_session();
-
-            virtual void ps_start(void) = 0;
-            virtual void ps_async_read(void) = 0;
-            virtual void ps_async_write(proto_net_out_data& data_out) = 0;
 
             // getters
             const char* ps_buffer(void) const;
             size_t ps_buffer_size(void) const;
-            proto_net_pipeline& ps_pipeline(void);
 
         protected:
 
-            proto_net_pipeline& ps_pipeline_;
             size_t buffer_size_;
             char* buffer_;
 
