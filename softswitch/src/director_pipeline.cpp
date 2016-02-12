@@ -9,7 +9,7 @@
 using namespace proto_net::data;
 using namespace proto_net::server;
 
-director_pipeline::director_pipeline(proto_tcp_session* us_tcp_session /*= NULL*/) : proto_tcp_client_pipeline(us_tcp_session)
+director_pipeline::director_pipeline(proto_tcp_session* us_tcp_session /*= NULL*/) : proto_tcp_upstream_pipeline(us_tcp_session)
 {
 }
 

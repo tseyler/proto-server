@@ -9,10 +9,9 @@
 using namespace proto_net::data;
 using namespace proto_net::client;
 
-sipproxy_pipeline::sipproxy_pipeline(proto_tcp_client* ds_tcp_client /*= NULL*/) : proto_tcp_server_pipeline(ds_tcp_client)
-{
-
-}
+sipproxy_pipeline::sipproxy_pipeline(proto_tcp_client* ds_tcp_client /*= NULL*/)
+        : proto_tcp_downstream_pipeline(ds_tcp_client)
+{}
 
 void
 sipproxy_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)

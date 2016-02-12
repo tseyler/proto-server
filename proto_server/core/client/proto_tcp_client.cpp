@@ -163,34 +163,34 @@ namespace proto_net
             return socket_;
         }
 
-        proto_tcp_server_pipeline::proto_tcp_server_pipeline(proto_tcp_client* ds_tcp_client /* = NULL*/) :
+        proto_tcp_downstream_pipeline::proto_tcp_downstream_pipeline(proto_tcp_client* ds_tcp_client /* = NULL*/) :
                 ds_tcp_client_(ds_tcp_client)
         {}
 
-        proto_tcp_server_pipeline::~proto_tcp_server_pipeline()
+        proto_tcp_downstream_pipeline::~proto_tcp_downstream_pipeline()
         {}
 
         void
-        proto_tcp_server_pipeline::ps_proto_tcp_client(proto_tcp_client* ds_tcp_client)
+        proto_tcp_downstream_pipeline::ps_downstream_client(proto_tcp_client *ds_tcp_client)
         {
             ds_tcp_client_ = ds_tcp_client;
         }
 
         void
-        proto_tcp_server_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
+        proto_tcp_downstream_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
         {
             // empty
         }
 
         void
-        proto_tcp_server_pipeline::ps_pipe_in(proto_net_in_data& in_data)
+        proto_tcp_downstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
             if (ds_tcp_client_)
                 ds_tcp_client_->ps_async_write(in_data);
         }
 
         void
-        proto_tcp_server_pipeline::ps_pipe_out(proto_net_out_data& out_data)
+        proto_tcp_downstream_pipeline::ps_pipe_out(proto_net_out_data& out_data)
         {
             // empty
         }

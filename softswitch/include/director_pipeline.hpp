@@ -10,7 +10,7 @@
 using namespace proto_net::data;
 using namespace proto_net::server;
 
-class director_pipeline : public proto_tcp_client_pipeline // pipeline for a client
+class director_pipeline : public proto_tcp_upstream_pipeline // pipeline for a client
 {
 public:
 

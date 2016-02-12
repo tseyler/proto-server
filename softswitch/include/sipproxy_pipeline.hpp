@@ -11,7 +11,7 @@
 using namespace proto_net::data;
 using namespace proto_net::client;
 
-class sipproxy_pipeline : public proto_tcp_server_pipeline // pipeline for a server
+class sipproxy_pipeline : public proto_tcp_downstream_pipeline // pipeline for a server
 {
 public:
 

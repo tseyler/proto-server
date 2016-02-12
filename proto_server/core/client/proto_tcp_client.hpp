@@ -52,14 +52,14 @@ namespace proto_net
         };
 
         // specialization of a pipeline used by servers for a downstream client
-        class proto_tcp_server_pipeline : public proto_net_pipeline
+        class proto_tcp_downstream_pipeline : public proto_net_pipeline
         {
         public:
 
-            proto_tcp_server_pipeline(proto_tcp_client* ds_client = NULL);
-            virtual ~proto_tcp_server_pipeline();
+            proto_tcp_downstream_pipeline(proto_tcp_client* ds_client = NULL);
+            virtual ~proto_tcp_downstream_pipeline();
 
-            virtual void ps_proto_tcp_client(proto_tcp_client* ds_tcp_client);
+            virtual void ps_downstream_client(proto_tcp_client *ds_tcp_client);
 
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
             virtual void ps_pipe_in(proto_net_in_data& in_data);
