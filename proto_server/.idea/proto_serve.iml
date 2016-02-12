@@ -5,8 +5,10 @@
       <sourceFolder url="file://$MODULE_DIR$/core/proto_net_types.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_client.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_text_client.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_sync_text_client.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/client/proto_client.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_text_client.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_sync_text_client.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_client.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/client/proto_client.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/server/proto_server.hpp" isTestSource="false" />

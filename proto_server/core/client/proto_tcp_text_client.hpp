@@ -30,11 +30,6 @@ namespace proto_net
             virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
             virtual void ps_handle_write(const boost::system::error_code &error);
 
-            // synchronous reads and writes
-            virtual void ps_write(proto_net_in_data& data_in);
-            virtual void ps_read(proto_net_out_data& data_out);
-            virtual void ps_write_read(proto_net_in_data& data_in, proto_net_out_data& data_out);
-
         protected:
 
             boost::asio::streambuf stream_buffer_;

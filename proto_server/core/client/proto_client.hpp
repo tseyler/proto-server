@@ -23,7 +23,6 @@ namespace proto_net
             proto_client(proto_net_service_ptr ps_service);
             virtual ~proto_client();
 
-            // pure virtuals
             virtual void ps_run(void);
             virtual void ps_stop(void);
 
