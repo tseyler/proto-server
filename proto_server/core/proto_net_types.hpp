@@ -6,6 +6,9 @@
 #define PROTO_NET_TYPES_HPP_
 
 #include <boost/shared_ptr.hpp>
+#include <boost/thread.hpp>
+#include <boost/smart_ptr.hpp>
+#include <boost/bind.hpp>
 #include <boost/asio.hpp>
 
 #define THROW_BOOST_ERROR( e ) if (e.value() > 0) throw e
@@ -37,6 +40,8 @@ namespace proto_net
     typedef boost::asio::ip::tcp::resolver::iterator proto_net_tcp_iterator;
 
     typedef boost::system::error_code proto_net_error_code;
+
+    typedef boost::scoped_ptr<boost::thread> proto_net_thread_ptr;
 
 
     // returns a reference from the shared ptr

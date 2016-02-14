@@ -24,11 +24,13 @@ namespace proto_net
             virtual ~proto_client();
 
             virtual void ps_run(void);
+            virtual void ps_start(void);
             virtual void ps_stop(void);
 
         protected:
 
             proto_net_service_ptr ps_service_;
+            proto_net_thread_ptr ps_thread_;
         };
     }
 }

@@ -41,7 +41,8 @@ namespace proto_net
                 ps_pipeline_.ps_pipe_out(data_out); // (server) any changes to the out data just prior to being sent
                 char *data = data_out.data();
                 size_t data_size = data_out.data_size();
-                if (data && data_size) {
+                if (data && data_size)
+                {
                     data_size++; // increase by 1
                     boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
                                              boost::bind(&proto_tcp_session::ps_handle_write, this,
