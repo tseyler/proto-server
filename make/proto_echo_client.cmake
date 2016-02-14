@@ -23,7 +23,7 @@ link_directories(${LIB_DIR} ${BOOST_LIB_DIR})
 
 add_executable(proto-echo-client ${SOURCE_FILES})
 
-#add_dependencies(proto-echo-client proto_server)
+add_dependencies(proto-echo-client proto_server)
 
 # linking
-target_link_libraries(proto-echo-client boost_system pthread proto_server)
+target_link_libraries(proto-echo-client boost_system boost_thread pthread proto_server)

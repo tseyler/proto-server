@@ -26,10 +26,26 @@ namespace proto_net
             ps_service_->run();
         }
 
+        void proto_server::ps_start(void)
+        {
+            if (!ps_thread_)
+            {
+                ps_thread_.reset(new boost::thread(boost::bind(&boost::asio::io_service::run, ps_service_.get())));
+            }
+        }
+
         void
         proto_server::ps_stop(void)
         {
             ps_service_->stop();
+
+            if (ps_thread_)
+            {
+                ps_thread_->join();
+                ps_thread_.reset();
+            }
+
+            ps_service_->reset();
         }
     }
 }

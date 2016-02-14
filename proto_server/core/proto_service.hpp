@@ -11,8 +11,9 @@ namespace proto_net
     {
     public:
         // pure virtuals
-        virtual void ps_run(void) = 0;
-        virtual void ps_stop(void) = 0;
+        virtual void ps_run(void) = 0; // running service in same thread
+        virtual void ps_start(void) = 0; // starting service in worker thread
+        virtual void ps_stop(void) = 0;  // stopping service in worker thread
     };
 
 }
