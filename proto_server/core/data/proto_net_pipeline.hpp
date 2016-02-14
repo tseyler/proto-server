@@ -18,7 +18,7 @@ namespace proto_net
         {
         public:
 
-            proto_net_pipeline() : ps_(NULL)
+            proto_net_pipeline() : io_(NULL), ps_(NULL)
             {}
             virtual ~proto_net_pipeline()
             {}
@@ -29,7 +29,7 @@ namespace proto_net
 
             // getters
             proto_service*  ps_proto_service(void ) const { return ps_; }
-            proto_async_io* ps_proto_io(void)const { return io_; }
+            proto_async_io* ps_proto_io(void) const { return io_; }
             //setter
             void ps_proto_service(proto_service* ps) { ps_ = ps;}
             void ps_proto_io(proto_async_io* io) { io_ = io; }
