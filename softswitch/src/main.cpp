@@ -90,26 +90,37 @@ void console_func(sipclient_signaling* uas)
 int 
 main(int argc, char* argv[])
 {
-    proto_net_service_ptr ps_service(new proto_net_service);
 
-    proto_tcp_text_server sp_server(ps_service, 5095);   // port 5095
+    // std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"1\"></c4soap>";
+
+    // step 1 - create the server TCP/5095
+    proto_tcp_text_server sp_server(5095);   // port 5095
+    // create a pipeline for the server
     sipproxy_pipeline sp_pipeline;
+    // start accepting connections
+    sp_server.ps_start_accept(sp_pipeline, 4096); // buffer size = 4096
+    // start the service
+    sp_server.ps_start();
 
-    std::string auth = "<c4soap name=\"AuthenticatePassword\" seq=\"1\"><param name=\"password\" type=\"string\">root</param></c4soap>";
-   // std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"1\"></c4soap>";
-
+    // step 2 - create the client TCP/5020
+    // create a pipeline for the client
     director_pipeline dir_pipeline;
-    proto_tcp_text_client dir_client(ps_service, "192.168.1.18", 5020, dir_pipeline);
+    // create the client
+    proto_tcp_text_client dir_client("192.168.1.18", 5020, dir_pipeline);
 
+    // prepare the downstream and upstream pipeline
+    dir_pipeline.ps_proto_io(&dir_client);
     sp_pipeline.ps_proto_io(&dir_client);
 
-    sp_server.ps_start_accept(sp_pipeline, 4096); // buffer size = 4096
+    // authenticate c4soap message for director to allow a connection
+    std::string auth = "<c4soap name=\"AuthenticatePassword\" seq=\"1\"><param name=\"password\" type=\"string\">root</param></c4soap>";
+    proto_net_in_data cmd_data(auth);
+    // connect to the downstream server (director)
+    dir_client.ps_async_connect(cmd_data);
+    // start the client service
+    dir_client.ps_start();
 
-    //sp_server.ps_run();
 
-    //proto_net_in_data cmd_data(auth);
-    //dir_client.ps_async_connect(cmd_data);
-    ps_service->run();
 
     /*
 	if (argc != 4)

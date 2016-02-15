@@ -26,4 +26,4 @@ add_executable(softswitch ${SOURCE_FILES})
 add_dependencies(softswitch proto_server)
 
 # linking
-target_link_libraries(softswitch boost_system pthread proto_server)
+target_link_libraries(softswitch boost_system boost_thread pthread proto_server)
