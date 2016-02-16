@@ -7,6 +7,10 @@
 .metadata
 *~
 
+# do not need doxygens output file
+*/html/*
+*/latex/*
+
 # we dont need encodings.xml
 encodings.xml
 # we dont need workspace.xml
