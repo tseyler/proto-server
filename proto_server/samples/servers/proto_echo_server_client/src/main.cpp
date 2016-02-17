@@ -24,6 +24,11 @@ main(int argc, char *argv[])
 
     boost::this_thread::sleep(boost::posix_time::milliseconds(500));
 
+    proto_net_in_data another_data("Another Hello World!");
+    client.ps_async_write(another_data);
+
+    boost::this_thread::sleep(boost::posix_time::milliseconds(5000));
+
     client.ps_stop();
     server.ps_stop();
 
