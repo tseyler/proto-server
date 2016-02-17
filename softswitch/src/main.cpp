@@ -90,9 +90,6 @@ void console_func(sipclient_signaling* uas)
 int 
 main(int argc, char* argv[])
 {
-
-    // std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"1\"></c4soap>";
-
     // step 1 - create the server TCP/5095
     proto_tcp_text_server sp_server(5095);   // port 5095
     // create a pipeline for the server
@@ -106,10 +103,10 @@ main(int argc, char* argv[])
     // create a pipeline for the client
     director_pipeline dir_pipeline;
     // create the client
-    proto_tcp_text_client dir_client("192.168.1.18", 5020, dir_pipeline);
+    proto_tcp_text_client dir_client("192.168.1.12", 5020, dir_pipeline);
 
     // prepare the downstream and upstream pipeline
-    dir_pipeline.ps_proto_io(&dir_client);
+    //dir_pipeline.ps_proto_io(&dir_client);
     sp_pipeline.ps_proto_io(&dir_client);
 
     // authenticate c4soap message for director to allow a connection
@@ -120,7 +117,16 @@ main(int argc, char* argv[])
     // start the client service
     dir_client.ps_start();
 
+    //boost::this_thread::sleep(boost::posix_time::milliseconds(500));
 
+    //std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"2\"></c4soap>";
+    //proto_net_in_data another_cmd_data(cmd);
+   // dir_client.ps_async_write(another_cmd_data);
+
+    boost::this_thread::sleep(boost::posix_time::milliseconds(60000));
+
+    dir_client.ps_stop();
+    sp_server.ps_stop();
 
     /*
 	if (argc != 4)
