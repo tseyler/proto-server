@@ -179,8 +179,7 @@ namespace proto_net
         proto_tcp_downstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
             if (io_)
-                //ds_io_->ps_async_write(in_data);
-                std::cout << "Performing downstream client write." << std::endl;
+                io_->ps_async_write(in_data);
         }
 
         void

@@ -14,7 +14,9 @@ namespace proto_net
         { }
 
         proto_tcp_text_session::~ proto_tcp_text_session()
-        { }
+        {
+
+        }
 
         void
         proto_tcp_text_session::ps_start(void)
@@ -25,10 +27,10 @@ namespace proto_net
         void
         proto_tcp_text_session::ps_async_read(void)
         {
-            boost::asio::async_read_until(socket_, stream_buffer_, '\0',
-                                    boost::bind(&proto_tcp_text_session::ps_handle_read, this,
-                                                boost::asio::placeholders::error,
-                                                boost::asio::placeholders::bytes_transferred));
+                boost::asio::async_read_until(socket_, stream_buffer_, '\0',
+                                              boost::bind(&proto_tcp_text_session::ps_handle_read, this,
+                                                          boost::asio::placeholders::error,
+                                                          boost::asio::placeholders::bytes_transferred));
         }
 
 
@@ -58,6 +60,9 @@ namespace proto_net
         void
         proto_tcp_text_session::ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred)
         {
+            if (session_read_error_)
+                return;
+
             if (!error)
             {
                 std::istream is(&stream_buffer_);
@@ -77,7 +82,10 @@ namespace proto_net
                 ps_async_write(res_data); // set response data ptr or size to zero for a non-write
             }
             else
-                delete this; // for now
+            {
+                ps_close_session();
+                session_read_error_ = true;
+            }
         }
 
         void
@@ -88,8 +96,6 @@ namespace proto_net
                 // handle a post write here
                 ps_async_read(); // just go back to reading
             }
-            else
-                delete this;
         }
     }
 
