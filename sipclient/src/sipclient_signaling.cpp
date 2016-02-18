@@ -97,6 +97,8 @@ namespace sipclient
 		case regFailure:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "reg_result = regFailure");
+			sipclient_notify(layer_signaling, signaling_event_sip_registration_failure,
+								 __CLASS__, __FUNCTION__, __LINE__, "Registration Failure");
 			break;
 		case regRetry:
 
@@ -128,31 +130,46 @@ namespace sipclient
 		case inviteClientSuccess:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteClientSuccess");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_client_success,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Client Success");
 			break;
 		// Was called (invited) by another device.
 		case inviteServerSuccess:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteServerSuccess");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_server_success,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Server Success");
 			break;
 		case inviteFailure:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteFailure");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_failure,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Failure");
 			break;
 		case inviteAnswer:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteAnswer");
-			break;
+
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_answer,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Answer");
+				break;
 		case inviteConnected:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteConnected");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_connected,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Connected");
 			break;
 		case inviteTerminated:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteTerminated");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_terminated,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Terminated");
 			break;
 		case inviteOffer:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteOffer");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_offer,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Offer");
 			break;
 		case inviteOfferRequired:
 
@@ -208,12 +225,28 @@ namespace sipclient
 				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
 			break;
 			case sAnswer:
-
+			{
 				log_stream <<  "SessionStatus = sAnswer Call ID = " << call_id_ << "; Session ID = " << session_id;
 				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
+
+				resip::ClientInviteSession* client_invite_session = dynamic_cast<resip::ClientInviteSession*>(invite_session);
+				if (client_invite_session)
+				{
+					// get the remote's SDP
+					SessionSdpPtr remote_sdp = dialog->getRemoteSdp();
+					if (remote_sdp) // we have remote SDP
+					{
+						std::string remote_sdp_str = remote_sdp->toString();
+						std::cout << "Remote SDP:" << std::endl << remote_sdp_str << std::endl;
+					}
+				}
+			}
 			break;
 			case sOffer:
 			{
+				log_stream <<  "SessionStatus = sOffer; Call ID = " << dialog->getCallId() << "; Session ID = " << session_id;
+				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
+
 				resip::ServerInviteSession* server_invite_session = dynamic_cast<resip::ServerInviteSession*>(invite_session);
 
 				if (server_invite_session) // we have an incoming call
@@ -225,13 +258,16 @@ namespace sipclient
 						std::string remote_sdp_str = remote_sdp->toString();
 						std::cout << "Remote SDP:" << std::endl << remote_sdp_str << std::endl;
 
+						std::string local_sdp_str = local_sdp_.toString();
+						std::cout << "Local SDP:" << std::endl << local_sdp_str << std::endl;
+
 						// make a copy of the local SDP
 						SessionSdpPtr session_sdp(new SessionSdp(local_sdp_));
 						// negotiate the media
 						session_sdp->negotiateMedia(remote_sdp);
 
-						std::string local_sdp_str = local_sdp_.toString();
-						std::cout << "Local SDP:" << std::endl << local_sdp_str << std::endl;
+						std::string neg_sdp_str = session_sdp->toString();
+						std::cout << "Neg SDP:" << std::endl << neg_sdp_str << std::endl;
 						//SessionSdp::SdpConnection connection = remote_sdp->getConnection();
 						//bool multicast = (connection.getTtl());//connection.is_multicast_address();
 						//bool forking = is_forking();
@@ -268,8 +304,7 @@ namespace sipclient
 					}
 				}
 			}
-				log_stream <<  "SessionStatus = sOffer; Call ID = " << dialog->getCallId() << "; Session ID = " << session_id;
-				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
+
 				break;
 			case sEarlyMedia:
 
