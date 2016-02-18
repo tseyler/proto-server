@@ -12,11 +12,14 @@ namespace proto_net
                                              size_t buffer_size /*= 4096*/) :
                 proto_session(buffer_size),
                 ps_pipeline_(ps_pipeline),
-                socket_(proto_net_service_ref(ps_service))
+                socket_(proto_net_service_ref(ps_service)),
+                session_read_error_(false)
         {}
 
         proto_tcp_session::~proto_tcp_session()
-        {}
+        {
+            ps_close_session();
+        }
 
         void
         proto_tcp_session::ps_start(void)
@@ -27,10 +30,17 @@ namespace proto_net
         void
         proto_tcp_session::ps_async_read(void)
         {
-            socket_.async_read_some(boost::asio::buffer(buffer_, buffer_size_),
-                                    boost::bind(&proto_tcp_session::ps_handle_read, this,
-                                                boost::asio::placeholders::error,
-                                                boost::asio::placeholders::bytes_transferred));
+            if (!session_read_error_)
+            {
+                socket_.async_read_some(boost::asio::buffer(buffer_, buffer_size_),
+                                        boost::bind(&proto_tcp_session::ps_handle_read, this,
+                                                    boost::asio::placeholders::error,
+                                                    boost::asio::placeholders::bytes_transferred));
+            }
+            else
+            {
+                delete this;
+            }
         }
 
         void
@@ -58,6 +68,9 @@ namespace proto_net
         void
         proto_tcp_session::ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred)
         {
+            if (session_read_error_)
+                return;
+
             if (!error)
             {
               // handle a ps_read here
@@ -71,7 +84,10 @@ namespace proto_net
                 ps_async_write(res_data); // set response data ptr or size to zero for a non-write
             }
             else
-                delete this; // for now
+            {
+                ps_close_session();
+                session_read_error_ = true;
+            }
         }
 
         void
@@ -97,6 +113,13 @@ namespace proto_net
         proto_tcp_session::ps_socket(void)
         {
             return socket_;
+        }
+
+        void
+        proto_tcp_session::ps_close_session(void)
+        {
+            if (socket_.is_open())
+                socket_.close();
         }
 
         void
