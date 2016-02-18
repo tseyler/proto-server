@@ -97,7 +97,8 @@ std::string get_local_address(void)
 			tmp_addr = &((struct sockaddr_in *)ifa->ifa_addr)->sin_addr;
 			inet_ntop(AF_INET, tmp_addr, addressBuffer, 32);
 			local_address = addressBuffer;
-		} else if (ifa->ifa_addr->sa_family == AF_INET6)
+		}
+		else if (ifa->ifa_addr->sa_family == AF_INET6)
 		{ // check it is IP6
 			// is a valid IP6 Address
 			tmp_addr = &((struct sockaddr_in6 *)ifa->ifa_addr)->sin6_addr;
