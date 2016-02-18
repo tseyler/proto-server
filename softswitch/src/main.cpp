@@ -66,11 +66,15 @@ main(int argc, char* argv[])
     // start the client service
     dir_client.ps_start();
     boost::this_thread::sleep(boost::posix_time::milliseconds(2000));
-    //std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"2\"></c4soap>";
+//    //std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"2\"></c4soap>";
     std::string cmd = "<c4soap name=\"SendToDevice\" seq=\"5\"><param name=\"iddevice\" type=\"number\">8</param><param name=\"data\" type=\"string\"><devicecommand><command>getRoute</command><params><param><name>index</name><value type=\"INTEGER\"><static>0</static></value></param></params></devicecommand></param></c4soap>";
     proto_net_in_data another_cmd_data(cmd);
     dir_client.ps_async_write(another_cmd_data);
     dir_client.ps_async_write(another_cmd_data);
+    dir_client.ps_async_write(another_cmd_data);
+    dir_client.ps_async_write(another_cmd_data);
+    //dir_client.ps_async_write(another_cmd_data);
+    //dir_client.ps_async_write(another_cmd_data);
 
     void* dummy(NULL);
     boost::thread console_thd(console_func, dummy);
