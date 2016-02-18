@@ -28,16 +28,13 @@ sipproxy_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_
 void
 sipproxy_pipeline::ps_pipe_in(proto_net_in_data& in_data)
 {
-    proto_net_data data_in = in_data;
-    data_in.data_type(data_text);
-    std::cout << "SipProxy Pipeline: Data in = " << data_in << std::endl;
-
+    std::cout << "SipProxy Pipeline: Send Data  = " << in_data << "; Forwarding downstream to client." << std::endl;
     proto_tcp_downstream_pipeline::ps_pipe_in(in_data);
 }
 
 void
 sipproxy_pipeline::ps_pipe_out(proto_net_out_data& out_data)
 {
-   // proto_net_server_pipeline::ps_pipe_in(out_data);
+    std::cout << "SipProxy Pipeline: Received Data  = " << out_data << std::endl;
 }
 

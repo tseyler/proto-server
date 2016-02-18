@@ -38,8 +38,13 @@ namespace proto_net
 
         protected:
 
+            virtual void ps_close_session(void);
+
+        protected:
+
             proto_net_pipeline& ps_pipeline_;
             proto_net_tcp_socket socket_;
+            bool session_read_error_;
         };
 
 
