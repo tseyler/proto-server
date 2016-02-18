@@ -97,6 +97,8 @@ namespace sipclient
 		case regFailure:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "reg_result = regFailure");
+			sipclient_notify(layer_signaling, signaling_event_sip_registration_failure,
+								 __CLASS__, __FUNCTION__, __LINE__, "Registration Failure");
 			break;
 		case regRetry:
 
@@ -128,31 +130,46 @@ namespace sipclient
 		case inviteClientSuccess:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteClientSuccess");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_client_success,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Client Success");
 			break;
 		// Was called (invited) by another device.
 		case inviteServerSuccess:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteServerSuccess");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_server_success,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Server Success");
 			break;
 		case inviteFailure:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteFailure");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_failure,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Failure");
 			break;
 		case inviteAnswer:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteAnswer");
-			break;
+
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_answer,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Answer");
+				break;
 		case inviteConnected:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteConnected");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_connected,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Connected");
 			break;
 		case inviteTerminated:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteTerminated");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_terminated,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Terminated");
 			break;
 		case inviteOffer:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteOffer");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_offer,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Offer");
 			break;
 		case inviteOfferRequired:
 
