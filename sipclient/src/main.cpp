@@ -8,6 +8,7 @@
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/algorithm/string.hpp>
 #include "sipclient_signaling.hpp"
+#include <string>
 
 
 using namespace sipclient;
@@ -58,6 +59,7 @@ void console_func(sipclient_signaling* uas)
 	boost::mutex::scoped_lock lock(reg_mutex);
 	std::string console_input;
 	uas->restart_useragent(0, false,  "sipclient");
+	//boost::this_thread::sleep(boost::posix_time::milliseconds(2000));
 	while (!uas->is_registered())
 		uas->registration_condition().wait(lock);
 
@@ -77,11 +79,13 @@ void console_func(sipclient_signaling* uas)
 
 std::string get_local_address(void)
 {
-	std::string local_address;
+	std::string fnd_address("127.0.0.1");
 
 	struct ifaddrs* if_struct_ptr(NULL);
 	struct ifaddrs* ifa(NULL);
 	void* tmp_addr(NULL);
+
+	char addressBuffer[32];
 
 	getifaddrs(&if_struct_ptr);
 
@@ -89,27 +93,29 @@ std::string get_local_address(void)
 	{
 		if (!ifa->ifa_addr)
 			continue;
-		char addressBuffer[32];
 		memset(addressBuffer, 0, 32);
 		if (ifa->ifa_addr->sa_family == AF_INET)
 		{ // check it is IP4
 			// is a valid IP4 Address
 			tmp_addr = &((struct sockaddr_in *)ifa->ifa_addr)->sin_addr;
 			inet_ntop(AF_INET, tmp_addr, addressBuffer, 32);
-			local_address = addressBuffer;
+			std::string ab(addressBuffer);
+			std::string ba = ab;
+			fnd_address = ba;
+			std::cout << ba << std::endl;
 		}
 		else if (ifa->ifa_addr->sa_family == AF_INET6)
 		{ // check it is IP6
 			// is a valid IP6 Address
 			tmp_addr = &((struct sockaddr_in6 *)ifa->ifa_addr)->sin6_addr;
 			inet_ntop(AF_INET6, tmp_addr, addressBuffer, 32);
-			local_address = addressBuffer;
+			//local_address = addressBuffer;
 		}
 	}
 
 	free(if_struct_ptr);
 
-	return local_address;
+	return fnd_address;
 }
 
 class console_notifier : public sipclient_notifier

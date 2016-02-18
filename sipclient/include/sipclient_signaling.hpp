@@ -86,6 +86,8 @@ namespace sipclient
 
 		void setup_local_SDP(void);
 		bool is_forking(void);
+		void print_sdp(SessionSdpPtr sdp_ptr, const std::string& sdp_label);
+		void print_sdp(SessionSdp* sdp_ptr, const std::string& sdp_label);
 
     private:
 
