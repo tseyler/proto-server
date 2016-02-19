@@ -13,28 +13,25 @@ using namespace proto_net::client;
 void
 sipproxy_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
 {
-   // proto_net_pipe pipe(req_data);
-   // proto_net_data data_in = req_data;
-  //  data_in.data_type(data_text);
-  //  std::cout << "SipProxy Pipeline: Data in = " << data_in << std::endl;
-   // res_data = pipe.ps_pipe_data_out();
-    //proto_net_data data_out = res_data;
-   // data_out.data_type(data_text);
-   // std::cout << "SipProxy Pipeline: Data out = " << data_out << std::endl;
-
-//    proto_net_server_pipeline::ps_pipeline(req_data, res_data);
 }
 
-void
+bool
 sipproxy_pipeline::ps_pipe_in(proto_net_in_data& in_data)
 {
-    std::cout << "SipProxy Pipeline: Send Data  = " << in_data << "; Forwarding downstream to client." << std::endl;
-    proto_tcp_downstream_pipeline::ps_pipe_in(in_data);
+    bool try_lock = ps_pipeline_try_lock();
+    if (try_lock)
+    {
+        std::cout << "SipProxy Pipeline: Send Data  = " << in_data << "; Forwarding downstream to client." << std::endl;
+        proto_tcp_downstream_pipeline::ps_pipe_in(in_data);
+    }
+
+    return try_lock;
 }
 
 void
 sipproxy_pipeline::ps_pipe_out(proto_net_out_data& out_data)
 {
     std::cout << "SipProxy Pipeline: Received Data  = " << out_data << std::endl;
+    ps_pipeline_unlock();
 }
 

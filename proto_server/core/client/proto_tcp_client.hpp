@@ -42,6 +42,11 @@ namespace proto_net
             proto_net_tcp_socket& ps_socket(void);
 
         protected:
+//
+//            virtual void ps_push_write_queue(proto_net_in_data& data_in);
+//            virtual proto_net_in_data ps_pop_write_queue(void);
+
+        protected:
 
             std::string address_;
             unsigned short port_num_;
@@ -51,6 +56,7 @@ namespace proto_net
             size_t buffer_size_;
             char* buffer_;
             proto_net_in_data write_data_;
+            //proto_net_data_queue write_queue_;
         };
 
         // specialization of a pipeline used by servers for a downstream client
@@ -59,7 +65,7 @@ namespace proto_net
         public:
 
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
-            virtual void ps_pipe_in(proto_net_in_data& in_data);
+            virtual bool ps_pipe_in(proto_net_in_data& in_data);
             virtual void ps_pipe_out(proto_net_out_data& out_data);
         };
     }

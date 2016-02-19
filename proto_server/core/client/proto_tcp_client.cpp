@@ -21,7 +21,8 @@ namespace proto_net
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
                   buffer_(NULL),
-                  write_data_()
+                  write_data_()//,
+                  //write_queue_(100)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
@@ -36,7 +37,8 @@ namespace proto_net
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
                   buffer_(NULL),
-                  write_data_()
+                  write_data_()//,
+                  //write_queue_(100)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
@@ -157,6 +159,23 @@ namespace proto_net
                 delete this;
         }
 
+//        void
+//        proto_tcp_client::ps_push_write_queue(proto_net_in_data& data_in)
+//        {
+//            write_queue_.push(data_in);
+//        }
+//
+//        proto_net_in_data
+//        proto_tcp_client::ps_pop_write_queue(void)
+//        {
+//            proto_net_in_data data_in;
+//
+//            write_queue_.pop(data_in);
+//
+//            return data_in;
+//        }
+
+
         proto_net_pipeline&
         proto_tcp_client::ps_pipeline(void)
         {
@@ -175,11 +194,13 @@ namespace proto_net
             // empty
         }
 
-        void
+        bool
         proto_tcp_downstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
             if (io_)
                 io_->ps_async_write(in_data);
+
+            return true;
         }
 
         void
