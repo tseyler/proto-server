@@ -21,8 +21,9 @@ namespace proto_net
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
                   buffer_(NULL),
-                  write_data_()//,
-                  //write_queue_(100)
+                  write_data_(),
+                  write_queue_(100),
+                  write_complete_(true)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
@@ -37,8 +38,9 @@ namespace proto_net
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
                   buffer_(NULL),
-                  write_data_()//,
-                  //write_queue_(100)
+                  write_data_(),
+                  write_queue_(100),
+                  write_complete_(true)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
@@ -159,22 +161,32 @@ namespace proto_net
                 delete this;
         }
 
-//        void
-//        proto_tcp_client::ps_push_write_queue(proto_net_in_data& data_in)
-//        {
-//            write_queue_.push(data_in);
-//        }
-//
-//        proto_net_in_data
-//        proto_tcp_client::ps_pop_write_queue(void)
-//        {
-//            proto_net_in_data data_in;
-//
-//            write_queue_.pop(data_in);
-//
-//            return data_in;
-//        }
+        void
+        proto_tcp_client::ps_push_write_queue(proto_net_in_data& data_in)
+        {
+            write_queue_.push(data_in);
+            boost::this_thread::sleep(boost::posix_time::milliseconds(50));
+        }
 
+        proto_net_in_data
+        proto_tcp_client::ps_pop_write_queue(void)
+        {
+            proto_net_in_data data_in;
+
+            write_queue_.pop(data_in);
+
+            return data_in;
+        }
+
+        void
+        proto_tcp_client::ps_process_write_queue(void)
+        {
+            while (!write_queue_.empty())
+            {
+                proto_net_in_data data_in = ps_pop_write_queue();
+                ps_async_write(data_in);
+            }
+        }
 
         proto_net_pipeline&
         proto_tcp_client::ps_pipeline(void)
