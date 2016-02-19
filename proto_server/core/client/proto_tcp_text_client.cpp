@@ -32,7 +32,7 @@ namespace proto_net
         void
         proto_tcp_text_client::ps_async_read(void)
         {
-            boost::asio::async_read_until(socket_, stream_buffer_, '\0',
+            boost::asio::async_read_until(socket_, read_stream_buffer_, '\0',
                                           boost::bind(&proto_tcp_text_client::ps_handle_read, this,
                                                       boost::asio::placeholders::error,
                                                       boost::asio::placeholders::bytes_transferred));
@@ -43,18 +43,25 @@ namespace proto_net
         {
             if (data_in.data() && data_in.data_size() && data_in.data_type() == data_text) //guard against empty data getting put into the pipe in
             {
-                ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
-                char *data = data_in.data();
-                size_t data_size = data_in.data_size();
-                if (data && data_size)
+                if (ps_pipeline_.ps_pipe_in(data_in)) // just prior to the write, execute the pipe_in
                 {
-                    data_size++; // increase by 1
-                    boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
-                                             boost::bind(&proto_tcp_text_client::ps_handle_write, this,
-                                                         boost::asio::placeholders::error));
+                    char *data = data_in.data();
+                    size_t data_size = data_in.data_size();
+                    if (data && data_size)
+                    {
+                        data_size++; // increase by 1
+                        boost::asio::async_write(socket_, boost::asio::buffer(data, data_size), //boost::asio::transfer_at_least(data_size), // boost::asio::transfer_at_least(32)
+                                                 boost::bind(&proto_tcp_text_client::ps_handle_write, this,
+                                                             boost::asio::placeholders::error,
+                                                             boost::asio::placeholders::bytes_transferred));
+//                        boost::asio::async_write(stream, streambuf,
+//                                                 boost::asio::transfer_all(), handler);
+                    }
+                    else
+                        ps_async_read(); // just go back to reading
                 }
                 else
-                    ps_async_read(); // just go back to reading
+                    ps_async_read(); // busy just go back to reading no lock...
             }
             else
                 ps_async_read(); // just go back to reading
@@ -65,7 +72,7 @@ namespace proto_net
         {
             if (!error)
             {
-                std::istream is(&stream_buffer_);
+                std::istream is(&read_stream_buffer_);
                 is.get(buffer_, buffer_size_, '\0');
                 // handle a ps_read here
                 proto_net_data req_data;
@@ -77,8 +84,8 @@ namespace proto_net
                     ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
                     ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
                 }
-                stream_buffer_.consume(stream_buffer_.size());
-                stream_buffer_.prepare(buffer_size_);
+                read_stream_buffer_.consume(read_stream_buffer_.size());
+                read_stream_buffer_.prepare(buffer_size_);
                 ps_async_write(req_data);  // this is for any response that needs to be written back after a read
             }
             else
@@ -86,7 +93,7 @@ namespace proto_net
         }
 
         void
-        proto_tcp_text_client::ps_handle_write(const boost::system::error_code &error)
+        proto_tcp_text_client::ps_handle_write(const boost::system::error_code &error, size_t bytes_transferred)
         {
             if (!error)
             {
