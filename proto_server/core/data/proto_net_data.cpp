@@ -95,7 +95,7 @@ namespace proto_net
             data_type_ = copy_data.data_type();
             if (data_size_)
             {
-                data_allocate();
+                data_clone();
                 data_copy(copy_data.data(), data_size_);
             }
         }
@@ -163,7 +163,7 @@ namespace proto_net
             {
                 case data_text:
                 {
-                    size_t sz = data_size_ + 1;
+                    size_t sz = data_size_; // + 1;
                     char str[sz];
                     memset(str, 0, sz);
                     memcpy(str, data_, data_size_);
@@ -187,6 +187,22 @@ namespace proto_net
         proto_net_data::data_allocate(void)
         {
             delete [] data_;
+
+            if (data_size_)
+            {
+                if (data_type_ == data_text)
+                    data_size_++;
+
+                data_ = new char[data_size_];
+                memset(data_, 0, data_size_);
+            }
+        }
+
+        void
+        proto_net_data::data_clone(void)
+        {
+            delete [] data_;
+
             if (data_size_)
             {
                 data_ = new char[data_size_];

@@ -41,30 +41,42 @@ namespace proto_net
         void
         proto_tcp_text_client::ps_async_write(proto_net_in_data& data_in)
         {
-            if (data_in.data() && data_in.data_size() && data_in.data_type() == data_text) //guard against empty data getting put into the pipe in
+          //  boost::mutex::scoped_lock lock(write_mutex_);
+            while (!write_complete_)
             {
-                if (ps_pipeline_.ps_pipe_in(data_in)) // just prior to the write, execute the pipe_in
+                boost::this_thread::sleep(boost::posix_time::milliseconds(100));
+                // condition_.wait(lock);
+            }
+//            if (!ps_pipeline_.ps_pipeline_is_locked())
+//            {
+                if (data_in.data() && data_in.data_size() && data_in.data_type() == data_text) //guard against empty data getting put into the pipe in
                 {
-                    char *data = data_in.data();
-                    size_t data_size = data_in.data_size();
-                    if (data && data_size)
+                    if (ps_pipeline_.ps_pipe_in(data_in)) // just prior to the write, execute the pipe_in
                     {
-                        data_size++; // increase by 1
-                        boost::asio::async_write(socket_, boost::asio::buffer(data, data_size), //boost::asio::transfer_at_least(data_size), // boost::asio::transfer_at_least(32)
-                                                 boost::bind(&proto_tcp_text_client::ps_handle_write, this,
-                                                             boost::asio::placeholders::error,
-                                                             boost::asio::placeholders::bytes_transferred));
-//                        boost::asio::async_write(stream, streambuf,
-//                                                 boost::asio::transfer_all(), handler);
+                        char *data = data_in.data();
+                        size_t data_size = data_in.data_size();
+                        if (data && data_size)
+                        {
+                            //data_size++; // increase by 1
+                            boost::asio::async_write(socket_, boost::asio::buffer(data, data_size), //boost::asio::transfer_at_least(data_size), // boost::asio::transfer_at_least(32)
+                                                     boost::bind(&proto_tcp_text_client::ps_handle_write, this,
+                                                                 boost::asio::placeholders::error,
+                                                                 boost::asio::placeholders::bytes_transferred));
+
+                            write_complete_ = false;
+                        }
+                        else
+                            ps_async_read(); // just go back to reading
                     }
                     else
                         ps_async_read(); // just go back to reading
+                        //ps_push_write_queue(data_in); // we are locked so queue up the write
                 }
                 else
-                    ps_async_read(); // busy just go back to reading no lock...
-            }
-            else
-                ps_async_read(); // just go back to reading
+                    ps_async_read(); // just go back to reading
+//            }
+//            else
+//                ps_push_write_queue(data_in); // we are locked so queue up the write
         }
 
         void
@@ -75,10 +87,14 @@ namespace proto_net
                 std::istream is(&read_stream_buffer_);
                 is.get(buffer_, buffer_size_, '\0');
                 // handle a ps_read here
-                proto_net_data req_data;
-                req_data.data_type(data_text);
-                proto_net_data res_data(buffer_, strlen(buffer_));
-                res_data.data_type(data_text);
+
+                //req_data.data_type(data_text);
+                std::string response(buffer_);
+               // proto_net_data res_data(buffer_, strlen(buffer_));
+                proto_net_data res_data(response);
+                std::string request;
+                proto_net_data req_data(request);
+                //res_data.data_type(data_text);
                 if (res_data.data_size())
                 {
                     ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
@@ -86,7 +102,14 @@ namespace proto_net
                 }
                 read_stream_buffer_.consume(read_stream_buffer_.size());
                 read_stream_buffer_.prepare(buffer_size_);
-                ps_async_write(req_data);  // this is for any response that needs to be written back after a read
+                // notify waiting threads
+               // condition_.notify_one();
+                write_complete_ = true;
+                ps_async_read();
+                //ps_async_write(req_data);  // this is for any response that needs to be written back after a read
+               // ps_process_write_queue();
+
+
             }
             else
                 delete this; // for now

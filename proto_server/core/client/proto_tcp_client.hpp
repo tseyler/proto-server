@@ -42,9 +42,10 @@ namespace proto_net
             proto_net_tcp_socket& ps_socket(void);
 
         protected:
-//
-//            virtual void ps_push_write_queue(proto_net_in_data& data_in);
-//            virtual proto_net_in_data ps_pop_write_queue(void);
+
+            virtual void ps_push_write_queue(proto_net_in_data& data_in);
+            virtual proto_net_in_data ps_pop_write_queue(void);
+            virtual void ps_process_write_queue(void);
 
         protected:
 
@@ -56,7 +57,10 @@ namespace proto_net
             size_t buffer_size_;
             char* buffer_;
             proto_net_in_data write_data_;
-            //proto_net_data_queue write_queue_;
+            proto_net_data_queue write_queue_;
+            volatile bool write_complete_;
+            boost::condition_variable condition_;
+            proto_net_mutex write_mutex_;
         };
 
         // specialization of a pipeline used by servers for a downstream client

@@ -73,7 +73,7 @@ namespace proto_net
         private:
 
             void data_allocate(void);
-
+            void data_clone(void);
             void data_copy(const char *data,
                            size_t data_size);
 
@@ -90,7 +90,7 @@ namespace proto_net
         typedef proto_net_data proto_net_in_data;
         typedef proto_net_data proto_net_out_data;
         typedef proto_net_data proto_net_in_out_data;
-       // typedef boost::lockfree::spsc_queue<proto_net_data> proto_net_data_queue;
+        typedef boost::lockfree::spsc_queue<proto_net_data> proto_net_data_queue;
     }
 
 }

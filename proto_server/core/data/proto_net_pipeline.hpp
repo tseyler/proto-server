@@ -19,28 +19,28 @@ namespace proto_net
         {
         public:
 
-            proto_net_pipeline() : io_(NULL), ps_(NULL)
-            {}
-            virtual ~proto_net_pipeline()
-            {}
+            proto_net_pipeline();
+            virtual ~proto_net_pipeline();
 
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data) = 0;  // the response data
             virtual bool ps_pipe_in(proto_net_in_data& in_data) = 0;
             virtual void ps_pipe_out(proto_net_out_data& out_data) = 0;
 
             // getters
-            proto_service*  ps_proto_service(void ) const { return ps_; }
-            proto_async_io* ps_proto_io(void) const { return io_; }
+            proto_service*  ps_proto_service(void ) const;
+            proto_async_io* ps_proto_io(void) const;
             //setter
-            void ps_proto_service(proto_service* ps) { ps_ = ps;}
-            void ps_proto_io(proto_async_io* io) { io_ = io; }
-            void ps_pipeline_lock(void) { mutex_.lock(); }
-            void ps_pipeline_unlock(void) { mutex_.unlock(); }
-            bool ps_pipeline_try_lock(void) { return mutex_.try_lock(); }
+            void ps_proto_service(proto_service* ps);
+            void ps_proto_io(proto_async_io* io);
+            void ps_pipeline_lock(void);
+            void ps_pipeline_unlock(void);
+            bool ps_pipeline_try_lock(void);
+            bool ps_pipeline_is_locked(void);
 
         protected:
 
             proto_async_io* io_;
+            bool mutex_locked_;
             proto_net_mutex mutex_;
 
         private:
