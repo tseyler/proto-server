@@ -13,11 +13,13 @@ proto_echo_client_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto
     // convert
 }
 
-void
+bool
 proto_echo_client_pipeline::ps_pipe_in(proto_net_in_data& in_data)
 {
     if (in_data.data_size())
         std::cout << "Echo Client Pipeline: Send = " << in_data << std::endl;
+
+    return true;
 }
 
 void

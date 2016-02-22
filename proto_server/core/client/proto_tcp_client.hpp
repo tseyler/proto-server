@@ -46,6 +46,7 @@ namespace proto_net
             virtual void ps_push_write_queue(proto_net_in_data& data_in);
             virtual proto_net_in_data ps_pop_write_queue(void);
             virtual void ps_process_write_queue(void);
+            virtual bool ps_write_spin_lock(void);
 
         protected:
 
