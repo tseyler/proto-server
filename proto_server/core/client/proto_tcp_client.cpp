@@ -215,13 +215,11 @@ namespace proto_net
             // empty
         }
 
-        bool
+        void
         proto_tcp_downstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
             if (io_)
                 io_->ps_async_write(in_data);
-
-            return true;
         }
 
         void
