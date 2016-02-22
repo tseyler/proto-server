@@ -32,15 +32,15 @@ void
 sipproxy_pipeline::print_pipe_in(proto_net_in_data& in_data)
 {
     boost::unique_lock<boost::mutex> scoped_lock(mutex_);
-    std::cout << "SipProxy Pipeline: Send Data  = " << in_data << std::endl;
-    std::cout << " =========> Forwarding downstream to client." << std::endl;
+    std::cout << "(1) SipProxy Pipeline: Received Data = " << in_data << std::endl;
+    std::cout << "(2) =========> Forwarding downstream to client." << std::endl;
 }
 
 void
 sipproxy_pipeline::print_pipe_out(proto_net_out_data& out_data)
 {
     boost::unique_lock<boost::mutex> scoped_lock(mutex_);
-    std::cout << "SipProxy Pipeline: Received Data = " << out_data << std::endl;
+    std::cout << "(6) SipProxy Pipeline: Sent Data = " << out_data << std::endl;
     std::cout << "[Round trip completed]" << std::endl << std::endl;
 }
 

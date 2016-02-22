@@ -32,14 +32,14 @@ void
 director_pipeline::print_pipe_in(proto_net_in_data& in_data)
 {
     boost::unique_lock<boost::mutex> scoped_lock(mutex_);
-    std::cout << "Director Pipeline: Send Data = " << in_data << std::endl;
+    std::cout << "(3) Director Pipeline: Sent Data = " << in_data << std::endl;
 }
 
 void
 director_pipeline::print_pipe_out(proto_net_out_data& out_data)
 {
     boost::unique_lock<boost::mutex> scoped_lock(mutex_);
-    std::cout << "Director Pipeline: Received Data = " << out_data << std::endl;
-    std::cout << " <========= Forwarding upstream to server." << std::endl;
+    std::cout << "(4) Director Pipeline: Received Data = " << out_data << std::endl;
+    std::cout << "(5) <========= Forwarding upstream to server." << std::endl;
 }
 
