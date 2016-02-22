@@ -128,10 +128,10 @@ namespace proto_net
             // empty
         }
 
-        bool
+        void
         proto_tcp_upstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
-            return true;
+            // empty
         }
 
         void
