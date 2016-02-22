@@ -40,8 +40,6 @@ void console_func(void*)
 int 
 main(int argc, char* argv[])
 {
-   // boost::mutex io_mutex; // The iostreams are not guaranteed to be thread-safe!
-
     // step 1 - create the server TCP/5095
     proto_tcp_text_server sp_server(5095);   // port 5095
     // create a pipeline for the server
@@ -69,21 +67,7 @@ main(int argc, char* argv[])
     dir_client.ps_start();
 
 //    //std::string cmd = "<c4soap name=\"GetVersionInfo\" seq=\"2\"></c4soap>";
-/*
-    std::string cmd = "<c4soap name=\"SendToDevice\" seq=\"5\"><param name=\"iddevice\" type=\"number\">8</param><param name=\"data\" type=\"string\"><devicecommand><command>getRoute</command><params><param><name>index</name><value type=\"INTEGER\"><static>0</static></value></param></params></devicecommand></param></c4soap>";
-    proto_net_in_data another_cmd_data(cmd);
-    dir_client.ps_async_write(another_cmd_data);
-    boost::this_thread::sleep(boost::posix_time::milliseconds(50));
-    dir_client.ps_async_write(another_cmd_data);
-    //boost::this_thread::sleep(boost::posix_time::milliseconds(50));
-    dir_client.ps_async_write(another_cmd_data);
-    //boost::this_thread::sleep(boost::posix_time::milliseconds(50));
-    dir_client.ps_async_write(another_cmd_data);
-   // boost::this_thread::sleep(boost::posix_time::milliseconds(50));
-    dir_client.ps_async_write(another_cmd_data);
-   // boost::this_thread::sleep(boost::posix_time::milliseconds(50));
-    dir_client.ps_async_write(another_cmd_data);
-*/
+
     void* dummy(NULL);
     boost::thread console_thd(console_func, dummy);
 

@@ -16,7 +16,7 @@ class sipproxy_pipeline : public proto_tcp_downstream_pipeline // pipeline for a
 public:
 
     void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);  // the response data
-    bool ps_pipe_in(proto_net_in_data& in_data);
+    void ps_pipe_in(proto_net_in_data& in_data);
     void ps_pipe_out(proto_net_out_data& out_data);
 };
 
