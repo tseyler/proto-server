@@ -40,6 +40,7 @@ void console_func(void*)
 int 
 main(int argc, char* argv[])
 {
+    std::string director_address = argv[1];
     // step 1 - create the server TCP/5095
     proto_tcp_text_server sp_server(5095);   // port 5095
     // create a pipeline for the server
@@ -53,7 +54,7 @@ main(int argc, char* argv[])
     // create a pipeline for the client
     director_pipeline dir_pipeline; //(io_mutex);
     // create the client
-    proto_tcp_text_client dir_client("192.168.1.12", 5020, dir_pipeline);
+    proto_tcp_text_client dir_client(director_address, 5020, dir_pipeline);
 
     // prepare the downstream and upstream pipeline
     sp_pipeline.ps_proto_io(&dir_client);
