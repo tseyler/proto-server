@@ -188,6 +188,15 @@ namespace proto_net
             }
         }
 
+        bool
+        proto_tcp_client::ps_write_spin_lock(void)
+        {
+            while (!write_complete_)
+                boost::this_thread::sleep(boost::posix_time::milliseconds(50));
+
+            return true;
+        }
+
         proto_net_pipeline&
         proto_tcp_client::ps_pipeline(void)
         {
