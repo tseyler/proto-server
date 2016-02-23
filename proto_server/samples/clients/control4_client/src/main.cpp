@@ -23,21 +23,6 @@ using namespace proto_net::client;
 static const std::string ver = "1.0.1";
 static const std::string bld_date_time = "2/23/16; 11:10 AM";
 
-void console_func(void*)
-{
-	bool alive(true);
-	std::string console_input;
-
-	while (alive)
-	{
-		std::getline(std::cin, console_input);
-		if (boost::iequals(console_input, "exit"))
-			alive = false;
-	}
-
-	std::cout << "Exiting..." << std::endl;
-}
-
 void
 print(const std::string& out)
 {
@@ -75,19 +60,19 @@ print_usage(void)
     std::cout << "$ c4-client <host> <command> [id] [param1] [param2] ..." << std::endl;
 }
 
-//bool
-//print_shell(cmd_parser& parser, bool in_shell)
-//{
-//    if (in_shell)
-//    {
-//        char shell[256];
-//        std::cout << std::endl << ">> ";
-//        std::cin.getline(shell, 256);
-//        in_shell = parser.parse(std::string(shell));
-//    }
-//
-//    return in_shell;
-//}
+bool
+print_shell(cmd_parser& parser, bool in_shell)
+{
+    if (in_shell)
+    {
+        std::cout << "Command >> ";
+        char shell[1024];
+        std::cin.getline(shell, 1024);
+        in_shell = parser.parse(std::string(shell));
+    }
+
+    return in_shell;
+}
 
 void
 print_verbose(const std::string& msg)
@@ -156,7 +141,7 @@ main(int argc, char* argv[])
     }
     catch (po::error& e)
     {
-        //print_error(e.what());
+        print_error(e.what());
         std::cerr << desc << std::endl;
         return 1;
     }
@@ -178,55 +163,36 @@ main(int argc, char* argv[])
         proto_tcp_text_client dir_client(host, 5020, dir_pipeline);
 
         // authenticate c4soap message for director to allow a connection
-        proto_net_in_data cmd_data(msg);
+        proto_net_in_data auth_data(msg);
         // connect to the downstream server (director)
-        dir_client.ps_async_connect(cmd_data);
+        dir_client.ps_async_connect(auth_data);
         // start the client service
         dir_client.ps_start();
 
-        void *dummy(NULL);
-        boost::thread console_thd(console_func, dummy);
-
-        console_thd.join();
+        do
+        {
+            msg = parser.to_c4soap(seq);
+            if (parser.parsed())
+            {
+                if (is_verbose)
+                    print_verbose(msg);
+                proto_net_in_data cmd_data(msg);
+                dir_client.ps_async_write(cmd_data);
+                dir_client.ps_write_complete();
+            }
+            else
+                print_ln("Unknown or malformed command: " + cmd);
+            is_shell = print_shell(parser, is_shell);
+        }
+        while (is_shell);
 
         dir_client.ps_stop();
-
-        std::cout << "Done." << std::endl;
     }
+    else
+        print_usage();
 
-    ////////////////////////////////////////
+    std::cout << "Done." << std::endl;
 
-//
-//
-//        // authenticate
-//        int seq(1);
-//        std::string msg = parser.to_authenticate(seq);
-//        c4socket::write_msg(s, msg);
-//        std::string reply = c4socket::read_msg(s);
-//        print_ln(reply);
-//
-//        do
-//        {
-//            msg = parser.to_c4soap(seq);
-//            cmd = parser.cmd();
-//            if (parser.parsed())
-//            {
-//                if (is_verbose)
-//                    print_verbose(msg);
-//                c4socket::write_msg(s, msg);
-//                reply = c4socket::read_msg(s);
-//                print_ln(reply);
-//            }
-//            else
-//                print_ln("Unknown or malformed command: " + cmd);
-//            is_shell = print_shell(parser, is_shell);
-//        }
-//        while (is_shell);
-//    }
-//    else
-//        print_usage();
-
-    ////////////////////////////////
     return 0;
 }
 
