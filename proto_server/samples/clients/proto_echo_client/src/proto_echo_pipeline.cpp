@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "proto_echo_pipeline.hpp"
-#include <core/data/proto_net_pipe.hpp>
 
 
 void
@@ -24,10 +23,7 @@ void
 proto_echo_pipeline::ps_pipe_out(proto_net_out_data& out_data)
 {
     if (out_data.data_size())
-    {
-        out_data.data_type(data_text);
         std::cout << "Echo Client Pipeline: Received = " << out_data << std::endl;
-    }
 
     if (ps_proto_service())
         ps_proto_service()->ps_stop();
