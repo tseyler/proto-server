@@ -40,32 +40,6 @@ namespace proto_net
             io_ = io;
         }
 
-//        void
-//        proto_net_pipeline::ps_pipeline_lock(void)
-//        {
-//            mutex_.lock();
-//            mutex_locked_ = true;
-//        }
-
-//        void
-//        proto_net_pipeline::ps_pipeline_unlock(void)
-//        {
-//            mutex_.unlock();
-//            mutex_locked_ = false;
-//        }
-
-//        bool
-//        proto_net_pipeline::ps_pipeline_try_lock(void)
-//        {
-//            return mutex_locked_ = mutex_.try_lock();
-//        }
-//
-//        bool
-//        proto_net_pipeline::ps_pipeline_is_locked(void)
-//        {
-//            return mutex_locked_;
-//        }
-
         proto_net_empty_pipeline empty_pipeline_inst {};
 
     }

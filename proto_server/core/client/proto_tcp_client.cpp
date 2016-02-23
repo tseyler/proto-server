@@ -21,8 +21,6 @@ namespace proto_net
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
                   buffer_(NULL),
-                  write_data_(),
-                  write_queue_(100),
                   write_complete_(true)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
@@ -38,8 +36,6 @@ namespace proto_net
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
                   buffer_(NULL),
-                  write_data_(),
-                  write_queue_(100),
                   write_complete_(true)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
@@ -76,13 +72,19 @@ namespace proto_net
         {
             if (data_in.data() && data_in.data_size()) //guard against empty data getting put into the pipe in
             {
+                ps_write_spin_lock(); // wait for previous write to complete
+
                 ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
                 size_t data_size = data_in.data_size();
                 char* data = data_in.data();
                 if (data && data_size)
+                {
                     boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
                                              boost::bind(&proto_tcp_client::ps_handle_write, this,
-                                                         boost::asio::placeholders::error));
+                                                         boost::asio::placeholders::error,
+                                                         boost::asio::placeholders::bytes_transferred));
+                    write_complete_ = false;
+                }
                 else
                     ps_async_read(); // just go back to reading
             }
@@ -143,14 +145,16 @@ namespace proto_net
                     ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
                     ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
                 }
-                ps_async_write(req_data);
+                write_complete_ = true;
+
+                ps_async_read(); // done go back to reading
             }
             else
                 delete this; // for now
         }
 
         void
-        proto_tcp_client::ps_handle_write(const boost::system::error_code &error)
+        proto_tcp_client::ps_handle_write(const boost::system::error_code &error, size_t bytes_transferred)
         {
             if (!error)
             {
@@ -159,33 +163,6 @@ namespace proto_net
             }
             else
                 delete this;
-        }
-
-        void
-        proto_tcp_client::ps_push_write_queue(proto_net_in_data& data_in)
-        {
-            write_queue_.push(data_in);
-            boost::this_thread::sleep(boost::posix_time::milliseconds(50));
-        }
-
-        proto_net_in_data
-        proto_tcp_client::ps_pop_write_queue(void)
-        {
-            proto_net_in_data data_in;
-
-            write_queue_.pop(data_in);
-
-            return data_in;
-        }
-
-        void
-        proto_tcp_client::ps_process_write_queue(void)
-        {
-            while (!write_queue_.empty())
-            {
-                proto_net_in_data data_in = ps_pop_write_queue();
-                ps_async_write(data_in);
-            }
         }
 
         bool

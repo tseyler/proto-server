@@ -32,15 +32,10 @@ namespace proto_net
             //setter
             void ps_proto_service(proto_service* ps);
             void ps_proto_io(proto_async_io* io);
-           // void ps_pipeline_lock(void);
-          //  void ps_pipeline_unlock(void);
-           // bool ps_pipeline_try_lock(void);
-         //   bool ps_pipeline_is_locked(void);
 
         protected:
 
             proto_async_io* io_;
-            //bool mutex_locked_;
             proto_net_mutex mutex_;
 
         private:

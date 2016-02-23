@@ -41,10 +41,11 @@ namespace proto_net
         void
         proto_tcp_text_client::ps_async_write(proto_net_in_data& data_in)
         {
-            ps_write_spin_lock();
 
             if (data_in.data() && data_in.data_size() && data_in.data_type() == data_text) //guard against empty data getting put into the pipe in
             {
+                ps_write_spin_lock(); // wait for previous write to complete
+
                 ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
 
                 char *data = data_in.data();
@@ -71,8 +72,8 @@ namespace proto_net
             {
                 std::istream is(&read_stream_buffer_);
                 is.get(buffer_, buffer_size_, '\0');
-                // handle a ps_read here
 
+                // handle a ps_read here
                 std::string response(buffer_);
                 proto_net_data res_data(response);
                 std::string request;
@@ -84,14 +85,9 @@ namespace proto_net
                 }
                 read_stream_buffer_.consume(read_stream_buffer_.size());
                 read_stream_buffer_.prepare(buffer_size_);
-                // notify waiting threads
-               // condition_.notify_one();
                 write_complete_ = true;
-                ps_async_read();
-                //ps_async_write(req_data);  // this is for any response that needs to be written back after a read
-               // ps_process_write_queue();
 
-
+                ps_async_read(); // done go back to reading
             }
             else
                 delete this; // for now
