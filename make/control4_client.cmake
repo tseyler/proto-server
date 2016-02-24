@@ -26,4 +26,4 @@ add_executable(control4-client ${SOURCE_FILES})
 add_dependencies(control4-client proto_server)
 
 # linking
-target_link_libraries(control4-client boost_system boost_thread pthread proto_server)
+target_link_libraries(control4-client boost_system boost_thread pthread boost_program_options proto_server)

@@ -44,7 +44,7 @@ namespace proto_net
 
             if (data_in.data() && data_in.data_size() && data_in.data_type() == data_text) //guard against empty data getting put into the pipe in
             {
-                ps_write_spin_lock(); // wait for previous write to complete
+                ps_write_complete(); // wait for previous write to complete
 
                 ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
 

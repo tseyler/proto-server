@@ -72,7 +72,7 @@ namespace proto_net
         {
             if (data_in.data() && data_in.data_size()) //guard against empty data getting put into the pipe in
             {
-                ps_write_spin_lock(); // wait for previous write to complete
+                ps_write_complete(); // wait for previous write to complete
 
                 ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
                 size_t data_size = data_in.data_size();
@@ -166,7 +166,7 @@ namespace proto_net
         }
 
         bool
-        proto_tcp_client::ps_write_spin_lock(void)
+        proto_tcp_client::ps_write_complete(void)
         {
             while (!write_complete_)
                 boost::this_thread::sleep(boost::posix_time::milliseconds(50));

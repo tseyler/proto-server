@@ -38,12 +38,10 @@ namespace proto_net
             virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
             virtual void ps_handle_write(const boost::system::error_code &error, size_t bytes_transferred);
 
+            virtual bool ps_write_complete(void);
+
             // getter
             proto_net_tcp_socket& ps_socket(void);
-
-        protected:
-
-            virtual bool ps_write_spin_lock(void);
 
         protected:
 
