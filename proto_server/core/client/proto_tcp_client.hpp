@@ -36,10 +36,15 @@ namespace proto_net
             virtual void ps_handle_connect(const boost::system::error_code &error,
                                            boost::asio::ip::tcp::resolver::iterator endpoint_iterator);
             virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
-            virtual void ps_handle_write(const boost::system::error_code &error);
+            virtual void ps_handle_write(const boost::system::error_code &error, size_t bytes_transferred);
+
+            virtual bool ps_write_complete(size_t max_wait_msec = 2000);
 
             // getter
             proto_net_tcp_socket& ps_socket(void);
+            size_t ps_max_wait(void) const;
+            // setter
+            void ps_max_wait(size_t max_wax_msec);
 
         protected:
 
@@ -51,6 +56,8 @@ namespace proto_net
             size_t buffer_size_;
             char* buffer_;
             proto_net_in_data write_data_;
+            volatile bool write_complete_;
+            size_t max_wait_msec_;
         };
 
         // specialization of a pipeline used by servers for a downstream client

@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "proto_echo_client_pipeline.hpp"
-#include <core/data/proto_net_pipe.hpp>
 
 
 void

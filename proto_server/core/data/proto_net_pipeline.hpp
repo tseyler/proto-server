@@ -8,6 +8,7 @@
 #include <core/proto_async_io.hpp>
 #include <core/proto_service.hpp>
 #include <core/data/proto_net_data.hpp>
+#include <core/proto_net_types.hpp>
 
 
 namespace proto_net
@@ -18,25 +19,24 @@ namespace proto_net
         {
         public:
 
-            proto_net_pipeline() : io_(NULL), ps_(NULL)
-            {}
-            virtual ~proto_net_pipeline()
-            {}
+            proto_net_pipeline();
+            virtual ~proto_net_pipeline();
 
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data) = 0;  // the response data
             virtual void ps_pipe_in(proto_net_in_data& in_data) = 0;
             virtual void ps_pipe_out(proto_net_out_data& out_data) = 0;
 
             // getters
-            proto_service*  ps_proto_service(void ) const { return ps_; }
-            proto_async_io* ps_proto_io(void) const { return io_; }
+            proto_service*  ps_proto_service(void ) const;
+            proto_async_io* ps_proto_io(void) const;
             //setter
-            void ps_proto_service(proto_service* ps) { ps_ = ps;}
-            void ps_proto_io(proto_async_io* io) { io_ = io; }
+            void ps_proto_service(proto_service* ps);
+            void ps_proto_io(proto_async_io* io);
 
         protected:
 
             proto_async_io* io_;
+            proto_net_mutex mutex_;
 
         private:
 
@@ -49,7 +49,7 @@ namespace proto_net
         public:
 
             void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data) {} // empty
-            void ps_pipe_in(proto_net_in_data& in_data) {}
+            void  ps_pipe_in(proto_net_in_data& in_data) {}
             void ps_pipe_out(proto_net_out_data& out_data) {}
         };
 

@@ -10,9 +10,8 @@ namespace proto_net
 {
     namespace server
     {
-        proto_session::proto_session(size_t buffer_size /* = 4096*/) :
-                buffer_size_(buffer_size),
-                buffer_(NULL)
+        proto_session::proto_session(size_t buffer_size /* = 4096*/) : buffer_size_(buffer_size),
+                                                                       buffer_(NULL)
         {
 
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;

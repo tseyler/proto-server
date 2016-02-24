@@ -45,7 +45,7 @@ namespace proto_net
                 size_t data_size = data_out.data_size();
                 if (data && data_size)
                 {
-                    data_size++; // increase by 1
+                    //data_size++; // increase by 1
                     boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
                                              boost::bind(&proto_tcp_session::ps_handle_write, this,
                                                          boost::asio::placeholders::error));
@@ -67,11 +67,12 @@ namespace proto_net
             {
                 std::istream is(&stream_buffer_);
                 is.get(buffer_, buffer_size_, '\0');
-              // handle a ps_read here
-                proto_net_data req_data(buffer_, strlen(buffer_)); // exclude null character here
-                req_data.data_type(data_text);
-                proto_net_data res_data;
-                res_data.data_type(data_text);
+
+                // handle a ps_read here
+                std::string request(buffer_);
+                proto_net_data req_data(request);
+                std::string response;
+                proto_net_data res_data(response);
                 if (req_data.data_size())
                 {
                     ps_pipeline_.ps_pipe_in(req_data); // just prior to the pipeline execute the pipe in

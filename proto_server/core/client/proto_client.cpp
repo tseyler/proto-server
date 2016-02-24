@@ -29,6 +29,7 @@ namespace proto_net
             {
                 ps_thread_.reset(new boost::thread(boost::bind(&boost::asio::io_service::run, ps_service_.get())));
             }
+            boost::this_thread::sleep(boost::posix_time::milliseconds(100));
         }
 
         void

@@ -10,6 +10,7 @@
 #include <boost/smart_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
+#include <boost/thread/mutex.hpp>
 
 #define THROW_BOOST_ERROR( e ) if (e.value() > 0) throw e
 
@@ -42,6 +43,8 @@ namespace proto_net
     typedef boost::system::error_code proto_net_error_code;
 
     typedef boost::scoped_ptr<boost::thread> proto_net_thread_ptr;
+
+    typedef boost::mutex proto_net_mutex;
 
 
     // returns a reference from the shared ptr
