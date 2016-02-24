@@ -21,7 +21,8 @@ namespace proto_net
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
                   buffer_(NULL),
-                  write_complete_(true)
+                  write_complete_(true),
+                  max_wait_msec_(2000)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
@@ -36,7 +37,8 @@ namespace proto_net
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
                   buffer_(NULL),
-                  write_complete_(true)
+                  write_complete_(true),
+                  max_wait_msec_(2000)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
@@ -72,18 +74,21 @@ namespace proto_net
         {
             if (data_in.data() && data_in.data_size()) //guard against empty data getting put into the pipe in
             {
-                ps_write_complete(); // wait for previous write to complete
-
-                ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
-                size_t data_size = data_in.data_size();
-                char* data = data_in.data();
-                if (data && data_size)
+                if (ps_write_complete(max_wait_msec_)) // previous write is complete
                 {
-                    boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
-                                             boost::bind(&proto_tcp_client::ps_handle_write, this,
-                                                         boost::asio::placeholders::error,
-                                                         boost::asio::placeholders::bytes_transferred));
-                    write_complete_ = false;
+                    ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
+                    size_t data_size = data_in.data_size();
+                    char* data = data_in.data();
+                    if (data && data_size)
+                    {
+                        boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
+                                                 boost::bind(&proto_tcp_client::ps_handle_write, this,
+                                                             boost::asio::placeholders::error,
+                                                             boost::asio::placeholders::bytes_transferred));
+                        write_complete_ = false;
+                    }
+                    else
+                        ps_async_read(); // just go back to reading
                 }
                 else
                     ps_async_read(); // just go back to reading
@@ -166,12 +171,32 @@ namespace proto_net
         }
 
         bool
-        proto_tcp_client::ps_write_complete(void)
+        proto_tcp_client::ps_write_complete(size_t max_wait_msec /*= 2000*/)
         {
-            while (!write_complete_)
-                boost::this_thread::sleep(boost::posix_time::milliseconds(50));
+            const size_t sleep_msec = 50;
 
-            return true;
+            size_t wait_msec(0);
+            while (wait_msec < max_wait_msec)
+            {
+                if (write_complete_)
+                    break;
+                boost::this_thread::sleep(boost::posix_time::milliseconds(sleep_msec));
+                wait_msec += sleep_msec;
+            }
+
+            return write_complete_;
+        }
+
+        size_t
+        proto_tcp_client::ps_max_wait(void) const
+        {
+            return max_wait_msec_;
+        }
+        // setter
+        void
+        proto_tcp_client::ps_max_wait(size_t max_wait_msec)
+        {
+            max_wait_msec_ = max_wait_msec;
         }
 
         proto_net_pipeline&
