@@ -44,19 +44,22 @@ namespace proto_net
 
             if (data_in.data() && data_in.data_size() && data_in.data_type() == data_text) //guard against empty data getting put into the pipe in
             {
-                ps_write_complete(); // wait for previous write to complete
-
-                ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
-
-                char *data = data_in.data();
-                size_t data_size = data_in.data_size();
-                if (data && data_size)
+                if (ps_write_complete(max_wait_msec_)) // write is complete
                 {
-                    boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
-                                             boost::bind(&proto_tcp_text_client::ps_handle_write, this,
+                    ps_pipeline_.ps_pipe_in(data_in); // just prior to the write, execute the pipe_in
+
+                    char *data = data_in.data();
+                    size_t data_size = data_in.data_size();
+                    if (data && data_size)
+                    {
+                        boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
+                                                 boost::bind(&proto_tcp_text_client::ps_handle_write, this,
                                                              boost::asio::placeholders::error,
                                                              boost::asio::placeholders::bytes_transferred));
-                    write_complete_ = false;
+                        write_complete_ = false;
+                    }
+                    else
+                        ps_async_read(); // just go back to reading
                 }
                 else
                     ps_async_read(); // just go back to reading

@@ -9,5 +9,6 @@ void
 proto_echo_server_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
 {
     std::cout << "Echo Server Pipeline: Received = " << req_data << std::endl;
+    res_data = req_data;
     std::cout << "Echo Server Pipeline: Send = " << res_data << std::endl;
 }
