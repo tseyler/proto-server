@@ -7,13 +7,7 @@
 #include <core/client/proto_tcp_text_client.hpp>
 #include "sipproxy_pipeline.hpp"
 #include "director_pipeline.hpp"
-
-//#include <vector>
-//#include <boost/thread.hpp>
-//#include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/algorithm/string.hpp>
-
-
 
 using namespace proto_net::data;
 using namespace proto_net;
