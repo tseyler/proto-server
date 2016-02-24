@@ -5,6 +5,8 @@
 #ifndef PROTO_SERVICE_HPP_
 #define PROTO_SERVICE_HPP_
 
+#include <boost/shared_ptr.hpp>
+
 namespace proto_net
 {
     /**
@@ -28,6 +30,8 @@ namespace proto_net
         */
         virtual void ps_stop(void) = 0;  // stopping service in worker thread
     };
+
+    typedef boost::shared_ptr<proto_service> proto_service_ptr;
 
 }
 #endif //PROTO_SERVICE_HPP_

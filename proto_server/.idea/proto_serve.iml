@@ -2,15 +2,13 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/core/factory/proto_tcp_text_client_factory.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/factory/proto_tcp_text_client_factory.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_pipeline.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_data.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_pipeline.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_data.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_net_types.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_client.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_text_client.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_sync_text_client.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_client.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_text_client.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_sync_text_client.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_client.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_client.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/server/proto_server.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/server/proto_server.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/server/proto_tcp_session.cpp" isTestSource="false" />
@@ -23,11 +21,15 @@
       <sourceFolder url="file://$MODULE_DIR$/core/server/proto_tcp_text_session.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/server/proto_tcp_server.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/server/proto_tcp_text_server.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_client.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_text_client.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_sync_text_client.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_client.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_text_client.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_sync_text_client.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_tcp_client.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/client/proto_client.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/proto_net_types.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_pipeline.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_data.hpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_pipeline.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_data.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
