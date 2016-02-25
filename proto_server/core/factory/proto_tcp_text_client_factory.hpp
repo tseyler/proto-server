@@ -16,15 +16,24 @@ namespace proto_net
         {
         public:
 
-            proto_tcp_text_client_factory(const std::string& address, unsigned short port_num = 80,
+            proto_tcp_text_client_factory(const std::string& address,
+                                          unsigned short port_num = 80,
                                           proto_net_pipeline& ps_pipeline = empty_pipeline_inst,
                                           size_t buffer_size = 4096);
-            proto_service_ptr ps_factory_create(bool start_on_creation = true);
-            proto_service_ptr operator () (bool start_on_creation = true);
+
+            proto_tcp_text_client_factory(const std::string& address, const proto_net_in_data& connect_data,
+                                          unsigned short port_num = 80,
+                                          proto_net_pipeline& ps_pipeline = empty_pipeline_inst,
+                                          size_t buffer_size = 4096);
+
+            proto_service_ptr ps_factory_create(bool start_on_creation);
+            proto_service_ptr operator () (bool start_on_creation);
+            proto_service_ptr operator () (void); // start_on_creation = true
 
         protected:
 
             std::string address_;
+            proto_net_in_data connect_data_;
             unsigned short port_num_;
             proto_net_pipeline& ps_pipeline_;
             size_t buffer_size_;

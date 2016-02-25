@@ -15,7 +15,7 @@ namespace proto_net
         {
         public:
 
-            virtual proto_service_ptr ps_factory_create(bool start_on_creation = true) = 0;
+            virtual proto_service_ptr ps_factory_create(bool start_on_creation) = 0;
         };
 
     }

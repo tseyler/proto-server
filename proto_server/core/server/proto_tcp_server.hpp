@@ -21,6 +21,9 @@ namespace proto_net
         {
         public:
 
+            static proto_tcp_server* proto_tcp_server_cast(proto_service_ptr ps_ptr);
+            static proto_async_io* proto_async_io_cast(proto_service_ptr ps_ptr);
+
             proto_tcp_server(unsigned short port_num = 80);
             proto_tcp_server(proto_net_service_ptr ps_service, unsigned short port_num = 80);
             virtual ~proto_tcp_server() {}

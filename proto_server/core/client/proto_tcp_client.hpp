@@ -16,6 +16,9 @@ namespace proto_net
         {
         public:
 
+            static proto_tcp_client* proto_tcp_client_cast(proto_service_ptr ps_ptr);
+            static proto_async_io* proto_async_io_cast(proto_service_ptr ps_ptr);
+
             proto_tcp_client(const std::string& address, unsigned short port_num = 80,
                              proto_net_pipeline& ps_pipeline = empty_pipeline_inst,
                              size_t buffer_size = 4096);

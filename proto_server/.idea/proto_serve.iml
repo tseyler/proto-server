@@ -3,6 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/core/factory/proto_tcp_text_client_factory.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/factory/proto_tcp_text_server_factory.hpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/core/factory/proto_tcp_text_server_factory.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/factory/proto_tcp_text_client_factory.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_pipeline.hpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/core/data/proto_net_data.hpp" isTestSource="false" />
