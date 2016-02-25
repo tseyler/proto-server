@@ -19,6 +19,7 @@ namespace sipclient
         signaling_event_sip_invite_connected,
         signaling_event_sip_invite_terminated,
         signaling_event_sip_invite_offer,
+        signaling_event_sip_invite_provisioning,
     };
 }
 #endif //SIPCLIENT_LAYER_EVENT_HPP_

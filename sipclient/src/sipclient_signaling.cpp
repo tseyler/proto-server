@@ -182,6 +182,8 @@ namespace sipclient
 		case inviteProvisional:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteProvisional");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_provisioning,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Provisional");
 			break;
 		case inviteMessageSuccess:
 
@@ -223,23 +225,23 @@ namespace sipclient
 
 				log_stream <<  "SessionStatus = sNewSession; Call ID = " << call_id_ << "; Session ID = " << session_id;
 				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
+
+				print_sdp(dialog->getRemoteSdp(), "New Remote");
+				print_sdp(dialog->getSessionSdp(), "New Session");
 			break;
 			case sAnswer:
 			{
 				log_stream <<  "SessionStatus = sAnswer Call ID = " << call_id_ << "; Session ID = " << session_id;
 				sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, log_stream);
 
-				resip::ClientInviteSession* client_invite_session = dynamic_cast<resip::ClientInviteSession*>(invite_session);
-				if (client_invite_session)
-				{
+				//resip::ClientInviteSession* client_invite_session = dynamic_cast<resip::ClientInviteSession*>(invite_session);
+				//if (client_invite_session)
+				//{
 					// get the remote's SDP
-					SessionSdpPtr remote_sdp = dialog->getRemoteSdp();
-					if (remote_sdp) // we have remote SDP
-					{
-						std::string remote_sdp_str = remote_sdp->toString();
-						std::cout << "Remote SDP:" << std::endl << remote_sdp_str << std::endl;
-					}
-				}
+				print_sdp(dialog->getRemoteSdp(), "Answer Remote");
+				print_sdp(dialog->getSessionSdp(), "Answer Session");
+
+				//}
 			}
 			break;
 			case sOffer:
@@ -255,19 +257,15 @@ namespace sipclient
 					SessionSdpPtr remote_sdp = dialog->getRemoteSdp();
 					if (remote_sdp) // we have remote SDP
 					{
-						std::string remote_sdp_str = remote_sdp->toString();
-						std::cout << "Remote SDP:" << std::endl << remote_sdp_str << std::endl;
-
-						std::string local_sdp_str = local_sdp_.toString();
-						std::cout << "Local SDP:" << std::endl << local_sdp_str << std::endl;
+						print_sdp(remote_sdp, "Offer Remote");
+						print_sdp(&local_sdp_, "Offer Local");
 
 						// make a copy of the local SDP
 						SessionSdpPtr session_sdp(new SessionSdp(local_sdp_));
 						// negotiate the media
 						session_sdp->negotiateMedia(remote_sdp);
+						print_sdp(session_sdp, "Offer Neg");
 
-						std::string neg_sdp_str = session_sdp->toString();
-						std::cout << "Neg SDP:" << std::endl << neg_sdp_str << std::endl;
 						//SessionSdp::SdpConnection connection = remote_sdp->getConnection();
 						//bool multicast = (connection.getTtl());//connection.is_multicast_address();
 						//bool forking = is_forking();
@@ -458,6 +456,24 @@ namespace sipclient
 		if (user_agent_)
 			user_agent_->inviteRequest(remote_uri, &sdp);
     }
+
+void
+sipclient_signaling::print_sdp(SessionSdpPtr sdp_ptr, const std::string& sdp_label)
+{
+	print_sdp(sdp_ptr.get(), sdp_label);
+}
+
+void
+sipclient_signaling::print_sdp(SessionSdp* sdp_ptr, const std::string& sdp_label)
+{
+	if (sdp_ptr)
+	{
+		std::string sdp_str = sdp_ptr->toString();
+		std::cout << sdp_label << " SDP:" << std::endl << sdp_str << std::endl;
+	}
+	else
+		std::cout << sdp_label << " SDP: None" << std::endl;
+}
 
 void
 sipclient_signaling::setup_local_SDP(void)
