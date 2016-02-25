@@ -12,6 +12,18 @@ namespace proto_net
 {
     namespace client
     {
+        proto_tcp_client*
+        proto_tcp_client::proto_tcp_client_cast(proto_service_ptr ps_ptr)
+        {
+            return dynamic_cast<proto_tcp_client*>(ps_ptr.get());
+        }
+
+        proto_async_io*
+        proto_tcp_client::proto_async_io_cast(proto_service_ptr ps_ptr)
+        {
+            return dynamic_cast<proto_async_io*>(ps_ptr.get());
+        }
+
         proto_tcp_client::proto_tcp_client(const std::string& address,
                                            unsigned short port_num /* = 80*/,
                                            proto_net_pipeline& ps_pipeline/* = empty_pipeline_inst*/,

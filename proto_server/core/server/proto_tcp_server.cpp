@@ -12,6 +12,18 @@ namespace proto_net
 
     namespace server
     {
+        proto_tcp_server*
+        proto_tcp_server::proto_tcp_server_cast(proto_service_ptr ps_ptr)
+        {
+            return dynamic_cast<proto_tcp_server*>(ps_ptr.get());
+        }
+
+        proto_async_io*
+        proto_tcp_server::proto_async_io_cast(proto_service_ptr ps_ptr)
+        {
+            return dynamic_cast<proto_async_io*>(ps_ptr.get());
+        }
+
         proto_tcp_server::proto_tcp_server(unsigned short port_num /* = 80*/)
                 : port_num_(port_num),
                   acceptor_(proto_net_service_ref(ps_service_), proto_net_tcp_endpoint(tcp::v4(), port_num))

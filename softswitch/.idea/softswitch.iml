@@ -19,6 +19,12 @@
     <content url="file://$MODULE_DIR$/../proto_server/core/data/proto_net_pipeline.cpp">
       <sourceFolder url="file://$MODULE_DIR$/../proto_server/core/data/proto_net_pipeline.cpp" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/../proto_server/core/factory/proto_tcp_text_client_factory.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../proto_server/core/factory/proto_tcp_text_client_factory.cpp" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../proto_server/core/factory/proto_tcp_text_server_factory.cpp">
+      <sourceFolder url="file://$MODULE_DIR$/../proto_server/core/factory/proto_tcp_text_server_factory.cpp" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/../proto_server/core/proto_net_types.cpp">
       <sourceFolder url="file://$MODULE_DIR$/../proto_server/core/proto_net_types.cpp" isTestSource="false" />
     </content>
@@ -77,6 +83,8 @@
           <root url="file://$MODULE_DIR$/../proto_server/core/server/proto_tcp_text_session.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/server/proto_tcp_server.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/server/proto_tcp_text_server.cpp" />
+          <root url="file://$MODULE_DIR$/../proto_server/core/factory/proto_tcp_text_client_factory.cpp" />
+          <root url="file://$MODULE_DIR$/../proto_server/core/factory/proto_tcp_text_server_factory.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/data/proto_net_pipeline.cpp" />
           <root url="file://$MODULE_DIR$/../proto_server/core/data/proto_net_data.cpp" />
         </excluded>

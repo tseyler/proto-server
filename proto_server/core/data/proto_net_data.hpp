@@ -8,7 +8,7 @@
 
 #include <string>
 #include <iostream>
-#include <boost/lockfree/spsc_queue.hpp>
+//#include <boost/lockfree/spsc_queue.hpp>
 
 namespace proto_net
 {
@@ -90,7 +90,7 @@ namespace proto_net
         typedef proto_net_data proto_net_in_data;
         typedef proto_net_data proto_net_out_data;
         typedef proto_net_data proto_net_in_out_data;
-        typedef boost::lockfree::spsc_queue<proto_net_data> proto_net_data_queue;
+        //typedef boost::lockfree::spsc_queue<proto_net_data> proto_net_data_queue;
     }
 
 }

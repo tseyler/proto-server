@@ -14,6 +14,12 @@ namespace proto_net
 
     namespace server
     {
+        proto_tcp_text_server*
+        proto_tcp_text_server::proto_tcp_text_server_cast(proto_service_ptr ps_ptr)
+        {
+            return dynamic_cast<proto_tcp_text_server*>(ps_ptr.get());
+        }
+
         proto_tcp_text_server::proto_tcp_text_server(unsigned short port_num /* = 80*/)
                 : proto_tcp_server(port_num)
         {}
