@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "sipproxy_pipeline.hpp"
-#include <core/data/proto_net_pipe.hpp>
 
 using namespace proto_net::data;
 using namespace proto_net::client;
