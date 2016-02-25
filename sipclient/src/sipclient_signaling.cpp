@@ -182,6 +182,8 @@ namespace sipclient
 		case inviteProvisional:
 
 			sipclient_log_msg(__CLASS__, __FUNCTION__, __LINE__, "invite_result = inviteProvisional");
+			sipclient_notify(layer_signaling, signaling_event_sip_invite_provisioning,
+								 __CLASS__, __FUNCTION__, __LINE__, "Invite Provisional");
 			break;
 		case inviteMessageSuccess:
 
