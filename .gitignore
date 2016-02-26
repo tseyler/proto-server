@@ -5,7 +5,6 @@
 *.o
 *.a
 .metadata
-*~
 
 # do not need doxygens output file
 */html/*
@@ -29,6 +28,7 @@ cmake_install.cmake
 RemoteSystemsTempFiles
 # setting files for CLion
 .settings
+.idea
 # we generate makefiles so dont git these
 Makefile
 
