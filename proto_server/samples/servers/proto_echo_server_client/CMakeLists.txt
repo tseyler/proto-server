@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 project(proto_echo_server_client)
 
-# cpp-projects dir
-set(CPP_PROJ_DIR $ENV{HOME}/projects/cpp-projects)
+# root dir
+get_filename_component(ROOT_DIR "../../../../" ABSOLUTE)
+MESSAGE("Project root directory location: ${ROOT_DIR}")
 
-set(MAKE_DIR ${CPP_PROJ_DIR}/make)
+set(MAKE_DIR ${ROOT_DIR}/make)
 include(${MAKE_DIR}/proto_echo_server_client.cmake)

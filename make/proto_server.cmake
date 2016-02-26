@@ -1,9 +1,4 @@
 
-# cpp-projects dir
-set(CPP_PROJ_DIR $ENV{HOME}/projects/cpp-projects)
-
-# make dir
-set(MAKE_DIR ${CPP_PROJ_DIR}/make)
 include(${MAKE_DIR}/definitions.cmake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")

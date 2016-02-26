@@ -29,10 +29,7 @@ cmake_install.cmake
 RemoteSystemsTempFiles
 # setting files for CLion
 .settings
+# we generate makefiles so dont git these
+Makefile
 
 # executables
-c4-console
-echo-client
-echo-server
-http-server
-control4-server
