@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 1/13/16.
+//  proto_sync_text_client.hpp - base class for synchronised IO for text tcp clients
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_SYNC_TEXT_CLIENT_HPP_

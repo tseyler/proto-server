@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 2/25/16.
+//  proto_tcp_server_factory.hpp - factory for tcp servers
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_TCP_SERVER_FACTORY_HPP_

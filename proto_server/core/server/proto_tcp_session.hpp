@@ -1,5 +1,11 @@
 //
-// Created by Terry Seyler on 8/30/15.
+//  proto_tcp_session.hpp - base class for tcp server sessions
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_TCP_SESSION_HPP_

@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 2/8/16.
+//  proto_service.hpp - interface for clients and servers
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_SERVICE_HPP_

@@ -1,5 +1,11 @@
 //
-// Created by Terry Seyler on 8/19/15.
+//  proto_server.hpp - base class for servers
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_SERVER_HPP_

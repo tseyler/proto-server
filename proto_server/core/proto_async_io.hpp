@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 2/12/16.
+//  proto_async_io.hpp - interface for async IO classes
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_ASYNC_IO_HPP_

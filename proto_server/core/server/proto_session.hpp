@@ -1,5 +1,11 @@
 //
-// Created by Terry Seyler on 10/27/15.
+//  proto_session.hpp - base class for server sessions
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_SESSION_HPP_
