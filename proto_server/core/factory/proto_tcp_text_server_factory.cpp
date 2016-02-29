@@ -16,7 +16,7 @@ namespace proto_net
         proto_tcp_text_server_factory::proto_tcp_text_server_factory(proto_net_pipeline &ps_pipeline,
                                                                      unsigned short port_num /*= 80*/,
                                                                      size_t buffer_size /*= 4096*/) :
-                ps_pipeline_(ps_pipeline), port_num_(port_num), buffer_size_(buffer_size)
+                proto_tcp_server_factory(ps_pipeline, port_num, buffer_size)
         { }
 
 
@@ -34,18 +34,6 @@ namespace proto_net
                 ps_ptr->ps_start();
 
             return ps_ptr;
-        }
-
-        proto_service_ptr
-        proto_tcp_text_server_factory::operator()(bool start_on_creation)
-        {
-            return ps_factory_create(start_on_creation);
-        }
-
-        proto_service_ptr
-        proto_tcp_text_server_factory::operator()(void) // start_on_creation = true
-        {
-            return ps_factory_create(true);
         }
     }
 }
