@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 1/5/16.
+//  proto_net_types.hpp - definition of proto-server data types
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_NET_TYPES_HPP_
