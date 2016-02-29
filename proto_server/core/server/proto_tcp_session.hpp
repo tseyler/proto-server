@@ -59,6 +59,9 @@ namespace proto_net
         {
         public:
 
+            proto_tcp_upstream_pipeline();
+            virtual ~proto_tcp_upstream_pipeline();
+
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
             virtual void ps_pipe_in(proto_net_in_data& in_data);
             virtual void ps_pipe_out(proto_net_out_data& out_data);

@@ -8,13 +8,11 @@ namespace proto_net
 {
     namespace data
     {
-        proto_net_pipeline::proto_net_pipeline() : io_(NULL), /*mutex_locked_(false),*/ ps_(NULL)
+        proto_net_pipeline::proto_net_pipeline() : io_(NULL), ps_(NULL)
         {}
+
         proto_net_pipeline::~proto_net_pipeline()
-        {
-            //if (mutex_locked_)
-                //ps_pipeline_unlock();
-        }
+        {}
 
         proto_service*
         proto_net_pipeline::ps_proto_service(void ) const
