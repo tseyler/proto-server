@@ -6,6 +6,12 @@ namespace proto_net
     namespace data
     {
 
+        proto_tcp_downstream_pipeline::proto_tcp_downstream_pipeline() : proto_net_pipeline()
+        {}
+
+        proto_tcp_downstream_pipeline::~proto_tcp_downstream_pipeline()
+        {}
+
         void
         proto_tcp_downstream_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
         {
