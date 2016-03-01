@@ -55,6 +55,8 @@ namespace proto_net
 
         extern proto_net_empty_pipeline empty_pipeline_inst;
 
+        typedef boost::shared_ptr<proto_net_pipeline> proto_pipeline_ptr;
+
 
     }
 }
