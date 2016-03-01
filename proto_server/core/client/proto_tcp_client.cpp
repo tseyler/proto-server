@@ -222,30 +222,5 @@ namespace proto_net
         {
             return socket_;
         }
-
-        proto_tcp_downstream_pipeline::proto_tcp_downstream_pipeline() : proto_net_pipeline()
-        {}
-
-        proto_tcp_downstream_pipeline::~proto_tcp_downstream_pipeline()
-        {}
-
-        void
-        proto_tcp_downstream_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
-        {
-            // empty
-        }
-
-        void
-        proto_tcp_downstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
-        {
-            if (io_)
-                io_->ps_async_write(in_data);
-        }
-
-        void
-        proto_tcp_downstream_pipeline::ps_pipe_out(proto_net_out_data& out_data)
-        {
-            // empty
-        }
     }
 }
