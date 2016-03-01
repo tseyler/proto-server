@@ -1,10 +1,16 @@
-/*
-	Copyright 2015 Terry Seyler.  All rights reserved.
-*/
 
 #ifndef PROTO_NET_DATA_HPP_
 #define PROTO_NET_DATA_HPP_
 
+//
+//  proto_net_data.hpp -
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #include <string>
 #include <iostream>
@@ -19,13 +25,22 @@ namespace proto_net
             data_unknown,
             data_text,
             data_binary,
+            data_error,
         } proto_net_data_type;
+
+        typedef enum
+        {
+            error_code_success,         // no error
+            error_code_general,         // unspecified general error
+            error_code_data_size,       // data size error where the data is not available
+            error_code_connect,         // TCP connection error
+        } proto_net_error_code;
 
         class proto_net_data
         {
         public:
 
-            proto_net_data();
+            proto_net_data(proto_net_data_type data_type = data_unknown);
 
             proto_net_data(size_t data_size,
                            proto_net_data_type data_type = data_unknown);
@@ -41,15 +56,15 @@ namespace proto_net
 
             virtual ~proto_net_data();
 
-            proto_net_data &operator=(const proto_net_data &rhs);
+            virtual proto_net_data &operator=(const proto_net_data &rhs);
 
-            proto_net_data &operator+=(const proto_net_data &rhs);
+            virtual proto_net_data &operator+=(const proto_net_data &rhs);
 
-            proto_net_data operator+(const proto_net_data &rhs) const;
+            virtual proto_net_data operator+(const proto_net_data &rhs) const;
 
-            bool operator==(const proto_net_data &rhs) const;
+            virtual bool operator==(const proto_net_data &rhs) const;
 
-            bool operator!=(const proto_net_data &rhs) const;
+            virtual bool operator!=(const proto_net_data &rhs) const;
 
             virtual void clone(const proto_net_data &copy_data);
 
@@ -61,9 +76,9 @@ namespace proto_net
 
             virtual size_t data_size(void) const;
 
-            proto_net_data_type data_type(void) const;
+            virtual proto_net_data_type data_type(void) const;
 
-            void data_type(proto_net_data_type type);
+            virtual void data_type(proto_net_data_type type);
 
             virtual std::string to_string(void) const;
 

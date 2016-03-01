@@ -12,9 +12,9 @@ namespace proto_net
 {
     namespace data
     {
-        proto_net_data::proto_net_data() : data_(0),
-                                           data_size_(0),
-                                           data_type_(data_unknown)
+        proto_net_data::proto_net_data(proto_net_data_type data_type /*= data_unknown*/) : data_(0),
+                                                                                            data_size_(0),
+                                                                                            data_type_(data_type)
         {}
 
         proto_net_data::proto_net_data(size_t data_size,
@@ -172,6 +172,7 @@ namespace proto_net
                     break;
                 case data_unknown:
                 case data_binary:
+                case data_error:
                 {
                     ss << std::setw(2) << std::setfill('0') << std::hex;
                     for (size_t t = 0; t < data_size_; t++)
