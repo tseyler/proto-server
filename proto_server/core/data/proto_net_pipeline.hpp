@@ -1,9 +1,16 @@
-//
-// Created by Terry Seyler on 10/25/15.
-//
 
 #ifndef PROTO_NET_PIPELINE_HPP_
 #define PROTO_NET_PIPELINE_HPP_
+
+//
+//  proto_net_pipeline.hpp -
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #include <core/proto_async_io.hpp>
 #include <core/proto_service.hpp>
