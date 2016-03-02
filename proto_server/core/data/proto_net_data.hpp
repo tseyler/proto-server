@@ -30,11 +30,14 @@ namespace proto_net
 
         typedef enum
         {
-            error_code_success,         // no error
-            error_code_general,         // unspecified general error
-            error_code_data_size,       // data size error where the data is not available
-            error_code_connect,         // TCP connection error
-        } proto_net_error_code;
+            ec_success,              // no error
+            ec_general_error,        // unspecified general error
+            ec_data_size_error,      // data size error where the data is not available
+            ec_connect_error,        // TCP connection error
+            ec_read_error,           // error occurred while doing a read
+            ec_write_timeout_error,  // write timeout error (no response)
+
+        } proto_net_data_error_code;
 
         class proto_net_data
         {
