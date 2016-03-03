@@ -26,11 +26,13 @@ namespace proto_net
         public:
 
             proto_net_error_data(proto_net_data_error_code ec = ec_success);
+            proto_net_error_data(const std::string& ec_message, proto_net_data_error_code ec = ec_success);
             virtual ~proto_net_error_data();
 
         protected:
 
             proto_net_data_error_code ec_;
+            std::string error_message_;
 
         };
     }

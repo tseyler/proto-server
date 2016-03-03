@@ -52,7 +52,7 @@ namespace proto_net
                            size_t data_size,
                            proto_net_data_type data_type = data_unknown);
 
-            proto_net_data(const std::string &data);
+            proto_net_data(const std::string &data, proto_net_data_type data_type = data_text);
 
             // copy constructor
             proto_net_data(const proto_net_data &copy_data);
@@ -94,6 +94,7 @@ namespace proto_net
             void data_clone(void);
             void data_copy(const char *data,
                            size_t data_size);
+            void data_resize(void); // used for resizeing for text
 
         protected:
 
