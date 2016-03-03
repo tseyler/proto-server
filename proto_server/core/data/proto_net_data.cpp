@@ -1,6 +1,3 @@
-/*
-	Copyright 2015 Terry Seyler.  All rights reserved.
-*/
 
 #include <string.h>
 #include <sstream>
@@ -34,7 +31,8 @@ namespace proto_net
             data_copy(data, data_size);
         }
 
-        proto_net_data::proto_net_data(const std::string& data) : data_(0), data_size_(data.length()), data_type_(data_text)
+        proto_net_data::proto_net_data(const std::string& data, proto_net_data_type data_type /*= data_text*/) :
+                data_(0), data_size_(data.length()), data_type_(data_type)
         {
             data_allocate();
             data_copy(data.c_str(), data_size_);
@@ -152,7 +150,29 @@ namespace proto_net
         void
         proto_net_data::data_type(proto_net_data_type type)
         {
-            data_type_ = type;
+            if (data_type_ != type)
+            {
+                switch (type)
+                {
+                    case data_text:
+
+                        if (type != data_error) // then we need to re-allocate
+                            data_resize();
+                        break;
+                    case data_error:
+
+                        if (type != data_text)
+                            data_resize();
+                        break;
+                    case data_binary:
+                    case data_unknown:
+
+                        // nothing to do
+                        break;
+                }
+
+                data_type_ = type;
+            }
         }
 
         std::string
@@ -162,6 +182,7 @@ namespace proto_net
             switch (data_type_)
             {
                 case data_text:
+                case data_error:
                 {
                     size_t sz = data_size_; // + 1;
                     char str[sz];
@@ -172,7 +193,6 @@ namespace proto_net
                     break;
                 case data_unknown:
                 case data_binary:
-                case data_error:
                 {
                     ss << std::setw(2) << std::setfill('0') << std::hex;
                     for (size_t t = 0; t < data_size_; t++)
@@ -191,7 +211,7 @@ namespace proto_net
 
             if (data_size_)
             {
-                if (data_type_ == data_text)
+                if (data_type_ == data_text || data_type_ == data_error)
                     data_size_++;
 
                 data_ = new char[data_size_];
@@ -217,6 +237,16 @@ namespace proto_net
         {
             if (data_size <= data_size_)
                 memcpy(data_, data, data_size);
+        }
+
+        void
+        proto_net_data::data_resize(void)
+        {
+            size_t sz = data_size_ + 1;
+            char str[sz];
+            memset(str, 0, sz);
+            memcpy(str, data_, data_size_);
+            data_size_ = sz;
         }
 
         std::ostream&
