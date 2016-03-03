@@ -30,5 +30,10 @@ namespace proto_net
         {
             // empty
         }
+
+        bool proto_tcp_downstream_pipeline::ps_pipe_error(proto_net_error_data& error_data)
+        {
+            return false;
+        }
     }
 }

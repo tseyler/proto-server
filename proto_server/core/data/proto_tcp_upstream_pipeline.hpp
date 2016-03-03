@@ -29,6 +29,7 @@ namespace proto_net
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data);
             virtual void ps_pipe_in(proto_net_in_data& in_data);
             virtual void ps_pipe_out(proto_net_out_data& out_data);
+            virtual bool ps_pipe_error(proto_net_error_data& error_data);
         };
     }
 }

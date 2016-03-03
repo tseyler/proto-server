@@ -15,6 +15,7 @@
 #include <core/proto_async_io.hpp>
 #include <core/proto_service.hpp>
 #include <core/data/proto_net_data.hpp>
+#include <core/data/proto_net_error_data.hpp>
 #include <core/proto_net_types.hpp>
 
 
@@ -32,6 +33,8 @@ namespace proto_net
             virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data) = 0;  // the response data
             virtual void ps_pipe_in(proto_net_in_data& in_data) = 0;
             virtual void ps_pipe_out(proto_net_out_data& out_data) = 0;
+            // returns whether if error is fatal or not true | false
+            virtual bool ps_pipe_error(proto_net_error_data& error_data) = 0;
 
             // getters
             proto_service*  ps_proto_service(void ) const;
@@ -55,9 +58,10 @@ namespace proto_net
         {
         public:
 
-            void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data) {} // empty
-            void  ps_pipe_in(proto_net_in_data& in_data) {}
-            void ps_pipe_out(proto_net_out_data& out_data) {}
+            virtual void ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data) {} // empty
+            virtual void ps_pipe_in(proto_net_in_data& in_data) {}
+            virtual void ps_pipe_out(proto_net_out_data& out_data) {}
+            virtual bool ps_pipe_error(proto_net_error_data& error_data) { return false; } // never fatal for empty pipeline
         };
 
         extern proto_net_empty_pipeline empty_pipeline_inst;
