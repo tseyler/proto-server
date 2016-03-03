@@ -30,6 +30,11 @@ namespace proto_net
             if (io_)
                 io_->ps_async_write(out_data); // this sends the data upstream
         }
+
+        bool proto_tcp_upstream_pipeline::ps_pipe_error(proto_net_error_data& error_data)
+        {
+            return false;
+        }
     }
 }
 

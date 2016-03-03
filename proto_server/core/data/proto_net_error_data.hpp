@@ -1,6 +1,3 @@
-//
-// Created by tseyler on 3/2/16.
-//
 
 #ifndef PROTO_NET_ERROR_DATA_HPP_
 #define PROTO_NET_ERROR_DATA_HPP_
@@ -29,11 +26,17 @@ namespace proto_net
             proto_net_error_data(const std::string& ec_message, proto_net_data_error_code ec = ec_success);
             virtual ~proto_net_error_data();
 
+            // getters
+            proto_net_data_error_code ps_data_error_code(void) const { return ec_; }
+            std::string ps_data_error_message(void) const { return error_message_; }
+            // setters
+            virtual void ps_data_error_code(proto_net_data_error_code ec) { ec_ = ec; }
+            virtual void ps_data_error_message(const std::string& message) { error_message_ = message; }
+
         protected:
 
             proto_net_data_error_code ec_;
             std::string error_message_;
-
         };
     }
 }
