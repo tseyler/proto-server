@@ -81,265 +81,266 @@ namespace proto_net
 
 				return pat;
 			}
-		}
 
 
-		size_t
-		find_crlf(const std::string &str, size_t pos)
-		{
-			return str.find(http::crlf, pos);
-		}
-
-		size_t
-		find_line(const std::string &str, std::string &line, size_t pos)
-		{
-			size_t end_pos = find_crlf(str, pos);
-			if (end_pos != std::string::npos)
+			size_t
+			find_crlf(const std::string &str, size_t pos)
 			{
-				line = trim(str.substr(pos, end_pos - pos));
-				end_pos += 2;
+				return str.find(http::crlf, pos);
 			}
 
-			return end_pos;
-		}
-
-		size_t
-		get_lines(const std::string &http, http::lines_t &lines)
-		{
-			size_t pos(0);
-			size_t count(0);
-
-			while (pos != std::string::npos)
+			size_t
+			find_line(const std::string &str, std::string &line, size_t pos)
 			{
-				std::string line;
-				pos = find_line(http, line, pos);
-				if (pos != std::string::npos)
+				size_t end_pos = find_crlf(str, pos);
+				if (end_pos != std::string::npos)
 				{
-					lines.push_back(line);
-					count++;
+					line = trim(str.substr(pos, end_pos - pos));
+					end_pos += 2;
 				}
+
+				return end_pos;
 			}
 
-			return count;
-		}
-
-		size_t
-		get_header_field_lines(const http::lines_t &http_lines, http::lines_t &header_field_lines)
-		{
-			size_t count(0);
-
-			http::lines_t_const_iterator it = http_lines.begin();
-			while (it != http_lines.end())
+			size_t
+			get_lines(const std::string &http, http::lines_t &lines)
 			{
-				std::string line = *it++;
-				if (search_pattern(line, http::header_field_all_pat()))
+				size_t pos(0);
+				size_t count(0);
+
+				while (pos != std::string::npos)
 				{
-					count++;
-					header_field_lines.push_back(line);
-				}
-			}
-
-			return count;
-		}
-
-		size_t
-		message_body_position(const proto_net_data &data)
-		{
-			size_t pos(0);
-			size_t cr_found(0);
-			size_t lf_found(0);
-			size_t line_found(0);
-			char *byte_data = data.data();
-
-			for (size_t p = 0;
-				 p <= data.data_size();
-				 p++)
-			{
-				if (p == (lf_found + 1))
-				{
-					if (cr_found == (lf_found - 1)) // we just found a line
+					std::string line;
+					pos = find_line(http, line, pos);
+					if (pos != std::string::npos)
 					{
-						if (p == (line_found + 2)) // two crlf's
-						{
-							pos = p;
-							break;
-						}
-						line_found = p;
+						lines.push_back(line);
+						count++;
 					}
 				}
-				if (byte_data[p] == http::lf)
-				{
-					lf_found = p;
-					continue;
-				}
-				if (byte_data[p] == http::cr)
-					cr_found = p;
+
+				return count;
 			}
 
-			return pos;
-		}
-
-		size_t
-		tokenize_line(const std::string line, matches_t &tokens)
-		{
-			std::string sep(" \t");
-			split(line, sep, tokens);
-
-			return tokens.size();
-		}
-
-		size_t
-		tokenize_header_field(const std::string line, matches_t &tokens)
-		{
-			std::string sep(":");
-			split(line, sep, tokens);
-			if (tokens.size() == 2)
+			size_t
+			get_header_field_lines(const lines_t &http_lines, lines_t &header_field_lines)
 			{
-				tokens[0] = trim(tokens[0]);
-				tokens[1] = trim(tokens[1]);
-			}
+				size_t count(0);
 
-			return tokens.size();
-		}
-
-		http::http_parse_result
-		validate_request_method(const std::string method)
-		{
-			return search_pattern(method, http::method_pat) ? http::http_parse_success : http::http_request_method_error;
-		}
-
-		http::http_parse_result
-		validate_request_uri(const std::string &uri, const std::string &method)
-		{
-			bool res(false);
-
-			if (search_pattern(method, http::server_method_pat))
-			{
-				res = search_pattern(uri, http::server_pat); // check for asterisk
-			}
-			else
-			{
-				res = search_pattern(uri, http::abs_uri_pat); // check for an absolute URI
-				if (!res)// check for a relative uri
-				{
-					res = search_pattern(uri, http::rel_uri_pat);
-				}
-			}
-
-			return res ? http::http_parse_success : http::http_uri_error;
-		}
-
-		http::http_parse_result
-		validate_http_version(const std::string &http_version)
-		{
-			return search_pattern(http_version, http::http_ver_pat) ? http::http_parse_success : http::http_version_error;
-		}
-
-		http::http_parse_result
-		validate_request_line(matches_t &tokens)
-		{
-			http::http_parse_result res(http::http_parse_success);
-
-			if (tokens.size() == 3) // method, request_uri, http_version
-			{
-				res = validate_request_method(tokens[0]);
-				if (HTTP_PARSE_SUCCEEDED(res))
-				{
-					res = validate_request_uri(tokens[1], tokens[0]);
-					if (HTTP_PARSE_SUCCEEDED(res))
-						res = validate_http_version(tokens[2]);
-				}
-			}
-			else
-				res = http::http_format_error;
-
-			return res;
-		}
-
-		http::http_parse_result
-		validate_header_field(matches_t &tokens, const std::string &field_name_pat)
-		{
-			http::http_parse_result res(http::http_parse_success);
-
-			if (tokens.size() == 2)
-				res = search_pattern(tokens[0], field_name_pat) ? http::http_parse_success : http::http_header_field_error;
-			else
-				res = http::http_format_error;
-
-			return res;
-		}
-
-		http::http_parse_result
-		validate_header_fields(const http::lines_t &lines, const std::string &category, http::http_header_fields &http_fields)
-		{
-			http::http_parse_result res(http::http_parse_success);
-			std::string pat = http::get_pattern(category);
-			if (pat.length() > 0)
-			{
-				http::lines_t_const_iterator it = lines.begin();
-				while (it != lines.end())
+				lines_t_const_iterator it = http_lines.begin();
+				while (it != http_lines.end())
 				{
 					std::string line = *it++;
-					matches_t tokens;
-					if (tokenize_header_field(line, tokens))
+					if (search_pattern(line, header_field_all_pat()))
 					{
-						http::http_parse_result line_res = validate_header_field(tokens, pat);
-						if (HTTP_PARSE_SUCCEEDED(line_res))
-							// set in http_fields
-							http_fields.set_header_field(tokens[0], tokens[1]);
+						count++;
+						header_field_lines.push_back(line);
 					}
-					else
-						res = http::http_format_error;
 				}
-			}
-			else
-				res = http::http_parse_internal_error;
 
-			return res;
-		}
-
-		http::http_parse_result
-		validate_http_headers(const http::lines_t &lines, http::http_headers &headers)
-		{
-			http::http_parse_result res(http::http_parse_success);
-			http::http_headers_map &hdr_map = headers.get_headers_map();
-			for (http::http_headers_map_iterator it = hdr_map.begin();
-				 it != hdr_map.end();
-				 it++)
-			{
-				std::string category = (*it).first;
-				http::http_header_fields &fields = (*it).second;
-				res = validate_header_fields(lines, category, fields);
-				if (!HTTP_PARSE_SUCCEEDED(res))
-					break;
+				return count;
 			}
 
-			return res;
-		}
-
-		http::http_parse_result
-		validate_status_code(const std::string &status_code)
-		{
-			return search_pattern(status_code, http::status_code_pat) ? http::http_parse_success : http::http_status_code_error;
-		}
-
-		http::http_parse_result
-		validate_status_line(matches_t &tokens)
-		{
-			http::http_parse_result res(http::http_parse_success);
-
-			if (tokens.size() == 3) // http_version, status_code, reason_phrase
+			size_t
+			message_body_position(const proto_net_data &data)
 			{
-				res = validate_http_version(tokens[0]);
-				if (HTTP_PARSE_SUCCEEDED(res))
+				size_t pos(0);
+				size_t cr_found(0);
+				size_t lf_found(0);
+				size_t line_found(0);
+				char *byte_data = data.data();
+
+				for (size_t p = 0;
+					 p <= data.data_size();
+					 p++)
 				{
-					res = validate_status_code(tokens[1]);
+					if (p == (lf_found + 1))
+					{
+						if (cr_found == (lf_found - 1)) // we just found a line
+						{
+							if (p == (line_found + 2)) // two crlf's
+							{
+								pos = p;
+								break;
+							}
+							line_found = p;
+						}
+					}
+					if (byte_data[p] == lf)
+					{
+						lf_found = p;
+						continue;
+					}
+					if (byte_data[p] == cr)
+						cr_found = p;
 				}
-			}
-			else
-				res = http::http_format_error;
 
-			return res;
+				return pos;
+			}
+
+			size_t
+			tokenize_line(const std::string line, matches_t &tokens)
+			{
+				std::string sep(" \t");
+				split(line, sep, tokens);
+
+				return tokens.size();
+			}
+
+			size_t
+			tokenize_header_field(const std::string line, matches_t &tokens)
+			{
+				std::string sep(":");
+				split(line, sep, tokens);
+				if (tokens.size() == 2)
+				{
+					tokens[0] = trim(tokens[0]);
+					tokens[1] = trim(tokens[1]);
+				}
+
+				return tokens.size();
+			}
+
+			http_parse_result
+			validate_request_method(const std::string method)
+			{
+				return search_pattern(method, method_pat) ? http_parse_success : http_request_method_error;
+			}
+
+			http_parse_result
+			validate_request_uri(const std::string &uri, const std::string &method)
+			{
+				bool res(false);
+
+				if (search_pattern(method, server_method_pat))
+				{
+					res = search_pattern(uri, server_pat); // check for asterisk
+				}
+				else
+				{
+					res = search_pattern(uri, abs_uri_pat); // check for an absolute URI
+					if (!res)// check for a relative uri
+					{
+						res = search_pattern(uri, rel_uri_pat);
+					}
+				}
+
+				return res ? http_parse_success : http_uri_error;
+			}
+
+			http_parse_result
+			validate_http_version(const std::string &http_version)
+			{
+				return search_pattern(http_version, http_ver_pat) ? http_parse_success : http_version_error;
+			}
+
+			http_parse_result
+			validate_request_line(matches_t &tokens)
+			{
+				http_parse_result res(http_parse_success);
+
+				if (tokens.size() == 3) // method, request_uri, http_version
+				{
+					res = validate_request_method(tokens[0]);
+					if (HTTP_PARSE_SUCCEEDED(res))
+					{
+						res = validate_request_uri(tokens[1], tokens[0]);
+						if (HTTP_PARSE_SUCCEEDED(res))
+							res = validate_http_version(tokens[2]);
+					}
+				}
+				else
+					res = http::http_format_error;
+
+				return res;
+			}
+
+			http_parse_result
+			validate_header_field(matches_t &tokens, const std::string &field_name_pat)
+			{
+				http_parse_result res(http_parse_success);
+
+				if (tokens.size() == 2)
+					res = search_pattern(tokens[0], field_name_pat) ? http_parse_success : http_header_field_error;
+				else
+					res = http_format_error;
+
+				return res;
+			}
+
+			http_parse_result
+			validate_header_fields(const lines_t &lines, const std::string &category,
+								   http_header_fields &http_fields)
+			{
+				http_parse_result res(http_parse_success);
+				std::string pat = get_pattern(category);
+				if (pat.length() > 0)
+				{
+					lines_t_const_iterator it = lines.begin();
+					while (it != lines.end())
+					{
+						std::string line = *it++;
+						matches_t tokens;
+						if (tokenize_header_field(line, tokens))
+						{
+							http::http_parse_result line_res = validate_header_field(tokens, pat);
+							if (HTTP_PARSE_SUCCEEDED(line_res))
+								// set in http_fields
+								http_fields.set_header_field(tokens[0], tokens[1]);
+						}
+						else
+							res = http_format_error;
+					}
+				}
+				else
+					res = http_parse_internal_error;
+
+				return res;
+			}
+
+			http::http_parse_result
+			validate_http_headers(const http::lines_t &lines, http::http_headers &headers)
+			{
+				http::http_parse_result res(http::http_parse_success);
+				http::http_headers_map &hdr_map = headers.get_headers_map();
+				for (http::http_headers_map_iterator it = hdr_map.begin();
+					 it != hdr_map.end();
+					 it++)
+				{
+					std::string category = (*it).first;
+					http::http_header_fields &fields = (*it).second;
+					res = validate_header_fields(lines, category, fields);
+					if (!HTTP_PARSE_SUCCEEDED(res))
+						break;
+				}
+
+				return res;
+			}
+
+			http_parse_result
+			validate_status_code(const std::string &status_code)
+			{
+				return search_pattern(status_code, http::status_code_pat) ? http_parse_success : http_status_code_error;
+			}
+
+			http_parse_result
+			validate_status_line(matches_t &tokens)
+			{
+				http_parse_result res(http_parse_success);
+
+				if (tokens.size() == 3) // http_version, status_code, reason_phrase
+				{
+					res = validate_http_version(tokens[0]);
+					if (HTTP_PARSE_SUCCEEDED(res))
+					{
+						res = validate_status_code(tokens[1]);
+					}
+				}
+				else
+					res = http_format_error;
+
+				return res;
+			}
 		}
 	}
 }
