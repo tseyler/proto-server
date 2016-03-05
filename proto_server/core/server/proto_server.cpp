@@ -10,10 +10,12 @@ namespace proto_net
     {
         proto_server::proto_server() : ps_service_(new proto_net_service)
         {
+            proto_net::data::proto_net_error_data::create_error_code_map();
         }
 
         proto_server::proto_server(proto_net_service_ptr ps_service) : ps_service_(ps_service)
         {
+            proto_net::data::proto_net_error_data::create_error_code_map();
         }
 
         proto_server::~proto_server()

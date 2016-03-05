@@ -6,6 +6,7 @@
 #include <boost/bind.hpp>
 #include <boost/lexical_cast.hpp>
 #include <core/client/proto_tcp_text_client.hpp>
+#include <core/data/proto_net_error_data.hpp>
 
 
 namespace proto_net
@@ -99,7 +100,16 @@ namespace proto_net
                 ps_async_read(); // done go back to reading
             }
             else
-                delete this; // for now
+            {
+                proto_net_error_data err_data(ec_read_error);
+                if (ps_pipeline_.ps_pipe_error(err_data))
+                {
+                    //delete this; // for now
+                }
+                else
+                    ps_async_read(); // done go back to reading;
+            }
+
         }
 
         void

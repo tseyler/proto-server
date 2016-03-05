@@ -12,6 +12,7 @@
 //  See accompanying file LICENSE.md
 //
 
+#include <map>
 #include <core/data/proto_net_data.hpp>
 
 namespace proto_net
@@ -21,6 +22,9 @@ namespace proto_net
         class proto_net_error_data : public proto_net_data
         {
         public:
+
+            static std::map<proto_net_data_error_code, std::string> error_code_map_;
+            static void create_error_code_map(void);
 
             proto_net_error_data(proto_net_data_error_code ec = ec_success);
             proto_net_error_data(const std::string& ec_message, proto_net_data_error_code ec = ec_success);

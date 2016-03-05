@@ -17,9 +17,9 @@ set(INCLUDE_DIRS
 include_directories(${INCLUDE_DIRS})
 link_directories(${LIB_DIR} ${BOOST_LIB_DIR})
 
-add_executable(proto-echo-server_client ${SOURCE_FILES})
+add_executable(proto-echo-server-client ${SOURCE_FILES})
 
-add_dependencies(proto-echo-server_client proto_server)
+add_dependencies(proto-echo-server-client proto_server)
 
 # linking
-target_link_libraries(proto-echo-server_client boost_system boost_thread pthread proto_server)
+target_link_libraries(proto-echo-server-client boost_system boost_thread pthread proto_server)
