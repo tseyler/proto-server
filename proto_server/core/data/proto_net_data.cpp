@@ -183,13 +183,15 @@ namespace proto_net
             {
                 case data_text:
                 case data_error:
-                {
-                    size_t sz = data_size_; // + 1;
-                    char str[sz];
-                    memset(str, 0, sz);
-                    memcpy(str, data_, data_size_);
-                    ss << std::string(str);
-                }
+
+                    if (data_size_ > 0)
+                    {
+                        size_t sz = data_size_; // + 1;
+                        char str[sz];
+                        memset(str, 0, sz);
+                        memcpy(str, data_, data_size_);
+                        ss << std::string(str);
+                    }
                     break;
                 case data_unknown:
                 case data_binary:
@@ -209,7 +211,7 @@ namespace proto_net
         {
             delete [] data_;
 
-            if (data_size_)
+            if (data_size_ > 0)
             {
                 if (data_type_ == data_text || data_type_ == data_error)
                     data_size_++;
@@ -242,11 +244,14 @@ namespace proto_net
         void
         proto_net_data::data_resize(void)
         {
-            size_t sz = data_size_ + 1;
-            char str[sz];
-            memset(str, 0, sz);
-            memcpy(str, data_, data_size_);
-            data_size_ = sz;
+            if (data_size_ > 0)
+            {
+                size_t sz = data_size_ + 1;
+                char str[sz];
+                memset(str, 0, sz);
+                memcpy(str, data_, data_size_);
+                data_size_ = sz;
+            }
         }
 
         std::ostream&

@@ -33,7 +33,7 @@ namespace proto_net
             }
 
             void
-            http_message::http_version(const std::string &version)
+            http_message::http_version(const std::string& version)
             {
                 http_version_ = version;
             }
@@ -82,11 +82,11 @@ namespace proto_net
                 return message_body_;
             }
 
-            proto_net_data
+            proto_net_string_data
             http_message::to_net_data(void) const
             {
                 std::string header = header_to_string();
-                proto_net_data header_data(header);
+                proto_net_string_data header_data(header);
 
                 return header_data + message_body_;
             }

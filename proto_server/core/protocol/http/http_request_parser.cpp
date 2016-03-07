@@ -32,7 +32,7 @@ namespace proto_net
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {
                     char *msg_body = formed.data() + pos; // offset ptr to message body
-                    size_t msg_body_size = formed.data_size() - pos;
+                    size_t msg_body_size = (msg_body) ? formed.data_size() - pos : 0;
                     parsed.get_body() = proto_net_data(msg_body, msg_body_size);
                 }
 
