@@ -117,30 +117,6 @@ namespace proto_net
 
                 return ss.str();
             }
-
-            proto_net_data
-            http_request_message::body(void) const
-            {
-                return http_message::body();
-            }
-
-            proto_net_data &
-            http_request_message::get_body(void)
-            {
-                return http_message::get_body();
-            }
-
-            std::string
-            http_request_message::to_string(void) const
-            {
-                return http_message::to_string();
-            }
-
-            proto_net_data
-            http_request_message::to_net_data(void) const
-            {
-                return http_message::to_net_data();
-            }
         }
     }
 }

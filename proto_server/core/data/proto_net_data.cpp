@@ -66,7 +66,7 @@ namespace proto_net
         }
 
         proto_net_data
-        proto_net_data::operator + (const proto_net_data& rhs) const
+        proto_net_data::operator + (const proto_net_data& rhs)
         {
             proto_net_data result = *this;
             result.append(rhs);

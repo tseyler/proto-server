@@ -70,16 +70,16 @@ namespace proto_net
                 return ss.str();
             }
 
-            proto_net_data
+            proto_net_string_data
             http_message::body(void) const
             {
                 return message_body_;
             }
 
-            proto_net_data&
-            http_message::get_body(void)
+            void
+            http_message::body(const proto_net_string_data& data)
             {
-                return message_body_;
+                message_body_ = data;
             }
 
             proto_net_string_data

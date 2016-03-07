@@ -52,8 +52,8 @@ protected:
 		"Content-Type: application/x-www-form-urlencode\r\n"
 		"\r\n"
 		"userid=joe&password=guessme";
-	    size_t l = strlen(post);
-	    formed_post_data_ = new proto_net_data(post, l);
+	
+	    formed_post_data_ = new proto_net_string_data(post);
 	}
 
     ~HttpParserRoutinesTest()
@@ -61,7 +61,7 @@ protected:
 	    delete formed_post_data_;
 	}
 
-    proto_net_data* formed_post_data_;
+    proto_net_string_data* formed_post_data_;
     std::string get_request_http_;
     http_headers request_headers_;
     std::string get_response_http_;
@@ -110,7 +110,7 @@ TEST_F(HttpParserRoutinesTest, get_header_field_lines_test)
 
 TEST_F(HttpParserRoutinesTest, message_body_test)
 {
-    size_t expected = formed_post_data_->data_size() - 27;
+    size_t expected = formed_post_data_->length() - 27;
     size_t actual = message_body_position(*formed_post_data_);
     EXPECT_EQ( expected, actual );
     proto_net_data http_data(formed_post_data_->data(), actual, data_text);

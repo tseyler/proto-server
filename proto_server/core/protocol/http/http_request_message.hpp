@@ -61,14 +61,6 @@ namespace proto_net
 
 				virtual std::string header_to_string(void) const;
 
-				virtual proto_net_data body(void) const;
-
-				virtual proto_net_data &get_body(void);
-
-				virtual std::string to_string(void) const;
-
-				virtual proto_net_data to_net_data(void) const;
-
 			private:
 
 				std::string method_;

@@ -2,56 +2,56 @@
 	Copyright 2015 Terry Seyler.  All rights reserved.
 */
 
-#include <string.h>
-#include <string>
-//#include <UnitTest++.h>
-//#include <unit_test.h>
-//#include <http/http_response_parser.hpp>
+#include <core/protocol/http/http_response_parser.hpp>
 #include <gtest/gtest.h>
 
-/*
-using namespace proto_http;
+using namespace proto_net::data;
+using namespace proto_net::protocol;
+using namespace proto_net::protocol::http;
 
-struct test_http_response_parser_fixture
+
+class HttpResponseParserTest : public ::testing::Test
 {
-    test_http_response_parser_fixture() : formed_response_data_(0)
+protected:
+
+    HttpResponseParserTest() : formed_response_data_(0)
 	{
 	    const char response[] = 
 		"HTTP/1.1 200 OK\r\n"
-		"Host: darkhorsesoftware.com\r\n"
-		"Content-Type: application/x-www-form-urlencode\r\n"
 		"Content-Length: 27\r\n"
+        "Content-Type: text/xml\r\n"
 		"\r\n"
 		"userid=joe&password=guessme";
-	    size_t l = strlen(response);
-	    formed_response_data_ = new net_data(response, l);
+	    formed_response_data_ = new proto_net_string_data(response);
 	}
 
-    ~test_http_response_parser_fixture()
+    ~HttpResponseParserTest()
 	{
 	    delete formed_response_data_;
 	}
 
-    net_data* formed_response_data_;
+    proto_net_string_data* formed_response_data_;
 };
 
-TEST_FIXTURE(test_http_response_parser_fixture, protocol_parse_test)
+TEST_F(HttpResponseParserTest, protocol_parse_test)
 {
     http_response_parser parser;
-    net_data data = *formed_response_data_;
+    proto_net_string_data data = *formed_response_data_;
     http_response_message parsed;
     http_parse_result expected(http_parse_success);
-    CHECK_EQUAL( expected, parser.protocol_parse(data, parsed) );
+    EXPECT_EQ( expected, parser.protocol_parse(data, parsed) );
 }
 
-TEST_FIXTURE(test_http_response_parser_fixture, protocol_form_test)
+TEST_F(HttpResponseParserTest, protocol_form_test)
 {
     http_response_parser parser;
-    net_data data = *formed_response_data_;
+    proto_net_string_data data = *formed_response_data_;
     http_response_message parsed;
     parser.protocol_parse(data, parsed);
-    net_data copy_data;
-    parser.protocol_form(parsed, copy_data);
-//    CHECK( (data == copy_data) );
+    std::string parsed_str = parsed.to_string();
+    proto_net_string_data formed_data;
+    parser.protocol_form(parsed, formed_data);
+    std::string data_str = data.to_string();
+    std::string formed_str = formed_data.to_string();
+    EXPECT_TRUE( (data == formed_data) );
 }
-*/

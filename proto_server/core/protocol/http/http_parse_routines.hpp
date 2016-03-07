@@ -7,7 +7,7 @@
 
 #include <string>
 #include <vector>
-#include <core/data/proto_net_data.hpp>
+#include <core/data/proto_net_string_data.hpp>
 #include <core/protocol/net_parse_routines.hpp>
 #include <core/protocol/http/http_headers.hpp>
 
@@ -55,7 +55,7 @@ namespace proto_net
 										  lines_t &header_field_lines);
 
 			// return position of start of body
-			size_t message_body_position(const proto_net_data &data);
+			size_t message_body_position(const proto_net_string_data& data);
 
 			// tokenize routines
 			size_t tokenize_line(const std::string line, matches_t &tokens);

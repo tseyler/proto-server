@@ -45,7 +45,7 @@ namespace proto_net
 			{
 			public:
 
-				static http_response_message form_response(int code, const proto_net_data &http_content,
+				static http_response_message form_response(int code, const proto_net_string_data &http_content,
 														   const std::string &message_type);
 
 				// status code after validation and before handling

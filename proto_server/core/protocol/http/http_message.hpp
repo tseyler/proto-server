@@ -39,9 +39,9 @@ namespace proto_net
 
 				virtual std::string header_to_string(void) const;
 
-				virtual proto_net_data body(void) const;
+				virtual proto_net_string_data body(void) const;
 
-				virtual proto_net_data &get_body(void);
+				virtual void body(const proto_net_string_data& data);
 
 				virtual std::string to_string(void) const;
 

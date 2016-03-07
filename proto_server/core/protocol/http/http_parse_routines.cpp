@@ -142,7 +142,7 @@ namespace proto_net
 			}
 
 			size_t
-			message_body_position(const proto_net_data &data)
+			message_body_position(const proto_net_string_data &data)
 			{
 				size_t pos(0);
 				size_t cr_found(0);

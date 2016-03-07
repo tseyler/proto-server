@@ -32,11 +32,24 @@ namespace proto_net
             // copy constructor
             proto_net_string_data(const proto_net_string_data &copy_data);
 
-            virtual ~proto_net_string_data();
+            virtual ~proto_net_string_data()
+            {}
+
+            virtual proto_net_string_data &operator = (const proto_net_string_data &rhs);
+
+            virtual proto_net_string_data &operator+=(const proto_net_string_data &rhs);
+
+            virtual proto_net_string_data operator+(const proto_net_string_data &rhs);
+
+            virtual bool operator==(const proto_net_string_data &rhs) const;
+
+            virtual bool operator!=(const proto_net_string_data &rhs) const;
 
             virtual void clone(const proto_net_string_data &copy_data);
 
             virtual void append(const proto_net_string_data& append_data);
+
+            size_t length(void);
         };
     }
 }
