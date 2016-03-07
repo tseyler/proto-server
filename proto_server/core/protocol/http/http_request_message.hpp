@@ -32,6 +32,9 @@ namespace proto_net
 
 				http_request_message &operator=(const http_request_message &rhs);
 
+				virtual ~http_request_message()
+				{}
+
 				virtual void clone(const http_request_message &copy);
 
 				// 5.1.1 Method

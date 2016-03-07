@@ -22,6 +22,18 @@ namespace proto_net
 
         proto_net_string_data::proto_net_string_data(const std::string& data) : proto_net_data(data)
         { }
+
+        void
+        proto_net_string_data::clone(const proto_net_string_data& copy_data)
+        {
+
+        }
+
+        void
+        proto_net_string_data::append(const proto_net_string_data& append_data)
+        {
+
+        }
     }
 }
 

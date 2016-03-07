@@ -5,7 +5,7 @@
 #ifndef HTTP_MESSAGE_HPP_
 #define HTTP_MESSAGE_HPP_
 
-#include <core/data/proto_net_data.hpp>
+#include <core/data/proto_net_string_data.hpp>
 #include <core/protocol/http/http_headers.hpp>
 
 namespace proto_net
@@ -45,13 +45,13 @@ namespace proto_net
 
 				virtual std::string to_string(void) const;
 
-				virtual proto_net_data to_net_data(void) const;
+				virtual proto_net_string_data to_net_data(void) const;
 
 			protected:
 
 				std::string http_version_;
 				http_headers headers_;
-				proto_net_data message_body_;
+				proto_net_string_data message_body_;
 			};
 		}
 	}

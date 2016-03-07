@@ -54,6 +54,9 @@ namespace proto_net
 
 				http_header_fields &operator=(const http_header_fields &rhs);
 
+				virtual ~http_header_fields()
+				{}
+
 				virtual void clone(const http_header_fields &copy);
 
 				virtual bool get_header_field(const std::string &name,

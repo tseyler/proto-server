@@ -33,6 +33,10 @@ namespace proto_net
             proto_net_string_data(const proto_net_string_data &copy_data);
 
             virtual ~proto_net_string_data();
+
+            virtual void clone(const proto_net_string_data &copy_data);
+
+            virtual void append(const proto_net_string_data& append_data);
         };
     }
 }
