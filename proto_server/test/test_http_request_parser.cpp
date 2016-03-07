@@ -23,8 +23,8 @@ protected:
 		"Content-Type: application/x-www-form-urlencode\r\n"
 		"\r\n"
 		"userid=joe&password=guessme";
-	    size_t l = strlen(post);
-	    formed_post_data_ = new proto_net_data(post, l);
+
+	    formed_post_data_ = new proto_net_string_data(post);
 	}
 
     ~HttpRequestParserTest()
@@ -32,13 +32,13 @@ protected:
 	    delete formed_post_data_;
 	}
 
-    proto_net_data* formed_post_data_;
+    proto_net_string_data* formed_post_data_;
 };
 
 TEST_F(HttpRequestParserTest, protocol_parse_test)
 {
     http_request_parser parser;
-    proto_net_data data = *formed_post_data_;
+    proto_net_string_data data = *formed_post_data_;
     http_request_message parsed;
     http_parse_result expected(http_parse_success);
     EXPECT_EQ( expected, parser.protocol_parse(data, parsed) );
@@ -47,11 +47,13 @@ TEST_F(HttpRequestParserTest, protocol_parse_test)
 TEST_F(HttpRequestParserTest, protocol_form_test)
 {
     http_request_parser parser;
-    proto_net_data data = *formed_post_data_;
+    proto_net_string_data data = *formed_post_data_;
     http_request_message parsed;
     parser.protocol_parse(data, parsed);
-    proto_net_data copy_data;
-    parser.protocol_form(parsed, copy_data);
-    EXPECT_TRUE( (data == copy_data) );
+    proto_net_string_data formed_data;
+    parser.protocol_form(parsed, formed_data);
+	std::string data_str = data.to_string();
+	std::string formed_str = formed_data.to_string();
+    EXPECT_TRUE( (data == formed_data) );
 }
 

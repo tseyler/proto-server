@@ -18,7 +18,7 @@ namespace proto_net
         namespace http
         {
             http_parse_result
-            http_response_parser::protocol_parse(const proto_net_data &formed, http_response_message &parsed)
+            http_response_parser::protocol_parse(const proto_net_string_data &formed, http_response_message &parsed)
             {
                 // Step 1: get http header
                 size_t pos = message_body_position(formed);
@@ -31,16 +31,16 @@ namespace proto_net
                 // Step 4: add the message body if we validated the header
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {
-                    char *msg_body = formed.data() + pos; // offset ptr to message body
-                    size_t msg_body_size = formed.data_size() - pos;
-                    parsed.get_body() = proto_net_data(msg_body, msg_body_size);
+                    char* msg_body = formed.data() + pos; // offset ptr to message body
+                    proto_net_string_data msg_data(msg_body);
+                    parsed.body(msg_data);
                 }
 
                 return res;
             }
 
             http_parse_result
-            http_response_parser::protocol_form(const http_response_message &parsed, proto_net_data &formed)
+            http_response_parser::protocol_form(const http_response_message &parsed, proto_net_string_data &formed)
             {
                 formed = parsed.to_net_data();
 

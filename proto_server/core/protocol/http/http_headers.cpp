@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <boost/algorithm/string.hpp>
 #include <core/protocol/http/http_headers.hpp>
 
 namespace proto_net
@@ -79,19 +80,17 @@ namespace proto_net
                 std::string gen_headers;
                 std::string entity_headers;
 
-                for (http_headers_map_const_iterator it = headers_.begin();
-                     it != headers_.end();
-                     it++)
+                for (http_headers_map_const_iterator it = headers_.begin(); it != headers_.end(); it++)
                 {
                     std::string category = (*it).first;
                     http_header_fields fields = (*it).second;
-                    if (category == "request")
+                    if (boost::iequals(category, "request"))
                         req_headers = fields.to_string();
-                    else if (category == "response")
+                    else if (boost::iequals(category, "response"))
                         res_headers = fields.to_string();
-                    else if (category == "general")
+                    else if (boost::iequals(category, "general"))
                         gen_headers = fields.to_string();
-                    else if (category == "entity")
+                    else if (boost::iequals(category, "entity"))
                         entity_headers = fields.to_string();
                     else
                         ss << fields.to_string();

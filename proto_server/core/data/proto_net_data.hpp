@@ -63,7 +63,7 @@ namespace proto_net
 
             virtual proto_net_data &operator+=(const proto_net_data &rhs);
 
-            virtual proto_net_data operator+(const proto_net_data &rhs) const;
+            virtual proto_net_data operator+(const proto_net_data &rhs);
 
             virtual bool operator==(const proto_net_data &rhs) const;
 
@@ -88,13 +88,13 @@ namespace proto_net
             friend std::ostream& operator << (std::ostream& out, const proto_net_data& data);
             friend std::istream& operator << (std::istream& in, proto_net_data& data);
 
-        private:
+        protected:
 
             void data_allocate(void);
             void data_clone(void);
             void data_copy(const char *data,
                            size_t data_size);
-            void data_resize(void); // used for resizeing for text
+            void data_resize(void); // used for resizing for text
 
         protected:
 

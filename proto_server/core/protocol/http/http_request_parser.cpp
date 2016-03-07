@@ -18,7 +18,7 @@ namespace proto_net
         namespace http
         {
             http_parse_result
-            http_request_parser::protocol_parse(const proto_net_data &formed, http_request_message &parsed)
+            http_request_parser::protocol_parse(const proto_net_string_data& formed, http_request_message& parsed)
             {
                 // Step 1: get http header
                 size_t pos = message_body_position(formed);
@@ -31,16 +31,16 @@ namespace proto_net
                 // Step 4: add the message body if we validated the header
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {
-                    char *msg_body = formed.data() + pos; // offset ptr to message body
-                    size_t msg_body_size = (msg_body) ? formed.data_size() - pos : 0;
-                    parsed.get_body() = proto_net_data(msg_body, msg_body_size);
+                    char* msg_body = formed.data() + pos; // offset ptr to message body
+                    proto_net_string_data msg_data(msg_body);
+                    parsed.body(msg_data);
                 }
 
                 return res;
             }
 
             http_parse_result
-            http_request_parser::protocol_form(const http_request_message &parsed, proto_net_data &formed)
+            http_request_parser::protocol_form(const http_request_message &parsed, proto_net_string_data& formed)
             {
                 formed = parsed.to_net_data();
 
@@ -48,8 +48,7 @@ namespace proto_net
             }
 
             http_parse_result
-            http_request_parser::validate_http_request(const lines_t &lines,
-                                                       http_request_message &parsed)
+            http_request_parser::validate_http_request(const lines_t &lines, http_request_message &parsed)
             {
                 http_parse_result res(http_parse_success);
                 // 5.1 Request-Line  Request-Line = Method SP Request-URI SP HTTP-Version CRLF

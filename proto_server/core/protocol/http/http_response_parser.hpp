@@ -20,14 +20,14 @@ namespace proto_net
 			public:
 
 				// this parses a well-formed message.  Returns zero if successful
-				virtual http_parse_result protocol_parse(const proto_net_data &formed, http_response_message &parsed);
+				virtual http_parse_result protocol_parse(const proto_net_string_data& formed, http_response_message &parsed);
 
 				// this forms a well-formed message.  Returns zero if successful
-				virtual http_parse_result protocol_form(const http_response_message &parsed, proto_net_data &formed);
+				virtual http_parse_result protocol_form(const http_response_message& parsed, proto_net_string_data& formed);
 
 			protected:
 
-				virtual http_parse_result validate_http_response(const lines_t &lines, http_response_message &parsed);
+				virtual http_parse_result validate_http_response(const lines_t &lines, http_response_message& parsed);
 			};
 		}
 	}

@@ -19,12 +19,12 @@ namespace proto_net
         {
 
             http_response_message
-            http_request_handler::form_response(int code, const proto_net_data &http_content, const std::string &message_type)
+            http_request_handler::form_response(int code, const proto_net_string_data& http_content, const std::string &message_type)
             {
                 http_status_code status_code(code);
                 http_response_message response(status_code);
 
-                response.get_body() = http_content; //set the content to http_content
+                response.body(http_content);  //set the content to http_content
                 // adjust message content type and size
                 http_header_fields entity_fields;
                 entity_fields.set_header_field("Content-Type", message_type);
@@ -115,7 +115,7 @@ namespace proto_net
                         break;
                     case http_get_method:
                     {
-                        proto_net_data message_ok(ok_html, strlen(ok_html));
+                        proto_net_string_data message_ok(ok_html);
                         response = form_response(status_code_, message_ok, "text/html");
                     }
                         break;
@@ -127,7 +127,7 @@ namespace proto_net
                                                             http_response_message &response)
             {
                 status_code_ = 400; // bad request
-                proto_net_data message_bad_request(bad_request_html, strlen(bad_request_html));
+                proto_net_string_data message_bad_request(bad_request_html);
                 response = form_response(status_code_, message_bad_request, "text/html");
             }
         }

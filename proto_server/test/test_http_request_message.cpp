@@ -27,12 +27,10 @@ public:
 		"Content-Type: application/x-www-form-urlencode\r\n"
 		"\r\n";
 		//"userid=joe&password=guessme";
-	    size_t l = strlen(post);
-	    proto_net_data formed_post_data(post, l);
+
+	    proto_net_string_data formed_post_data(post);
 	    http_request_parser parser;
 	    parser.protocol_parse(formed_post_data, req_post_with_body_);
-	    proto_net_data& body_data = req_post_with_body_.get_body();
-	    body_data.data_type(data_text);
 
 	    str_post_ = post;
 	}
@@ -117,8 +115,7 @@ TEST_F(HttpRequestMessageTest, header_to_string_test)
 TEST_F(HttpRequestMessageTest, to_net_data_test)
 {
     std::string expected = str_post_;
-    proto_net_data req_data = req_post_with_body_.to_net_data();
-    req_data.data_type(data_text);
+    proto_net_string_data req_data = req_post_with_body_.to_net_data();
     std::string actual = req_data.to_string();
     EXPECT_EQ( expected, actual );
 }
