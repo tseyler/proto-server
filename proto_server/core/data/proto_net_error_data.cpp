@@ -6,6 +6,8 @@ namespace proto_net
 {
     namespace data
     {
+        proto_net_error_code_map proto_net_error_data::error_code_map_;
+
         void
         proto_net_error_data::create_error_code_map(void)
         {

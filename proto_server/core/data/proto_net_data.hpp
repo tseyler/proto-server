@@ -14,6 +14,7 @@
 
 #include <string>
 #include <iostream>
+#include <map>
 //#include <boost/lockfree/spsc_queue.hpp>
 
 namespace proto_net
@@ -38,6 +39,8 @@ namespace proto_net
             ec_write_timeout_error,  // write timeout error (no response)
 
         } proto_net_data_error_code;
+
+        typedef std::map<proto_net_data_error_code, std::string> proto_net_error_code_map;
 
         class proto_net_data
         {

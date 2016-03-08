@@ -3,6 +3,8 @@
 #define FREESWITCH_XML_PIPELINE_HPP_
 
 #include <core/data/proto_net_pipeline.hpp>
+#include <core/protocol/http/http_constants.hpp>
+#include <core/protocol/http/http_request_parser.hpp>
 
 using namespace proto_net::data;
 

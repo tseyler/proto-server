@@ -185,13 +185,7 @@ namespace proto_net
                 case data_error:
 
                     if (data_size_ > 0)
-                    {
-                        size_t sz = data_size_; // + 1;
-                        char str[sz];
-                        memset(str, 0, sz);
-                        memcpy(str, data_, data_size_);
-                        ss << std::string(str);
-                    }
+                        ss << std::string(data_);
                     break;
                 case data_unknown:
                 case data_binary:

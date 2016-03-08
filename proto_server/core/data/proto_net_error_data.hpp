@@ -23,7 +23,7 @@ namespace proto_net
         {
         public:
 
-            static std::map<proto_net_data_error_code, std::string> error_code_map_;
+            static proto_net_error_code_map error_code_map_;
             static void create_error_code_map(void);
 
             proto_net_error_data(proto_net_data_error_code ec = ec_success);
