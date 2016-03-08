@@ -22,4 +22,4 @@ add_executable(freeswitch-xml-server ${SOURCE_FILES})
 add_dependencies(freeswitch-xml-server proto_server)
 
 # linking
-target_link_libraries(freeswitch-xml-server boost_system boost_thread pthread proto_server)
+target_link_libraries(freeswitch-xml-server boost_system boost_thread pthread boost_regex proto_server)

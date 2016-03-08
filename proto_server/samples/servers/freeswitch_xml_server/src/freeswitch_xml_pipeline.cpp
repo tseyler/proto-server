@@ -6,6 +6,9 @@
 #include <sstream>
 #include "freeswitch_xml_pipeline.hpp"
 
+using namespace proto_net::data;
+using namespace proto_net::protocol;
+using namespace proto_net::protocol::http;
 
 std::string xml_response =
  "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><document type=\"freeswitch/xml\"><section name=\"result\"><result status=\"not found\" /></section></document>\r\n";
@@ -25,9 +28,16 @@ std::string http_response(const std::string& xml)
 void
 freeswitch_xml_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
 {
-    proto_net_in_data req_txt_data = req_data;
-    req_txt_data.data_type(data_text);
+    proto_net_string_data req_txt_data(req_data);
+    //req_txt_data.data_type(data_text);
+
     std::cout << "Freeswitch XML Pipeline: Received = " << req_txt_data << std::endl;
+
+    http_request_parser parser;
+    http_request_message req_message;
+    parser.protocol_parse(req_txt_data, req_message);
+
+    std::cout << "Freeswitch XML Pipeline: Parsed Output Body = " << req_message.body() << std::endl;
 
     std::string response = http_response(xml_response);
     res_data = proto_net_out_data(response.c_str(), response.length());

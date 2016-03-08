@@ -31,6 +31,8 @@ namespace proto_net
 
             // copy constructor
             proto_net_string_data(const proto_net_string_data &copy_data);
+            // converts to a string data
+            proto_net_string_data(const proto_net_data &copy_data);
 
             virtual ~proto_net_string_data()
             {}
