@@ -5,6 +5,7 @@
 #include <core/data/proto_net_pipeline.hpp>
 #include <core/protocol/http/http_constants.hpp>
 #include <core/protocol/http/http_request_parser.hpp>
+#include <core/protocol/urlencode/urlencode_parse_routines.hpp>
 
 using namespace proto_net::data;
 

@@ -13,6 +13,7 @@ namespace proto_net
     namespace protocol
     {
         typedef std::vector<std::string> matches_t;
+        typedef matches_t::iterator matches_iterator;
 
         // search routines
         bool search_pattern(const std::string& str, const std::string& pat);
@@ -24,9 +25,7 @@ namespace proto_net
         bool match_pattern(const std::string& str, const std::string& pat, matches_t& matches);
 
         // replace routines
-        std::string replace_pattern(const std::string& str,
-                                    const std::string& pat,
-                                    const std::string& rep_str);
+        std::string replace_pattern(const std::string& str, const std::string& pat, const std::string& rep_str);
 
         // trim routines
         std::string trim_front(const std::string& str);
