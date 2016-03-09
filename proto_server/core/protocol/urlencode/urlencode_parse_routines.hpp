@@ -17,7 +17,7 @@ namespace proto_net
         namespace urlencode
         {
             // tokenize routines
-            size_t tokenize_line(const std::string line, matches_t &tokens);
+            size_t tokenize_urlencode_line(const std::string line, matches_t &tokens);
         }
     }
 }

@@ -53,7 +53,7 @@ namespace proto_net
                 http_parse_result res(http_parse_success);
                 // 5.1 Request-Line  Request-Line = Method SP Request-URI SP HTTP-Version CRLF
                 matches_t request_line_tokens; // method, request_uri, http_version
-                tokenize_line(lines[0], request_line_tokens); // needs to be first line
+                tokenize_http_line(lines[0], request_line_tokens); // needs to be first line
                 res = validate_request_line(request_line_tokens);
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {

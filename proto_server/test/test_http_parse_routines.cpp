@@ -86,13 +86,13 @@ TEST_F(HttpParserRoutinesTest, find_line_test)
 }
 
 
-TEST_F(HttpParserRoutinesTest, tokenize_line_test)
+TEST_F(HttpParserRoutinesTest, tokenize_http_line_test)
 {
     size_t expected(3);
     lines_t lines;
     get_lines(get_request_http_, lines);
     matches_t line_tokens;
-    EXPECT_EQ( expected, tokenize_line(lines[0], line_tokens) );
+    EXPECT_EQ( expected, tokenize_http_line(lines[0], line_tokens) );
 }
 
 TEST_F(HttpParserRoutinesTest, get_header_field_lines_test)
@@ -165,7 +165,7 @@ TEST_F(HttpParserRoutinesTest, validate_request_line_test)
     lines_t lines;
     get_lines(get_request_http_, lines);
     matches_t request_line_tokens;
-    tokenize_line(lines[0], request_line_tokens);
+    tokenize_http_line(lines[0], request_line_tokens);
     EXPECT_EQ( expected, validate_request_line(request_line_tokens) );
 }
 
@@ -235,6 +235,6 @@ TEST_F(HttpParserRoutinesTest, validate_status_line_test)
     lines_t lines;
     get_lines(get_response_http_, lines);
     matches_t status_line_tokens;
-    tokenize_line(lines[0], status_line_tokens);
+    tokenize_http_line(lines[0], status_line_tokens);
     EXPECT_EQ( expected, validate_status_line(status_line_tokens) );
 }

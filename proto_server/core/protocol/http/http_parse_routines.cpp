@@ -179,7 +179,7 @@ namespace proto_net
 			}
 
 			size_t
-			tokenize_line(const std::string line, matches_t &tokens)
+			tokenize_http_line(const std::string line, matches_t &tokens)
 			{
 				std::string sep(" \t");
 				split(line, sep, tokens);
