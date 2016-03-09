@@ -54,7 +54,7 @@ namespace proto_net
                 // 6.1 Status-Line  Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase CRLF
 
                 matches_t status_line_tokens; // http_version, status_code
-                tokenize_line(lines[0], status_line_tokens); // needs to be first line
+                tokenize_http_line(lines[0], status_line_tokens); // needs to be first line
                 res = validate_status_line(status_line_tokens);
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {

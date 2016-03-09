@@ -58,7 +58,7 @@ namespace proto_net
 			size_t message_body_position(const proto_net_string_data& data);
 
 			// tokenize routines
-			size_t tokenize_line(const std::string line, matches_t &tokens);
+			size_t tokenize_http_line(const std::string line, matches_t &tokens);
 
 			size_t tokenize_header_field(const std::string line, matches_t &tokens);
 
