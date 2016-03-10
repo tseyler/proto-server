@@ -88,15 +88,14 @@ namespace proto_net
 
             virtual std::string to_string(void) const;
 
-            friend std::ostream& operator << (std::ostream& out, const proto_net_data& data);
-            friend std::istream& operator << (std::istream& in, proto_net_data& data);
+            //friend std::ostream& operator << (std::ostream& out, const proto_net_data& data);
+            //friend std::istream& operator << (std::istream& in, proto_net_data& data);
 
         protected:
 
             void data_allocate(void);
             void data_clone(void);
-            void data_copy(const char *data,
-                           size_t data_size);
+            void data_copy(const char *data, size_t data_size);
             void data_resize(void); // used for resizing for text
 
         protected:
@@ -106,8 +105,8 @@ namespace proto_net
             proto_net_data_type data_type_;
         };
 
-        std::ostream& operator << (std::ostream& out, const proto_net_data& data);
-        std::istream& operator >> (std::istream& in, proto_net_data& data);
+        //std::ostream& operator << (std::ostream& out, const proto_net_data& data);
+        //std::istream& operator >> (std::istream& in, proto_net_data& data);
 
         typedef proto_net_data proto_net_in_data;
         typedef proto_net_data proto_net_out_data;

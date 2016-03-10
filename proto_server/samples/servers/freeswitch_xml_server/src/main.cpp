@@ -1,7 +1,6 @@
 
 #include <boost/algorithm/string.hpp>
 #include "freeswitch_xml_pipeline.hpp"
-//#include <core/proto_service.hpp>
 #include <core/factory/proto_tcp_server_factory.hpp>
 
 using namespace proto_net;
@@ -25,7 +24,7 @@ void console_func(void*)
 int
 main(int argc, char *argv[])
 {
-    std::string server_address("127.0.0.1");
+    //std::string server_address("127.0.0.1");
 
     freeswitch_xml_pipeline fs_pipeline;
     proto_tcp_server_factory server_factory(fs_pipeline, 8095);
