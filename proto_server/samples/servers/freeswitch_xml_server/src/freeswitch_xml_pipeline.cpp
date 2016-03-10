@@ -32,7 +32,7 @@ freeswitch_xml_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_ne
     proto_net_string_data req_txt_data(req_data);
     //req_txt_data.data_type(data_text);
 
-    std::cout << "Freeswitch XML Pipeline: Received = " << req_txt_data << std::endl;
+    std::cout << "Freeswitch XML Pipeline: Received = " << req_txt_data.to_string() << std::endl;
     std::cout << std::endl;
 
     http_request_parser parser;
@@ -48,14 +48,13 @@ freeswitch_xml_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_ne
     while (kvi != key_values.end())
     {
         urlencode_key_value_pair kv_pair = *kvi++;
-        std::cout << kv_pair.first << " = " << kv_pair.second << std::endl;
+        std::cout << kv_pair.first << "=" << kv_pair.second << std::endl;
     }
     std::cout << std::endl;
 
     std::string response = http_response(xml_response);
     res_data = proto_net_out_data(response.c_str(), response.length());
-    proto_net_out_data res_txt_data = res_data;
-    res_txt_data.data_type(data_text);
-    response = res_txt_data.to_string();
-    std::cout << "Freeswitch XML Pipeline: Send = " << response;
+    proto_net_string_data res_txt_data(res_data);
+    //res_txt_data.data_type(data_text);
+    std::cout << "Freeswitch XML Pipeline: Send = " << res_txt_data.to_string();
 }

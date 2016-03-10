@@ -248,28 +248,28 @@ namespace proto_net
             }
         }
 
-        std::ostream&
-        operator << (std::ostream& out, const proto_net_data& data)
-        {
-            out << data.to_string();
-
-            return out;
-        }
-
-        std::istream&
-        operator >> (std::istream& in, proto_net_data& data)
-        {
-            std::stringstream ss;
-            char c;
-            while (in)
-            {
-                in >> c;
-                ss << c;
-            }
-            // assign the input to data
-            data = proto_net_data(ss.str());
-
-            return in;
-        }
+//        std::ostream&
+//        operator << (std::ostream& out, const proto_net_data& data)
+//        {
+//            out << data.to_string();
+//
+//            return out;
+//        }
+//
+//        std::istream&
+//        operator >> (std::istream& in, proto_net_data& data)
+//        {
+//            std::stringstream ss;
+//            char c;
+//            while (in)
+//            {
+//                in >> c;
+//                ss << c;
+//            }
+//            // assign the input to data
+//            data = proto_net_data(ss.str());
+//
+//            return in;
+//        }
     }
 }
