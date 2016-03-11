@@ -49,3 +49,19 @@ TEST_F(UrlencodeParserRoutinesTest, tokenize_urlencode_key_value_test)
     EXPECT_EQ(value_2, "guessme");
 }
 
+TEST_F(UrlencodeParserRoutinesTest, decode_test)
+{
+    std::string expected("Event-Date-GMT=Fri, 11 Mar 2016 16:53:25 GMT");
+    std::string encoded("Event-Date-GMT=Fri,%2011%20Mar%202016%2016%3A53%3A25%20GMT");
+    std::string actual = ue_decode(encoded);
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(UrlencodeParserRoutinesTest, encode_test)
+{
+    std::string expected("Event-Date-GMT=Fri,%2011%20Mar%202016%2016%3A53%3A25%20GMT");
+    std::string decoded("Event-Date-GMT=Fri, 11 Mar 2016 16:53:25 GMT");
+    std::string actual = ue_encode(decoded);
+    EXPECT_EQ(expected, actual);
+}
+
