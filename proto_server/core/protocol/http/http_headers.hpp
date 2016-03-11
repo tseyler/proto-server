@@ -24,6 +24,11 @@ namespace proto_net
 			{
 			public:
 
+				static const std::string entity_category;
+				static const std::string general_category;
+				static const std::string request_category;
+				static const std::string response_category;
+
 				http_headers()
 				{ }
 
@@ -36,8 +41,7 @@ namespace proto_net
 				http_headers_map headers(void) const
 				{ return headers_; }
 
-				void add_http_headers(const std::string &category,
-									  const http_header_fields &fields);
+				void add_http_headers(const std::string &category, const http_header_fields &fields);
 
 				void remove_http_headers(const std::string &category);
 

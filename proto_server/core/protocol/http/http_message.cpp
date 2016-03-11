@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <boost/lexical_cast.hpp>
 #include <core/protocol/http/http_constants.hpp>
 #include <core/protocol/http/http_message.hpp>
 
@@ -89,6 +90,19 @@ namespace proto_net
                 proto_net_string_data header_data(header);
 
                 return header_data + message_body_;
+            }
+
+            size_t
+            http_message::content_length(void)
+            {
+                size_t ct(0);
+
+                http_header_fields entity_fields = headers_[http_headers::entity_category];
+                std::string content_length;
+                if (entity_fields.get_header_field("Content-Length", content_length))
+                    ct = boost::lexical_cast<size_t>(content_length);
+
+                return ct;
             }
         }
     }

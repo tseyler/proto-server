@@ -5,6 +5,7 @@
 
 #include <sstream>
 #include <boost/regex.hpp>
+#include <boost/algorithm/string.hpp>
 #include <core/protocol/net_parse_routines.hpp>
 #include <core/protocol/http/http_constants.hpp>
 #include <core/protocol/http/http_parse_routines.hpp>
@@ -70,13 +71,13 @@ namespace proto_net
 			{
 				std::string pat;
 
-				if (pattern_name == "general")
+				if (boost::equals(pattern_name, http_headers::general_category))
 					pat = general_header_field_pat;
-				if (pattern_name == "request")
+				if (boost::equals(pattern_name, http_headers::request_category))
 					pat = request_header_field_pat;
-				if (pattern_name == "entity")
+				if (boost::equals(pattern_name, http_headers::entity_category))
 					pat = entity_header_field_pat;
-				if (pattern_name == "response")
+				if (boost::equals(pattern_name, http_headers::response_category))
 					pat = response_header_field_pat;
 
 				return pat;
@@ -269,8 +270,7 @@ namespace proto_net
 			}
 
 			http_parse_result
-			validate_header_fields(const lines_t &lines, const std::string &category,
-								   http_header_fields &http_fields)
+			validate_header_fields(const lines_t &lines, const std::string &category, http_header_fields &http_fields)
 			{
 				http_parse_result res(http_parse_success);
 				std::string pat = get_pattern(category);

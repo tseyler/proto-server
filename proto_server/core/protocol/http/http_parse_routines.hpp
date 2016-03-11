@@ -38,21 +38,16 @@ namespace proto_net
 			} http_parse_result;
 
 			// find the end of the line (beginning of \r\n) or return std::string::npos
-			size_t find_crlf(const std::string &str,
-							 size_t pos);
+			size_t find_crlf(const std::string &str, size_t pos);
 
 			// find the line and return as out param.  Return start of next line
-			size_t find_line(const std::string &str,
-							 std::string &line,
-							 size_t pos);
+			size_t find_line(const std::string &str, std::string &line, size_t pos);
 
 			// builds a collection of http header lines.  Returns number of lines
-			size_t get_lines(const std::string &http,
-							 lines_t &lines);
+			size_t get_lines(const std::string &http, lines_t &lines);
 
 			// builds a collection of header field lines
-			size_t get_header_field_lines(const lines_t &http_lines,
-										  lines_t &header_field_lines);
+			size_t get_header_field_lines(const lines_t &http_lines, lines_t &header_field_lines);
 
 			// return position of start of body
 			size_t message_body_position(const proto_net_string_data& data);
@@ -84,8 +79,7 @@ namespace proto_net
 													 http_header_fields &http_fields);
 
 			// validate http headers
-			http_parse_result validate_http_headers(const lines_t &lines,
-													http_headers &headers);
+			http_parse_result validate_http_headers(const lines_t &lines, http_headers &headers);
 
 			// validate status code
 			http_parse_result validate_status_code(const std::string &status_code);
