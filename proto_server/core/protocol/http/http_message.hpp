@@ -47,6 +47,8 @@ namespace proto_net
 
 				virtual proto_net_string_data to_net_data(void) const;
 
+				virtual size_t content_length(void);
+
 			protected:
 
 				std::string http_version_;

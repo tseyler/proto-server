@@ -3,8 +3,6 @@
 */
 
 #include <string>
-#include <iostream>
-#include <sstream>
 #include <core/protocol/net_parse_routines.hpp>
 #include <core/protocol/http/http_parse_routines.hpp>
 #include <core/protocol/http/http_request_parser.hpp>
@@ -31,10 +29,11 @@ namespace proto_net
                 // Step 4: add the message body if we validated the header
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {
-                    //http_headers headers = parsed.get_headers();
                     char* msg_body = formed.data() + pos; // offset ptr to message body
-                    proto_net_string_data msg_data(msg_body);
-                    parsed.body(msg_data);
+                    size_t content_length = parsed.content_length();
+                    proto_net_data msg_data(msg_body, content_length);
+                    proto_net_string_data msg_string_data(msg_data);
+                    parsed.body(msg_string_data);
                 }
 
                 return res;

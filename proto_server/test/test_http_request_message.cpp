@@ -25,8 +25,8 @@ public:
 		"User-Agent: Mozilla/4.0\r\n"
 		"Content-Length: 27\r\n"
 		"Content-Type: application/x-www-form-urlencode\r\n"
-		"\r\n";
-		//"userid=joe&password=guessme";
+		"\r\n"
+		"userid=joe&password=guessme";
 
 	    proto_net_string_data formed_post_data(post);
 	    http_request_parser parser;
@@ -117,5 +117,19 @@ TEST_F(HttpRequestMessageTest, to_net_data_test)
     std::string expected = str_post_;
     proto_net_string_data req_data = req_post_with_body_.to_net_data();
     std::string actual = req_data.to_string();
+    EXPECT_EQ( expected, actual );
+}
+
+TEST_F(HttpRequestMessageTest, content_length_test)
+{
+    size_t expected(27);
+    size_t actual = req_post_with_body_.content_length();
+    EXPECT_EQ( expected, actual );
+}
+
+TEST_F(HttpRequestMessageTest, message_body_test)
+{
+    std::string expected("userid=joe&password=guessme");
+    std::string actual = req_post_with_body_.body().to_string();
     EXPECT_EQ( expected, actual );
 }

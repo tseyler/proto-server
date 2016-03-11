@@ -24,23 +24,15 @@ namespace proto_net
 			public:
 
 				// static functions
-				static void insert_header_field(header_fields &fields,
-												const std::string &name,
-												const std::string &value);
+				static void insert_header_field(header_fields &fields, const std::string &name, const std::string &value);
 
-				static bool get_header_field(header_fields &fields,
-											 const std::string &name,
-											 std::string &value);
+				static bool get_header_field(header_fields &fields, const std::string &name, std::string &value);
 
-				static bool modify_header_field(header_fields &fields,
-												const std::string &name,
-												const std::string &value);
+				static bool modify_header_field(header_fields &fields, const std::string &name, const std::string &value);
 
-				static bool is_empty_field(header_fields &fields,
-										   const std::string &name);
+				static bool is_empty_field(header_fields &fields, const std::string &name);
 
-				static std::string field_to_string(header_fields &fields,
-												   const std::string &name);
+				static std::string field_to_string(header_fields &fields, const std::string &name);
 
 				static std::string fields_to_string(header_fields &fields);
 
@@ -59,13 +51,11 @@ namespace proto_net
 
 				virtual void clone(const http_header_fields &copy);
 
-				virtual bool get_header_field(const std::string &name,
-											  std::string &value);
+				virtual bool get_header_field(const std::string &name, std::string &value);
 
 				virtual std::string operator[](const std::string &name);
 
-				virtual void set_header_field(const std::string &name,
-											  const std::string &value);
+				virtual void set_header_field(const std::string &name, const std::string &value);
 
 				virtual header_fields get_header_fields(void) const
 				{ return http_header_; }

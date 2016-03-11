@@ -13,6 +13,11 @@ namespace proto_net
     {
         namespace http
         {
+            const std::string http_headers::entity_category = "entity";
+            const std::string http_headers::general_category = "general";
+            const std::string http_headers::request_category = "request";
+            const std::string http_headers::response_category = "response";
+
             http_headers::http_headers(const http_headers &copy)
             {
                 clone(copy);
