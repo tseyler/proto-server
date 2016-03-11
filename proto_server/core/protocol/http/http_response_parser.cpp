@@ -32,8 +32,10 @@ namespace proto_net
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {
                     char* msg_body = formed.data() + pos; // offset ptr to message body
-                    proto_net_string_data msg_data(msg_body);
-                    parsed.body(msg_data);
+                    size_t content_length = parsed.content_length();
+                    proto_net_data msg_data(msg_body, content_length, data_text);
+                    proto_net_string_data msg_string_data(msg_data);
+                    parsed.body(msg_string_data);
                 }
 
                 return res;
