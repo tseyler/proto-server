@@ -11,7 +11,7 @@ using namespace proto_net::protocol;
 using namespace proto_net::protocol::http;
 using namespace proto_net::protocol::urlencode;
 
-std::string xml_response =
+const std::string freeswitch_xml_pipeline::xml_not_found =
  "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><document type=\"freeswitch/xml\"><section name=\"result\"><result status=\"not found\" /></section></document>\r\n";
 
 std::string http_response(const std::string& xml)
@@ -30,7 +30,6 @@ void
 freeswitch_xml_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
 {
     proto_net_string_data req_txt_data(req_data);
-    //req_txt_data.data_type(data_text);
 
     std::cout << "Freeswitch XML Pipeline: Received = " << req_txt_data.to_string() << std::endl;
     std::cout << std::endl;
@@ -40,6 +39,8 @@ freeswitch_xml_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_ne
     parser.protocol_parse(req_txt_data, req_message);
 
     std::string url_encoded = req_message.body().to_string();
+    size_t body_length = url_encoded.length();
+    std::cout << "Body Length = " << body_length << std::endl;
     matches_t tokens;
     tokenize_urlencode_line(url_encoded, tokens);
     urlencode_key_values key_values;
@@ -52,9 +53,8 @@ freeswitch_xml_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_ne
     }
     std::cout << std::endl;
 
-    std::string response = http_response(xml_response);
+    std::string response = http_response(xml_not_found);
     res_data = proto_net_out_data(response.c_str(), response.length());
     proto_net_string_data res_txt_data(res_data);
-    //res_txt_data.data_type(data_text);
     std::cout << "Freeswitch XML Pipeline: Send = " << res_txt_data.to_string();
 }

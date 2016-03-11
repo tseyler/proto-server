@@ -31,6 +31,7 @@ namespace proto_net
                 // Step 4: add the message body if we validated the header
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {
+                    //http_headers headers = parsed.get_headers();
                     char* msg_body = formed.data() + pos; // offset ptr to message body
                     proto_net_string_data msg_data(msg_body);
                     parsed.body(msg_data);
