@@ -1,5 +1,6 @@
 
 include(${MAKE_DIR}/definitions.cmake)
+include(${MAKE_DIR}/proto_server.cmake)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
 
@@ -35,7 +36,7 @@ link_directories(${LIB_DIR} ${BOOST_LIB_DIR} ${GOOGLETEST_DIR})
 
 add_executable(proto-server-test ${SOURCE_FILES})
 
-#add_dependencies(proto-server-test proto_server)
+add_dependencies(proto-server-test proto_server)
 
 # linking
 target_link_libraries(proto-server-test boost_system boost_thread boost_regex pthread proto_server gtest)

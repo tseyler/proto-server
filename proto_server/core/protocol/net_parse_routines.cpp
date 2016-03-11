@@ -89,9 +89,7 @@ namespace proto_net
         }
 
         std::string
-        replace_pattern(const std::string& str,
-                        const std::string& pat,
-                        const std::string& rep_str)
+        replace_pattern(const std::string& str, const std::string& pat, const std::string& rep_str)
         {
             boost::regex exp(pat);
 
