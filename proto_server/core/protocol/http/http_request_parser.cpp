@@ -31,7 +31,7 @@ namespace proto_net
                 {
                     char* msg_body = formed.data() + pos; // offset ptr to message body
                     size_t content_length = parsed.content_length();
-                    proto_net_data msg_data(msg_body, content_length);
+                    proto_net_data msg_data(msg_body, content_length, data_text);
                     proto_net_string_data msg_string_data(msg_data);
                     parsed.body(msg_string_data);
                 }
