@@ -8,3 +8,6 @@ MESSAGE("Project root directory location: ${ROOT_DIR}")
 set(MAKE_DIR ${ROOT_DIR}/make)
 
 include(${MAKE_DIR}/proto_server_test.cmake)
+include(${MAKE_DIR}/proto_server.cmake)
+
+add_dependencies(proto-server-test proto_server)

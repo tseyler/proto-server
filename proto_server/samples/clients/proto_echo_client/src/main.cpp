@@ -1,7 +1,7 @@
 
 
 #include <iostream>
-#include "proto_echo_pipeline.hpp"
+#include "proto_echo_client_pipeline.hpp"
 
 using namespace proto_net::data;
 using namespace proto_net;
@@ -10,7 +10,7 @@ using namespace proto_net::client;
 int
 main(int argc, char *argv[])
 {
-    proto_echo_pipeline pipeline;
+    proto_echo_client_pipeline pipeline;
     proto_tcp_text_client client("127.0.0.1", 9669, pipeline);
     pipeline.ps_proto_service(&client);
 
