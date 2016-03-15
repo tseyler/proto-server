@@ -1,5 +1,5 @@
 //
-// Created by tseyler on 2/13/16.
+// Created by tseyler on 1/4/16.
 //
 
 #ifndef PROTO_ECHO_CLIENT_PIPELINE_HPP_
@@ -23,4 +23,4 @@ public:
 };
 
 
-#endif //PROTO_ECHO_PIPELINE_HPP_
+#endif //PROTO_ECHO_CLIENT_PIPELINE_HPP_

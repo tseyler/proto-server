@@ -1,9 +1,9 @@
 //
-// Created by tseyler on 1/4/16.
+// Created by tseyler on 2/13/16.
 //
 
-#ifndef PROTO_ECHO_PIPELINE_HPP_
-#define PROTO_ECHO_PIPELINE_HPP_
+#ifndef ECHO_CLIENT_PIPELINE_HPP_
+#define ECHO_CLIENT_PIPELINE_HPP_
 
 #include <core/data/proto_net_pipeline.hpp>
 #include <core/client/proto_tcp_text_client.hpp>
@@ -12,7 +12,7 @@ using namespace proto_net::data;
 using namespace proto_net;
 using namespace proto_net::client;
 
-class proto_echo_pipeline : public proto_net_pipeline
+class echo_client_pipeline : public proto_net_pipeline
 {
 public:
 
@@ -23,4 +23,4 @@ public:
 };
 
 
-#endif //PROTO_ECHO_PIPELINE_HPP_
+#endif //ECHO_PIPELINE_HPP_

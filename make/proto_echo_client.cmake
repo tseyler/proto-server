@@ -1,6 +1,5 @@
 
-
-include(${MAKE_DIR}/proto_server.cmake)
+include(${MAKE_DIR}/definitions.cmake)
 
 set(PROJ_DIR ${PROTO_SERVER_SAMPLES_CLIENTS_DIR}/proto_echo_client)
 
@@ -22,4 +21,4 @@ add_executable(proto-echo-client ${SOURCE_FILES})
 add_dependencies(proto-echo-client proto_server)
 
 # linking
-target_link_libraries(proto-echo-client boost_system boost_thread pthread proto_server)
+target_link_libraries(proto-echo-client boost_system boost_thread boost_regex pthread proto_server)

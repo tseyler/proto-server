@@ -1,13 +1,11 @@
 
 
-#include "proto_echo_server_pipeline.hpp"
-#include "proto_echo_client_pipeline.hpp"
+#include "echo_server_pipeline.hpp"
+#include "echo_client_pipeline.hpp"
 
 #include <core/factory/proto_tcp_text_client_factory.hpp>
 #include <core/factory/proto_tcp_text_server_factory.hpp>
 
-//using namespace proto_net::server;
-//using namespace proto_net::client;
 using namespace proto_net::factory;
 
 int
@@ -16,12 +14,12 @@ main(int argc, char *argv[])
     std::string echo_server_address("127.0.0.1");
 
     // echo server
-    proto_echo_server_pipeline echo_server_pipeline;
+    echo_server_pipeline echo_server_pipeline;
     proto_tcp_text_server_factory server_factory(echo_server_pipeline, 9669);
     proto_service_ptr echo_server = server_factory();
 
     // echo client
-    proto_echo_client_pipeline echo_client_pipeline;
+    echo_client_pipeline echo_client_pipeline;
     proto_net_in_data echo_data("Hello World!"); // our first message once we connect
     proto_tcp_text_client_factory client_factory(echo_server_address, echo_data, 9669, echo_client_pipeline);
     proto_service_ptr echo_client = client_factory();

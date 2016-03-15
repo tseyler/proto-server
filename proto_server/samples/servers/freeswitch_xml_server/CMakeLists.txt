@@ -7,3 +7,6 @@ MESSAGE("Project root directory location: ${ROOT_DIR}")
 
 set(MAKE_DIR ${ROOT_DIR}/make)
 include(${MAKE_DIR}/freeswitch_xml_server.cmake)
+include(${MAKE_DIR}/proto_server.cmake)
+
+add_dependencies(freeswitch-xml-server proto_server)

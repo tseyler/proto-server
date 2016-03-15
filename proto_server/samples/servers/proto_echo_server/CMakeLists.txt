@@ -7,3 +7,6 @@ MESSAGE("Project root directory location: ${ROOT_DIR}")
 
 set(MAKE_DIR ${ROOT_DIR}/make)
 include(${MAKE_DIR}/proto_echo_server.cmake)
+include(${MAKE_DIR}/proto_server.cmake)
+
+add_dependencies(proto-echo-server proto_server)
