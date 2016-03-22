@@ -2,13 +2,21 @@
 // Created by tseyler on 3/16/16.
 //
 
+#include <iostream>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/algorithm/string.hpp>
 #include <core/protocol/c4soap/c4soap_message.hpp>
+#include <core/protocol/c4soap/c4soap_getdevicebyinterface.hpp>
+
 namespace proto_net
 {
     namespace protocol
     {
         namespace c4soap
         {
+            const std::string c4soap_message::c4soap_cmd_authenticatepassword = "AuthenticatePassword";
+            const std::string c4soap_message::c4soap_cmd_getdevicesbyinterface = "GetDevicesByInterface";
+
             void
             c4soap_message::begin_c4soap_message(std::stringstream& ss, const std::string& cmd, int& seq)
             {
@@ -69,11 +77,45 @@ namespace proto_net
                 return ss.str();
             }
 
-            c4soap_message::c4soap_message(const std::string& name, unsigned long seq) : name_(name), seq_(seq)
+            c4soap_message::c4soap_message(const std::string& name, unsigned long seq) : name_(name), seq_(seq),
+                                                                                         result_(0)
+            {}
+
+            c4soap_message::c4soap_message(const std::string& c4soap_xml)
+            {
+                from_c4soap(c4soap_xml);
+            }
+
+            c4soap_message::c4soap_message(const c4soap_message& msg) : name_(msg.c4soap_name()), seq_(msg.c4soap_seq()),
+                                                                  result_(msg.c4soap_result()), pt_(msg.c4soap_ptree())
             {}
 
             c4soap_message::~c4soap_message()
             {}
+
+            void
+            c4soap_message::from_c4soap(const std::string& c4soap_xml)
+            {
+                using boost::property_tree::ptree;
+
+                std::stringstream ss;
+                ss << c4soap_xml;
+
+                //ptree pt;
+                read_xml(ss, pt_);
+
+                name_ = pt_.get<std::string>("c4soap.<xmlattr>.name");
+                seq_ = pt_.get<unsigned long>("c4soap.<xmlattr>.seq");
+                result_ = pt_.get<unsigned long>("c4soap.<xmlattr>.result");
+            }
+
+            std::string
+            c4soap_message::to_c4soap(void)
+            {
+                std::string c4soap_xml;
+
+                return c4soap_xml;
+            }
         }
     }
 }

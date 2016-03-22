@@ -6,6 +6,8 @@
 #define C4SOAP_MESSAGE_HPP_
 
 #include <sstream>
+#include <boost/shared_ptr.hpp>
+#include <boost/property_tree/xml_parser.hpp>
 
 namespace proto_net
 {
@@ -13,9 +15,15 @@ namespace proto_net
     {
         namespace c4soap
         {
+            using  boost::property_tree::ptree;
+
             class c4soap_message
             {
             public:
+
+                static const std::string c4soap_cmd_authenticatepassword;
+                static const std::string c4soap_cmd_getdevicesbyinterface;
+
 
                 // this is how you begin a c4soap message
                 static void begin_c4soap_message(std::stringstream& ss, const std::string& cmd, int& seq);
@@ -41,19 +49,28 @@ namespace proto_net
                 static std::string get_param_value(const std::string& name, const std::string& val);
 
                 c4soap_message(const std::string& name, unsigned long seq);
+                c4soap_message(const std::string& c4soap_xml);
+                c4soap_message(const c4soap_message& msg);
                 virtual ~c4soap_message();
 
+                std::string c4soap_name(void) const { return name_; }
+                unsigned long c4soap_seq(void) const { return seq_; }
+                unsigned long c4soap_result(void) const { return result_; }
+                ptree c4soap_ptree(void) const { return pt_; }
+                void from_c4soap(const std::string& c4soap_xml);
+                std::string to_c4soap(void);
+
                 std::string to_string(void);
-
-            private:
-
-
 
             protected:
 
                 std::string name_;
                 unsigned long seq_;
+                unsigned long result_;
+                ptree pt_;
             };
+
+            typedef boost::shared_ptr<c4soap_message> c4soap_message_ptr;
         }
     }
 }
