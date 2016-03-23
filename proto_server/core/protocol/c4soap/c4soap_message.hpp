@@ -23,7 +23,7 @@ namespace proto_net
 
                 static const std::string c4soap_cmd_authenticatepassword;
                 static const std::string c4soap_cmd_getdevicesbyinterface;
-
+                static const std::string c4soap_cmd_sendtodevice;
 
                 // this is how you begin a c4soap message
                 static void begin_c4soap_message(std::stringstream& ss, const std::string& cmd, int& seq);
@@ -61,6 +61,8 @@ namespace proto_net
                 std::string to_c4soap(void);
 
                 std::string to_string(void);
+
+                bool node_exists(const std::string& node_name) const;
 
             protected:
 

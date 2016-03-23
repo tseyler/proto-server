@@ -6,7 +6,7 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/algorithm/string.hpp>
 #include <core/protocol/c4soap/c4soap_message.hpp>
-#include <core/protocol/c4soap/c4soap_getdevicebyinterface.hpp>
+
 
 namespace proto_net
 {
@@ -16,6 +16,7 @@ namespace proto_net
         {
             const std::string c4soap_message::c4soap_cmd_authenticatepassword = "AuthenticatePassword";
             const std::string c4soap_message::c4soap_cmd_getdevicesbyinterface = "GetDevicesByInterface";
+            const std::string c4soap_message::c4soap_cmd_sendtodevice = "SendToDevice";
 
             void
             c4soap_message::begin_c4soap_message(std::stringstream& ss, const std::string& cmd, int& seq)
@@ -115,6 +116,14 @@ namespace proto_net
                 std::string c4soap_xml;
 
                 return c4soap_xml;
+            }
+
+            bool
+            c4soap_message::node_exists(const std::string& node_name) const
+            {
+                boost::optional<const ptree&> node = pt_.get_child_optional(node_name);
+
+                return node.is_initialized();
             }
         }
     }
