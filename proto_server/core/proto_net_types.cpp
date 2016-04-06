@@ -1,5 +1,8 @@
 //
-// Created by tseyler on 1/5/16.
+//  Copyright (c) 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #include <core/proto_net_types.hpp>

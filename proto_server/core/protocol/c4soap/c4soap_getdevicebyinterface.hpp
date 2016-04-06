@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 3/22/16.
+//  c4soap_getdevicebyinterface.hpp - c4soap get device by interface class
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_SERVER_C4SOAP_GETDEVICEBYINTERFACE_HPP_

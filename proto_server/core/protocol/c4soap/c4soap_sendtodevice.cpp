@@ -1,8 +1,9 @@
 //
-// Created by tseyler on 3/22/16.
+//  Copyright (c) 2016 Terry Seyler
 //
-
-
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/algorithm/string.hpp>

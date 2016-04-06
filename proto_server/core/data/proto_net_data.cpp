@@ -1,3 +1,9 @@
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #include <string.h>
 #include <sstream>

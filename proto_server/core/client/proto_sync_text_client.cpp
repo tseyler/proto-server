@@ -1,6 +1,10 @@
 //
-// Created by tseyler on 1/13/16.
+//  Copyright (c) 2016 Terry Seyler
 //
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
+
 #include <ostream>
 #include <istream>
 #include <boost/bind.hpp>

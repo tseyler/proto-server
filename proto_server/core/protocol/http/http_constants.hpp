@@ -1,6 +1,12 @@
-/*
-	Copyright 2015 Terry Seyler.  All rights reserved.
-*/
+//
+//  http_constants.hpp - constants for HTTP routines
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #ifndef HTTP_CONSTANTS_HPP_
 #define HTTP_CONSTANTS_HPP_

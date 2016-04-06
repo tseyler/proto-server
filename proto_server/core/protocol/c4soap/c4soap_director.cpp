@@ -1,5 +1,8 @@
 //
-// Created by tseyler on 3/16/16.
+//  Copyright (c) 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #include <core/protocol/c4soap/c4soap_message.hpp>

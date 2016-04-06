@@ -1,9 +1,16 @@
-/*
-	Copyright 2015 Terry Seyler.  All rights reserved.
-*/
+//
+//  net_parse_routines.hpp - parse rountines
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #ifndef NET_PARSE_ROUTINES_HPP_
 #define NET_PARSE_ROUTINES_HPP_
+
 
 #include <string>
 #include <vector>

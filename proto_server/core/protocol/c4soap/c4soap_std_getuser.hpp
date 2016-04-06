@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 3/22/16.
+//  c4soap_std_getuser.hpp - c4soap get user class
+//  part of the proto-server library
+//
+//  Copyright (c) 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_SERVER_C4SOAP_STD_GETUSER_HPP_

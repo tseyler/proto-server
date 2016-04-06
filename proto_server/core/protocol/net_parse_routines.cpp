@@ -1,7 +1,9 @@
-/*
-	Copyright 2015 Terry Seyler.  All rights reserved.
-*/
-
+//
+//  Copyright (c) 2015 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #include <iostream>
 #include <boost/tokenizer.hpp>

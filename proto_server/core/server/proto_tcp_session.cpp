@@ -1,3 +1,9 @@
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #include <boost/bind.hpp>
 #include <core/server/proto_tcp_session.hpp>

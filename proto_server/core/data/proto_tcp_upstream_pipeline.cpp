@@ -1,4 +1,9 @@
-
+//
+//  Copyright (c) 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #include <core/data/proto_tcp_upstream_pipeline.hpp>
 
