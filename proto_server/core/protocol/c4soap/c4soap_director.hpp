@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 3/16/16.
+//  c4soap_director.hpp - c4soap director messages
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef C4SOAP_DIRECTOR_HPP_

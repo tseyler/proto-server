@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 3/22/16.
+//  c4soap_sendtodevice.hpp - c4soap send to device class
+//  part of the proto-server library
+//
+//  Copyright (c) 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef PROTO_SERVER_C4SOAP_SENDTODEVICE_HPP_

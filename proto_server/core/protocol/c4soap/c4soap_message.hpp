@@ -1,5 +1,11 @@
 //
-// Created by tseyler on 3/16/16.
+//  c4soap_message.hpp - c4soap message class
+//  part of the proto-server library
+//
+//  Copyright (c) 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef C4SOAP_MESSAGE_HPP_

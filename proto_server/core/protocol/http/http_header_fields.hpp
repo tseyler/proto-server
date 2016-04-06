@@ -1,6 +1,12 @@
-/*
-	Copyright 2015 Terry Seyler.  All rights reserved.
-*/
+//
+//  http_header_fields.hpp - class that represents the HTTP header fields
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #ifndef HTTP_HEADER_FIELDS_HPP_
 #define HTTP_HEADER_FIELDS_HPP_

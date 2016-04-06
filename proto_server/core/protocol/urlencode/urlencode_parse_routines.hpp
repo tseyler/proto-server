@@ -1,9 +1,16 @@
 //
-// Created by tseyler on 3/8/16.
+//  urlencode_parse_routines.hpp - parse rountines for urlencoded strings
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #ifndef URLENCODE_PARSE_ROUTINES_HPP_
 #define URLENCODE_PARSE_ROUTINES_HPP_
+
 
 #include <string>
 #include <map>

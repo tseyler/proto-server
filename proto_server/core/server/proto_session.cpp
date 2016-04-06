@@ -1,5 +1,8 @@
 //
-// Created by Terry Seyler on 10/27/15.
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #include <core/server/proto_session.hpp>

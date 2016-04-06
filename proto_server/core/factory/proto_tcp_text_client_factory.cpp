@@ -1,5 +1,8 @@
 //
-// Created by tseyler on 2/24/16.
+//  Copyright (c) 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
 //
 
 #include <core/factory/proto_tcp_text_client_factory.hpp>

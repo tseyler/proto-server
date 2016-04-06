@@ -1,6 +1,12 @@
-/*
-	Copyright 2015 Terry Seyler.  All rights reserved.
-*/
+//
+//  http_request_message.hpp - class that represents an HTTP request message
+//  part of the proto-server library
+//
+//  Copyright (c) 2015, 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #ifndef HTTP_REQUEST_MESSAGE_HPP_
 #define HTTP_REQUEST_MESSAGE_HPP_

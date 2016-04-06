@@ -1,3 +1,9 @@
+//
+//  Copyright (c) 2016 Terry Seyler
+//
+//  Distributed under the MIT License
+//  See accompanying file LICENSE.md
+//
 
 #include <boost/assign/list_inserter.hpp>
 #include <core/data/proto_net_error_data.hpp>
