@@ -151,11 +151,10 @@ namespace proto_net
 				size_t cr_found(0);
 				size_t lf_found(0);
 				size_t line_found(0);
-				char *byte_data = data.data();
+				char* byte_data = data.data();
+				size_t data_size = data.data_size();
 
-				for (size_t p = 0;
-					 p <= data.data_size();
-					 p++)
+				for (size_t p = 0; p <= data_size; p++)
 				{
 					if (p == (lf_found + 1))
 					{

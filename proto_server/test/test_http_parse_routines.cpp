@@ -117,6 +117,12 @@ TEST_F(HttpParserRoutinesTest, message_body_test)
     char* body = formed_post_data_->data() + actual;
     size_t body_size = formed_post_data_->data_size() - actual;
     proto_net_data body_data(body, body_size);
+
+    std::string c4soap_string = "<c4soap name=\"AuthenticatePassword\" seq=\"1\"><param name=\"password\" type=\"string\">root</param></c4soap>";
+    proto_net_string_data c4soap_msg(c4soap_string);
+    actual = message_body_position(c4soap_msg);
+    expected = 0;
+    EXPECT_EQ( expected, actual );
 }
 
 TEST_F(HttpParserRoutinesTest, tokenize_header_field_test)
