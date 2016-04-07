@@ -108,9 +108,9 @@ namespace proto_net
                 //ptree pt;
                 read_xml(ss, pt_);
 
-                name_ = pt_.get<std::string>("c4soap.<xmlattr>.name");
-                seq_ = pt_.get<unsigned long>("c4soap.<xmlattr>.seq");
-                result_ = pt_.get<unsigned long>("c4soap.<xmlattr>.result");
+                name_ = node_exists("c4soap.<xmlattr>.name") ? pt_.get<std::string>("c4soap.<xmlattr>.name") : "";
+                seq_ = node_exists("c4soap.<xmlattr>.seq") ? pt_.get<unsigned long>("c4soap.<xmlattr>.seq") : 0;
+                result_ = node_exists("c4soap.<xmlattr>.result") ? pt_.get<unsigned long>("c4soap.<xmlattr>.result") : 0;
             }
 
             std::string
