@@ -40,6 +40,10 @@ TEST_F(HttpResponseParserTest, protocol_parse_test)
     http_response_message parsed;
     http_parse_result expected(http_parse_success);
     EXPECT_EQ( expected, parser.protocol_parse(data, parsed) );
+
+    std::string c4soap_string = "<c4soap name=\"AuthenticatePassword\" seq=\"1\"><param name=\"password\" type=\"string\">root</param></c4soap>";
+    proto_net_string_data c4soap_msg(c4soap_string);
+    EXPECT_FALSE( HTTP_PARSE_SUCCEEDED(parser.protocol_parse(c4soap_msg, parsed)) );
 }
 
 TEST_F(HttpResponseParserTest, protocol_form_test)
