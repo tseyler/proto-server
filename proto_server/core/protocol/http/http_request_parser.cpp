@@ -53,22 +53,25 @@ namespace proto_net
             http_parse_result
             http_request_parser::validate_http_request(const lines_t &lines, http_request_message &parsed)
             {
-                http_parse_result res(http_parse_success);
-                // 5.1 Request-Line  Request-Line = Method SP Request-URI SP HTTP-Version CRLF
-                matches_t request_line_tokens; // method, request_uri, http_version
-                tokenize_http_line(lines[0], request_line_tokens); // needs to be first line
-                res = validate_request_line(request_line_tokens);
+                http_parse_result res = lines.size() ? http_parse_success : http_parse_internal_error;
                 if (HTTP_PARSE_SUCCEEDED(res))
                 {
-                    // request line validated so update parsed
-                    parsed.method(request_line_tokens[0]); // method
-                    parsed.request_uri(request_line_tokens[1]); // request-uri
-                    parsed.http_version(request_line_tokens[2]); // http version
-                    // get header field lines
-                    lines_t header_field_lines;
-                    get_header_field_lines(lines, header_field_lines); // if we have header fields
-                    if (header_field_lines.size() > 0)
-                        res = validate_http_headers(header_field_lines, parsed.get_headers());
+                    // 5.1 Request-Line  Request-Line = Method SP Request-URI SP HTTP-Version CRLF
+                    matches_t request_line_tokens; // method, request_uri, http_version
+                    tokenize_http_line(lines[0], request_line_tokens); // needs to be first line
+                    res = validate_request_line(request_line_tokens);
+                    if (HTTP_PARSE_SUCCEEDED(res))
+                    {
+                        // request line validated so update parsed
+                        parsed.method(request_line_tokens[0]); // method
+                        parsed.request_uri(request_line_tokens[1]); // request-uri
+                        parsed.http_version(request_line_tokens[2]); // http version
+                        // get header field lines
+                        lines_t header_field_lines;
+                        get_header_field_lines(lines, header_field_lines); // if we have header fields
+                        if (header_field_lines.size() > 0)
+                            res = validate_http_headers(header_field_lines, parsed.get_headers());
+                    }
                 }
 
                 return res;
