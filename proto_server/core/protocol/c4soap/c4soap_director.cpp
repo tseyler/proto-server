@@ -15,7 +15,7 @@ namespace proto_net
         namespace c4soap
         {
             std::string
-            authenticate_password(int& seq, const params_array& /*params*/)
+            authenticate_password(unsigned long& seq, const params_array& /*params*/)
             {
                 std::stringstream ss;
                 c4soap_message::begin_c4soap_message(ss, "AuthenticatePassword", seq);
@@ -26,7 +26,7 @@ namespace proto_net
             }
 
             std::string
-            get_version_info(int& seq, const params_array& /*params*/)
+            get_version_info(unsigned long& seq, const params_array& /*params*/)
             {
                 std::stringstream ss;
                 c4soap_message::begin_c4soap_message(ss, "GetVersionInfo", seq);
@@ -36,7 +36,7 @@ namespace proto_net
             }
 
             std::string
-            get_director_info(int& seq, const params_array& /*params*/)
+            get_director_info(unsigned long& seq, const params_array& /*params*/)
             {
                 std::stringstream ss;
                 c4soap_message::begin_c4soap_message(ss, "GetDirectorInfo", seq);
@@ -46,7 +46,7 @@ namespace proto_net
             }
 
             std::string
-            get_devices_by_interface(int& seq, const params_array& params)
+            get_devices_by_interface(unsigned long& seq, const params_array& params)
             {
                 std::stringstream ss;
                 c4soap_message::begin_c4soap_message(ss, "GetDevicesByInterface", seq);
@@ -57,7 +57,7 @@ namespace proto_net
             }
 
             std::string
-            get_devices_by_c4i(int& seq, const params_array& params)
+            get_devices_by_c4i(unsigned long& seq, const params_array& params)
             {
                 std::stringstream ss;
                 c4soap_message::begin_c4soap_message(ss, "GetDevicesByC4i", seq);
@@ -68,7 +68,7 @@ namespace proto_net
             }
 
             std::string
-            send_to_device(int& seq, const params_array& params)
+            send_to_device(unsigned long& seq, const params_array& params)
             {
                 std::stringstream ss;
 

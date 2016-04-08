@@ -22,7 +22,7 @@ namespace proto_net
             const std::string c4soap_message::c4soap_cmd_sendtodevice = "SendToDevice";
 
             void
-            c4soap_message::begin_c4soap_message(std::stringstream& ss, const std::string& cmd, int& seq)
+            c4soap_message::begin_c4soap_message(std::stringstream& ss, const std::string& cmd, unsigned long& seq)
             {
                 ss << "<c4soap name=\"" << cmd << "\" seq=\"" << seq++ << "\">";
             }
