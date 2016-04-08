@@ -32,7 +32,7 @@ namespace proto_net
                 static const std::string c4soap_cmd_sendtodevice;
 
                 // this is how you begin a c4soap message
-                static void begin_c4soap_message(std::stringstream& ss, const std::string& cmd, int& seq);
+                static void begin_c4soap_message(std::stringstream& ss, const std::string& cmd, unsigned long& seq);
 
                 // this is how you end a c4soap message
                 static void end_c4soap_message(std::stringstream& ss);
