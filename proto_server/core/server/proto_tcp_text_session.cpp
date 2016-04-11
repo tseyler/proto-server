@@ -33,10 +33,11 @@ namespace proto_net
         void
         proto_tcp_text_session::ps_async_read(void)
         {
-                boost::asio::async_read_until(socket_, stream_buffer_, '\0',
-                                              boost::bind(&proto_tcp_text_session::ps_handle_read, this,
-                                                          boost::asio::placeholders::error,
-                                                          boost::asio::placeholders::bytes_transferred));
+            stream_buffer_.prepare(buffer_size_);
+            boost::asio::async_read_until(socket_, stream_buffer_, '\0',
+                                          boost::bind(&proto_tcp_text_session::ps_handle_read, this,
+                                                      boost::asio::placeholders::error,
+                                                      boost::asio::placeholders::bytes_transferred));
         }
 
 
@@ -84,8 +85,7 @@ namespace proto_net
                     ps_pipeline_.ps_pipe_in(req_data); // just prior to the pipeline execute the pipe in
                     ps_pipeline_.ps_pipeline(req_data, res_data); // all of the magic takes place inside the ps_pipeline
                 }
-                stream_buffer_.consume(stream_buffer_.size());
-                stream_buffer_.prepare(buffer_size_);
+                stream_buffer_.consume(bytes_transferred);
                 ps_async_write(res_data); // set response data ptr or size to zero for a non-write
             }
             else

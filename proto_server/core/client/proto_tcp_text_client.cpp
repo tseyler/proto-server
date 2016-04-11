@@ -85,9 +85,7 @@ namespace proto_net
         {
             if (!error)
             {
-                //read_stream_buffer_.commit(bytes_transferred);
                 std::istream is(&read_stream_buffer_);
-             //   memset(buffer_, 0, buffer_size_);
                 is.get(buffer_, buffer_size_, '\0');
 
                 // handle a ps_read here
@@ -100,11 +98,8 @@ namespace proto_net
                     ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
                     ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
                 }
-               // read_stream_buffer_.consume(read_stream_buffer_.size());
                 read_stream_buffer_.consume(bytes_transferred);
-               // read_stream_buffer_.prepare(buffer_size_);
                 write_complete_ = true;
-
                 ps_async_read(); // done go back to reading
             }
             else
