@@ -85,7 +85,7 @@ namespace proto_net
             if (!error)
             {
                 std::istream is(&read_stream_buffer_);
-                delete [] buffer_;
+                memset(buffer_, 0, buffer_size_);
                 is.get(buffer_, buffer_size_, '\0');
 
                 // handle a ps_read here
