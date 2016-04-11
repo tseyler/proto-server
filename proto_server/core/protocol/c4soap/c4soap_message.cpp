@@ -24,7 +24,7 @@ namespace proto_net
             void
             c4soap_message::begin_c4soap_message(std::stringstream& ss, const std::string& cmd, unsigned long& seq)
             {
-                ss << "<c4soap name=\"" << cmd << "\" seq=\"" << seq++ << "\">";
+                ss << "<c4soap name=\"" << cmd << "\" seq=\"" << ++seq << "\">";
             }
 
             void
