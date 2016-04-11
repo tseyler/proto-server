@@ -101,7 +101,7 @@ namespace proto_net
                     ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
                 }
                // read_stream_buffer_.consume(read_stream_buffer_.size());
-                //read_stream_buffer_.consume(bytes_transferred);
+                read_stream_buffer_.consume(bytes_transferred);
                // read_stream_buffer_.prepare(buffer_size_);
                 write_complete_ = true;
 
