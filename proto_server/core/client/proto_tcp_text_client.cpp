@@ -85,7 +85,7 @@ namespace proto_net
         {
             if (!error)
             {
-                read_stream_buffer_.commit(bytes_transferred);
+                //read_stream_buffer_.commit(bytes_transferred);
                 std::istream is(&read_stream_buffer_);
              //   memset(buffer_, 0, buffer_size_);
                 is.get(buffer_, buffer_size_, '\0');
