@@ -33,6 +33,7 @@ namespace proto_net
 
 			typedef enum
 			{
+				http_uninitialized_error = -1,
 				http_parse_success,
 				http_parse_internal_error,
 				http_format_error,
