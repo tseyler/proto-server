@@ -31,7 +31,7 @@ namespace proto_net
         { }
 
         proto_net_string_data::proto_net_string_data(const proto_net_data &copy_data) :
-                proto_net_data(copy_data.data(), strlen(copy_data.data()), data_text)
+                proto_net_data(copy_data.data(), copy_data.data_size(), data_text)
         { }
 
         proto_net_string_data&
