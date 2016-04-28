@@ -22,7 +22,7 @@ namespace proto_net
             {
                 bool is_getuser = c4soap_sendtodevice::is_response(msg, seq);
                 if (is_getuser)
-                        is_getuser = (boost::equal(msg.c4soap_device_commnd(), c4soap_cmd_getuser));
+                        is_getuser = (boost::equal(msg.c4soap_device_command(), c4soap_cmd_getuser));
 
                 return is_getuser;
             }
