@@ -97,7 +97,7 @@ namespace proto_net
                         cmd += params;
                     }
                     std::string device_command = "<devicecommand>" + cmd + "</devicecommand>";
-                    c4soap_message::param(ss, "data", "xml", device_command);
+                    c4soap_message::param(ss, "data", "string", device_command);
                     c4soap_message::end_c4soap_message(ss);
                 }
 
