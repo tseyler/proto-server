@@ -79,7 +79,7 @@ namespace proto_net
 
                     c4soap_message::begin_c4soap_message(ss, "SendToDevice", seq);
                     c4soap_message::param(ss, "iddevice", "number", id);
-                    cmd = "<devicecommand>" + cmd + "</devicecommand>";
+                    cmd = "<command>" + cmd + "<command>";
                     if (params.size() > 2)
                     {
                         std::string param = "";
@@ -96,7 +96,8 @@ namespace proto_net
                         std::string params = "<params>" + param + "</params>";
                         cmd += params;
                     }
-                    c4soap_message::param(ss, "data", "xml", cmd);
+                    std::string device_command = "<devicecommand>" + cmd + "</devicecommand>";
+                    c4soap_message::param(ss, "data", "xml", device_command);
                     c4soap_message::end_c4soap_message(ss);
                 }
 
