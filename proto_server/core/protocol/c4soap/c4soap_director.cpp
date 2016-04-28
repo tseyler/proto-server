@@ -79,7 +79,7 @@ namespace proto_net
 
                     c4soap_message::begin_c4soap_message(ss, "SendToDevice", seq);
                     c4soap_message::param(ss, "iddevice", "number", id);
-                    cmd = "<command>" + cmd + "<command>";
+                    cmd = "<command>" + cmd + "</command>";
                     if (params.size() > 2)
                     {
                         std::string param = "";
