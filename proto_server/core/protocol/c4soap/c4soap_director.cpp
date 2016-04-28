@@ -78,8 +78,8 @@ namespace proto_net
                     std::string cmd = params[1];
 
                     c4soap_message::begin_c4soap_message(ss, "SendToDevice", seq);
-                    c4soap_message::param(ss, "iddevice", "ulong", id);
-                    cmd = "<command>" + cmd + "</command>";
+                    c4soap_message::param(ss, "iddevice", "number", id);
+                    cmd = "<devicecommand>" + cmd + "</devicecommand>";
                     if (params.size() > 2)
                     {
                         std::string param = "";
@@ -96,8 +96,7 @@ namespace proto_net
                         std::string params = "<params>" + param + "</params>";
                         cmd += params;
                     }
-                    std::string root = c4soap_message::get_param("root", "xml", cmd);
-                    c4soap_message::param(ss, "data", "xml", root);
+                    c4soap_message::param(ss, "data", "xml", cmd);
                     c4soap_message::end_c4soap_message(ss);
                 }
 
