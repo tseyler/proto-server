@@ -31,7 +31,7 @@ namespace proto_net
                 virtual ~c4soap_sendtodevice()
                 {}
 
-                std::string c4soap_device_commnd(void) const { return device_command_; }
+                std::string c4soap_device_command(void) const { return device_command_; }
 
             protected:
 
