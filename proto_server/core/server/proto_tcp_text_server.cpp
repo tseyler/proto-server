@@ -63,6 +63,7 @@ namespace proto_net
                     }
                 }
                 size_t buffer_size = session->ps_buffer_size();
+                notify_server_listeners(session);
                 if (!error)
                     session->ps_start();
                 else

@@ -54,6 +54,22 @@ namespace proto_net
         }
 
         void
+        proto_tcp_server::ps_add_server_listener(proto_tcp_server_listener* listener)
+        {
+            proto_tcp_server_listener_vec_iterator it = std::find(listeners_.begin(), listeners_.end(), listener);
+            if (it == listeners_.end())
+                listeners_.push_back(listener);
+        }
+
+        void
+        proto_tcp_server::ps_remove_server_listener(proto_tcp_server_listener* listener)
+        {
+            proto_tcp_server_listener_vec_iterator it = std::find(listeners_.begin(), listeners_.end(), listener);
+            if (it != listeners_.end())
+                listeners_.erase(it);
+        }
+
+        void
         proto_tcp_server::ps_start_accept(proto_net_pipeline& ps_pipeline, size_t buffer_size)
         {
             proto_tcp_session* new_session = new proto_tcp_session(ps_service_, ps_pipeline, buffer_size);
@@ -78,6 +94,7 @@ namespace proto_net
                     }
                 }
                 size_t buffer_size = session->ps_buffer_size();
+                notify_server_listeners(session);
                 if (!error)
                     session->ps_start();
                 else
@@ -86,6 +103,17 @@ namespace proto_net
                 ps_start_accept(pipeline, buffer_size);
             }
             else {} // we will drop out because there is no session and no io
+        }
+
+        void
+        proto_tcp_server::notify_server_listeners(proto_tcp_session* session)
+        {
+            proto_tcp_server_listener_vec_iterator it = listeners_.begin();
+            while (it != listeners_.end())
+            {
+                proto_tcp_server_listener* listener = *it;
+                listener->ps_on_new_tcp_session(session);
+            }
         }
     }
 

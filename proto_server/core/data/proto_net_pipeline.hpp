@@ -39,9 +39,11 @@ namespace proto_net
             // getters
             proto_service*  ps_proto_service(void ) const;
             proto_async_io* ps_proto_io(void) const;
+
             //setter
             void ps_proto_service(proto_service* ps);
             void ps_proto_io(proto_async_io* io);
+
 
         protected:
 
