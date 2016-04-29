@@ -8,12 +8,12 @@
 //  See accompanying file LICENSE.md
 //
 
-#ifndef PROTO_TCP_SERVER_HPP__
-#define PROTO_TCP_SERVER_HPP__
+#ifndef PROTO_TCP_SERVER_HPP_
+#define PROTO_TCP_SERVER_HPP_
 
 #include <boost/shared_ptr.hpp>
 #include <core/server/proto_server.hpp>
-#include <core/server/proto_tcp_session.hpp>
+#include <core/server/proto_tcp_server_listener.hpp>
 
 using namespace boost::asio::ip;
 using namespace proto_net;
@@ -42,12 +42,17 @@ namespace proto_net
 
             unsigned short ps_port(void) const;
 
+            virtual void ps_add_server_listener(proto_tcp_server_listener* listener);
+            virtual void ps_remove_server_listener(proto_tcp_server_listener* listener);
+
         protected:
 
             virtual void handle_accept(proto_tcp_session* session, const proto_net_error_code& error);
+            virtual void notify_server_listeners(proto_tcp_session* session);
 
             unsigned short port_num_;
             proto_net_tcp_acceptor acceptor_;
+            proto_tcp_server_listener_vec listeners_;
         };
     }
 
