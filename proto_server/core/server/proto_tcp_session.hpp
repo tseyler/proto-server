@@ -41,6 +41,8 @@ namespace proto_net
             // getter
             proto_net_tcp_socket& ps_socket(void);
 
+            std::string ps_client_address(void);
+
         protected:
 
             virtual void ps_close_session(void);

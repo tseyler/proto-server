@@ -126,6 +126,12 @@ namespace proto_net
             if (socket_.is_open())
                 socket_.close();
         }
+
+        std::string
+        proto_tcp_session::ps_client_address(void)
+        {
+            return socket_.remote_endpoint().address().to_string();
+        }
     }
 
 }
