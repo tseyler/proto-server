@@ -111,7 +111,7 @@ namespace proto_net
             proto_tcp_server_listener_vec_iterator it = listeners_.begin();
             while (it != listeners_.end())
             {
-                proto_tcp_server_listener* listener = *it;
+                proto_tcp_server_listener* listener = *it++;
                 listener->ps_on_new_tcp_session(session);
             }
         }
