@@ -63,9 +63,9 @@ namespace proto_net
                 unsigned long c4soap_seq(void) const { return seq_; }
                 unsigned long c4soap_result(void) const { return result_; }
                 ptree c4soap_ptree(void) const { return pt_; }
-                void from_c4soap(const std::string& c4soap_xml);
+                bool from_c4soap(const std::string& c4soap_xml);
                 std::string to_c4soap(void);
-
+                bool is_c4soap(void) const { return is_c4soap_; }
                 std::string to_string(void);
 
                 bool node_exists(const std::string& node_name) const;
@@ -76,6 +76,7 @@ namespace proto_net
                 unsigned long seq_;
                 unsigned long result_;
                 ptree pt_;
+                bool is_c4soap_;
             };
 
             typedef boost::shared_ptr<c4soap_message> c4soap_message_ptr;
