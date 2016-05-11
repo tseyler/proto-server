@@ -82,22 +82,23 @@ namespace proto_net
             }
 
             c4soap_message::c4soap_message(const std::string& name, unsigned long seq) : name_(name), seq_(seq),
-                                                                                         result_(0)
+                                                                                         result_(0), is_c4soap_(false)
             {}
 
-            c4soap_message::c4soap_message(const std::string& c4soap_xml)
+            c4soap_message::c4soap_message(const std::string& c4soap_xml) : name_(""), seq_(0), result_(0), is_c4soap_(false)
             {
-                from_c4soap(c4soap_xml);
+                is_c4soap_ = from_c4soap(c4soap_xml);
             }
 
             c4soap_message::c4soap_message(const c4soap_message& msg) : name_(msg.c4soap_name()), seq_(msg.c4soap_seq()),
-                                                                  result_(msg.c4soap_result()), pt_(msg.c4soap_ptree())
+                                                                  result_(msg.c4soap_result()), pt_(msg.c4soap_ptree()),
+                                                                        is_c4soap_(msg.is_c4soap())
             {}
 
             c4soap_message::~c4soap_message()
             {}
 
-            void
+            bool
             c4soap_message::from_c4soap(const std::string& c4soap_xml)
             {
                 using boost::property_tree::ptree;
@@ -105,12 +106,20 @@ namespace proto_net
                 std::stringstream ss;
                 ss << c4soap_xml;
 
-                //ptree pt;
-                read_xml(ss, pt_);
+                try
+                {
+                    read_xml(ss, pt_);
 
-                name_ = node_exists("c4soap.<xmlattr>.name") ? pt_.get<std::string>("c4soap.<xmlattr>.name") : "";
-                seq_ = node_exists("c4soap.<xmlattr>.seq") ? pt_.get<unsigned long>("c4soap.<xmlattr>.seq") : 0;
-                result_ = node_exists("c4soap.<xmlattr>.result") ? pt_.get<unsigned long>("c4soap.<xmlattr>.result") : 0;
+                    name_ = node_exists("c4soap.<xmlattr>.name") ? pt_.get<std::string>("c4soap.<xmlattr>.name") : "";
+                    seq_ = node_exists("c4soap.<xmlattr>.seq") ? pt_.get<unsigned long>("c4soap.<xmlattr>.seq") : 0;
+                    result_ = node_exists("c4soap.<xmlattr>.result") ? pt_.get<unsigned long>("c4soap.<xmlattr>.result") : 0;
+                }
+                catch (boost::property_tree::xml_parser_error& err)
+                {
+                    return false;
+                }
+
+                return true;
             }
 
             std::string
