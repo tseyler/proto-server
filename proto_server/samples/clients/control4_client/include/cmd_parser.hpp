@@ -28,8 +28,8 @@ public:
 	std::string cmd(void) { return cmd_; }
 	bool parsed(void) {return parsed_; }
 
-	std::string to_authenticate(int& seq);
-	std::string to_c4soap(int& seq);
+	std::string to_authenticate(unsigned long& seq);
+	std::string to_c4soap(unsigned long& seq);
 
 	bool parse(const std::string& raw_string);
 

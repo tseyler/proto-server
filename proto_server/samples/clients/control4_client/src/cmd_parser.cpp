@@ -44,13 +44,13 @@ cmd_parser::initialize_command_map(void)
 }
 
 std::string 
-cmd_parser::to_authenticate(int& seq)
+cmd_parser::to_authenticate(unsigned long& seq)
 {
 	return director_command_map["AuthenticatePassword"](seq, params_);
 }
 
 std::string 
-cmd_parser::to_c4soap(int& seq)
+cmd_parser::to_c4soap(unsigned long& seq)
 {
 	std::string soap("");
 	parsed_ = true;
@@ -97,7 +97,7 @@ cmd_parser::parse(const std::string& raw_string)
 	return is_parsed;
 }
 
-void 
+void
 cmd_parser::set_command(std::string& cmd, c4soap::params_array& params)
 {
 	cmd_ = cmd;
