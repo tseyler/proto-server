@@ -148,7 +148,7 @@ main(int argc, char* argv[])
         std::string cmd = parser.cmd();
         // authenticate
 
-        int seq(1);
+        unsigned long seq(1);
         std::string msg = parser.to_authenticate(seq);
 
         // create a pipeline for the client
