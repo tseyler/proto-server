@@ -1,17 +1,23 @@
 # definitions.cmake
 
-message("CMake System Processor: ${CMAKE_SYSTEM_PROCESSOR}")
 
 # make dir
 set(MAKE_DIR ${ROOT_DIR}/make)
 message("Project make directory location: ${MAKE_DIR}")
 
+# set the 32-bit or 64-bit flags
+if (NOT DEFINED ARCH_PROCESSOR)
+  set(ARCH_PROCESSOR "x86_64")
+endif ()
+
+message("Target Processor: ${ARCH_PROCESSOR}")
+
 # bin dir
-set(BIN_DIR ${ROOT_DIR}/bin/${CMAKE_BUILD_TYPE}/${CMAKE_SYSTEM_PROCESSOR})
+set(BIN_DIR ${ROOT_DIR}/bin/${CMAKE_BUILD_TYPE}/${ARCH_PROCESSOR})
 message("Project bin directory location: ${BIN_DIR}")
 
 #set lib dir
-set(LIB_DIR ${ROOT_DIR}/lib/${CMAKE_BUILD_TYPE}/${CMAKE_SYSTEM_PROCESSOR})
+set(LIB_DIR ${ROOT_DIR}/lib/${CMAKE_BUILD_TYPE}/${ARCH_PROCESSOR})
 message("Project lib directory location: ${LIB_DIR}")
 
 # boost path

@@ -5,11 +5,15 @@ include(${MAKE_DIR}/definitions.cmake)
 #set(BUILD_SHARED_LIBS ON)
 
 # set the 32-bit or 64-bit flags
-if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "i386")
+if (NOT DEFINED ARCH_PROCESSOR)
+  set(ARCH_PROCESSOR "x86_64")
+endif ()
+
+if (${ARCH_PROCESSOR} MATCHES "i386")
   set(BIT_FLAG "-m32")
-else  (${CMAKE_SYSTEM_PROCESSOR} MATCHES "i386")
+else  (${ARCH_PROCESSOR} MATCHES "i386")
   set(BIT_FLAG "-m64")
-endif (${CMAKE_SYSTEM_PROCESSOR} MATCHES "i386")
+endif (${ARCH_PROCESSOR} MATCHES "i386")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${BIT_FLAG} -Wall -std=c++11")
 
