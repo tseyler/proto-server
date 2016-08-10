@@ -4,7 +4,14 @@ include(${MAKE_DIR}/definitions.cmake)
 # To build a shared library version of proto-server uncomment the following:
 #set(BUILD_SHARED_LIBS ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
+# set the 32-bit or 64-bit flags
+if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "i386")
+  set(BIT_FLAG "-m32")
+else  (${CMAKE_SYSTEM_PROCESSOR} MATCHES "i386")
+  set(BIT_FLAG "-m64")
+endif (${CMAKE_SYSTEM_PROCESSOR} MATCHES "i386")
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${BIT_FLAG} -Wall -std=c++11")
 
 set(CORE_DIR ${PROTO_SERVER_DIR}/core)
 set(DATA_DIR ${CORE_DIR}/data)
