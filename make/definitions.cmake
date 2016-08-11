@@ -5,6 +5,8 @@
 set(MAKE_DIR ${ROOT_DIR}/make)
 message("Project make directory location: ${MAKE_DIR}")
 
+include(${MAKE_DIR}/boost.cmake)
+
 # set the 32-bit or 64-bit flags
 if (NOT DEFINED ARCH_PROCESSOR)
   set(ARCH_PROCESSOR "x86_64")
