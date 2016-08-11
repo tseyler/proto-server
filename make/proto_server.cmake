@@ -11,9 +11,9 @@ endif ()
 
 if (${ARCH_PROCESSOR} MATCHES "i386")
   set(BIT_FLAG "-m32")
-else  (${ARCH_PROCESSOR} MATCHES "i386")
+else  ()
   set(BIT_FLAG "-m64")
-endif (${ARCH_PROCESSOR} MATCHES "i386")
+endif ()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${BIT_FLAG} -Wall -std=c++11")
 
