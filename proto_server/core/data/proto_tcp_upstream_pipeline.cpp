@@ -18,13 +18,13 @@ namespace proto_net
         {}
 
         void
-        proto_tcp_upstream_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
+        proto_tcp_upstream_pipeline::ps_pipeline(const proto_net_in_data& /*req_data*/, proto_net_out_data& /*res_data*/)
         {
             // empty
         }
 
         void
-        proto_tcp_upstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
+        proto_tcp_upstream_pipeline::ps_pipe_in(proto_net_in_data& /*in_data*/)
         {
             // empty
         }
@@ -36,7 +36,7 @@ namespace proto_net
                 io_->ps_async_write(out_data); // this sends the data upstream
         }
 
-        bool proto_tcp_upstream_pipeline::ps_pipe_error(proto_net_error_data& error_data)
+        bool proto_tcp_upstream_pipeline::ps_pipe_error(proto_net_error_data& /*error_data*/)
         {
             return false;
         }

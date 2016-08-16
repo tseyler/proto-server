@@ -31,17 +31,6 @@ set(OPENSSL_INC_DIR /usr/local/opt/openssl/include)
 set(OPENSSL_LIB_DIR /usr/local/opt/openssl/lib)
 endif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
-if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-set(BOOST_INC_DIR /usr/local/include)
-set(BOOST_LIB_DIR /usr/local/lib)
-set(BOOST_THREAD boost_thread)
-set(OPENSSL_INC_DIR /usr/local/include)
-set(OPENSSL_LIB_DIR /usr/local/lib)
-endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-
-#set(BOOST_INC_DIR /usr/local/include)
-#set(BOOST_LIB_DIR /usr/local/lib)
-
 # proto server
 set(PROTO_SERVER_DIR ${ROOT_DIR}/proto_server)
 message("Project proto server directory location: ${PROTO_SERVER_DIR}")

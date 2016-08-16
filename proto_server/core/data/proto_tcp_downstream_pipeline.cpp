@@ -19,7 +19,7 @@ namespace proto_net
         {}
 
         void
-        proto_tcp_downstream_pipeline::ps_pipeline(const proto_net_in_data& req_data, proto_net_out_data& res_data)
+        proto_tcp_downstream_pipeline::ps_pipeline(const proto_net_in_data& /*req_data*/, proto_net_out_data& /*res_data*/)
         {
             // empty
         }
@@ -32,12 +32,12 @@ namespace proto_net
         }
 
         void
-        proto_tcp_downstream_pipeline::ps_pipe_out(proto_net_out_data& out_data)
+        proto_tcp_downstream_pipeline::ps_pipe_out(proto_net_out_data& /*out_data*/)
         {
             // empty
         }
 
-        bool proto_tcp_downstream_pipeline::ps_pipe_error(proto_net_error_data& error_data)
+        bool proto_tcp_downstream_pipeline::ps_pipe_error(proto_net_error_data& /*error_data*/)
         {
             return false;
         }
