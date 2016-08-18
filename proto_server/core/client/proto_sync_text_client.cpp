@@ -85,7 +85,7 @@ namespace proto_net
         }
 
         void
-        proto_sync_text_client::ps_read(proto_net_out_data& data_out)
+        proto_sync_text_client::ps_read(proto_net_out_data& /*data_out*/)
         {
             if (boost::asio::read_until(socket_, stream_buffer_, '\0'))
             {
@@ -104,10 +104,10 @@ namespace proto_net
             }
         }
 
-        void proto_sync_text_client::ps_write_read(proto_net_in_data& data_in, proto_net_out_data& data_out)
+        void proto_sync_text_client::ps_write_read(proto_net_in_data& data_in, proto_net_out_data& /*data_out*/)
         {
             ps_write(data_in);
-            ps_read(data_out);
+           // ps_read(data_out);
         }
 
     }

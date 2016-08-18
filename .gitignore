@@ -1,10 +1,15 @@
-# .gitignore for cpp-projects
+# .gitignore for c4comm_bridge
+
+
 
 #emacs temp files
 *~
+
 *.o
 *.a
 .metadata
+*.d
+*.deb
 
 # do not need doxygens output file
 */html/*
@@ -24,12 +29,15 @@ lib
 CMakeFiles
 CMakeCache.txt
 cmake_install.cmake
+CPackSourceConfig.cmake
+CPackConfig.cmake
+
 # Eclipse likes to add this
 RemoteSystemsTempFiles
 # setting files for CLion
 .settings
-.idea
-# we generate makefiles so dont git these
-Makefile
 
 # executables
+comm-bridge
+*.a
+*.so

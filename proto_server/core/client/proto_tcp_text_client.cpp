@@ -116,7 +116,7 @@ namespace proto_net
         }
 
         void
-        proto_tcp_text_client::ps_handle_write(const boost::system::error_code &error, size_t bytes_transferred)
+        proto_tcp_text_client::ps_handle_write(const boost::system::error_code &error, size_t /*bytes_transferred*/)
         {
             if (!error)
             {

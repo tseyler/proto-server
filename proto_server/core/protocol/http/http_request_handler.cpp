@@ -126,8 +126,8 @@ namespace proto_net
             }
 
             void
-            http_request_handler::form_bad_request_response(const http_request_message &request,
-                                                            http_response_message &response)
+            http_request_handler::form_bad_request_response(const http_request_message& /*request*/,
+                                                            http_response_message& response)
             {
                 status_code_ = 400; // bad request
                 proto_net_string_data message_bad_request(bad_request_html);
