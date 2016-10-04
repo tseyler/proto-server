@@ -12,6 +12,7 @@
 #define PROTO_TCP_TEXT_CLIENT_FACTORY_HPP_
 
 #include <core/factory/proto_tcp_client_factory.hpp>
+#include <core/client/proto_tcp_text_client.hpp>
 #include <core/data/proto_net_pipeline.hpp>
 
 namespace proto_net

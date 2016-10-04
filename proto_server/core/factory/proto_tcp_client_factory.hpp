@@ -13,11 +13,13 @@
 
 #include <core/factory/proto_service_factory.hpp>
 #include <core/data/proto_net_pipeline.hpp>
+#include <core/client/proto_tcp_client.hpp>
 
 namespace proto_net
 {
     namespace factory
     {
+
         class proto_tcp_client_factory : public proto_service_factory
         {
         public:
@@ -43,6 +45,7 @@ namespace proto_net
             unsigned short port_num_;
             proto_net_pipeline& ps_pipeline_;
             size_t buffer_size_;
+
         };
 
     }

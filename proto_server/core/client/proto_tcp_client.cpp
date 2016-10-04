@@ -156,6 +156,10 @@ namespace proto_net
                 socket_.async_connect(endpoint, boost::bind(&proto_tcp_client::ps_handle_connect, this,
                                                   boost::asio::placeholders::error, ++endpoint_iterator));
             }
+            else
+            {
+                std::cout << "Error: " << error.message() << std::endl;
+            }
         }
 
         void
