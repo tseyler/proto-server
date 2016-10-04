@@ -6,7 +6,6 @@
 //
 
 #include <core/factory/proto_tcp_client_factory.hpp>
-#include <core/client/proto_tcp_client.hpp>
 
 namespace proto_net
 {
@@ -36,6 +35,7 @@ namespace proto_net
             proto_tcp_client* client_ptr = proto_tcp_client::proto_tcp_client_cast(ps_ptr);
             if (client_ptr)
                 client_ptr->ps_async_connect(connect_data_);
+
             // start the client service
             if (start_on_creation)
                 ps_ptr->ps_start();
@@ -54,5 +54,6 @@ namespace proto_net
         {
             return ps_factory_create(true);
         }
+
     }
 }

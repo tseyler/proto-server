@@ -6,7 +6,6 @@
 //
 
 #include <core/factory/proto_tcp_text_client_factory.hpp>
-#include <core/client/proto_tcp_text_client.hpp>
 
 namespace proto_net
 {
