@@ -38,7 +38,8 @@ namespace proto_net
                   buffer_size_(buffer_size),
                   buffer_(NULL),
                   write_complete_(true),
-                  max_wait_msec_(2000)
+                  max_wait_msec_(2000),
+                  connected_(false)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
@@ -54,7 +55,8 @@ namespace proto_net
                   buffer_size_(buffer_size),
                   buffer_(NULL),
                   write_complete_(true),
-                  max_wait_msec_(2000)
+                  max_wait_msec_(2000),
+                  connected_(false)
         {
             buffer_ = buffer_size_ ? new char[buffer_size_] : NULL;
         }
@@ -137,19 +139,22 @@ namespace proto_net
         {
             if (!error)
             {
+                connected_ = true;
                 ps_async_write(write_data_);
+                return;
             }
-            else if (endpoint_iterator != boost::asio::ip::tcp::resolver::iterator())
+
+            connected_ = false;
+            std::cout << "Error: " << error.message() << std::endl;
+
+            if (endpoint_iterator != boost::asio::ip::tcp::resolver::iterator())
             {
+
                 // The connection failed. Try the next endpoint in the list.
                 socket_.close();
                 boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
                 socket_.async_connect(endpoint, boost::bind(&proto_tcp_client::ps_handle_connect, this,
                                                   boost::asio::placeholders::error, ++endpoint_iterator));
-            }
-            else
-            {
-                std::cout << "Error: " << error.message() << std::endl;
             }
         }
 
