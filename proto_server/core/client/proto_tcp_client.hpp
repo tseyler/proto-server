@@ -54,6 +54,7 @@ namespace proto_net
             size_t ps_max_wait(void) const;
             // setter
             void ps_max_wait(size_t max_wax_msec);
+            bool ps_is_connected(void) const { return connected_; }
 
         protected:
 
@@ -67,6 +68,7 @@ namespace proto_net
             proto_net_in_data write_data_;
             volatile bool write_complete_;
             size_t max_wait_msec_;
+            bool connected_;
         };
     }
 }

@@ -59,7 +59,7 @@ include_directories(${INCLUDE_DIRS})
 add_library(proto_server ${SOURCE_FILES})
 
 #build messages
-set(PROTO_SERVER_VERSION "proto-server-0.1.0")
+set(PROTO_SERVER_VERSION "proto-server-0.1.1")
 add_custom_command(TARGET proto_server POST_BUILD
                    COMMAND ${CMAKE_COMMAND} -E cmake_echo_color --cyan
                    "Build completed: ${PROTO_SERVER_VERSION}")
