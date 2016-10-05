@@ -44,7 +44,7 @@ namespace proto_net
         proto_tcp_text_client::ps_async_read(void)
         {
             read_stream_buffer_.prepare(buffer_size_);
-            boost::asio::async_read_until(socket_, read_stream_buffer_, '\0',
+            boost::asio::async_read_until(proto_net_tcp_socket_ref(socket_), read_stream_buffer_, '\0',
                                           boost::bind(&proto_tcp_text_client::ps_handle_read, this,
                                                       boost::asio::placeholders::error,
                                                       boost::asio::placeholders::bytes_transferred));
@@ -64,7 +64,7 @@ namespace proto_net
                     size_t data_size = data_in.data_size();
                     if (data && data_size)
                     {
-                        boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
+                        boost::asio::async_write(proto_net_tcp_socket_ref(socket_), boost::asio::buffer(data, data_size),
                                                  boost::bind(&proto_tcp_text_client::ps_handle_write, this,
                                                              boost::asio::placeholders::error,
                                                              boost::asio::placeholders::bytes_transferred));

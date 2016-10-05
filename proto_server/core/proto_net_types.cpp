@@ -16,6 +16,12 @@ namespace proto_net
         return *ptr.get();
     }
 
+    proto_net_tcp_socket&
+    proto_net_tcp_socket_ref(proto_net_tcp_socket_ptr ptr)
+    {
+        return *ptr.get();
+    }
+
     proto_net_tcp_iterator
     ps_tcp_resolve(proto_net_tcp_resolver& resolver, proto_net_tcp_query& query) throw(proto_net_error_code)
     {
