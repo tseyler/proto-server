@@ -31,6 +31,8 @@ namespace proto_net
     // this is a tcp socket
     typedef boost::asio::ip::tcp::socket proto_net_tcp_socket;
 
+    typedef boost::shared_ptr<proto_net_tcp_socket> proto_net_tcp_socket_ptr;
+
     // this is a tcp endpoint
     typedef boost::asio::ip::tcp::endpoint proto_net_tcp_endpoint;
 
@@ -55,6 +57,9 @@ namespace proto_net
 
     // returns a reference from the shared ptr
     proto_net_service& proto_net_service_ref(proto_net_service_ptr ptr);
+
+    // returns a reference from the shared ptr
+    proto_net_tcp_socket& proto_net_tcp_socket_ref(proto_net_tcp_socket_ptr ptr);
 
     // returns an iterator or throws a boost error
     proto_net_tcp_iterator ps_tcp_resolve(proto_net_tcp_resolver& resolver,

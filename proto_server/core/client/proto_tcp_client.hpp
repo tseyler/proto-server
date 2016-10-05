@@ -50,7 +50,7 @@ namespace proto_net
             virtual bool ps_write_complete(size_t max_wait_msec = 2000);
 
             // getter
-            proto_net_tcp_socket& ps_socket(void);
+            proto_net_tcp_socket_ptr ps_socket(void);
             size_t ps_max_wait(void) const;
             // setter
             void ps_max_wait(size_t max_wax_msec);
@@ -60,7 +60,7 @@ namespace proto_net
 
             std::string address_;
             unsigned short port_num_;
-            proto_net_tcp_socket socket_;
+            proto_net_tcp_socket_ptr socket_;
             proto_net_tcp_resolver resolver_;
             proto_net_pipeline& ps_pipeline_;
             size_t buffer_size_;

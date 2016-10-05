@@ -32,7 +32,7 @@ namespace proto_net
                                            unsigned short port_num /* = 80*/,
                                            proto_net_pipeline& ps_pipeline/* = empty_pipeline_inst*/,
                                            size_t buffer_size /*= 4096*/)
-                : address_(address),  port_num_(port_num), socket_(proto_net_service_ref(ps_service_)),
+                : address_(address),  port_num_(port_num), socket_(new proto_net_tcp_socket(proto_net_service_ref(ps_service_))),
                   resolver_(proto_net_service_ref(ps_service_)),
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
@@ -49,7 +49,7 @@ namespace proto_net
                 proto_net_pipeline& ps_pipeline /*= empty_pipeline_inst*/,
                 size_t buffer_size /*= 4096*/)
                 : proto_client(ps_service), address_(address),  port_num_(port_num),
-                  socket_(proto_net_service_ref(ps_service_)),
+                  socket_(new proto_net_tcp_socket(proto_net_service_ref(ps_service_))),
                   resolver_(proto_net_service_ref(ps_service_)),
                   ps_pipeline_(ps_pipeline),
                   buffer_size_(buffer_size),
@@ -81,7 +81,7 @@ namespace proto_net
         void
         proto_tcp_client::ps_async_read(void)
         {
-            socket_.async_read_some(boost::asio::buffer(buffer_, buffer_size_),
+            socket_->async_read_some(boost::asio::buffer(buffer_, buffer_size_),
                                     boost::bind(&proto_tcp_client::ps_handle_read, this,
                                                 boost::asio::placeholders::error,
                                                 boost::asio::placeholders::bytes_transferred));
@@ -99,7 +99,7 @@ namespace proto_net
                     char* data = data_in.data();
                     if (data && data_size)
                     {
-                        boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
+                        boost::asio::async_write(proto_net_tcp_socket_ref(socket_), boost::asio::buffer(data, data_size),
                                                  boost::bind(&proto_tcp_client::ps_handle_write, this,
                                                              boost::asio::placeholders::error,
                                                              boost::asio::placeholders::bytes_transferred));
@@ -124,12 +124,12 @@ namespace proto_net
                 // Attempt a connection to the first endpoint in the list. Each endpoint
                 // will be tried until we successfully establish a connection.
                 boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
-                socket_.async_connect(endpoint, boost::bind(&proto_tcp_client::ps_handle_connect, this,
+                socket_->async_connect(endpoint, boost::bind(&proto_tcp_client::ps_handle_connect, this,
                                                   boost::asio::placeholders::error, ++endpoint_iterator));
             }
             else
             {
-                std::cout << "Error: " << error.message() << std::endl;
+                std::cout << "proto_tcp_client::ps_handle_resolve - Error: " << error.message() << std::endl;
             }
         }
 
@@ -141,25 +141,24 @@ namespace proto_net
             {
                 connected_ = true;
                 ps_async_write(write_data_);
+
                 return;
             }
 
             connected_ = false;
-            std::cout << "Error: " << error.message() << std::endl;
-
             if (endpoint_iterator != boost::asio::ip::tcp::resolver::iterator())
             {
 
                 // The connection failed. Try the next endpoint in the list.
-                socket_.close();
+                socket_->close();
                 boost::asio::ip::tcp::endpoint endpoint = *endpoint_iterator;
-                socket_.async_connect(endpoint, boost::bind(&proto_tcp_client::ps_handle_connect, this,
+                socket_->async_connect(endpoint, boost::bind(&proto_tcp_client::ps_handle_connect, this,
                                                   boost::asio::placeholders::error, ++endpoint_iterator));
             }
-            else
-            {
-                std::cout << "Error: " << error.message() << std::endl;
-            }
+
+            // create a new instance for the next attempt to connect
+            socket_ = proto_net_tcp_socket_ptr(new proto_net_tcp_socket(proto_net_service_ref(ps_service_)));
+            std::cout << "proto_tcp_client::ps_handle_connect - Error: " << error.message() << std::endl;
         }
 
         void
@@ -230,7 +229,7 @@ namespace proto_net
             return ps_pipeline_;
         }
 
-        proto_net_tcp_socket&
+        proto_net_tcp_socket_ptr
         proto_tcp_client::ps_socket(void)
         {
             return socket_;
