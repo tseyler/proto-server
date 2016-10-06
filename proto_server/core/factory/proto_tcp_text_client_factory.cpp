@@ -34,14 +34,10 @@ namespace proto_net
             if (client_ptr)
             {
                 client_ptr->ps_async_connect(connect_data_);
-                if (client_ptr->ps_is_connected())
-                {
-                    // start the client service
-                    if (start_on_creation)
+
+                // start the client service
+                if (start_on_creation)
                         ps_ptr->ps_start();
-                }
-                else
-                    ps_ptr.reset(); // we are not connected so reset
             }
             else
                 ps_ptr.reset();   // no client so reset

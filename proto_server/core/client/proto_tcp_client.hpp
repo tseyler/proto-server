@@ -52,9 +52,11 @@ namespace proto_net
             // getter
             proto_net_tcp_socket_ptr ps_socket(void);
             size_t ps_max_wait(void) const;
+            bool ps_is_connected(void) const;
+
             // setter
             void ps_max_wait(size_t max_wax_msec);
-            bool ps_is_connected(void) const { return connected_; }
+
 
         protected:
 

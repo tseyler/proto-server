@@ -31,19 +31,13 @@ namespace proto_net
         proto_tcp_client_factory::ps_factory_create(bool start_on_creation)
         {
             proto_service_ptr ps_ptr(new proto_tcp_client(address_, port_num_, ps_pipeline_, buffer_size_));
-
             proto_tcp_client* client_ptr = proto_tcp_client::proto_tcp_client_cast(ps_ptr);
             if (client_ptr)
             {
                 client_ptr->ps_async_connect(connect_data_);
-                if (client_ptr->ps_is_connected())
-                {
-                    // start the client service
-                    if (start_on_creation)
-                        ps_ptr->ps_start();
-                }
-                else
-                    ps_ptr.reset(); // we are not connected so reset
+                // start the client service
+                if (start_on_creation)
+                    ps_ptr->ps_start();
             }
             else
                 ps_ptr.reset();   // no client so reset
