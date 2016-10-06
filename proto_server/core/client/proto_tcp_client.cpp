@@ -216,6 +216,13 @@ namespace proto_net
         {
             return max_wait_msec_;
         }
+
+        bool
+        proto_tcp_client::ps_is_connected(void) const
+        {
+            return connected_;
+        }
+
         // setter
         void
         proto_tcp_client::ps_max_wait(size_t max_wait_msec)

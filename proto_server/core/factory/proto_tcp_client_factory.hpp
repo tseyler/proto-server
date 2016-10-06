@@ -45,7 +45,6 @@ namespace proto_net
             unsigned short port_num_;
             proto_net_pipeline& ps_pipeline_;
             size_t buffer_size_;
-
         };
 
     }
