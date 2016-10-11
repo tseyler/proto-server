@@ -129,7 +129,9 @@ namespace proto_net
             }
             else
             {
-                std::cout << "proto_tcp_client::ps_handle_resolve - Error: " << error.message() << std::endl;
+                std::stringstream ss;
+                ss << "proto_tcp_client::ps_handle_resolve - " << error.message();
+                PROTO_LOG_ERROR( ss );
             }
         }
 
@@ -158,7 +160,9 @@ namespace proto_net
 
             // create a new instance for the next attempt to connect
             socket_ = proto_net_tcp_socket_ptr(new proto_net_tcp_socket(proto_net_service_ref(ps_service_)));
-            std::cout << "proto_tcp_client::ps_handle_connect - Error: " << error.message() << std::endl;
+            std::stringstream ss;
+            ss << "proto_tcp_client::ps_handle_connect - " << error.message();
+            PROTO_LOG_ERROR( ss );
         }
 
         void

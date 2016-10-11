@@ -10,7 +10,7 @@
 #include <boost/shared_ptr.hpp>
 
 
-define PROTO_LOG_DEBUG( msg )        proto_logger::get_instance()->log_debug( msg )
+#define PROTO_LOG_DEBUG( msg )        proto_logger::get_instance()->log_debug( msg )
 #define PROTO_LOG_INFO( msg )         proto_logger::get_instance()->log_info( msg )
 #define PROTO_LOG_WARN( msg )         proto_logger::get_instance()->log_warn( msg )
 #define PROTO_LOG_ERROR( msg )        proto_logger::get_instance()->log_error( msg )
