@@ -5,7 +5,9 @@
 //  See accompanying file LICENSE.md
 //
 
+#include <proto_logger.hpp>
 #include <iostream>
+#include <boost/lexical_cast.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/algorithm/string.hpp>
 #include <core/protocol/c4soap/c4soap_message.hpp>
@@ -17,6 +19,24 @@ namespace proto_net
     {
         namespace c4soap
         {
+            unsigned long
+            string_to_ulong(const std::string& str_ulong)
+            {
+                unsigned long ul_val(0UL);
+                try
+                {
+                    ul_val = boost::lexical_cast<unsigned long>(str_ulong);
+                }
+                catch (const boost::bad_lexical_cast & ex)
+                {
+                    std::stringstream ss;
+                    ss <<  "Bad cast from " << str_ulong << "to an unsigned long.";
+                    PROTO_LOG_WARN( ss );
+                }
+
+                return ul_val;
+            }
+
             const std::string c4soap_message::c4soap_cmd_authenticatepassword = "AuthenticatePassword";
             const std::string c4soap_message::c4soap_cmd_getdevicesbyinterface = "GetDevicesByInterface";
             const std::string c4soap_message::c4soap_cmd_sendtodevice = "SendToDevice";
@@ -111,11 +131,15 @@ namespace proto_net
                     read_xml(ss, pt_);
 
                     name_ = node_exists("c4soap.<xmlattr>.name") ? pt_.get<std::string>("c4soap.<xmlattr>.name") : "";
-                    seq_ = node_exists("c4soap.<xmlattr>.seq") ? pt_.get<unsigned long>("c4soap.<xmlattr>.seq") : 0;
-                    result_ = node_exists("c4soap.<xmlattr>.result") ? pt_.get<unsigned long>("c4soap.<xmlattr>.result") : 0;
+                    seq_  = string_to_ulong(node_exists("c4soap.<xmlattr>.seq") ? pt_.get<std::string>("c4soap.<xmlattr>.seq") : "");
+                    result_  = string_to_ulong(node_exists("c4soap.<xmlattr>.result") ? pt_.get<std::string>("c4soap.<xmlattr>.result") : "");
                 }
                 catch (boost::property_tree::xml_parser_error& err)
                 {
+                    std::stringstream ss;
+                    ss << "C4SOAP Parsing error: " << err.message();
+                    PROTO_LOG_ERROR( ss );
+
                     return false;
                 }
 

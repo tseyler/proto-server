@@ -18,6 +18,8 @@
 #include <boost/asio.hpp>
 #include <boost/thread/mutex.hpp>
 
+#include "proto_logger.hpp"
+
 #define THROW_BOOST_ERROR( e ) if (e.value() > 0) throw e
 
 namespace proto_net

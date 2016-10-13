@@ -41,3 +41,7 @@ RemoteSystemsTempFiles
 comm-bridge
 *.a
 *.so
+
+# CLion/idea files
+.idea/*
+.idea/

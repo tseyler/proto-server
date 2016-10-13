@@ -26,7 +26,7 @@ set(PROTOCOL_DIR ${CORE_DIR}/protocol)
 set(HTTP_DIR ${PROTOCOL_DIR}/http)
 set(URLENCODE_DIR ${PROTOCOL_DIR}/urlencode)
 set(C4SOAP_DIR ${PROTOCOL_DIR}/c4soap)
-set(LOGGER_DIR ${CORE_DIR}/logger)
+set(LOGGER_DIR ${PROTO_SERVER_DIR}/logger)
 
 file(GLOB CORE_SRC_FILES ${CORE_DIR}/*.cpp)
 file(GLOB DATA_SRC_FILES ${DATA_DIR}/*.cpp)
