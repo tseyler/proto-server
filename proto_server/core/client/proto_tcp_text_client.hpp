@@ -34,7 +34,7 @@ namespace proto_net
 
             // pure virtuals
             virtual void ps_async_read(void);
-            virtual void ps_async_write(proto_net_in_data& data_in);
+            virtual void ps_async_write(proto_net_in_data& data_in, bool no_write_complete = false);  //by default we set a flag for complete
             virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
             virtual void ps_handle_write(const boost::system::error_code &error, size_t bytes_transferred);
 

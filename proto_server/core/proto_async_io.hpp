@@ -23,7 +23,7 @@ namespace proto_net
     public:
 
         virtual void ps_async_read(void) = 0;
-        virtual void ps_async_write(proto_net_out_data& data_out) = 0;
+        virtual void ps_async_write(proto_net_out_data& data_out, bool no_write_complete) = 0;
     };
 
 }

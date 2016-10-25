@@ -36,7 +36,7 @@ namespace proto_net
 
             // pure virtuals - ps_async_io
             virtual void ps_async_read(void);
-            virtual void ps_async_write(proto_net_in_data& data_in);
+            virtual void ps_async_write(proto_net_in_data& data_in, bool no_write_complete = false);  //by default we set a flag for complete
             virtual proto_net_pipeline& ps_pipeline(void);
 
             virtual void ps_async_connect(const proto_net_in_data& write__data);

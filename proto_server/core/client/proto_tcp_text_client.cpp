@@ -51,7 +51,7 @@ namespace proto_net
         }
 
         void
-        proto_tcp_text_client::ps_async_write(proto_net_in_data& data_in)
+        proto_tcp_text_client::ps_async_write(proto_net_in_data& data_in, bool no_write_complete /*= false*/)
         {
 
             if (data_in.data() && data_in.data_size() && data_in.data_type() == data_text) //guard against empty data getting put into the pipe in
@@ -68,7 +68,7 @@ namespace proto_net
                                                  boost::bind(&proto_tcp_text_client::ps_handle_write, this,
                                                              boost::asio::placeholders::error,
                                                              boost::asio::placeholders::bytes_transferred));
-                        write_complete_ = false;
+                        write_complete_ = no_write_complete;
                     }
                     else
                         ps_async_read(); // just go back to reading

@@ -42,7 +42,7 @@ namespace proto_net
 
 
         void
-        proto_tcp_text_session::ps_async_write(proto_net_out_data& data_out)
+        proto_tcp_text_session::ps_async_write(proto_net_out_data& data_out, bool no_write_complete /*= false*/)
         {
             if (data_out.data() && data_out.data_size() && data_out.data_type() == data_text) //guard against empty data getting put into the pipe in
             {
@@ -52,7 +52,6 @@ namespace proto_net
                 size_t data_size = data_out.data_size();
                 if (data && data_size)
                 {
-                    //data_size++; // increase by 1
                     boost::asio::async_write(socket_, boost::asio::buffer(data, data_size),
                                              boost::bind(&proto_tcp_session::ps_handle_write, this,
                                                          boost::asio::placeholders::error));
