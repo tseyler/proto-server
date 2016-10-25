@@ -33,7 +33,7 @@ namespace proto_net
         proto_tcp_upstream_pipeline::ps_pipe_out(proto_net_out_data& out_data)
         {
             if (io_)
-                io_->ps_async_write(out_data); // this sends the data upstream
+                io_->ps_async_write(out_data, false); // this sends the data upstream
         }
 
         bool proto_tcp_upstream_pipeline::ps_pipe_error(proto_net_error_data& /*error_data*/)

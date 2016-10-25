@@ -28,7 +28,7 @@ namespace proto_net
         proto_tcp_downstream_pipeline::ps_pipe_in(proto_net_in_data& in_data)
         {
             if (io_)
-                io_->ps_async_write(in_data); // here is how we forward the message downstream
+                io_->ps_async_write(in_data, false); // here is how we forward the message downstream
         }
 
         void

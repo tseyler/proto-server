@@ -50,7 +50,7 @@ namespace proto_net
         }
 
         void
-        proto_tcp_session::ps_async_write(proto_net_out_data& data_out)
+        proto_tcp_session::ps_async_write(proto_net_out_data& data_out, bool no_write_complete /*= false*/)
         {
             if (data_out.data() && data_out.data_size()) //guard against empty data getting put into the pipe out
             {

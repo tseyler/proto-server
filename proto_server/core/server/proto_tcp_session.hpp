@@ -32,7 +32,7 @@ namespace proto_net
 
             virtual void ps_start(void);
             virtual void ps_async_read(void);
-            virtual void ps_async_write(proto_net_out_data& data_out);
+            virtual void ps_async_write(proto_net_out_data& data_out, bool no_write_complete = false);
             virtual proto_net_pipeline& ps_pipeline(void);
 
             virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
