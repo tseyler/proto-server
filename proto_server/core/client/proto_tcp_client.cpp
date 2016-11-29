@@ -163,6 +163,9 @@ namespace proto_net
             std::stringstream ss;
             ss << "proto_tcp_client::ps_handle_connect - " << error.message();
             PROTO_LOG_ERROR( ss );
+
+            proto_net_error_data err_data(ec_connect_error);
+            ps_pipeline_.ps_pipe_error(err_data);
         }
 
         void
@@ -183,7 +186,15 @@ namespace proto_net
                 ps_async_read(); // done go back to reading
             }
             else
-                delete this; // for now
+            {
+                proto_net_error_data err_data(ec_read_error);
+                if (ps_pipeline_.ps_pipe_error(err_data))
+                {
+                    //delete this; // for now
+                }
+                else
+                    ps_async_read(); // done go back to reading
+            }
         }
 
         void
