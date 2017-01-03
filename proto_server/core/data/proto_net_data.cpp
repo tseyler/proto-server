@@ -114,12 +114,13 @@ namespace proto_net
                 proto_net_data copy_data(append_data);
                 copy_data.data_type(data_unknown);
                 size_t new_size = data_size_ + copy_data.data_size();
-                char new_data[new_size];
-                memset(&new_data, 0, new_size);
-                memcpy(&new_data, data_, data_size_);
+                char* new_data = new char[new_size];
+                memset(new_data, 0, new_size);
+                memcpy(new_data, data_, data_size_);
                 char* offset_ptr = new_data + data_size_;
                 memcpy(offset_ptr, copy_data.data(), copy_data.data_size());
                 clone(proto_net_data(new_data, new_size));
+                delete [] new_data;
             }
         }
 
@@ -247,10 +248,13 @@ namespace proto_net
             if (data_size_ > 0)
             {
                 size_t sz = data_size_ + 1;
-                char str[sz];
+                char* str = new char[sz];
                 memset(str, 0, sz);
                 memcpy(str, data_, data_size_);
                 data_size_ = sz;
+                data_clone();
+                data_copy(str, data_size_);
+                delete [] str;
             }
         }
 
