@@ -171,6 +171,8 @@ namespace proto_net
         void
         proto_tcp_client::ps_handle_read(const boost::system::error_code& error, size_t bytes_transferred)
         {
+            write_complete_ = true;
+
             if (!error)
             {
                 // handle a ps_read here
@@ -181,7 +183,6 @@ namespace proto_net
                     ps_pipeline_.ps_pipeline(res_data, req_data); // response and request are reversed here
                     ps_pipeline_.ps_pipe_out(res_data); // post read, execute the pipe_out for the client
                 }
-                write_complete_ = true;
 
                 ps_async_read(); // done go back to reading
             }
@@ -222,6 +223,8 @@ namespace proto_net
                 boost::this_thread::sleep(boost::posix_time::milliseconds(sleep_msec));
                 wait_msec += sleep_msec;
             }
+
+            write_complete_ = true;
 
             return write_complete_;
         }
