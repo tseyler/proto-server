@@ -137,7 +137,7 @@ namespace proto_net
                 catch (boost::property_tree::xml_parser_error& err)
                 {
                     std::stringstream ss;
-                    ss << "C4SOAP Parsing error: " << err.message();
+                    ss << "c4soap_message::from_c4soap parsing error: " << err.message();
                     PROTO_LOG_ERROR( ss );
 
                     return false;
