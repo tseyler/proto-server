@@ -38,7 +38,7 @@ namespace proto_net
             for (; itr != end; ++itr)
                 count++;
 
-            return count;
+            return bool(count);
         }
 
         bool
