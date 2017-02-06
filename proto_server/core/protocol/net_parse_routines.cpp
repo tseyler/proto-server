@@ -34,11 +34,15 @@ namespace proto_net
             boost::sregex_token_iterator itr(str.begin(), str.end(), exp, 0);
             boost::sregex_token_iterator end;
 
+            bool found(false);
             count = 0;
             for (; itr != end; ++itr)
+            {
+                found = true;
                 count++;
+            }
 
-            return bool(count);
+            return found;
         }
 
         bool
