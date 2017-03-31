@@ -19,7 +19,9 @@ namespace proto_net
                 proto_session(buffer_size),
                 ps_pipeline_(ps_pipeline),
                 socket_(proto_net_service_ref(ps_service)),
-                session_read_error_(false)
+                session_read_error_(false),
+                read_complete_(true),
+                max_wait_msec_(2000)
         {}
 
         proto_tcp_session::~proto_tcp_session()
@@ -36,12 +38,15 @@ namespace proto_net
         void
         proto_tcp_session::ps_async_read(void)
         {
-            if (!session_read_error_)
+            if (!session_read_error_ && ps_read_complete(max_wait_msec_))
             {
-                socket_.async_read_some(boost::asio::buffer(buffer_, buffer_size_),
-                                        boost::bind(&proto_tcp_session::ps_handle_read, this,
-                                                    boost::asio::placeholders::error,
-                                                    boost::asio::placeholders::bytes_transferred));
+                    read_complete_ = false;
+                    //boost::this_thread::sleep(boost::posix_time::milliseconds(25));
+                    socket_.async_read_some(boost::asio::buffer(buffer_, buffer_size_),
+                                            boost::bind(&proto_tcp_session::ps_handle_read, this,
+                                            boost::asio::placeholders::error,
+                                                        boost::asio::placeholders::bytes_transferred));
+                    read_complete_ = true;
             }
             else
             {
@@ -88,6 +93,7 @@ namespace proto_net
                     ps_pipeline_.ps_pipeline(req_data, res_data); // all of the magic takes place inside the ps_io_ object
                 }
                 ps_async_write(res_data); // set response data ptr or size to zero for a non-write
+
             }
             else
             {
@@ -106,6 +112,25 @@ namespace proto_net
             }
             else
                 delete this;
+        }
+
+        bool
+        proto_tcp_session::ps_read_complete(size_t max_wait_msec /*= 2000*/)
+        {
+            const size_t sleep_msec = 25;
+
+            size_t wait_msec(0);
+            while (wait_msec < max_wait_msec)
+            {
+                boost::this_thread::sleep(boost::posix_time::milliseconds(sleep_msec));
+                if (read_complete_)
+                    break;
+                wait_msec += sleep_msec;
+            }
+
+            read_complete_ = true;
+
+            return read_complete_;
         }
 
         proto_net_pipeline&
