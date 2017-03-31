@@ -38,6 +38,8 @@ namespace proto_net
             virtual void ps_handle_read(const boost::system::error_code &error, size_t bytes_transferred);
             virtual void ps_handle_write(const boost::system::error_code &error);
 
+            virtual bool ps_read_complete(size_t max_wait_msec = 2000);
+
             // getter
             proto_net_tcp_socket& ps_socket(void);
 
@@ -52,6 +54,8 @@ namespace proto_net
             proto_net_pipeline& ps_pipeline_;
             proto_net_tcp_socket socket_;
             bool session_read_error_;
+            volatile bool read_complete_;
+            size_t max_wait_msec_;
         };
 
     }
