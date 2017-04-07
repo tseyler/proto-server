@@ -22,7 +22,8 @@ namespace proto_net
         {
         public:
 
-            virtual void ps_on_new_tcp_session(proto_tcp_session *session) = 0;
+            // returns true if a change has occurred
+            virtual bool ps_on_new_tcp_session(proto_tcp_session *session) = 0;
 
         };
 
