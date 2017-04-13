@@ -37,6 +37,12 @@ namespace proto_net
                 return ul_val;
             }
 
+            bool
+            string_to_bool(const std::string& str_bool)
+            {
+                return boost::iequals(str_bool, "true") || boost::iequals(str_bool, "1");
+            }
+
             const std::string c4soap_message::c4soap_cmd_authenticatepassword = "AuthenticatePassword";
             const std::string c4soap_message::c4soap_cmd_getdevicesbyinterface = "GetDevicesByInterface";
             const std::string c4soap_message::c4soap_cmd_sendtodevice = "SendToDevice";
@@ -45,6 +51,12 @@ namespace proto_net
             c4soap_message::begin_c4soap_message(std::stringstream& ss, const std::string& cmd, unsigned long& seq)
             {
                 ss << "<c4soap name=\"" << cmd << "\" seq=\"" << ++seq << "\">";
+            }
+
+            void
+            c4soap_message::begin_c4soap_async_message(std::stringstream& ss, const std::string& cmd, unsigned long& seq)
+            {
+                ss << "<c4soap name=\"" << cmd << "\" seq=\"" << ++seq << "\" async=\"1\">";
             }
 
             void
@@ -102,17 +114,19 @@ namespace proto_net
             }
 
             c4soap_message::c4soap_message(const std::string& name, unsigned long seq) : name_(name), seq_(seq),
-                                                                                         result_(0), is_c4soap_(false)
+                                                                                         result_(0), is_c4soap_(false),
+                                                                                         is_async_(false)
             {}
 
-            c4soap_message::c4soap_message(const std::string& c4soap_xml) : name_(""), seq_(0), result_(0), is_c4soap_(false)
+            c4soap_message::c4soap_message(const std::string& c4soap_xml) : name_(""), seq_(0), result_(0),
+                                                                            is_c4soap_(false), is_async_(false)
             {
                 is_c4soap_ = from_c4soap(c4soap_xml);
             }
 
             c4soap_message::c4soap_message(const c4soap_message& msg) : name_(msg.c4soap_name()), seq_(msg.c4soap_seq()),
                                                                   result_(msg.c4soap_result()), pt_(msg.c4soap_ptree()),
-                                                                        is_c4soap_(msg.is_c4soap())
+                                                                        is_c4soap_(msg.is_c4soap()), is_async_(msg.is_async())
             {}
 
             c4soap_message::~c4soap_message()
@@ -133,6 +147,7 @@ namespace proto_net
                     name_ = node_exists("c4soap.<xmlattr>.name") ? pt_.get<std::string>("c4soap.<xmlattr>.name") : "";
                     seq_  = string_to_ulong(node_exists("c4soap.<xmlattr>.seq") ? pt_.get<std::string>("c4soap.<xmlattr>.seq") : "");
                     result_  = string_to_ulong(node_exists("c4soap.<xmlattr>.result") ? pt_.get<std::string>("c4soap.<xmlattr>.result") : "");
+                    is_async_ = string_to_bool(node_exists("c4soap.<xmlattr>.async") ? pt_.get<std::string>("c4soap.<xmlattr>.async") : "0");
                 }
                 catch (boost::property_tree::xml_parser_error& err)
                 {
