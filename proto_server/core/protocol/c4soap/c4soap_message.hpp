@@ -34,6 +34,7 @@ namespace proto_net
                 // this is how you begin a c4soap message
                 static void begin_c4soap_message(std::stringstream& ss, const std::string& cmd, unsigned long& seq);
 
+                static void begin_c4soap_async_message(std::stringstream& ss, const std::string& cmd, unsigned long& seq);
                 // this is how you end a c4soap message
                 static void end_c4soap_message(std::stringstream& ss);
 
@@ -66,6 +67,7 @@ namespace proto_net
                 bool from_c4soap(const std::string& c4soap_xml);
                 std::string to_c4soap(void);
                 bool is_c4soap(void) const { return is_c4soap_; }
+                bool is_async(void) const { return is_async_; }
                 std::string to_string(void);
 
                 bool node_exists(const std::string& node_name) const;
@@ -77,6 +79,7 @@ namespace proto_net
                 unsigned long result_;
                 ptree pt_;
                 bool is_c4soap_;
+                bool is_async_;
             };
 
             typedef boost::shared_ptr<c4soap_message> c4soap_message_ptr;

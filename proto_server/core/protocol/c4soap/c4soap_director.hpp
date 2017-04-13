@@ -23,6 +23,8 @@ namespace proto_net
 
             typedef std::string(*director_c4soap_function)(unsigned long&, const params_array&);
 
+            bool is_async_c4soap(const std::string& soap);
+
             // always authenicate before issuing commands
             std::string authenticate_password(unsigned long& seq, const params_array& params);
 
@@ -38,8 +40,16 @@ namespace proto_net
             // use this to send a commmand to a device
             std::string send_to_device(unsigned long& seq, const params_array& params);
 
+            std::string send_async_to_device(unsigned long& seq, const params_array& params);
+
             // gets info on director
             std::string get_director_info(unsigned long& seq, const params_array& params);
+
+            // register an event listener
+            std::string register_event_listener(unsigned long& seq, const params_array& params);
+
+            // unregister an event listener
+            std::string unregister_event_listener(unsigned long& seq, const params_array& params);
         }
     }
 }
